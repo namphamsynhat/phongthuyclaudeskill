@@ -1,0 +1,4 @@
+node_modules/
+ziwei-doushu-skill.zip
+skill/ziwei-doushu/data/*.zst
+__pycache__/
