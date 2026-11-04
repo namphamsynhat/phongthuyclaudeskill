@@ -11,7 +11,7 @@ The chart is **calculated by code, never by you**. You do the interpretation. Do
 
 - **Reply only in English or Vietnamese.** Use Vietnamese if the user writes in Vietnamese, otherwise English. If unsure, ask once.
 - Run both scripts with `--lang vi` or `--lang en` to match.
-- The knowledge files and the reading dataset are in **Chinese**. Translate what you use; never paste Chinese paragraphs untranslated.
+- The reading dataset is in **Chinese**; the knowledge base has a full Vietnamese translation in `references/vi/` (section 4). Translate what you use; never paste Chinese paragraphs untranslated.
 - Term style:
   - Vietnamese: the usual Hán-Việt names (Tử Vi, Thiên Phủ, cung Mệnh, Phu Thê, Hóa Kỵ, đại hạn, lưu niên). The script already prints them.
   - English: pinyin plus a short gloss the first time, e.g. "Tian Fu (Treasury star)", "Spouse palace", "Hua Ji (obstacle transformation)".
@@ -76,22 +76,27 @@ Follow this order; don't jump to conclusions from one star.
 6. **The topic asked about**: read that palace + its opposite + its triad. For marriage, read the Spouse palace **and** the Fortune & Mind palace (Phúc Đức); Ni said looking at the Spouse palace alone is a big mistake.
 7. **Timing**: the current decade (marked ◀) and its transformations, then the yearly Life palace and yearly transformations.
 
-## 4. Knowledge base (Chinese source files; load only what you need)
+## 4. Knowledge base (load only what you need)
 
-| File | Use for |
-|---|---|
-| `references/patterns.md` | Meaning, conditions and source of each pattern the engine detects |
-| `references/classic-gusuifu.md`, `classic-quanshu.md`, `classic-quanji.md` | Classic rules for stars and palaces (summary-style excerpts, not the complete books) |
-| `references/marriage-compatibility.md` | Compatibility method, each main star in the Spouse palace, transformations in the Spouse palace, romance stars |
-| `references/tianji-ziwei/*.md` | 1,848 verbatim Ni Haixia quotes, each with a Bilibili timestamp link |
-| `references/tianji-ziwei/TOPICS.md` | Topic index for the quotes |
+Every file exists in Chinese (`references/`) and in a full Vietnamese translation (`references/vi/`). Use the Vietnamese files when answering in Vietnamese, and as a starting point for English. Use the Chinese files to check the original wording.
 
-Search with Chinese terms, since the files are Chinese (e.g. 化忌 = Hua Ji, 夫妻 = spouse, 福德 = fortune palace, 天府 = Tian Fu):
+| Vietnamese | Chinese original | Use for |
+|---|---|---|
+| `references/vi/patterns.md` | `references/patterns.md` | Meaning, conditions and source of each pattern the engine detects |
+| `references/vi/classic-gusuifu.md`, `classic-quanshu.md`, `classic-quanji.md` | `references/classic-*.md` | Classic rules for stars and palaces (summary-style excerpts, not the complete books) |
+| `references/vi/marriage-compatibility.md` | `references/marriage-compatibility.md` | Compatibility method, each main star in the Spouse palace, transformations in the Spouse palace, romance stars |
+| `references/vi/tianji-ziwei/*.md` | `references/tianji-ziwei/*.md` | 1,848 Ni Haixia quotes, each with a Bilibili timestamp link; the Vietnamese files show «translation» — 「original Chinese」 on every line |
+| `references/vi/tianji-ziwei/TOPICS.md` | `references/tianji-ziwei/TOPICS.md` | Topic index for the quotes |
+
+The Vietnamese quote files contain both languages, so you can search with Vietnamese or Chinese terms:
 
 ```bash
-grep -rh "化忌" references/tianji-ziwei/*.md | head -20
-grep -rh "夫妻" references/tianji-ziwei/*.md | grep "福德" | head
+grep -h "Hóa Kỵ" references/vi/tianji-ziwei/*.md | head -20
+grep -h "Phu Thê" references/vi/tianji-ziwei/*.md | grep "Phúc Đức" | head
+grep -h "化忌" references/vi/tianji-ziwei/*.md | head
 ```
+
+When you quote Ni Haixia, use the translation, then the original Chinese in brackets, then the timestamp link. Keep any 〔Đính chính …〕 correction note that follows a quote: it marks places where the lecture contradicts a correctly drawn chart or 《紫微斗数全书》.
 
 ## 5. Rules for the reading
 

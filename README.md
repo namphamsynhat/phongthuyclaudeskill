@@ -21,7 +21,13 @@ Built on the open-source engine, knowledge base and reading dataset of [Renhuai1
 cp -r skill/ziwei-doushu ~/.claude/skills/
 ```
 
-The reading lookup needs Python with `zstandard` (`pip install zstandard`) or the `zstd` command. It downloads each year file (~2 MB) on first use. If your environment blocks GitHub downloads, put the `year-YYYY.jsonl.zst` files from [release v4.0-13d](https://github.com/Renhuai123/ziwei-doushu/releases/tag/v4.0-13d) into `skill/ziwei-doushu/data/`.
+The reading lookup needs Python with `zstandard` (`pip install zstandard`) or the `zstd` command. It downloads each year file (~2 MB) on first use and checks its SHA-256. To work fully offline, or where GitHub downloads are blocked, fetch all 77 years (161 MB) once:
+
+```bash
+python3 skill/ziwei-doushu/scripts/lookup_reading.py --download-all
+```
+
+The dataset files are not stored in this repo. All 77 were checked on 2026-11-04: checksums and sizes match the release, 674,976 charts, every real date from 1950 to 2026 exactly once for each of the 12 hours and both genders, all 13 topics present in every chart, and the stored character counts match the text.
 
 Example prompts:
 - "Lập lá số tử vi cho tôi: nam, sinh 17/05/1990 lúc 14:30 tại Hà Nội. Năm 2026 sự nghiệp thế nào?"
@@ -32,9 +38,11 @@ Example prompts:
 | Path | What |
 |---|---|
 | `skill/ziwei-doushu/` | The skill itself (SKILL.md, scripts, references) |
+| `skill/ziwei-doushu/references/vi/` | Full Vietnamese translation of the knowledge base: classics, patterns, marriage notes, and all 1,848 Ni Haixia quotes (each line keeps the original Chinese and timestamp) |
 | `src/cli.ts`, `src/i18n.ts` | Chart CLI and English/Vietnamese term tables (Hán-Việt and pinyin) |
 | `src/ziwei/` | Chart engine copied unchanged from Renhuai123/ziwei-doushu `lib/ziwei/` (MIT) |
 | `tools/extract_kb.py` | Rebuilds `references/` from a clone of the upstream repo |
+| `tools/tianji_vi.py`, `tools/tianji-vi/` | Splits the quote files into lines and rebuilds `references/vi/tianji-ziwei/` from the translation tables (`*.vi.tsv`, `tags.map.tsv`) |
 
 Rebuild the chart script after changing `src/`:
 
@@ -47,7 +55,7 @@ npm run build
 
 - The reading lookup has been tested on the 1990 data file.
 - **The chart script hasn't been run end-to-end yet.** Please compare a few charts with [ouranic.cn](https://ouranic.cn) before relying on it.
-- Pattern descriptions and the knowledge files stay in Chinese. Claude translates them when it writes the reading.
+- The knowledge base is fully translated into Vietnamese (`references/vi/`). Pattern descriptions printed by the chart script and the pre-written readings stay in Chinese; Claude translates them when it writes the reading.
 
 ## Licenses
 
@@ -56,7 +64,7 @@ npm run build
 | This repo's own code (`src/cli.ts`, `src/i18n.ts`, scripts, tools) | MIT |
 | Engine (`src/ziwei/`, bundled in `ziwei-chart.mjs`) | MIT, © Renhuai123/ziwei-doushu (see `skill/ziwei-doushu/LICENSE-code-MIT.txt`); built on [iztro](https://github.com/SylarLong/iztro) (MIT) |
 | Classics excerpts (`references/classic-*.md`) | Public domain |
-| Ni Haixia quotes (`references/tianji-ziwei/`) | **CC BY-NC-SA 4.0, non-commercial only** |
+| Ni Haixia quotes (`references/tianji-ziwei/`) and their Vietnamese translation (`references/vi/tianji-ziwei/`) | **CC BY-NC-SA 4.0, non-commercial only** |
 | Reading dataset v4.0 (downloaded at run time, not stored here) | CC BY 4.0 (the Ni Haixia quotes inside it are CC BY-NC-SA 4.0) |
 
 Because of the Ni Haixia quotes, **this skill as a whole is for non-commercial use**. For commercial use, remove `references/tianji-ziwei/` and get permission for the quotes inside the dataset.
