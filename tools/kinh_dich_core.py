@@ -97,7 +97,7 @@ def que64():
         rows.append(f"| {n} | {chr(0x4DC0 + n - 1)} | **{vi}** | {zh} | {u[2]} {u[3]} / {l[2]} {l[3]} | {meaning} | {u[9].split(' (')[0]} ở {l[8]} | [vi](que/{n:02d}.md) · [zh](../../kinh-dich/que/{n:02d}.md) |")
     return f"""# 64 quẻ Kinh Dịch (thứ tự Văn Vương)
 
-Mỗi quẻ có một file riêng `que/NN.md` chứa lời giảng của thầy Nghê Hải Hạ về quẻ đó (tượng quẻ, vị trí trong Tự Quái, lời hào, ứng dụng đời người, dương trạch, ví dụ bói), kèm mốc thời gian Bilibili. Các file `que/` có tiêu đề và mục tiếng Việt; phần lớn lời giảng hiện còn ở nguyên văn tiếng Trung, Claude dịch khi trích.
+Mỗi quẻ có một file riêng `que/NN.md` chứa lời giảng của thầy Nghê Hải Hạ về quẻ đó (tượng quẻ, vị trí trong Tự Quái, lời hào, ứng dụng đời người, dương trạch, ví dụ bói), kèm mốc thời gian Bilibili. Các file `que/` có tiêu đề, mục và toàn bộ lời giảng bằng tiếng Việt, mỗi câu kèm nguyên văn tiếng Trung.
 
 Cột **Dương trạch** đọc theo cách của thầy Nghê: thượng quái là **người** (vai trong nhà), hạ quái là **vị trí** (phương của phòng tính từ tâm nhà). Ví dụ Địa Thiên Thái = mẹ/vợ (Khôn) ở phương Tây Bắc (Càn).
 
@@ -212,10 +212,10 @@ Phần Kinh Dịch của bộ kỹ năng, dựa trên lời giảng 《天纪》
 | `07-duong-trach.md` | {stats['07-duong-trach']} câu: dương trạch đổi mệnh | Dịch đủ, kèm nguyên văn |
 | `11-kham-du.md` | {stats['11-kham-du']} câu: kham dư, loan đầu, lý khí, la kinh, vai trò trong nhà | Dịch đủ, kèm nguyên văn |
 | `10-chiem-doan.md` | {stats['10-chiem-doan']} câu: quẻ đồng tiền, chiết tự, Lục Thần, Lục Nhâm | Dịch đủ, kèm nguyên văn |
-| `08-dich-ly.md` | {stats['08-dich-ly']} câu: tổng cương Dịch lý | Tiêu đề tiếng Việt, lời giảng còn nguyên văn |
-| `que/01.md` … `que/64.md` | {stats['que']} câu: lời giảng từng quẻ | Tiêu đề tiếng Việt, lời giảng còn nguyên văn |
+| `08-dich-ly.md` | {stats['08-dich-ly']} câu: tổng cương Dịch lý | Dịch đủ, kèm nguyên văn |
+| `que/01.md` … `que/64.md` | {stats['que']} câu: lời giảng từng quẻ | Dịch đủ, kèm nguyên văn |
 
-Câu chưa dịch giữ nguyên văn tiếng Trung, mỗi câu có liên kết Bilibili đến đúng giây. Khi trích, hãy dịch sang tiếng Việt, kèm nguyên văn trong ngoặc 「」 và liên kết.
+Mọi câu đều có bản dịch tiếng Việt kèm nguyên văn tiếng Trung và liên kết Bilibili đến đúng giây. Khi trích, ghi bản dịch, nguyên văn trong ngoặc 「」 và liên kết.
 
 Giấy phép: lời giảng thuộc {SRC}, CC BY-NC-SA 4.0, chỉ dùng phi thương mại; bản dịch là tác phẩm phái sinh, cùng giấy phép. Các bảng tóm tắt (`bat-quai.md`, `64-que.md`, `duong-trach.md`) do bộ kỹ năng biên soạn.
 """

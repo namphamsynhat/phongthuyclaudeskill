@@ -1,6 +1,6 @@
 # 64 quẻ Kinh Dịch (thứ tự Văn Vương)
 
-Mỗi quẻ có một file riêng `que/NN.md` chứa lời giảng của thầy Nghê Hải Hạ về quẻ đó (tượng quẻ, vị trí trong Tự Quái, lời hào, ứng dụng đời người, dương trạch, ví dụ bói), kèm mốc thời gian Bilibili. Các file `que/` có tiêu đề và mục tiếng Việt; phần lớn lời giảng hiện còn ở nguyên văn tiếng Trung, Claude dịch khi trích.
+Mỗi quẻ có một file riêng `que/NN.md` chứa lời giảng của thầy Nghê Hải Hạ về quẻ đó (tượng quẻ, vị trí trong Tự Quái, lời hào, ứng dụng đời người, dương trạch, ví dụ bói), kèm mốc thời gian Bilibili. Các file `que/` có tiêu đề, mục và toàn bộ lời giảng bằng tiếng Việt, mỗi câu kèm nguyên văn tiếng Trung.
 
 Cột **Dương trạch** đọc theo cách của thầy Nghê: thượng quái là **người** (vai trong nhà), hạ quái là **vị trí** (phương của phòng tính từ tâm nhà). Ví dụ Địa Thiên Thái = mẹ/vợ (Khôn) ở phương Tây Bắc (Càn).
 

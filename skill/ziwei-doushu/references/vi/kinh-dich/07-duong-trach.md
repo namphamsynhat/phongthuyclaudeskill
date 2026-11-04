@@ -1,6 +1,6 @@
 # Dương trạch đổi mệnh: phương vị Bát Quái và vai trò trong nhà (sách 07 Phương pháp luận)
 
-> Trích lời giảng 《天纪》 (Thiên Kỷ) của Nghê Hải Hạ (phụ đề Bilibili), nguồn [Renhuai123/nihai-tianji-corpus](https://github.com/Renhuai123/nihai-tianji-corpus), giấy phép CC BY-NC-SA 4.0, chỉ dùng phi thương mại; bản quyền bài giảng thuộc chủ sở hữu. Bản dịch tiếng Việt là tác phẩm phái sinh, cùng giấy phép. Mỗi dòng: «bản dịch» — 「nguyên văn」; bấm mốc thời gian để nghe đúng giây đó. Câu nào chưa có bản dịch thì giữ nguyên văn tiếng Trung; khi trích dẫn, hãy dịch sang tiếng Việt và giữ nguyên văn trong ngoặc.
+> Trích lời giảng 《天纪》 (Thiên Kỷ) của Nghê Hải Hạ (phụ đề Bilibili), nguồn [Renhuai123/nihai-tianji-corpus](https://github.com/Renhuai123/nihai-tianji-corpus), giấy phép CC BY-NC-SA 4.0, chỉ dùng phi thương mại; bản quyền bài giảng thuộc chủ sở hữu. Bản dịch tiếng Việt là tác phẩm phái sinh, cùng giấy phép. Mỗi dòng: «bản dịch» — 「nguyên văn」; bấm mốc thời gian để nghe đúng giây đó. Mọi câu đều đã có bản dịch tiếng Việt (dịch sát ý, có rút gọn chỗ lặp của văn nói); khi trích dẫn, ghi bản dịch rồi nguyên văn trong ngoặc.
 
 Tổng cộng 96 câu.
 

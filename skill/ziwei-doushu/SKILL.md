@@ -120,7 +120,7 @@ Mỗi tệp Tử Vi có bản tiếng Trung (`references/`) và bản dịch ti�
 | `references/vi/kinh-dich/64-que.md` | (chỉ tiếng Việt) | Bảng 64 quẻ: tên, thượng/hạ quái, ý chính, dương trạch |
 | `references/vi/kinh-dich/duong-trach.md` | (chỉ tiếng Việt) | Phương pháp dương trạch của thầy Nghê, bảng 8×8 người × phương |
 | `references/vi/kinh-dich/07-duong-trach.md`, `11-kham-du.md`, `10-chiem-doan.md` | `references/kinh-dich/…` | Lời giảng đã dịch: dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99) |
-| `references/vi/kinh-dich/08-dich-ly.md`, `que/01.md`…`que/64.md` | `references/kinh-dich/…` | Dịch lý (396) và lời giảng từng quẻ (2.100): tiêu đề tiếng Việt, lời giảng còn nguyên văn tiếng Trung; dịch khi trích |
+| `references/vi/kinh-dich/08-dich-ly.md`, `que/01.md`…`que/64.md` | `references/kinh-dich/…` | Dịch lý (396) và lời giảng từng quẻ (2.100): dịch đủ tiếng Việt, kèm nguyên văn |
 
 Tìm trong các câu trích bằng tiếng Việt hoặc tiếng Trung:
 

@@ -74,8 +74,7 @@ Settings → Capabilities → bật chạy code (code execution) → tải `ziwe
 | Kết quả lá số (sao, cung, Tứ Hóa, cách cục, điều kiện, lời luận sao) | Đủ (mặc định tiếng Việt) |
 | Kho kiến thức Tử Vi: cổ thư, 34 cách cục, xem hợp tuổi, 1.848 câu của thầy Nghê | Dịch đủ, mỗi câu kèm nguyên văn |
 | Kinh Dịch: Bát Quái, 64 quẻ, phương pháp dương trạch | Viết bằng tiếng Việt |
-| Kinh Dịch: lời giảng về dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99) | Dịch đủ, mỗi câu kèm nguyên văn |
-| Kinh Dịch: Dịch lý (396) và lời giảng từng quẻ (2.100) | Tiêu đề tiếng Việt; lời giảng còn nguyên văn, Claude dịch khi trích |
+| Kinh Dịch: toàn bộ 2.948 câu giảng — dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99), Dịch lý (396), từng quẻ (2.100) | Dịch đủ, mỗi câu kèm nguyên văn |
 | Bộ lời luận soạn sẵn v4.0 (≈20 tỉ chữ Hán, 56,6 GB giải nén) | Giữ nguyên tiếng Trung; Claude dịch khi đọc |
 | SKILL.md, README, công cụ | Tiếng Việt (có tiếng Anh) |
 
@@ -117,7 +116,7 @@ python3 -I tools/kinh_dich_core.py skill/ziwei-doushu/references
 |---|---|
 | `skill/ziwei-doushu/` | Bản thân kỹ năng (SKILL.md, scripts, references) |
 | `skill/ziwei-doushu/references/vi/` | Kho kiến thức tiếng Việt: cổ thư, cách cục, xem hợp, 1.848 câu Tử Vi, và `kinh-dich/` |
-| `skill/ziwei-doushu/references/kinh-dich/` | Lời giảng Kinh Dịch nguyên văn tiếng Trung, theo chủ đề và theo từng quẻ |
+| `skill/ziwei-doushu/references/kinh-dich/` | Lời giảng Kinh Dịch nguyên văn tiếng Trung, theo chủ đề và theo từng quẻ (bản tiếng Việt ở `references/vi/kinh-dich/`) |
 | `src/chart.ts`, `src/chart-cli.ts`, `src/i18n.ts`, `src/patterns-vi.ts` | Bộ in lá số, CLI, bảng thuật ngữ Việt/Anh, bản dịch mô tả cách cục |
 | `src/iching.ts`, `src/iching-data.json`, `src/kinh-dich-cli.ts` | Engine Kinh Dịch: 64 quẻ, dương trạch, gieo quẻ, Tiểu Lục Nhâm |
 | `src/lookup.ts`, `src/lookup-cli.ts` | Tra bài luận offline (zstd có sẵn của Node) |

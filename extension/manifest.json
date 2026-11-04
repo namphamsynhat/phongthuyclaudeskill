@@ -2,7 +2,7 @@
   "manifest_version": "0.2",
   "name": "ziwei-doushu",
   "display_name": "Tử Vi Đẩu Số & Kinh Dịch",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Lá số Tử Vi và Kinh Dịch (quẻ, dương trạch) theo thầy Nghê Hải Hạ, offline, tiếng Việt và tiếng Anh.",
   "long_description": "Cho Claude các công cụ offline: lập lá số Tử Vi Đẩu Số theo giờ mặt trời thật; lấy bài luận soạn sẵn 13 chủ đề cho người sinh 1950–2026 (bộ dữ liệu mở v4.0, kèm sẵn, không cần mạng); Kinh Dịch: tra 64 quẻ, gieo quẻ, Tiểu Lục Nhâm, ghép quẻ dương trạch cho từng người trong nhà theo phương pháp thầy Nghê Hải Hạ; tìm 4.796 câu giảng có mốc thời gian bằng tiếng Việt hoặc tiếng Trung; đọc cách cục, cổ thư, xem hợp tuổi, Bát Quái, phương pháp dương trạch. Engine mã nguồn mở của Renhuai123/ziwei-doushu (MIT). Lời giảng của thầy Nghê theo CC BY-NC-SA 4.0: chỉ dùng phi thương mại. Lời luận mang tính văn hóa, giải trí, không phải lời khuyên y khoa, pháp lý hay tài chính.\n\nOffline Zi Wei Dou Shu charts and I Ching tools (hexagrams, casting, Xiao Liu Ren, house placement) in the Ni Haixia tradition, Vietnamese first, also English.",
   "author": {
