@@ -1,0 +1,34 @@
+{
+  "manifest_version": "0.2",
+  "name": "ziwei-doushu",
+  "display_name": "Tử Vi Đẩu Số · Zi Wei Dou Shu",
+  "version": "1.0.0",
+  "description": "Offline Zi Wei Dou Shu (Tử Vi) charts and readings in the Ni Haixia tradition, in English or Vietnamese.",
+  "long_description": "Gives Claude tools to draw a Zi Wei Dou Shu chart with true solar time, fetch the pre-written 13-topic natal reading for any birth from 1950 to 2026 (open dataset v4.0, bundled, no internet needed), search 1,848 timestamped Ni Haixia (Nghê Hải Hạ) quotes in Vietnamese or Chinese, and read the pattern, classics and compatibility notes. Built on the open-source engine of Renhuai123/ziwei-doushu (MIT). The Ni Haixia quotes are CC BY-NC-SA 4.0: non-commercial use only. Readings are for culture and entertainment, not medical, legal or financial advice.",
+  "author": { "name": "namphamsynhat", "url": "https://github.com/namphamsynhat" },
+  "repository": { "type": "git", "url": "https://github.com/namphamsynhat/phongthuyclaudeskill" },
+  "homepage": "https://github.com/namphamsynhat/phongthuyclaudeskill",
+  "license": "MIT",
+  "keywords": ["ziwei", "zi wei dou shu", "tu vi", "tử vi", "purple star astrology", "紫微斗数", "astrology", "vietnamese"],
+  "server": {
+    "type": "node",
+    "entry_point": "server/mcp-server.mjs",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/mcp-server.mjs"],
+      "env": {}
+    }
+  },
+  "tools": [
+    { "name": "ziwei_chart", "description": "Draw a natal Zi Wei Dou Shu chart in English or Vietnamese, with a dataset key for the reading." },
+    { "name": "ziwei_find_city", "description": "Find longitude and UTC offset of a birthplace." },
+    { "name": "ziwei_reading", "description": "Get the pre-written 13-topic natal reading for births 1950–2026 (offline)." },
+    { "name": "ziwei_search_quotes", "description": "Search 1,848 timestamped Ni Haixia quotes in Vietnamese or Chinese." },
+    { "name": "ziwei_reference", "description": "Read the pattern rules, classics excerpts or compatibility notes." },
+    { "name": "ziwei_guide", "description": "Full reading method and rules." }
+  ],
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": { "node": ">=22.15.0" }
+  }
+}

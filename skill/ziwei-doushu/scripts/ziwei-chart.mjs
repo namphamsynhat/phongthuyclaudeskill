@@ -34832,7 +34832,7 @@ function findWorldCity(q) {
   return WORLD_CITIES.find((c) => fold(c.name) === f || c.aliases.includes(f)) ?? WORLD_CITIES.find((c) => fold(c.name).includes(f) || c.aliases.some((a) => a.includes(f)));
 }
 
-// src/cli.ts
+// src/chart.ts
 var SHICHEN_RANGE = [
   "23:00\u201300:59",
   "01:00\u201302:59",
@@ -34941,8 +34941,7 @@ function parseArgs(argv) {
   return out;
 }
 function die(msg) {
-  console.error(`Error: ${msg}`);
-  process.exit(1);
+  throw new Error(msg);
 }
 function findChinaCities(q) {
   const hits = [];
@@ -34969,15 +34968,15 @@ function palaceRow(p, chart) {
   const age = p.daXianAge ? `${p.daXianAge[0]}\u2013${p.daXianAge[1]}` : "";
   return `| ${palaceName(p.name)} (${p.name})${tags ? ` **[${tags}]**` : ""} | ${stem(p.stem, LANG)} ${branch(p.branch, LANG)} | ${major} | ${lucky} | ${sha} | ${minor} | ${age} |`;
 }
-function main() {
-  const args = parseArgs(process.argv.slice(2));
+function renderChart(args) {
   LANG = args.lang === "vi" ? "vi" : "en";
   if (args["find-city"]) {
+    const res = [];
     const w = findWorldCity(args["find-city"]);
-    if (w) console.log(`${w.name}	${w.lon}	UTC offset ${w.utc} min`);
-    for (const h of findChinaCities(args["find-city"]).slice(0, 20)) console.log(`${h.province} ${h.city}	${h.longitude}	UTC offset 480 min`);
-    if (!w && !findChinaCities(args["find-city"]).length) console.log("Not found. Pass --longitude (east positive) and --utc-offset (minutes) instead. Known non-China cities: " + WORLD_CITIES.map((c) => c.name).join(", "));
-    return;
+    if (w) res.push(`${w.name}	${w.lon}	UTC offset ${w.utc} min`);
+    for (const h of findChinaCities(args["find-city"]).slice(0, 20)) res.push(`${h.province} ${h.city}	${h.longitude}	UTC offset 480 min`);
+    if (!res.length) res.push("Not found. Pass --longitude (east positive) and --utc-offset (minutes) instead. Known non-China cities: " + WORLD_CITIES.map((c) => c.name).join(", "));
+    return res.join("\n");
   }
   const notes = [];
   let date;
@@ -35047,7 +35046,7 @@ function main() {
   const datasetKey = `${chartDate.year}-${pad(chartDate.month)}-${pad(chartDate.day)}-${hourBranch}-${gender}`;
   const inDataset = chartDate.year >= 1950 && chartDate.year <= 2026 && leap === "split";
   if (args.json === "true") {
-    console.log(JSON.stringify({
+    return JSON.stringify({
       datasetKey: inDataset ? datasetKey : null,
       input: { date, time: args.time, gender, longitude, utcOffset, place, chartDate, hourBranch },
       notes,
@@ -35056,8 +35055,7 @@ function main() {
       targetYear,
       liuNian: { stem: ln.stemName, branch: lnBranch, palace: lnPalace?.name, sihua: ln.transforms, nominalAge: lnAge },
       daXianOfTargetYear: dx ? { ...dx, sihua: dxSihua?.transforms } : null
-    }, null, 2));
-    return;
+    }, null, 2);
   }
   const L = chart.lunarInfo;
   const ming = chart.palaces.find((p) => p.branch === chart.mingGongBranch);
@@ -35119,6 +35117,13 @@ function main() {
   }
   if (dx) out.push(`- ${t("inDecade")}: ${dx.startAge}\u2013${dx.endAge}, ${palaceName(dx.palaceName)}${dxSihua ? `; ${sh4(dxSihua.transforms)}` : ""}`);
   out.push("", `_${t("footer")}_`);
-  console.log(out.join("\n"));
+  return out.join("\n");
 }
-main();
+
+// src/chart-cli.ts
+try {
+  console.log(renderChart(parseArgs(process.argv.slice(2))));
+} catch (e) {
+  console.error(`Error: ${e.message}`);
+  process.exit(1);
+}

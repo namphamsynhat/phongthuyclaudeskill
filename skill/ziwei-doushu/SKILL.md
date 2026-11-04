@@ -52,11 +52,11 @@ Pass on every `⚠️` note in the output (hour near a boundary, China daylight 
 The chart output has a line `Dataset key` / `Khóa dữ liệu`, e.g. `1990-05-17-7-male`. For that key, the open dataset v4.0 holds a finished, source-checked reading of about 30,000 Chinese characters across 13 topics: the same natal reading the original site shows. Get only the topics you need:
 
 ```bash
-python3 scripts/lookup_reading.py --key 1990-05-17-7-male --topic love,spirit --lang vi
+node scripts/lookup-reading.mjs --key 1990-05-17-7-male --topic love,spirit --lang vi
 ```
 
 Topics: overview, personality, love, career, wealth, health, family, children, move, friends, home, spirit, parents (or `all`, which is long).
-It reads `data/year-YYYY.jsonl.zst` if present, otherwise downloads that year (~2 MB) from GitHub and checks the SHA-256. It needs `pip install zstandard` or the `zstd` command.
+It reads `data/year-YYYY.jsonl.zst` and takes 0–5 seconds. The offline package already contains all 77 years. It needs Node 22.15 or newer (or the `zstd` command on older Node). If the `data/` folder is empty (the small package from the repo), run `python3 scripts/lookup_reading.py --download-all` once, or use `python3 scripts/lookup_reading.py` with the same options, which downloads a year when needed.
 
 How to use it:
 - Treat it as **the main evidence** for natal questions. Its 核心论断 (core judgment), 关键推导 (key reasoning) and 经典出处 (classical sources) sections already carry checked citations with episode and timestamp. Keep those citations when you reuse a point.

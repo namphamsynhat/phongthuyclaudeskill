@@ -8,24 +8,62 @@ Built on the open-source engine, knowledge base and reading dataset of [Renhuai1
 
 1. Claude asks for the birth date, time, gender and birthplace.
 2. `scripts/ziwei-chart.mjs` computes the chart deterministically: true solar time, lunar conversion, star placement and brightness, the Four Transformations, patterns, decade and yearly luck. It prints the chart in English or Vietnamese and never asks Claude to work out the astrology itself.
-3. For births from 1950 to 2026, `scripts/lookup_reading.py` fetches that exact chart's pre-written 13-topic reading from the open dataset v4.0. These readings are source-checked and cite Ni Haixia with episode and timestamp.
+3. For births from 1950 to 2026, `scripts/lookup-reading.mjs` fetches that exact chart's pre-written 13-topic reading from the open dataset v4.0. These readings are source-checked and cite Ni Haixia with episode and timestamp.
 4. Claude translates and condenses the parts that answer the question, adds the yearly forecast, and checks quotes against the bundled knowledge base.
 
-## Install
+## Install (offline)
 
-**claude.ai / Claude desktop:** run `npm run package` (or download the zip from Releases), then go to Settings → Capabilities, turn on code execution, and upload `ziwei-doushu-skill.zip` under Skills.
+Download from [Releases](https://github.com/namphamsynhat/phongthuyclaudeskill/releases/latest). Both offline packages contain all 77 dataset years (1950–2026), so readings work without internet.
 
-**Claude Code:**
+| File | For | Size |
+|---|---|---|
+| `ziwei-doushu.mcpb` | **Claude Desktop** extension (one-click install) | 155 MB |
+| `ziwei-doushu-skill-offline.zip` | **Claude Code** skill with all data | 155 MB |
+| `ziwei-doushu-skill.zip` | claude.ai skill upload (small; downloads data when needed) | 1 MB |
+
+### Claude Desktop (extension)
+
+1. Download `ziwei-doushu.mcpb`.
+2. Double-click it, or open Claude Desktop → Settings → Extensions and drag the file in. Click **Install**.
+3. Start a chat: "Lập lá số tử vi cho tôi: nam, sinh 17/05/1990 lúc 14:30 tại Hà Nội."
+
+The extension gives Claude six tools: `ziwei_chart`, `ziwei_find_city`, `ziwei_reading`, `ziwei_search_quotes`, `ziwei_reference`, `ziwei_guide`. It needs Node 22.15 or newer, which recent Claude Desktop builds include.
+
+### Claude Code (skill)
 
 ```bash
-cp -r skill/ziwei-doushu ~/.claude/skills/
+unzip ziwei-doushu-skill-offline.zip -d ~/.claude/skills/
 ```
 
-The reading lookup needs Python with `zstandard` (`pip install zstandard`) or the `zstd` command. It downloads each year file (~2 MB) on first use and checks its SHA-256. To work fully offline, or where GitHub downloads are blocked, fetch all 77 years (161 MB) once:
+Then ask Claude Code for a reading; it loads the skill automatically. Requires Node 22.15+ on your machine (`node --version`); on older Node, install the `zstd` command instead.
+
+### Claude Code (same tools as the extension)
+
+You can also add the extension's MCP server to Claude Code. Unzip the `.mcpb` (it is a zip file) and register it:
 
 ```bash
-python3 skill/ziwei-doushu/scripts/lookup_reading.py --download-all
+mkdir -p ~/ziwei-doushu-mcp && unzip ziwei-doushu.mcpb -d ~/ziwei-doushu-mcp
 ```
+
+```bash
+claude mcp add ziwei-doushu -- node ~/ziwei-doushu-mcp/server/mcp-server.mjs
+```
+
+### claude.ai
+
+Settings → Capabilities → turn on code execution → upload `ziwei-doushu-skill.zip` under Skills. This small package downloads each year (~2 MB) when first needed, so it needs network access; claude.ai skill uploads are too small for the full data.
+
+### Build from source
+
+```bash
+npm ci --ignore-scripts
+```
+
+```bash
+npm run release
+```
+
+`npm run release` builds the scripts and the MCP server, downloads and verifies the 77 dataset files into `build/data/` (first run only), and writes all three packages to `release/`.
 
 The dataset files are not stored in this repo. All 77 were checked on 2026-11-04: checksums and sizes match the release, 674,976 charts, every real date from 1950 to 2026 exactly once for each of the 12 hours and both genders, all 13 topics present in every chart, and the stored character counts match the text.
 
@@ -39,17 +77,13 @@ Example prompts:
 |---|---|
 | `skill/ziwei-doushu/` | The skill itself (SKILL.md, scripts, references) |
 | `skill/ziwei-doushu/references/vi/` | Full Vietnamese translation of the knowledge base: classics, patterns, marriage notes, and all 1,848 Ni Haixia quotes (each line keeps the original Chinese and timestamp) |
-| `src/cli.ts`, `src/i18n.ts` | Chart CLI and English/Vietnamese term tables (Hán-Việt and pinyin) |
+| `src/chart.ts`, `src/chart-cli.ts`, `src/i18n.ts` | Chart renderer, its CLI, and English/Vietnamese term tables (Hán-Việt and pinyin) |
+| `src/lookup.ts`, `src/lookup-cli.ts` | Offline reading lookup (Node's built-in zstd) |
+| `src/mcp-server.ts`, `extension/manifest.json` | MCP server and manifest for the Claude Desktop extension |
 | `src/ziwei/` | Chart engine copied unchanged from Renhuai123/ziwei-doushu `lib/ziwei/` (MIT) |
 | `tools/extract_kb.py` | Rebuilds `references/` from a clone of the upstream repo |
 | `tools/tianji_vi.py`, `tools/tianji-vi/` | Splits the quote files into lines and rebuilds `references/vi/tianji-ziwei/` from the translation tables (`*.vi.tsv`, `tags.map.tsv`) |
 
-Rebuild the chart script after changing `src/`:
-
-```bash
-npm ci --ignore-scripts
-npm run build
-```
 
 ## Status
 

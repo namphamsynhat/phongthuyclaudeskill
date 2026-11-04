@@ -1,5 +1,5 @@
 /**
- * ziwei-chart CLI — wraps the open-source engine from github.com/Renhuai123/ziwei-doushu (MIT)
+ * Chart renderer — wraps the open-source engine from github.com/Renhuai123/ziwei-doushu (MIT)
  * and prints a chart as Markdown (English or Vietnamese) or JSON, for Claude to read and interpret.
  *
  * Usage:
@@ -80,7 +80,7 @@ const T = {
 let LANG: Lang = 'en';
 const t = (k: keyof typeof T) => T[k][LANG === 'vi' ? 1 : 0];
 
-function parseArgs(argv: string[]): Record<string, string> {
+export function parseArgs(argv: string[]): Record<string, string> {
   const out: Record<string, string> = {};
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -94,8 +94,7 @@ function parseArgs(argv: string[]): Record<string, string> {
 }
 
 function die(msg: string): never {
-  console.error(`Error: ${msg}`);
-  process.exit(1);
+  throw new Error(msg);
 }
 
 function findChinaCities(q: string) {
@@ -127,16 +126,17 @@ function palaceRow(p: Palace, chart: ZiweiChart): string {
   return `| ${palaceName(p.name)} (${p.name})${tags ? ` **[${tags}]**` : ''} | ${stem(p.stem, LANG)} ${branch(p.branch, LANG)} | ${major} | ${lucky} | ${sha} | ${minor} | ${age} |`;
 }
 
-function main() {
-  const args = parseArgs(process.argv.slice(2));
+/** Render a chart from CLI-style options (date, time, gender, city, …). Returns Markdown or JSON text; throws on bad input. */
+export function renderChart(args: Record<string, string>): string {
   LANG = args.lang === 'vi' ? 'vi' : 'en';
 
   if (args['find-city']) {
+    const res: string[] = [];
     const w = findWorldCity(args['find-city']);
-    if (w) console.log(`${w.name}\t${w.lon}\tUTC offset ${w.utc} min`);
-    for (const h of findChinaCities(args['find-city']).slice(0, 20)) console.log(`${h.province} ${h.city}\t${h.longitude}\tUTC offset 480 min`);
-    if (!w && !findChinaCities(args['find-city']).length) console.log('Not found. Pass --longitude (east positive) and --utc-offset (minutes) instead. Known non-China cities: ' + WORLD_CITIES.map(c => c.name).join(', '));
-    return;
+    if (w) res.push(`${w.name}\t${w.lon}\tUTC offset ${w.utc} min`);
+    for (const h of findChinaCities(args['find-city']).slice(0, 20)) res.push(`${h.province} ${h.city}\t${h.longitude}\tUTC offset 480 min`);
+    if (!res.length) res.push('Not found. Pass --longitude (east positive) and --utc-offset (minutes) instead. Known non-China cities: ' + WORLD_CITIES.map(c => c.name).join(', '));
+    return res.join('\n');
   }
 
   const notes: string[] = [];
@@ -212,10 +212,9 @@ function main() {
   const inDataset = chartDate.year >= 1950 && chartDate.year <= 2026 && leap === 'split';
 
   if (args.json === 'true') {
-    console.log(JSON.stringify({ datasetKey: inDataset ? datasetKey : null, input: { date, time: args.time, gender, longitude, utcOffset, place, chartDate, hourBranch }, notes, chart, patterns,
+    return (JSON.stringify({ datasetKey: inDataset ? datasetKey : null, input: { date, time: args.time, gender, longitude, utcOffset, place, chartDate, hourBranch }, notes, chart, patterns,
       targetYear, liuNian: { stem: ln.stemName, branch: lnBranch, palace: lnPalace?.name, sihua: ln.transforms, nominalAge: lnAge },
       daXianOfTargetYear: dx ? { ...dx, sihua: dxSihua?.transforms } : null }, null, 2));
-    return;
   }
 
   const L = chart.lunarInfo;
@@ -280,7 +279,5 @@ function main() {
   }
   if (dx) out.push(`- ${t('inDecade')}: ${dx.startAge}–${dx.endAge}, ${palaceName(dx.palaceName)}${dxSihua ? `; ${sh4(dxSihua.transforms)}` : ''}`);
   out.push('', `_${t('footer')}_`);
-  console.log(out.join('\n'));
+  return out.join('\n');
 }
-
-main();
