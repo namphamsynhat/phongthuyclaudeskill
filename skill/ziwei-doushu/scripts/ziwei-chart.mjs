@@ -32669,11 +32669,11 @@ function findStarPalace(chart, name) {
 function getPalaceByBranch(chart, branch2) {
   return chart.palaces.find((p) => p.branch === (branch2 % 12 + 12) % 12);
 }
-function shaCountInPalace(palace, list = SHA_HARD) {
-  return palace.stars.filter((s) => list.includes(s.name)).length;
+function shaCountInPalace(palace, list2 = SHA_HARD) {
+  return palace.stars.filter((s) => list2.includes(s.name)).length;
 }
-function hasShaInPalace(palace, list = SHA_NAMES) {
-  return palace.stars.some((s) => list.includes(s.name));
+function hasShaInPalace(palace, list2 = SHA_NAMES) {
+  return palace.stars.some((s) => list2.includes(s.name));
 }
 function getSanFangPalaces(chart) {
   const m = chart.mingGongBranch;
@@ -32696,8 +32696,8 @@ function getJiaPalaces(chart, branch2) {
 function sanFangAllStars(chart) {
   return new Set(getSanFangPalaces(chart).flatMap((p) => p.stars.map((s) => s.name)));
 }
-function sanFangShaCount(chart, list = SHA_HARD) {
-  return getSanFangPalaces(chart).reduce((sum, p) => sum + shaCountInPalace(p, list), 0);
+function sanFangShaCount(chart, list2 = SHA_HARD) {
+  return getSanFangPalaces(chart).reduce((sum, p) => sum + shaCountInPalace(p, list2), 0);
 }
 function isBright(palace, starName) {
   const s = findStar(palace, starName);
@@ -34832,6 +34832,228 @@ function findWorldCity(q) {
   return WORLD_CITIES.find((c) => fold(c.name) === f || c.aliases.includes(f)) ?? WORLD_CITIES.find((c) => fold(c.name).includes(f) || c.aliases.some((a) => a.includes(f)));
 }
 
+// src/patterns-vi.ts
+var st = (zh) => term(zh, "vi");
+var BR = { \u5B50: "T\xFD", \u4E11: "S\u1EEDu", \u5BC5: "D\u1EA7n", \u536F: "M\xE3o", \u8FB0: "Th\xECn", \u5DF3: "T\u1EF5", \u5348: "Ng\u1ECD", \u672A: "M\xF9i", \u7533: "Th\xE2n", \u9149: "D\u1EADu", \u620C: "Tu\u1EA5t", \u4EA5: "H\u1EE3i" };
+var list = (s) => s.split("\u3001").map(st).join(", ");
+var EXACT = {
+  // ── descriptions ──
+  "\u4E03\u6740\u3001\u7834\u519B\u3001\u8D2A\u72FC\u4E09\u661F\u4F1A\u547D\uFF0C\u5F00\u521B\u95EF\u8361\u4E4B\u547D\u683C\u3002\u4E00\u751F\u53D8\u52A8\u591A\u3001\u4E0D\u7518\u5E73\u51E1\uFF0C\u5B9C\u521B\u4E1A\u3001\u519B\u8B66\u3001\u4E1A\u52A1\u3001\u9500\u552E\u3002\u4E2D\u5E74\u540E\u624D\u80FD\u7A33\u5B9A\u5B88\u6210\uFF0C\u5E74\u8F7B\u65F6\u6613\u56E0\u51B2\u52A8\u5931\u5229\u3002": "Ba sao Th\u1EA5t S\xE1t, Ph\xE1 Qu\xE2n, Tham Lang h\u1ED9i M\u1EC7nh, l\xE0 s\u1ED1 khai ph\xE1 x\xF4ng pha. C\u1EA3 \u0111\u1EDDi nhi\u1EC1u bi\u1EBFn \u0111\u1ED9ng, kh\xF4ng cam ch\u1ECBu t\u1EA7m th\u01B0\u1EDDng, h\u1EE3p kh\u1EDFi nghi\u1EC7p, qu\xE2n \u0111\u1ED9i, c\u1EA3nh s\xE1t, kinh doanh, b\xE1n h\xE0ng. Sau trung ni\xEAn m\u1EDBi \u1ED5n \u0111\u1ECBnh gi\u1EEF \u0111\u01B0\u1EE3c th\xE0nh qu\u1EA3; l\xFAc tr\u1EBB d\u1EC5 v\xEC b\u1ED1c \u0111\u1ED3ng m\xE0 th\u1EA5t b\u1EA1i.",
+  '\u5316\u5FCC\u5750\u547D\uFF0C\u5DE6\u53F3\u64CE\u7F8A\u9640\u7F57\u5939\u547D\uFF0C\u53E4\u4E66\u4E91"\u7F8A\u9640\u5939\u5FCC\u4E3A\u8D25\u5C40"\uFF0C\u4E3B\u4E00\u751F\u52B3\u788C\u5954\u6CE2\u3001\u574E\u5777\u4E0D\u987A\u3001\u8EAB\u5FC3\u4FF1\u75B2\u3002\u9700\u4EE5\u5FB7\u884C\u4FEE\u517B\u4E0E\u79EF\u6781\u505A\u4E8B\u5316\u89E3\uFF0C\u51E1\u4E8B\u8C28\u614E\u4E3A\u4E0A\u3002': 'H\xF3a K\u1EF5 t\u1ECDa M\u1EC7nh, hai b\xEAn c\xF3 K\xECnh D\u01B0\u01A1ng, \u0110\xE0 La k\u1EB9p; s\xE1ch x\u01B0a n\xF3i "D\u01B0\u01A1ng \u0110\xE0 gi\xE1p K\u1EF5 l\xE0 b\u1EA1i c\u1EE5c", ch\u1EE7 c\u1EA3 \u0111\u1EDDi v\u1EA5t v\u1EA3 b\xF4n ba, g\u1EADp gh\u1EC1nh kh\xF4ng thu\u1EADn, th\xE2n t\xE2m m\u1ECFi m\u1EC7t. C\u1EA7n l\u1EA5y tu d\u01B0\u1EE1ng \u0111\u1EA1o \u0111\u1EE9c v\xE0 t\xEDch c\u1EF1c l\xE0m vi\u1EC7c \u0111\u1EC3 h\xF3a gi\u1EA3i, m\u1ECDi vi\u1EC7c c\u1EA9n tr\u1ECDng l\xE0 tr\xEAn h\u1EBFt.',
+  '\u5316\u7984\u3001\u5316\u6743\u3001\u5316\u79D1\u4E09\u5409\u5316\u9F50\u4F1A\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63\uFF0C\u53F7\u79F0"\u4E09\u5947\u52A0\u4F1A"\u3002\u4E3B\u4E00\u751F\u529F\u540D\u3001\u8D22\u5BCC\u3001\u8D35\u4EBA\u4E09\u5168\uFF0C\u662F\u7D2B\u5FAE\u6597\u6570\u6700\u9AD8\u5409\u683C\u4E4B\u4E00\u3002': 'Ba c\xE1t h\xF3a L\u1ED9c, Quy\u1EC1n, Khoa c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh, g\u1ECDi l\xE0 "Tam K\u1EF3 gia h\u1ED9i". Ch\u1EE7 c\u1EA3 \u0111\u1EDDi \u0111\u1EE7 c\u1EA3 c\xF4ng danh, ti\u1EC1n c\u1EE7a, qu\xFD nh\xE2n; l\xE0 m\u1ED9t trong nh\u1EEFng c\xE1t c\xE1ch cao nh\u1EA5t c\u1EE7a T\u1EED Vi \u0110\u1EA9u S\u1ED1.',
+  '\u5316\u7984\u3001\u7984\u5B58\u540C\u4F1A\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63\uFF0C\u8D22\u6E90\u6D8C\u52A8\u3001\u8863\u98DF\u4E30\u8DB3\u3002\u53E4\u4E66\u4E91"\u53CC\u7984\u671D\u57A3\uFF0C\u5BCC\u6BD4\u9676\u6731"\uFF0C\u4E3B\u4E00\u751F\u4E0D\u6101\u8D22\uFF0C\u591A\u6709\u6B63\u8D22\u6A2A\u8D22\u517C\u5F97\u3002': 'H\xF3a L\u1ED9c, L\u1ED9c T\u1ED3n c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh, ti\u1EC1n v\xE0o d\u1ED3i d\xE0o, c\u01A1m \xE1o \u0111\u1EA7y \u0111\u1EE7. S\xE1ch x\u01B0a n\xF3i "Song L\u1ED9c tri\u1EC1u vi\xEAn, gi\xE0u nh\u01B0 \u0110\xE0o Chu", ch\u1EE7 c\u1EA3 \u0111\u1EDDi kh\xF4ng lo ti\u1EC1n, th\u01B0\u1EDDng c\xF3 c\u1EA3 ch\xEDnh t\xE0i l\u1EABn ho\u1EA1nh t\xE0i.',
+  '\u5316\u79D1 + \u5316\u6743 \u540C\u4F1A\u4E09\u65B9\u56DB\u6B63\uFF0C\u4E3B\u540D\u6743\u53CC\u7F8E\u2014\u2014\u65E2\u6709\u5B66\u8BC6/\u540D\u58F0\uFF08\u79D1\uFF09\uFF0C\u53C8\u6709\u638C\u63A7\u529B\uFF08\u6743\uFF09\uFF0C\u5B9C\u8D70"\u4E13\u4E1A\u6743\u5A01"\u8DEF\u7EBF\uFF08\u5982\u533B\u751F\u3001\u5F8B\u5E08\u3001\u6559\u6388\u3001\u6280\u672F\u9AA8\u5E72\uFF09\uFF0C\u540D\u5229\u53CC\u6536\u4E14\u6839\u57FA\u624E\u5B9E\u3002': 'H\xF3a Khoa v\xE0 H\xF3a Quy\u1EC1n c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh, ch\u1EE7 c\u1EA3 danh l\u1EABn quy\u1EC1n \u0111\u1EC1u \u0111\u1EB9p \u2014 v\u1EEBa c\xF3 h\u1ECDc th\u1EE9c, ti\u1EBFng t\u0103m (Khoa) v\u1EEBa c\xF3 kh\u1EA3 n\u0103ng n\u1EAFm quy\u1EC1n (Quy\u1EC1n); h\u1EE3p \u0111i \u0111\u01B0\u1EDDng "chuy\xEAn gia c\xF3 uy t\xEDn" (b\xE1c s\u0129, lu\u1EADt s\u01B0, gi\xE1o s\u01B0, nh\xE2n s\u1EF1 k\u1EF9 thu\u1EADt n\xF2ng c\u1ED1t), danh l\u1EE3i \u0111\u1EC1u c\xF3 m\xE0 n\u1EC1n m\xF3ng v\u1EEFng.',
+  '\u547D\u672A\u7A7A\u5BAB\uFF0C\u5BF9\u5BAB\u4E11\u5BAB\u65E5\u6708\u540C\u8F89\u62F1\u7167\uFF0C\u53F7"\u660E\u73E0\u51FA\u6D77"\u3002\u4E3B\u51FA\u751F\u5E73\u51E1\u3001\u540E\u5929\u52AA\u529B\u51FA\u5934\uFF0C\u5B9C\u8FDC\u8D74\u4ED6\u4E61\u3001\u5B66\u672F\u7814\u7A76\u6216\u5927\u516C\u53F8\u9AD8\u4F4D\uFF0C\u4E3B\u5927\u5BCC\u5927\u8D35\u3002': 'M\u1EC7nh \u1EDF M\xF9i v\xF4 ch\xEDnh di\u1EC7u, cung \u0111\u1ED1i \u1EDF S\u1EEDu c\xF3 Nh\u1EADt Nguy\u1EC7t c\xF9ng s\xE1ng chi\u1EBFu v\u1EC1, g\u1ECDi l\xE0 "Minh Ch\xE2u Xu\u1EA5t H\u1EA3i". Ch\u1EE7 xu\u1EA5t th\xE2n b\xECnh th\u01B0\u1EDDng, nh\u1EDD n\u1ED7 l\u1EF1c v\u1EC1 sau m\xE0 n\u1ED5i l\xEAn; h\u1EE3p \u0111i xa qu\xEA, nghi\xEAn c\u1EE9u h\u1ECDc thu\u1EADt ho\u1EB7c v\u1ECB tr\xED cao \u1EDF c\xF4ng ty l\u1EDBn; ch\u1EE7 \u0111\u1EA1i ph\xFA qu\xFD.',
+  '\u5730\u7A7A\u5730\u52AB\u5939\u547D\uFF0C\u4E3B\u8D22\u6765\u8D22\u53BB\u3001\u601D\u60F3\u8131\u4FD7\u3001\u6613\u9041\u5165\u5B97\u6559\u54F2\u5B66\u3002\u53E4\u4E66\u4E91"\u7A7A\u52AB\u5939\u547D\uFF0C\u8D22\u4E0D\u805A"\u3002\u5B9C\u6280\u827A\u3001\u5B97\u6559\u3001\u7814\u7A76\u7B49\u4E0D\u91CD\u7269\u8D28\u4E4B\u4E1A\u3002': '\u0110\u1ECBa Kh\xF4ng, \u0110\u1ECBa Ki\u1EBFp gi\xE1p M\u1EC7nh, ch\u1EE7 ti\u1EC1n \u0111\u1EBFn r\u1ED3i \u0111i, t\u01B0 t\u01B0\u1EDFng tho\xE1t t\u1EE5c, d\u1EC5 t\xECm \u0111\u1EBFn t\xF4n gi\xE1o, tri\u1EBFt h\u1ECDc. S\xE1ch x\u01B0a n\xF3i "Kh\xF4ng Ki\u1EBFp gi\xE1p M\u1EC7nh, ti\u1EC1n kh\xF4ng t\u1EE5". H\u1EE3p ngh\u1EC1 k\u1EF9 ngh\u1EC7, t\xF4n gi\xE1o, nghi\xEAn c\u1EE9u \u2014 nh\u1EEFng vi\u1EC7c kh\xF4ng n\u1EB7ng v\u1EADt ch\u1EA5t.',
+  "\u5929\u540C\u5929\u6881\u540C\u5BAB\uFF0C\u798F\u661F\u4E0E\u836B\u661F\u5171\u4F1A\uFF0C\u4E3B\u5BBD\u539A\u548C\u5584\u3001\u4E50\u4E8E\u52A9\u4EBA\uFF0C\u5B9C\u533B\u7597\u3001\u6559\u80B2\u3001\u5B97\u6559\u3001\u793E\u4F1A\u516C\u76CA\u3002\u4F46\u504F\u6E29\u548C\u4FDD\u5B88\uFF0C\u96BE\u6210\u5927\u5BCC\u5927\u8D35\u4E4B\u5C40\u3002": "Thi\xEAn \u0110\u1ED3ng, Thi\xEAn L\u01B0\u01A1ng \u0111\u1ED3ng cung, ph\xFAc tinh v\xE0 \u1EA5m tinh c\xF9ng h\u1ED9i; ch\u1EE7 r\u1ED9ng l\u01B0\u1EE3ng hi\u1EC1n h\xF2a, th\xEDch gi\xFAp ng\u01B0\u1EDDi, h\u1EE3p y t\u1EBF, gi\xE1o d\u1EE5c, t\xF4n gi\xE1o, c\xF4ng \xEDch x\xE3 h\u1ED9i. Nh\u01B0ng thi\xEAn v\u1EC1 \xF4n h\xF2a b\u1EA3o th\u1EE7, kh\xF3 th\xE0nh c\u1EE5c \u0111\u1EA1i ph\xFA \u0111\u1EA1i qu\xFD.",
+  '\u5929\u5E9C\u5929\u76F8\u5206\u5B88\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63\uFF0C\u6587\u6B66\u5E76\u6D4E\u3001\u6743\u5370\u53CC\u8F89\uFF0C\u4E3B\u4E00\u751F\u8863\u98DF\u4E30\u8DB3\u3001\u5730\u4F4D\u5D07\u9AD8\u3002\u53E4\u4E66\u4E91"\u5E9C\u76F8\u671D\u57A3\u5343\u949F\u98DF\u7984"\uFF0C\u5E38\u89C1\u4E8E\u653F\u754C\u3001\u4F01\u4E1A\u7BA1\u7406\u8005\u3002': 'Thi\xEAn Ph\u1EE7, Thi\xEAn T\u01B0\u1EDBng chia nhau gi\u1EEF tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh, v\u0103n v\xF5 ki\xEAm to\xE0n, quy\u1EC1n \u1EA5n c\xF9ng s\xE1ng; ch\u1EE7 c\u1EA3 \u0111\u1EDDi c\u01A1m \xE1o \u0111\u1EA7y \u0111\u1EE7, \u0111\u1ECBa v\u1ECB cao. S\xE1ch x\u01B0a n\xF3i "Ph\u1EE7 T\u01B0\u1EDBng tri\u1EC1u vi\xEAn, thi\xEAn chung th\u1EF1c l\u1ED9c", th\u01B0\u1EDDng th\u1EA5y \u1EDF ng\u01B0\u1EDDi trong ch\xEDnh gi\u1EDBi, qu\u1EA3n l\xFD doanh nghi\u1EC7p.',
+  "\u5929\u673A\u592A\u9634\u5929\u540C\u5929\u6881\u56DB\u661F\u9F50\u5165\u547D\u8FC1\u8D22\u5B98\uFF0C\u6587\u8D28\u5F6C\u5F6C\u3001\u806A\u6167\u5584\u8C0B\u3002\u6700\u9002\u5408\u516C\u804C\u3001\u5B66\u672F\u3001\u6587\u827A\u3001\u533B\u7597\u3001\u670D\u52A1\u7B49\u9700\u7A33\u5B9A\u7D2F\u79EF\u7684\u884C\u4E1A\uFF0C\u4E0D\u5B9C\u5927\u5192\u9669\u5927\u6295\u673A\u3002": "B\u1ED1n sao Thi\xEAn C\u01A1, Th\xE1i \xC2m, Thi\xEAn \u0110\u1ED3ng, Thi\xEAn L\u01B0\u01A1ng c\xF9ng v\xE0o M\u1EC7nh, Thi\xEAn Di, T\xE0i B\u1EA1ch, Quan L\u1ED9c; ng\u01B0\u1EDDi nho nh\xE3, th\xF4ng minh gi\u1ECFi m\u01B0u t\xEDnh. H\u1EE3p nh\u1EA5t c\xF4ng ch\u1EE9c, h\u1ECDc thu\u1EADt, v\u0103n ngh\u1EC7, y t\u1EBF, d\u1ECBch v\u1EE5 \u2014 nh\u1EEFng ng\xE0nh c\u1EA7n t\xEDch l\u0169y \u1ED5n \u0111\u1ECBnh; kh\xF4ng n\xEAn m\u1EA1o hi\u1EC3m, \u0111\u1EA7u c\u01A1 l\u1EDBn.",
+  "\u5929\u9A6C\u5728\u8FC1\u79FB\u5BAB\uFF0C\u4E3B\u5916\u51FA\u6709\u5229\u3001\u8FDC\u884C\u5F97\u8D22\uFF0C\u5B9C\u5F02\u4E61\u53D1\u5C55\u3002\u914D\u5316\u7984\u4E3B\u5F02\u5730\u751F\u8D22\uFF0C\u914D\u715E\u661F\u5219\u65C5\u9014\u591A\u6CE2\u6298\u3002": "Thi\xEAn M\xE3 \u1EDF cung Thi\xEAn Di, ch\u1EE7 ra ngo\xE0i c\xF3 l\u1EE3i, \u0111i xa \u0111\u01B0\u1EE3c ti\u1EC1n, h\u1EE3p ph\xE1t tri\u1EC3n \u1EDF n\u01A1i kh\xE1c. \u0110i v\u1EDBi H\xF3a L\u1ED9c th\xEC ki\u1EBFm ti\u1EC1n \u1EDF x\u1EE9 ng\u01B0\u1EDDi; \u0111i v\u1EDBi s\xE1t tinh th\xEC \u0111\u01B0\u1EDDng xa nhi\u1EC1u tr\u1EAFc tr\u1EDF.",
+  "\u5929\u9A6C\u5750\u547D\uFF0C\u4E3B\u4E00\u751F\u5954\u6CE2\u3001\u52A8\u4E2D\u5F97\u8D22\uFF0C\u5B9C\u8D70\u5546\u65C5\u3001\u5916\u52E4\u3001\u8DE8\u754C\u53D1\u5C55\u3002\u502A\u5E08\u8BF4\u300C\u5929\u9A6C\u5165\u547D\uFF0C\u65E0\u7984\u4E0D\u53D1\u300D\u2014\u2014\u82E5\u518D\u4F1A\u7984\u5B58\u6216\u5316\u7984\u5373\u300C\u7984\u9A6C\u4EA4\u9A70\u300D\u4E4B\u5BCC\u683C\u3002": 'Thi\xEAn M\xE3 t\u1ECDa M\u1EC7nh, ch\u1EE7 c\u1EA3 \u0111\u1EDDi b\xF4n ba, trong \u0111\u1ED9ng m\xE0 \u0111\u01B0\u1EE3c ti\u1EC1n; h\u1EE3p bu\xF4n b\xE1n \u0111i xa, c\xF4ng vi\u1EC7c b\xEAn ngo\xE0i, ph\xE1t tri\u1EC3n \u0111a l\u0129nh v\u1EF1c. Th\u1EA7y Ngh\xEA n\xF3i (ch\u01B0a ki\u1EC3m ch\u1EE9ng) "Thi\xEAn M\xE3 nh\u1EADp M\u1EC7nh, kh\xF4ng L\u1ED9c kh\xF4ng ph\xE1t" \u2014 n\u1EBFu h\u1ED9i th\xEAm L\u1ED9c T\u1ED3n ho\u1EB7c H\xF3a L\u1ED9c th\xEC l\xE0 ph\xFA c\xE1ch "L\u1ED9c M\xE3 giao tr\xEC".',
+  '\u5929\u9B41\u5929\u94BA\u540C\u4F1A\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63\uFF0C\u4E3B"\u5929\u4E59\u8D35\u4EBA"\u52A0\u6301\uFF0C\u5173\u952E\u65F6\u523B\u603B\u6709\u8D35\u4EBA\u63D0\u643A\u3002\u502A\u5E08\u8BF4\u300C\u9B41\u94BA\u5939\u547D\uFF0C\u5FC5\u4E3A\u8D35\u4EBA\u300D\u2014\u2014\u9047\u5230\u56F0\u96BE\u65F6\u8EAB\u8FB9\u4F1A\u51FA\u73B0\u5F97\u529B\u76F8\u52A9\u8005\uFF0C\u5B9C\u4E3B\u52A8\u7EF4\u62A4\u4EBA\u8109\u3002': 'Thi\xEAn Kh\xF4i, Thi\xEAn Vi\u1EC7t c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh, ch\u1EE7 \u0111\u01B0\u1EE3c "Thi\xEAn \u1EA4t qu\xFD nh\xE2n" ph\xF9 tr\u1EE3, l\xFAc then ch\u1ED1t lu\xF4n c\xF3 qu\xFD nh\xE2n n\xE2ng \u0111\u1EE1. Th\u1EA7y Ngh\xEA n\xF3i (ch\u01B0a ki\u1EC3m ch\u1EE9ng) "Kh\xF4i Vi\u1EC7t gi\xE1p M\u1EC7nh, t\u1EA5t l\xE0 qu\xFD nh\xE2n" \u2014 l\xFAc g\u1EB7p kh\xF3 b\xEAn c\u1EA1nh s\u1EBD c\xF3 ng\u01B0\u1EDDi gi\xFAp \u0111\u1EAFc l\u1EF1c; n\xEAn ch\u1EE7 \u0111\u1ED9ng gi\u1EEF g\xECn quan h\u1EC7.',
+  "\u5929\u9B41\u5929\u94BA\u5939\u547D\uFF0C\u7537\u79F0\u5929\u4E59\u3001\u5973\u79F0\u7389\u5802\uFF0C\u4E00\u751F\u8D35\u4EBA\u63D0\u643A\u3002\u8003\u8BD5\u3001\u6C42\u804C\u3001\u5173\u952E\u65F6\u523B\u5E38\u6709\u610F\u5916\u8D35\u4EBA\u76F8\u52A9\u3002": "Thi\xEAn Kh\xF4i, Thi\xEAn Vi\u1EC7t gi\xE1p M\u1EC7nh, nam g\u1ECDi l\xE0 Thi\xEAn \u1EA4t, n\u1EEF g\u1ECDi l\xE0 Ng\u1ECDc \u0110\u01B0\u1EDDng; c\u1EA3 \u0111\u1EDDi c\xF3 qu\xFD nh\xE2n n\xE2ng \u0111\u1EE1. Thi c\u1EED, xin vi\u1EC7c, l\xFAc then ch\u1ED1t th\u01B0\u1EDDng c\xF3 qu\xFD nh\xE2n b\u1EA5t ng\u1EDD gi\xFAp.",
+  '\u592A\u9633\u3001\u5929\u6881\u3001\u6587\u660C\u3001\u7984\u5B58\u56DB\u661F\u9F50\u4F1A\u547D\u5BAB\u4E09\u65B9\uFF0C\u53F7\u79F0"\u79D1\u4E3E\u4E4B\u661F"\uFF0C\u4E3B\u6E05\u8D35\u663E\u8FBE\u3001\u8003\u8FD0\u6781\u4F73\uFF0C\u5B9C\u8D70\u5B66\u672F\u3001\u6587\u6559\u3001\u7814\u7A76\u3001\u4E13\u4E1A\u8BA4\u8BC1\u4E4B\u8DEF\uFF0C\u4E00\u751F\u529F\u540D\u6613\u5C31\u3002': 'B\u1ED1n sao Th\xE1i D\u01B0\u01A1ng, Thi\xEAn L\u01B0\u01A1ng, V\u0103n X\u01B0\u01A1ng, L\u1ED9c T\u1ED3n c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh, \u0111\u01B0\u1EE3c g\u1ECDi l\xE0 "sao khoa c\u1EED"; ch\u1EE7 thanh qu\xFD hi\u1EC3n \u0111\u1EA1t, v\u1EADn thi c\u1EED c\u1EF1c t\u1ED1t, h\u1EE3p con \u0111\u01B0\u1EDDng h\u1ECDc thu\u1EADt, v\u0103n gi\xE1o, nghi\xEAn c\u1EE9u, ch\u1EE9ng ch\u1EC9 chuy\xEAn m\xF4n; c\xF4ng danh d\u1EC5 th\xE0nh.',
+  "\u592A\u9633\u592A\u9634\u5206\u5C45\u547D\u5BAB\u4E24\u4FA7\u5939\u7167\uFF0C\u5149\u660E\u78CA\u843D\uFF0C\u4E00\u751F\u8D35\u4EBA\u76F8\u52A9\uFF0C\u4E8B\u4E1A\u84EC\u52C3\u3002\u7537\u4E3B\u5B98\u8D35\uFF0C\u5973\u4E3B\u65FA\u592B\u5174\u5BB6\u3002\u65E5\u6708\u987B\u4E0D\u843D\u9677\u65B9\u4E3A\u771F\u5939\u3002": "Th\xE1i D\u01B0\u01A1ng, Th\xE1i \xC2m chia hai b\xEAn k\u1EB9p chi\u1EBFu cung M\u1EC7nh; ng\u01B0\u1EDDi quang minh l\u1ED7i l\u1EA1c, c\u1EA3 \u0111\u1EDDi c\xF3 qu\xFD nh\xE2n gi\xFAp, s\u1EF1 nghi\u1EC7p ph\xE1t tri\u1EC3n. Nam ch\u1EE7 quan qu\xFD, n\u1EEF ch\u1EE7 v\u01B0\u1EE3ng phu, h\u01B0ng gia. Nh\u1EADt Nguy\u1EC7t ph\u1EA3i kh\xF4ng h\xE3m m\u1EDBi l\xE0 gi\xE1p th\u1EADt.",
+  "\u5DE6\u8F85\u53F3\u5F3C\u540C\u4F1A\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63\uFF0C\u4E3B\u4E00\u751F\u8D35\u4EBA\u4E0D\u7EDD\u3001\u4EBA\u7F18\u6781\u4F73\u3002\u6700\u5B9C\u9886\u5BFC\u5C97\u4F4D\u4E0E\u56E2\u961F\u5408\u4F5C\u578B\u5DE5\u4F5C\u3002\u502A\u5E08\u8BF4\u300C\u8F85\u5F3C\u5939\u547D\uFF0C\u5E73\u751F\u8D35\u4EBA\u591A\u300D\u2014\u2014\u4F60\u4E0D\u662F\u5355\u6253\u72EC\u6597\u7684\u547D\uFF0C\u8981\u5584\u7528\u4EBA\u9645\u7F51\u7EDC\u3002": 'T\u1EA3 Ph\xF9, H\u1EEFu B\u1EADt c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh, ch\u1EE7 c\u1EA3 \u0111\u1EDDi kh\xF4ng thi\u1EBFu qu\xFD nh\xE2n, nh\xE2n duy\xEAn c\u1EF1c t\u1ED1t. H\u1EE3p nh\u1EA5t v\u1ECB tr\xED l\xE3nh \u0111\u1EA1o v\xE0 c\xF4ng vi\u1EC7c l\xE0m theo nh\xF3m. Th\u1EA7y Ngh\xEA n\xF3i (ch\u01B0a ki\u1EC3m ch\u1EE9ng) "Ph\xF9 B\u1EADt gi\xE1p M\u1EC7nh, c\u1EA3 \u0111\u1EDDi nhi\u1EC1u qu\xFD nh\xE2n" \u2014 \u0111\xE2y kh\xF4ng ph\u1EA3i s\u1ED1 \u0111\u01A1n th\u01B0\u01A1ng \u0111\u1ED9c m\xE3, h\xE3y t\u1EADn d\u1EE5ng m\u1EA1ng l\u01B0\u1EDBi quan h\u1EC7.',
+  '\u5DE6\u8F85\u53F3\u5F3C\u5939\u547D\uFF0C\u4F20\u7EDF\u8BBA\u8FF0\u8BA4\u4E3A\u6B64\u683C\u8C61\u5F81\u8D35\u4EBA\u76F8\u52A9\u4E0E\u798F\u539A\u7279\u8D28\u3002\u9002\u5408\u8D70\u4ED5\u9014\u3001\u5927\u4F01\u4E1A\u7BA1\u7406\u7B49\u80FD\u53D1\u6325\u7EC4\u7EC7\u624D\u80FD\u7684\u65B9\u5411\u3002\u53E4\u4E66\u4E91"\u5DE6\u8F85\u53F3\u5F3C\uFF0C\u7EC8\u8EAB\u798F\u539A"\u2014\u2014\u5F3A\u8C03\u6B64\u683C\u5728\u7EC4\u7EC7\u534F\u8C03\u4E2D\u7684\u4F18\u52BF\u3002': 'T\u1EA3 Ph\xF9, H\u1EEFu B\u1EADt gi\xE1p M\u1EC7nh; theo truy\u1EC1n th\u1ED1ng, c\xE1ch n\xE0y t\u01B0\u1EE3ng tr\u01B0ng cho qu\xFD nh\xE2n gi\xFAp \u0111\u1EE1 v\xE0 ph\xFAc d\xE0y. H\u1EE3p \u0111\u01B0\u1EDDng quan l\u1ED9, qu\u1EA3n l\xFD doanh nghi\u1EC7p l\u1EDBn, nh\u1EEFng h\u01B0\u1EDBng ph\xE1t huy \u0111\u01B0\u1EE3c t\xE0i t\u1ED5 ch\u1EE9c. S\xE1ch x\u01B0a n\xF3i "T\u1EA3 Ph\xF9 H\u1EEFu B\u1EADt, chung th\xE2n ph\xFAc h\u1EADu" \u2014 nh\u1EA5n m\u1EA1nh \u01B0u th\u1EBF c\u1EE7a c\xE1ch n\xE0y trong t\u1ED5 ch\u1EE9c, \u0111i\u1EC1u ph\u1ED1i.',
+  '\u5DE8\u95E8\u3001\u706B\u661F\u3001\u64CE\u7F8A\u4E09\u661F\u4F1A\u7167\uFF0C\u4F20\u7EDF\u53E4\u7C4D\u8BB0\u8F7D\u6B64\u683C\u4E3A\u9700\u8981\u8B66\u60D5\u4E4B\u7EC4\u5408\uFF08\u53E4\u6587"\u7EC8\u8EAB\u7F22\u6B7B"\u4E3A\u5BBF\u547D\u8BBA\u8868\u8FF0\uFF0C\u4ECA\u5DF2\u4E0D\u9002\u7528\uFF09\u3002\u73B0\u4EE3\u7406\u89E3\u4E3A\uFF1A\u6B64\u7EC4\u5408\u8C61\u5F81\u76F4\u8A00\u6613\u89E6\u53D1\u51B2\u7A81\u3001\u60C5\u7EEA\u6FC0\u70C8\u65F6\u9700\u8981\u81EA\u6211\u89C9\u5BDF\u3002\u4FEE\u517B\u65B9\u5411\u662F\uFF1A\u7EC3\u4E60\u6E29\u548C\u8868\u8FBE\u3001\u4E3B\u52A8\u5316\u89E3\u5BF9\u7ACB\u3001\u57F9\u517B\u60C5\u7EEA\u7BA1\u7406\u3002': 'Ba sao C\u1EF1 M\xF4n, H\u1ECFa Tinh, K\xECnh D\u01B0\u01A1ng h\u1ED9i chi\u1EBFu; s\xE1ch c\u1ED5 ghi \u0111\xE2y l\xE0 t\u1ED5 h\u1EE3p c\u1EA7n c\u1EA3nh gi\xE1c (c\xE2u c\u1ED5 "chung th\xE2n \u1EA3i t\u1EED" l\xE0 l\u1ED1i n\xF3i \u0111\u1ECBnh m\u1EC7nh, nay kh\xF4ng c\xF2n \xE1p d\u1EE5ng). Hi\u1EC3u theo ngh\u0129a hi\u1EC7n \u0111\u1EA1i: n\xF3i th\u1EB3ng d\u1EC5 g\xE2y xung \u0111\u1ED9t, khi c\u1EA3m x\xFAc m\u1EA1nh c\u1EA7n t\u1EF1 nh\u1EADn bi\u1EBFt. H\u01B0\u1EDBng tu d\u01B0\u1EE1ng: t\u1EADp n\xF3i n\u0103ng \xF4n h\xF2a, ch\u1EE7 \u0111\u1ED9ng h\xF3a gi\u1EA3i \u0111\u1ED1i \u0111\u1EA7u, r\xE8n qu\u1EA3n l\xFD c\u1EA3m x\xFAc.',
+  '\u5DE8\u95E8\u5750\u547D\u5B50\u5348\uFF0C\u5916\u8868\u5E73\u51E1\u800C\u5185\u8574\u624D\u5B66\u3002\u65E9\u5E74\u9ED8\u9ED8\u65E0\u95FB\u3001\u4E2D\u5E74\u65B9\u663E\u8D35\u6C14\uFF0C\u5B9C\u8D70\u4E13\u4E1A\u3001\u7814\u7A76\u3001\u53E3\u624D\u3001\u4F20\u5A92\u3002\u9700\u6709\u7984\u6743\u6216\u6587\u660C\u76F8\u52A9\u65B9\u80FD"\u51FF\u77F3\u89C1\u7389"\u3002': 'C\u1EF1 M\xF4n t\u1ECDa M\u1EC7nh \u1EDF T\xFD, Ng\u1ECD; b\u1EC1 ngo\xE0i b\xECnh th\u01B0\u1EDDng m\xE0 b\xEAn trong c\xF3 t\xE0i h\u1ECDc. L\xFAc tr\u1EBB \xE2m th\u1EA7m kh\xF4ng ai bi\u1EBFt, trung ni\xEAn m\u1EDBi l\u1ED9 qu\xFD kh\xED; h\u1EE3p \u0111i \u0111\u01B0\u1EDDng chuy\xEAn m\xF4n, nghi\xEAn c\u1EE9u, \u0103n n\xF3i, truy\u1EC1n th\xF4ng. C\u1EA7n c\xF3 L\u1ED9c, Quy\u1EC1n ho\u1EB7c V\u0103n X\u01B0\u01A1ng tr\u1EE3 gi\xFAp m\u1EDBi "\u0111\u1EE5c \u0111\xE1 th\u1EA5y ng\u1ECDc".',
+  "\u5EC9\u8D1E\u3001\u4E03\u6740\u3001\u64CE\u7F8A\u4E09\u661F\u4F1A\u7167\u547D\u5BAB\u4E09\u65B9\uFF0C\u4F20\u7EDF\u8BBA\u8FF0\u4E2D\u6807\u8BB0\u4E3A\u9700\u8981\u7279\u522B\u5173\u6CE8\u7684\u7EC4\u5408\u3002\u6B64\u683C\u5728\u5927\u9650\u6D41\u5E74\u89E6\u53D1\u65F6\u63D0\u9192\u4FDD\u6301\u8C28\u614E\u6001\u5EA6\uFF1A\u9A7E\u9A76\u5B89\u5168\u3001\u4EBA\u9645\u548C\u5E73\u3001\u533B\u7597\u51B3\u7B56\u9700\u7406\u6027\u2014\u2014\u5F3A\u8C03\u4E3B\u52A8\u7BA1\u7406\u800C\u975E\u6D88\u6781\u5BBF\u547D\u3002": "Ba sao Li\xEAm Trinh, Th\u1EA5t S\xE1t, K\xECnh D\u01B0\u01A1ng h\u1ED9i chi\u1EBFu tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh; truy\u1EC1n th\u1ED1ng \u0111\xE1nh d\u1EA5u \u0111\xE2y l\xE0 t\u1ED5 h\u1EE3p c\u1EA7n \u0111\u1EB7c bi\u1EC7t l\u01B0u \xFD. Khi \u0111\u1EA1i h\u1EA1n, l\u01B0u ni\xEAn k\xEDch ho\u1EA1t c\xE1ch n\xE0y th\xEC nh\u1EAFc gi\u1EEF th\u1EADn tr\u1ECDng: l\xE1i xe an to\xE0n, h\xF2a kh\xED v\u1EDBi ng\u01B0\u1EDDi, quy\u1EBFt \u0111\u1ECBnh y t\u1EBF c\u1EA7n l\xFD tr\xED \u2014 nh\u1EA5n m\u1EA1nh ch\u1EE7 \u0111\u1ED9ng qu\u1EA3n l\xFD ch\u1EE9 kh\xF4ng ph\u1EA3i s\u1ED1 m\u1EC7nh ti\xEAu c\u1EF1c.",
+  "\u5EC9\u8D1E\u5929\u76F8\u540C\u5BAB\uFF0C\u5370\u7EF6\u683C\u5C40\uFF0C\u4E3B\u79C9\u516C\u5904\u4E8B\u3001\u6E05\u5EC9\u4E4B\u540D\uFF0C\u5B9C\u4EFB\u516C\u804C\u3001\u884C\u653F\u7BA1\u7406\u3001\u6CD5\u52A1\u3001\u4F01\u5212\u3002\u6015\u89C1\u64CE\u7F8A\u5316\u5FCC\uFF0C\u5219\u53CD\u4E3B\u5B98\u975E\u3002": "Li\xEAm Trinh, Thi\xEAn T\u01B0\u1EDBng \u0111\u1ED3ng cung l\xE0 c\xE1ch \u1EA5n th\u1EE5; ch\u1EE7 l\xE0m vi\u1EC7c c\xF4ng t\xE2m, c\xF3 ti\u1EBFng thanh li\xEAm, h\u1EE3p c\xF4ng ch\u1EE9c, qu\u1EA3n l\xFD h\xE0nh ch\xEDnh, ph\xE1p ch\u1EBF, ho\u1EA1ch \u0111\u1ECBnh. S\u1EE3 g\u1EB7p K\xECnh D\u01B0\u01A1ng, H\xF3a K\u1EF5, khi \u0111\xF3 ng\u01B0\u1EE3c l\u1EA1i ch\u1EE7 ki\u1EC7n t\u1EE5ng.",
+  '\u64CE\u7F8A\u4E8E\u5348\u5BAB\u5750\u547D\uFF0C\u53F7"\u9A6C\u5934\u5E26\u7BAD"\uFF0C\u53E4\u4E66\u4E91"\u5A01\u9547\u8FB9\u7586"\u3002\u6B64\u683C\u8C61\u5F81\u679C\u51B3\u884C\u52A8\u529B\u4E0E\u7ADE\u4E89\u7CBE\u795E\uFF0C\u9002\u5408\u9700\u8981\u6267\u884C\u529B\u4E0E\u679C\u6562\u51B3\u7B56\u7684\u804C\u4E1A\u65B9\u5411\u3002\u4F20\u7EDF\u8BBA\u8FF0\u540C\u65F6\u63D0\u9192\u6B64\u683C\u9700\u8981\u914D\u5408\u5409\u5229\u661F\u66DC\u624D\u80FD\u6700\u4F18\u53D1\u6325\u2014\u2014\u5F3A\u8C03\u7EC4\u5408\u5F71\u54CD\u800C\u975E\u5355\u661F\u72EC\u8BBA\u3002': 'K\xECnh D\u01B0\u01A1ng t\u1ECDa M\u1EC7nh \u1EDF Ng\u1ECD, g\u1ECDi l\xE0 "M\xE3 \u0110\u1EA7u \u0110\u1EDBi Ti\u1EC5n"; s\xE1ch x\u01B0a n\xF3i "uy tr\u1EA5n bi\xEAn c\u01B0\u01A1ng". C\xE1ch n\xE0y t\u01B0\u1EE3ng tr\u01B0ng cho s\u1EE9c h\xE0nh \u0111\u1ED9ng qu\u1EA3 quy\u1EBFt v\xE0 tinh th\u1EA7n c\u1EA1nh tranh, h\u1EE3p c\xE1c ngh\u1EC1 c\u1EA7n kh\u1EA3 n\u0103ng th\u1EF1c thi v\xE0 quy\u1EBFt \u0111o\xE1n. Truy\u1EC1n th\u1ED1ng c\u0169ng nh\u1EAFc c\xE1ch n\xE0y c\u1EA7n ph\u1ED1i h\u1EE3p c\xE1t tinh m\u1EDBi ph\xE1t huy t\u1ED1t nh\u1EA5t \u2014 x\xE9t t\u1ED5 h\u1EE3p ch\u1EE9 kh\xF4ng lu\u1EADn m\u1ED9t sao ri\xEAng l\u1EBB.',
+  "\u6587\u660C\u6587\u66F2\u540C\u4F1A\u4E09\u65B9\u56DB\u6B63\uFF0C\u4E3B\u624D\u534E\u6A2A\u6EA2\u3001\u53E3\u624D\u6587\u7B14\u4FF1\u4F73\u3002\u5B9C\u8D70\u9700\u8981\u8868\u8FBE\u4E0E\u6587\u91C7\u7684\u884C\u4E1A\uFF0C\u5316\u79D1\u52A0\u6301\u5219\u540D\u58F0\u5927\u663E\u3002": "V\u0103n X\u01B0\u01A1ng, V\u0103n Kh\xFAc c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh, ch\u1EE7 t\xE0i hoa tr\xE0n \u0111\u1EA7y, \u0103n n\xF3i v\xE0 v\u0103n b\xFAt \u0111\u1EC1u gi\u1ECFi. H\u1EE3p ng\xE0nh c\u1EA7n di\u1EC5n \u0111\u1EA1t v\xE0 v\u0103n ch\u01B0\u01A1ng; th\xEAm H\xF3a Khoa th\xEC danh ti\u1EBFng n\u1ED5i r\xF5.",
+  "\u6587\u660C\u6587\u66F2\u540C\u5165\u547D\u5BAB\uFF0C\u4E3B\u806A\u660E\u4FCA\u79C0\u3001\u6587\u91C7\u6590\u7136\uFF0C\u5B9C\u6587\u5B66\u3001\u6559\u80B2\u3001\u5199\u4F5C\u3001\u54A8\u8BE2\u3002\u6700\u5FCC\u5316\u5FCC\u2014\u2014\u660C\u66F2\u5316\u5FCC\u4E3B\u6587\u4E66\u5951\u7EA6\u6697\u4E8F\u3002": "V\u0103n X\u01B0\u01A1ng, V\u0103n Kh\xFAc c\xF9ng v\xE0o cung M\u1EC7nh, ch\u1EE7 th\xF4ng minh tu\u1EA5n t\xFA, v\u0103n ch\u01B0\u01A1ng xu\u1EA5t s\u1EAFc, h\u1EE3p v\u0103n h\u1ECDc, gi\xE1o d\u1EE5c, vi\u1EBFt l\xE1ch, t\u01B0 v\u1EA5n. K\u1EF5 nh\u1EA5t H\xF3a K\u1EF5 \u2014 X\u01B0\u01A1ng Kh\xFAc H\xF3a K\u1EF5 ch\u1EE7 thi\u1EC7t ng\u1EA7m v\u1EC1 gi\u1EA5y t\u1EDD, h\u1EE3p \u0111\u1ED3ng.",
+  '\u6587\u660C\u6587\u66F2\u5939\u547D\u5BAB\uFF0C\u4E3B\u806A\u660E\u4FCA\u79C0\u3001\u6587\u91C7\u6590\u7136\uFF0C\u5B9C\u8D70\u6587\u6559\u3001\u5B66\u672F\u3001\u827A\u672F\u3001\u5199\u4F5C\u3002\u53E4\u4E66\u4E91"\u660C\u66F2\u5939\u547D\u4E3B\u79D1\u7532"\uFF0C\u6700\u5229\u8003\u8FD0\u3002': 'V\u0103n X\u01B0\u01A1ng, V\u0103n Kh\xFAc gi\xE1p cung M\u1EC7nh, ch\u1EE7 th\xF4ng minh tu\u1EA5n t\xFA, v\u0103n ch\u01B0\u01A1ng xu\u1EA5t s\u1EAFc, h\u1EE3p v\u0103n gi\xE1o, h\u1ECDc thu\u1EADt, ngh\u1EC7 thu\u1EADt, vi\u1EBFt l\xE1ch. S\xE1ch x\u01B0a n\xF3i "X\u01B0\u01A1ng Kh\xFAc gi\xE1p M\u1EC7nh ch\u1EE7 khoa gi\xE1p", l\u1EE3i nh\u1EA5t cho thi c\u1EED.',
+  "\u6B66\u66F2\u4E03\u6740\u540C\u5BAB\uFF0C\u5C06\u661F\u914D\u8D22\u661F\uFF0C\u4E3B\u679C\u51B3\u521A\u6BC5\u3001\u7406\u8D22\u80FD\u529B\u5F3A\uFF0C\u9002\u5408\u91D1\u878D\u3001\u519B\u8B66\u3001\u521B\u4E1A\u3002\u4F46\u5FCC\u89C1\u5316\u5FCC\u715E\u661F\uFF0C\u5426\u5219\u51F6\u9669\u3002\u4E00\u751F\u594B\u6597\u3001\u79EF\u8D22\u4F46\u64CD\u5FC3\u3002": "V\u0169 Kh\xFAc, Th\u1EA5t S\xE1t \u0111\u1ED3ng cung, t\u01B0\u1EDBng tinh ph\u1ED1i t\xE0i tinh; ch\u1EE7 qu\u1EA3 quy\u1EBFt c\u01B0\u01A1ng ngh\u1ECB, gi\u1ECFi qu\u1EA3n l\xFD ti\u1EC1n, h\u1EE3p t\xE0i ch\xEDnh, qu\xE2n \u0111\u1ED9i, c\u1EA3nh s\xE1t, kh\u1EDFi nghi\u1EC7p. K\u1EF5 g\u1EB7p H\xF3a K\u1EF5 v\xE0 s\xE1t tinh, n\u1EBFu kh\xF4ng th\xEC hung hi\u1EC3m. C\u1EA3 \u0111\u1EDDi ph\u1EA5n \u0111\u1EA5u, t\xEDch \u0111\u01B0\u1EE3c ti\u1EC1n nh\u01B0ng hay lo ngh\u0129.",
+  '\u6B66\u66F2\u8D2A\u72FC\u4F1A\u547D\uFF0C\u8D22\u661F\u4E0E\u6843\u82B1\u6B32\u671B\u661F\u4EA4\u8F89\uFF0C\u53E4\u4E66\u4E91"\u6B66\u8D2A\u4E0D\u53D1\u5C11\u5E74\u4EBA"\u2014\u2014\u4E09\u5341\u5C81\u540E\u65B9\u80FD\u539A\u79EF\u8584\u53D1\u3002\u4E3B\u4E2D\u5E74\u4EE5\u540E\u5927\u5BCC\u5927\u8D35\uFF0C\u8D22\u6E90\u7531\u4EBA\u8109\u3001\u5E94\u916C\u3001\u6B32\u671B\u7BA1\u7406\u800C\u6765\uFF0C\u9002\u5408\u91D1\u878D\u3001\u6295\u673A\u3001\u9500\u552E\u3001\u5A31\u4E50\u4E1A\u3002': 'V\u0169 Kh\xFAc, Tham Lang h\u1ED9i M\u1EC7nh, t\xE0i tinh v\xE0 sao \u0111\xE0o hoa, d\u1EE5c v\u1ECDng c\xF9ng s\xE1ng. S\xE1ch x\u01B0a n\xF3i "V\u0169 Tham kh\xF4ng ph\xE1t khi c\xF2n tr\u1EBB" \u2014 sau ba m\u01B0\u01A1i tu\u1ED5i m\u1EDBi t\xEDch l\u0169y d\xE0y r\u1ED3i b\u1EE9t l\xEAn. Ch\u1EE7 sau trung ni\xEAn \u0111\u1EA1i ph\xFA qu\xFD; ti\u1EC1n \u0111\u1EBFn t\u1EEB quan h\u1EC7, giao t\u1EBF v\xE0 c\xE1ch qu\u1EA3n l\xFD d\u1EE5c v\u1ECDng; h\u1EE3p t\xE0i ch\xEDnh, \u0111\u1EA7u c\u01A1, b\xE1n h\xE0ng, gi\u1EA3i tr\xED.',
+  "\u706B\u661F\u94C3\u661F\u5206\u5C45\u547D\u5BAB\u524D\u540E\u4E24\u5BAB\u5939\u547D\uFF0C\u4E3B\u6027\u6025\u3001\u6613\u51B2\u52A8\u3001\u7A81\u53D1\u610F\u5916\u6216\u7EA0\u7EB7\u3002\u9700\u57F9\u517B\u8010\u6027\u3001\u907F\u514D\u51B2\u52A8\u51B3\u7B56\u3002": "H\u1ECFa Tinh, Linh Tinh chia hai cung tr\u01B0\u1EDBc sau k\u1EB9p M\u1EC7nh, ch\u1EE7 t\xEDnh n\xF3ng, d\u1EC5 b\u1ED1c \u0111\u1ED3ng, c\xF3 s\u1EF1 c\u1ED1 ho\u1EB7c tranh ch\u1EA5p b\u1EA5t ng\u1EDD. C\u1EA7n r\xE8n t\xEDnh ki\xEAn nh\u1EABn, tr\xE1nh quy\u1EBFt \u0111\u1ECBnh v\u1ED9i v\xE0ng.",
+  "\u7984\u5B58\u5165\u8EAB\u5BAB\uFF0C\u4E3B\u4E2D\u5E74\u540E\u8D22\u6E90\u7A33\u5B9A\u3001\u5F97\u7984\u81EA\u4EAB\u3002\u502A\u5E08\u8BF4\u300C\u7984\u5B58\u5165\u8EAB\uFF0C\u8D22\u6C14\u8FD1\u8EAB\u300D\u2014\u2014\u914D\u5076\u6216\u4E8B\u4E1A\u65B9\u5411\u80FD\u5E26\u6765\u7A33\u5B9A\u8D22\u7984\u3002": 'L\u1ED9c T\u1ED3n nh\u1EADp cung Th\xE2n, ch\u1EE7 sau trung ni\xEAn ngu\u1ED3n ti\u1EC1n \u1ED5n \u0111\u1ECBnh, t\u1EF1 h\u01B0\u1EDFng l\u1ED9c. Th\u1EA7y Ngh\xEA n\xF3i (ch\u01B0a ki\u1EC3m ch\u1EE9ng) "L\u1ED9c T\u1ED3n nh\u1EADp Th\xE2n, t\xE0i kh\xED g\u1EA7n th\xE2n" \u2014 ng\u01B0\u1EDDi ph\u1ED1i ng\u1EABu ho\u1EB7c h\u01B0\u1EDBng s\u1EF1 nghi\u1EC7p mang l\u1EA1i t\xE0i l\u1ED9c \u1ED5n \u0111\u1ECBnh.',
+  "\u7984\u5B58\u5750\u547D\uFF0C\u4E3B\u4E00\u751F\u8863\u98DF\u65E0\u5FE7\u3001\u8D22\u7984\u7A33\u5B9A\u3002\u6027\u683C\u4FDD\u5B88\uFF0C\u5584\u79EF\u7D2F\uFF0C\u4F46\u7F8A\u9640\u5939\u7984\u987B\u9632\u5C0F\u4EBA\u3002\u6700\u5B9C\u914D\u5316\u7984\u3001\u5DE6\u8F85\u53F3\u5F3C\u65B9\u4E3A\u5927\u683C\u3002": "L\u1ED9c T\u1ED3n t\u1ECDa M\u1EC7nh, ch\u1EE7 c\u1EA3 \u0111\u1EDDi c\u01A1m \xE1o kh\xF4ng lo, t\xE0i l\u1ED9c \u1ED5n \u0111\u1ECBnh. T\xEDnh b\u1EA3o th\u1EE7, gi\u1ECFi t\xEDch l\u0169y, nh\u01B0ng D\u01B0\u01A1ng \u0110\xE0 gi\xE1p L\u1ED9c th\xEC ph\u1EA3i \u0111\u1EC1 ph\xF2ng ti\u1EC3u nh\xE2n. H\u1EE3p nh\u1EA5t \u0111i v\u1EDBi H\xF3a L\u1ED9c, T\u1EA3 Ph\xF9, H\u1EEFu B\u1EADt m\u1EDBi l\xE0 \u0111\u1EA1i c\xE1ch.",
+  "\u7D2B\u5FAE\u5165\u547D\uFF0C\u5DE6\u8F85\u53F3\u5F3C\u540C\u4F1A\uFF0C\u5E1D\u738B\u5F97\u8D24\u81E3\u8F85\u4F50\uFF0C\u4E3B\u5927\u5BCC\u5927\u8D35\u3001\u7EDF\u5FA1\u4E4B\u547D\u3002\u4E00\u751F\u8D35\u4EBA\u4E0D\u7EDD\uFF0C\u5B9C\u8D70\u653F\u5546\u9AD8\u4F4D\u3001\u8DE8\u754C\u9886\u8896\u4E4B\u9014\u3002": "T\u1EED Vi nh\u1EADp M\u1EC7nh, T\u1EA3 H\u1EEFu c\xF9ng h\u1ED9i, nh\u01B0 b\u1EADc \u0111\u1EBF v\u01B0\u01A1ng c\xF3 hi\u1EC1n th\u1EA7n ph\xF2 t\xE1; ch\u1EE7 \u0111\u1EA1i ph\xFA qu\xFD, s\u1ED1 th\u1ED1ng l\u0129nh. C\u1EA3 \u0111\u1EDDi kh\xF4ng thi\u1EBFu qu\xFD nh\xE2n, h\u1EE3p con \u0111\u01B0\u1EDDng ch\xEDnh tr\u01B0\u1EDDng, th\u01B0\u01A1ng tr\u01B0\u1EDDng \u1EDF v\u1ECB tr\xED cao, l\xE0m ng\u01B0\u1EDDi d\u1EABn d\u1EAFt \u0111a l\u0129nh v\u1EF1c.",
+  "\u7D2B\u5FAE\u5929\u5E9C\u540C\u5165\u547D\u5BAB\uFF0C\u5E1D\u76F8\u5E76\u4E34\uFF0C\u5C0A\u8D35\u4E4B\u547D\u3002\u4E3B\u54C1\u884C\u7AEF\u6B63\u3001\u8863\u98DF\u65E0\u5FE7\u3001\u6709\u9886\u5BFC\u624D\u80FD\uFF0C\u5B9C\u62C5\u4EFB\u8981\u804C\u3002\u9700\u8981\u5DE6\u53F3\u8F85\u5F3C\u6765\u914D\u5408\u65B9\u4E3A\u5B8C\u6574\u5927\u683C\u3002": "T\u1EED Vi, Thi\xEAn Ph\u1EE7 c\xF9ng v\xE0o cung M\u1EC7nh, \u0111\u1EBF v\xE0 t\u01B0\u1EDBng c\xF9ng \u0111\u1EBFn, l\xE0 s\u1ED1 t\xF4n qu\xFD. Ch\u1EE7 ph\u1EA9m h\u1EA1nh \u0111oan ch\xEDnh, c\u01A1m \xE1o kh\xF4ng lo, c\xF3 t\xE0i l\xE3nh \u0111\u1EA1o, h\u1EE3p gi\u1EEF ch\u1EE9c v\u1EE5 quan tr\u1ECDng. C\u1EA7n T\u1EA3 Ph\xF9, H\u1EEFu B\u1EADt ph\u1ED1i h\u1EE3p m\u1EDBi l\xE0 \u0111\u1EA1i c\xE1ch tr\u1ECDn v\u1EB9n.",
+  "\u7D2B\u5FAE\u5929\u5E9C\u540C\u5BAB\u4F46\u672A\u5750\u547D\uFF0C\u4E3B\u4E00\u751F\u6709\u8D35\u4EBA\u8D35\u6C14\u4F9D\u6258\uFF0C\u4F46\u672C\u8EAB\u4E0D\u4E00\u5B9A\u5927\u5BCC\u8D35\uFF0C\u9700\u770B\u4F1A\u7167\u5409\u715E\u800C\u5B9A\u3002": "T\u1EED Vi, Thi\xEAn Ph\u1EE7 \u0111\u1ED3ng cung nh\u01B0ng kh\xF4ng t\u1ECDa M\u1EC7nh, ch\u1EE7 c\u1EA3 \u0111\u1EDDi c\xF3 qu\xFD nh\xE2n, qu\xFD kh\xED \u0111\u1EC3 n\u01B0\u01A1ng t\u1EF1a, nh\u01B0ng b\u1EA3n th\xE2n ch\u01B0a ch\u1EAFc \u0111\u1EA1i ph\xFA qu\xFD, ph\u1EA3i xem c\xE1t s\xE1t h\u1ED9i chi\u1EBFu.",
+  '\u7D2B\u5FAE\u72EC\u5750\u547D\u5BAB\uFF0C\u5E1D\u738B\u4E4B\u661F\uFF0C\u81EA\u5C0A\u5FC3\u5F3A\u3001\u6709\u9886\u5BFC\u9B45\u529B\u3002\u4F46\u7D2B\u5FAE\u6700\u5FCC"\u5728\u91CE\u5B64\u541B"\u2014\u2014\u82E5\u65E0\u5DE6\u53F3\u8F85\u5F3C\u76F8\u4F1A\uFF0C\u53CD\u6210\u5B64\u9AD8\u81EA\u50B2\u3001\u6613\u62DB\u6BC1\u8C24\u3002': 'T\u1EED Vi \u0111\u1ED9c t\u1ECDa cung M\u1EC7nh, l\xE0 sao \u0111\u1EBF v\u01B0\u01A1ng, l\xF2ng t\u1EF1 tr\u1ECDng m\u1EA1nh, c\xF3 s\u1EE9c h\xFAt l\xE3nh \u0111\u1EA1o. Nh\u01B0ng T\u1EED Vi k\u1EF5 nh\u1EA5t "c\xF4 qu\xE2n t\u1EA1i d\xE3" \u2014 n\u1EBFu kh\xF4ng c\xF3 T\u1EA3 H\u1EEFu ph\xF2 t\xE1 th\xEC ng\u01B0\u1EE3c l\u1EA1i th\xE0nh cao ng\u1EA1o c\xF4 \u0111\u1ED9c, d\u1EC5 b\u1ECB gi\xE8m pha.',
+  '\u94C3\u661F\u3001\u6587\u660C\u3001\u9640\u7F57\u3001\u6B66\u66F2\u56DB\u661F\u9F50\u4F1A\uFF0C\u4F20\u7EDF\u53E4\u7C4D\u8BB0\u8F7D\u6B64\u4E3A\u9700\u8981\u7279\u522B\u5173\u6CE8\u4E4B\u7EC4\u5408\uFF08\u53E4\u6587"\u9650\u81F3\u6295\u6CB3"\u4E3A\u5BBF\u547D\u8BBA\u8868\u8FF0\uFF0C\u975E\u73B0\u4EE3\u7406\u89E3\uFF09\u3002\u73B0\u4EE3\u5EFA\u8BAE\u4E3A\uFF1A\u6B64\u7EC4\u5408\u5728\u5927\u9650\u6D41\u5E74\u89E6\u53D1\u65F6\uFF0C\u63D0\u9192\u7406\u6027\u5904\u7406\u91CD\u5927\u51B3\u7B56\u3001\u5173\u6CE8\u60C5\u7EEA\u6CE2\u52A8\u3001\u7EF4\u6301\u751F\u6D3B\u7684\u7A33\u5B9A\u6027\u2014\u2014\u5F3A\u8C03\u4E3B\u52A8\u7BA1\u7406\u800C\u975E\u6D88\u6781\u7B49\u5F85\u3002': 'B\u1ED1n sao Linh Tinh, V\u0103n X\u01B0\u01A1ng, \u0110\xE0 La, V\u0169 Kh\xFAc c\xF9ng h\u1ED9i; s\xE1ch c\u1ED5 ghi \u0111\xE2y l\xE0 t\u1ED5 h\u1EE3p c\u1EA7n \u0111\u1EB7c bi\u1EC7t l\u01B0u \xFD (c\xE2u c\u1ED5 "h\u1EA1n ch\xED \u0111\u1EA7u h\xE0" l\xE0 l\u1ED1i n\xF3i \u0111\u1ECBnh m\u1EC7nh, kh\xF4ng ph\u1EA3i c\xE1ch hi\u1EC3u hi\u1EC7n \u0111\u1EA1i). L\u1EDDi khuy\xEAn hi\u1EC7n \u0111\u1EA1i: khi \u0111\u1EA1i h\u1EA1n, l\u01B0u ni\xEAn k\xEDch ho\u1EA1t t\u1ED5 h\u1EE3p n\xE0y, c\u1EA7n x\u1EED l\xFD l\xFD tr\xED c\xE1c quy\u1EBFt \u0111\u1ECBnh l\u1EDBn, \u0111\u1EC3 \xFD dao \u0111\u1ED9ng c\u1EA3m x\xFAc, gi\u1EEF \u0111\u1EDDi s\u1ED1ng \u1ED5n \u0111\u1ECBnh \u2014 ch\u1EE7 \u0111\u1ED9ng qu\u1EA3n l\xFD ch\u1EE9 kh\xF4ng th\u1EE5 \u0111\u1ED9ng ch\u1EDD \u0111\u1EE3i.',
+  // ── conditions ──
+  "\u4E03\u6740\u3001\u7834\u519B\u3001\u8D2A\u72FC\u4E09\u661F\u9F50\u5165\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63": "Th\u1EA5t S\xE1t, Ph\xE1 Qu\xE2n, Tham Lang c\xF9ng v\xE0o tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh",
+  "\u4E09\u65B9\u4F1A\u7167": "h\u1ED9i chi\u1EBFu \u1EDF tam ph\u01B0\u01A1ng",
+  "\u4E09\u65B9\u56DB\u6B63\u715E\u661F\u8FC7\u591A": "tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh qu\xE1 nhi\u1EC1u s\xE1t tinh",
+  "\u4E09\u65B9\u6709\u5316\u7984\u6216\u5316\u6743\uFF08\u52A8\u5F97\u6709\u529B\uFF09": "tam ph\u01B0\u01A1ng c\xF3 H\xF3a L\u1ED9c ho\u1EB7c H\xF3a Quy\u1EC1n (\u0111\u1ED9ng m\xE0 c\xF3 l\u1EF1c)",
+  "\u4E09\u65B9\u715E\u91CD": "tam ph\u01B0\u01A1ng s\xE1t tinh n\u1EB7ng",
+  "\u4E24\u661F\u4E0D\u540C\u5BAB": "hai sao kh\xF4ng \u0111\u1ED3ng cung",
+  "\u4F1A\u7167": "h\u1ED9i chi\u1EBFu",
+  "\u4F1A\u7167\u547D\u5BAB\u4E09\u65B9": "h\u1ED9i chi\u1EBFu tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh",
+  "\u518D\u4F1A\u4E03\u6740\u6216\u7834\u519B\uFF08\u6B66\u804C\u5927\u8D35\uFF09": "h\u1ED9i th\xEAm Th\u1EA5t S\xE1t ho\u1EB7c Ph\xE1 Qu\xE2n (\u0111\u1EA1i qu\xFD v\u1EC1 v\xF5 ch\u1EE9c)",
+  "\u518D\u4F1A\u5316\u79D1": "h\u1ED9i th\xEAm H\xF3a Khoa",
+  "\u518D\u4F1A\u5DE6\u8F85": "h\u1ED9i th\xEAm T\u1EA3 Ph\xF9",
+  "\u518D\u4F1A\u6587\u660C\u6216\u6587\u66F2": "h\u1ED9i th\xEAm V\u0103n X\u01B0\u01A1ng ho\u1EB7c V\u0103n Kh\xFAc",
+  "\u518D\u4F1A\u660C\u66F2": "h\u1ED9i th\xEAm X\u01B0\u01A1ng Kh\xFAc",
+  "\u518D\u4F1A\u9B41\u94BA": "h\u1ED9i th\xEAm Kh\xF4i Vi\u1EC7t",
+  "\u518D\u9047\u706B\u661F/\u94C3\u661F\uFF08\u706B\u8D2A/\u94C3\u8D2A\u53E0\u52A0\uFF09": "g\u1EB7p th\xEAm H\u1ECFa Tinh/Linh Tinh (ch\u1ED3ng th\xEAm H\u1ECFa Tham/Linh Tham)",
+  "\u5316\u5FCC\u5750\u547D": "H\xF3a K\u1EF5 t\u1ECDa M\u1EC7nh",
+  "\u5316\u7984\u3001\u5316\u6743\u3001\u5316\u79D1\u4E09\u5409\u5316\u9F50\u4F1A\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63": "H\xF3a L\u1ED9c, H\xF3a Quy\u1EC1n, H\xF3a Khoa c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh",
+  "\u5316\u7984\u4F1A\u7167\u4E09\u65B9\u56DB\u6B63": "H\xF3a L\u1ED9c h\u1ED9i chi\u1EBFu tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh",
+  "\u5316\u79D1\u3001\u5316\u6743\u540C\u4F1A\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63": "H\xF3a Khoa, H\xF3a Quy\u1EC1n c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh",
+  "\u5316\u79D1\u5165\u547D": "H\xF3a Khoa nh\u1EADp M\u1EC7nh",
+  "\u5316\u79D1\u5165\u8EAB": "H\xF3a Khoa nh\u1EADp Th\xE2n",
+  "\u540C\u5BAB": "\u0111\u1ED3ng cung",
+  "\u547D\u5750\u715E\u661F": "M\u1EC7nh c\xF3 s\xE1t tinh",
+  "\u547D\u5750\u7A7A\u52AB\uFF08\u52A8\u5F97\u8F9B\u82E6\uFF09": "M\u1EC7nh t\u1ECDa Kh\xF4ng Ki\u1EBFp (\u0111\u1ED9ng m\xE0 v\u1EA5t v\u1EA3)",
+  "\u547D\u5750\u7A7A\u52AB\uFF08\u53CC\u7984\u9047\u7A7A\uFF0C\u8D22\u6765\u8D22\u53BB\uFF09": "M\u1EC7nh t\u1ECDa Kh\xF4ng Ki\u1EBFp (Song L\u1ED9c g\u1EB7p Kh\xF4ng, ti\u1EC1n \u0111\u1EBFn r\u1ED3i \u0111i)",
+  "\u547D\u5BAB\u5728\u672A\u4E3A\u7A7A\u5BAB": "cung M\u1EC7nh \u1EDF M\xF9i v\xF4 ch\xEDnh di\u1EC7u",
+  "\u547D\u5BAB\u5750\u715E": "cung M\u1EC7nh c\xF3 s\xE1t tinh",
+  "\u547D\u5BAB\u5750\u715E\u661F": "cung M\u1EC7nh c\xF3 s\xE1t tinh",
+  "\u547D\u5BAB\u89C1\u7984": "cung M\u1EC7nh c\xF3 L\u1ED9c",
+  "\u5730\u7A7A\u5730\u52AB\u5206\u5C45\u547D\u5BAB\u524D\u540E\u4E24\u5BAB": "\u0110\u1ECBa Kh\xF4ng, \u0110\u1ECBa Ki\u1EBFp chia \u1EDF hai cung tr\u01B0\u1EDBc sau cung M\u1EC7nh",
+  "\u5730\u7A7A\u5730\u52AB\u53CC\u5939\u4F1A\u7167\uFF08\u7D2B\u5FAE\u5FCC\u7A7A\u52AB\uFF09": "\u0110\u1ECBa Kh\xF4ng, \u0110\u1ECBa Ki\u1EBFp c\xF9ng gi\xE1p ho\u1EB7c h\u1ED9i chi\u1EBFu (T\u1EED Vi k\u1EF5 Kh\xF4ng Ki\u1EBFp)",
+  "\u5929\u540C\u5316\u7984": "Thi\xEAn \u0110\u1ED3ng H\xF3a L\u1ED9c",
+  "\u5929\u540C\u5929\u6881\u540C\u5BAB": "Thi\xEAn \u0110\u1ED3ng, Thi\xEAn L\u01B0\u01A1ng \u0111\u1ED3ng cung",
+  "\u5929\u5E9C\u5750\u547D\u4E09\u65B9": "Thi\xEAn Ph\u1EE7 \u1EDF tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh",
+  "\u5929\u673A\u3001\u592A\u9634\u3001\u5929\u540C\u3001\u5929\u6881\u56DB\u661F\u9F50\u5165\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63": "Thi\xEAn C\u01A1, Th\xE1i \xC2m, Thi\xEAn \u0110\u1ED3ng, Thi\xEAn L\u01B0\u01A1ng c\xF9ng v\xE0o tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh",
+  "\u5929\u6881\u4F1A\u547D\u5BAB\u4E09\u65B9": "Thi\xEAn L\u01B0\u01A1ng h\u1ED9i tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh",
+  "\u5929\u6881\u5E99\u65FA": "Thi\xEAn L\u01B0\u01A1ng mi\u1EBFu v\u01B0\u1EE3ng",
+  "\u5929\u76F8\u5750\u547D\u4E09\u65B9": "Thi\xEAn T\u01B0\u1EDBng \u1EDF tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh",
+  "\u5929\u9A6C\u5165\u547D": "Thi\xEAn M\xE3 nh\u1EADp M\u1EC7nh",
+  "\u5929\u9A6C\u5165\u547D\u5BAB": "Thi\xEAn M\xE3 nh\u1EADp cung M\u1EC7nh",
+  "\u5929\u9A6C\u5165\u8FC1\u79FB\u5BAB": "Thi\xEAn M\xE3 nh\u1EADp cung Thi\xEAn Di",
+  "\u5929\u9A6C\u5728\u8FC1": "Thi\xEAn M\xE3 \u1EDF Thi\xEAn Di",
+  "\u5929\u9B41\u3001\u5929\u94BA\u540C\u4F1A\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63": "Thi\xEAn Kh\xF4i, Thi\xEAn Vi\u1EC7t c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh",
+  "\u5929\u9B41\u5929\u94BA\u5206\u5C45\u547D\u5BAB\u524D\u540E\u4E24\u5BAB": "Thi\xEAn Kh\xF4i, Thi\xEAn Vi\u1EC7t chia \u1EDF hai cung tr\u01B0\u1EDBc sau cung M\u1EC7nh",
+  "\u592A\u9633\u4F1A\u547D\u5BAB\u4E09\u65B9": "Th\xE1i D\u01B0\u01A1ng h\u1ED9i tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh",
+  "\u592A\u9633\u592A\u9634\u5206\u5C45\u547D\u5BAB\u524D\u540E\u4E24\u5BAB": "Th\xE1i D\u01B0\u01A1ng, Th\xE1i \xC2m chia \u1EDF hai cung tr\u01B0\u1EDBc sau cung M\u1EC7nh",
+  "\u592A\u9633\u5E99\u65FA": "Th\xE1i D\u01B0\u01A1ng mi\u1EBFu v\u01B0\u1EE3ng",
+  "\u592A\u9633\u843D\u9677\uFF08\u9633\u6881\u5931\u8F89\uFF09": "Th\xE1i D\u01B0\u01A1ng h\xE3m (D\u01B0\u01A1ng L\u01B0\u01A1ng m\u1EA5t \xE1nh s\xE1ng)",
+  "\u592A\u9634\u5E99\u65FA": "Th\xE1i \xC2m mi\u1EBFu v\u01B0\u1EE3ng",
+  "\u5BC5\u5BAB\u592A\u9633\u5E99\u65FA\uFF0C\u5DE8\u95E8\u5F97\u65E5\u5149\u5316\u89E3\u662F\u975E": "\u1EDF D\u1EA7n, Th\xE1i D\u01B0\u01A1ng mi\u1EBFu v\u01B0\u1EE3ng, C\u1EF1 M\xF4n \u0111\u01B0\u1EE3c \xE1nh m\u1EB7t tr\u1EDDi h\xF3a gi\u1EA3i th\u1ECB phi",
+  "\u5BF9\u5BAB\u4E11\u5BAB\u4E3A\u592A\u9633\u592A\u9634\u540C\u5EA6": "cung \u0111\u1ED1i \u1EDF S\u1EEDu c\xF3 Th\xE1i D\u01B0\u01A1ng, Th\xE1i \xC2m \u0111\u1ED3ng \u0111\u1ED9",
+  "\u5DE6\u8F85\u3001\u53F3\u5F3C\u540C\u4F1A\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63": "T\u1EA3 Ph\xF9, H\u1EEFu B\u1EADt c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh",
+  "\u5DE6\u8F85\u4F1A\u7167": "T\u1EA3 Ph\xF9 h\u1ED9i chi\u1EBFu",
+  "\u5DE6\u8F85\u53F3\u5F3C\u5206\u5C45\u547D\u5BAB\u524D\u540E\u4E24\u5BAB": "T\u1EA3 Ph\xF9, H\u1EEFu B\u1EADt chia \u1EDF hai cung tr\u01B0\u1EDBc sau cung M\u1EC7nh",
+  "\u5DE6\u8F85\u53F3\u5F3C\u540C\u4F1A": "T\u1EA3 Ph\xF9, H\u1EEFu B\u1EADt c\xF9ng h\u1ED9i",
+  "\u5DE6\u8F85\u53F3\u5F3C\u540C\u4F1A\u4E09\u65B9\u56DB\u6B63": "T\u1EA3 Ph\xF9, H\u1EEFu B\u1EADt c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh",
+  "\u5DE8\u95E8\u3001\u706B\u661F\u3001\u64CE\u7F8A\u4E09\u661F\u4F1A\u7167\u4E09\u65B9\u56DB\u6B63": "C\u1EF1 M\xF4n, H\u1ECFa Tinh, K\xECnh D\u01B0\u01A1ng h\u1ED9i chi\u1EBFu tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh",
+  "\u5DE8\u95E8\u5316\u5FCC\uFF08\u53E3\u820C\u5B98\u975E\uFF09": "C\u1EF1 M\xF4n H\xF3a K\u1EF5 (kh\u1EA9u thi\u1EC7t, ki\u1EC7n t\u1EE5ng)",
+  "\u5DE8\u95E8\u5316\u5FCC\uFF08\u7389\u85CF\u6DF1\u6CE5\uFF09": "C\u1EF1 M\xF4n H\xF3a K\u1EF5 (ng\u1ECDc v\xF9i trong b\xF9n s\xE2u)",
+  "\u5DE8\u95E8\u5316\u7984/\u5316\u6743": "C\u1EF1 M\xF4n H\xF3a L\u1ED9c/H\xF3a Quy\u1EC1n",
+  "\u5DE8\u95E8\u5316\u7984/\u5316\u6743\uFF08\u53E3\u624D\u751F\u8D22\uFF09": "C\u1EF1 M\xF4n H\xF3a L\u1ED9c/H\xF3a Quy\u1EC1n (ki\u1EBFm ti\u1EC1n b\u1EB1ng \u0103n n\xF3i)",
+  "\u5EC9\u76F8\u5BAB\u5750\u64CE\u7F8A\uFF08\u5EC9\u6740\u7F8A\u503E\u5411\uFF09": "cung Li\xEAm T\u01B0\u1EDBng c\xF3 K\xECnh D\u01B0\u01A1ng (khuynh h\u01B0\u1EDBng Li\xEAm S\xE1t D\u01B0\u01A1ng)",
+  "\u5EC9\u8D1E\u3001\u4E03\u6740\u3001\u64CE\u7F8A\u4E09\u661F\u4F1A\u7167\u4E09\u65B9\u56DB\u6B63": "Li\xEAm Trinh, Th\u1EA5t S\xE1t, K\xECnh D\u01B0\u01A1ng h\u1ED9i chi\u1EBFu tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh",
+  "\u5EC9\u8D1E\u5316\u5FCC": "Li\xEAm Trinh H\xF3a K\u1EF5",
+  "\u5EC9\u8D1E\u5929\u76F8\u540C\u5BAB": "Li\xEAm Trinh, Thi\xEAn T\u01B0\u1EDBng \u0111\u1ED3ng cung",
+  "\u64CE\u7F8A\u4E8E\u5348\u5BAB\u5750\u547D": "K\xECnh D\u01B0\u01A1ng t\u1ECDa M\u1EC7nh \u1EDF Ng\u1ECD",
+  "\u64CE\u7F8A\u9640\u7F57\u5206\u5C45\u547D\u5BAB\u524D\u540E\u4E24\u5BAB": "K\xECnh D\u01B0\u01A1ng, \u0110\xE0 La chia \u1EDF hai cung tr\u01B0\u1EDBc sau cung M\u1EC7nh",
+  "\u6587\u660C\u3001\u6587\u66F2\u540C\u4F1A\u547D\u5BAB\u4E09\u65B9\u56DB\u6B63": "V\u0103n X\u01B0\u01A1ng, V\u0103n Kh\xFAc c\xF9ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh",
+  "\u6587\u660C\u4F1A\u547D\u5BAB\u4E09\u65B9": "V\u0103n X\u01B0\u01A1ng h\u1ED9i tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh",
+  "\u6587\u660C\u4F1A\u7167": "V\u0103n X\u01B0\u01A1ng h\u1ED9i chi\u1EBFu",
+  "\u6587\u660C\u4F1A\u7167\uFF08\u77F3\u4E2D\u9690\u7389\u5F97\u660E\uFF09": "V\u0103n X\u01B0\u01A1ng h\u1ED9i chi\u1EBFu (ng\u1ECDc trong \u0111\xE1 \u0111\u01B0\u1EE3c s\xE1ng)",
+  "\u6587\u660C\u6587\u66F2\u5206\u5C45\u547D\u5BAB\u524D\u540E\u4E24\u5BAB": "V\u0103n X\u01B0\u01A1ng, V\u0103n Kh\xFAc chia \u1EDF hai cung tr\u01B0\u1EDBc sau cung M\u1EC7nh",
+  "\u6587\u660C\u6587\u66F2\u540C\u4F1A": "V\u0103n X\u01B0\u01A1ng, V\u0103n Kh\xFAc c\xF9ng h\u1ED9i",
+  "\u65E0\u8F85\u5F3C\uFF08\u5B64\u541B\u65E0\u81E3\uFF09": "kh\xF4ng c\xF3 Ph\xF9 B\u1EADt (vua c\xF4 \u0111\u1ED9c kh\xF4ng b\u1EC1 t\xF4i)",
+  "\u65E5\u6708\u5BAB\u715E\u661F\u540C\u5750": "cung Nh\u1EADt Nguy\u1EC7t c\xF3 s\xE1t tinh \u0111\u1ED3ng t\u1ECDa",
+  "\u65E5\u6708\u843D\u9677\uFF08\u5939\u547D\u65E0\u5149\uFF09": "Nh\u1EADt Nguy\u1EC7t h\xE3m (gi\xE1p M\u1EC7nh m\xE0 kh\xF4ng c\xF3 \xE1nh s\xE1ng)",
+  "\u660C\u66F2\u4F1A\u7167": "X\u01B0\u01A1ng Kh\xFAc h\u1ED9i chi\u1EBFu",
+  "\u660C\u66F2\u540C\u4F1A": "X\u01B0\u01A1ng Kh\xFAc c\xF9ng h\u1ED9i",
+  "\u660C\u66F2\u5750\u547D": "X\u01B0\u01A1ng Kh\xFAc t\u1ECDa M\u1EC7nh",
+  "\u672A\u5BAB\u65E5\u6708\u53CC\u7F8E\u5C24\u4F73\u3002": "\u1EDE M\xF9i, Nh\u1EADt Nguy\u1EC7t c\xF9ng \u0111\u1EB9p, c\xE0ng t\u1ED1t.",
+  "\u4E11\u5BAB\u65E5\u6708\u540C\u5BAB\u529B\u91CF\u8F83\u5E73\u3002": "\u1EDE S\u1EEDu, Nh\u1EADt Nguy\u1EC7t \u0111\u1ED3ng cung l\u1EF1c kh\xE1 b\xECnh.",
+  "\u672A\u5BAB\u65E5\u6708\u540C\u8F89\uFF08\u53E4\u4E66\u4E91\u672A\u5BAB\u65E5\u6708\u53CC\u7F8E\uFF09": "Nh\u1EADt Nguy\u1EC7t c\xF9ng s\xE1ng \u1EDF M\xF9i (s\xE1ch x\u01B0a n\xF3i \u1EDF M\xF9i Nh\u1EADt Nguy\u1EC7t song m\u1EF9)",
+  "\u672C\u76D8\u7834\u683C\u6761\u4EF6\u5DF2\u89E6\u53D1\uFF0C\u53D1\u529B\u6253\u6298\u3002": "L\xE1 s\u1ED1 n\xE0y \u0111\xE3 ch\u1EA1m \u0111i\u1EC1u ki\u1EC7n ph\xE1 c\xE1ch, s\u1EE9c ph\xE1t huy b\u1ECB gi\u1EA3m.",
+  "\u6B66\u66F2\u4E03\u6740\u540C\u5BAB": "V\u0169 Kh\xFAc, Th\u1EA5t S\xE1t \u0111\u1ED3ng cung",
+  "\u6B66\u66F2\u5316\u5FCC\uFF08\u6B66\u66F2\u5316\u5FCC\u4E3A\u8D22\u52AB\u4E4B\u5146\uFF09": "V\u0169 Kh\xFAc H\xF3a K\u1EF5 (d\u1EA5u hi\u1EC7u b\u1ECB c\u01B0\u1EDBp ti\u1EC1n, m\u1EA5t ti\u1EC1n)",
+  "\u6B66\u66F2\u5316\u6743": "V\u0169 Kh\xFAc H\xF3a Quy\u1EC1n",
+  "\u6B66\u66F2\u5316\u7984": "V\u0169 Kh\xFAc H\xF3a L\u1ED9c",
+  "\u6B66\u66F2\u5316\u7984\u5C5E\u6B63\u8D22\uFF0C\u5B9C\u5B9E\u4E1A\u3001\u91D1\u878D\u3002": "V\u0169 Kh\xFAc H\xF3a L\u1ED9c l\xE0 ch\xEDnh t\xE0i, h\u1EE3p s\u1EA3n xu\u1EA5t, t\xE0i ch\xEDnh.",
+  "\u6B66\u66F2\u8D2A\u72FC\u540C\u5BAB\uFF08\u4E11/\u672A\uFF09": "V\u0169 Kh\xFAc, Tham Lang \u0111\u1ED3ng cung (S\u1EEDu/M\xF9i)",
+  "\u6B66\u66F2\u8D2A\u72FC\u5BF9\u5BAB\u62F1\u7167": "V\u0169 Kh\xFAc, Tham Lang \u0111\u1ED1i cung chi\u1EBFu nhau",
+  "\u6B66\u6740\u5BAB\u715E\u661F\u8FC7\u591A": "cung V\u0169 S\xE1t qu\xE1 nhi\u1EC1u s\xE1t tinh",
+  "\u6B66\u8D2A\u5BAB\u89C1\u7F8A\u9640": "cung V\u0169 Tham c\xF3 K\xECnh \u0110\xE0",
+  "\u6B66\u8D2A\u5BAB\u9047\u7A7A\u52AB": "cung V\u0169 Tham g\u1EB7p Kh\xF4ng Ki\u1EBFp",
+  "\u706B\u661F\u94C3\u661F\u5206\u5C45\u547D\u5BAB\u524D\u540E\u4E24\u5BAB": "H\u1ECFa Tinh, Linh Tinh chia \u1EDF hai cung tr\u01B0\u1EDBc sau cung M\u1EC7nh",
+  "\u706B\u8D2A\u683C": "c\xE1ch H\u1ECFa Tham",
+  "\u94C3\u8D2A\u683C": "c\xE1ch Linh Tham",
+  "\u715E\u661F\u4F1A\u7167\uFF08\u73E0\u5149\u9EEF\u6DE1\uFF09": "s\xE1t tinh h\u1ED9i chi\u1EBFu (\xE1nh ng\u1ECDc m\u1EDD \u0111i)",
+  "\u715E\u661F\u540C\u5750": "s\xE1t tinh \u0111\u1ED3ng t\u1ECDa",
+  "\u715E\u661F\u8FC7\u591A\uFF08\u673A\u6708\u540C\u6881\u5FCC\u715E\uFF09": "qu\xE1 nhi\u1EC1u s\xE1t tinh (C\u01A1 Nguy\u1EC7t \u0110\u1ED3ng L\u01B0\u01A1ng k\u1EF5 s\xE1t)",
+  "\u715E\u661F\u8FC7\u91CD\uFF08\u52A8\u800C\u65E0\u6210\uFF09": "s\xE1t tinh qu\xE1 n\u1EB7ng (\u0111\u1ED9ng m\xE0 kh\xF4ng th\xE0nh)",
+  "\u7533\u5BAB\u592A\u9633\u504F\u897F\uFF0C\u5DE8\u95E8\u6697\u66DC\u66F4\u663E": '\u1EDF Th\xE2n, Th\xE1i D\u01B0\u01A1ng \u0111\xE3 ng\u1EA3 t\xE2y, c\xE1i "\xE1m" c\u1EE7a C\u1EF1 M\xF4n l\u1ED9 r\xF5 h\u01A1n',
+  "\u7984\u5B58\u4F1A\u547D\u5BAB\u4E09\u65B9": "L\u1ED9c T\u1ED3n h\u1ED9i tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh",
+  "\u7984\u5B58\u4F1A\u7167\u4E09\u65B9\u56DB\u6B63": "L\u1ED9c T\u1ED3n h\u1ED9i chi\u1EBFu tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh",
+  "\u7984\u5B58\u5165\u547D\u5BAB": "L\u1ED9c T\u1ED3n nh\u1EADp cung M\u1EC7nh",
+  "\u7984\u5B58\u5165\u8EAB\u5BAB": "L\u1ED9c T\u1ED3n nh\u1EADp cung Th\xE2n",
+  "\u7984\u5B58\u5B88\u547D": "L\u1ED9c T\u1ED3n gi\u1EEF M\u1EC7nh",
+  "\u7984\u5B58\u5B88\u8EAB": "L\u1ED9c T\u1ED3n gi\u1EEF Th\xE2n",
+  "\u7D2B\u5E9C\u5BAB\u5750\u7A7A\u52AB\uFF08\u7834\u7D2B\u5E9C\u4E4B\u8D35\u6C14\uFF09": "cung T\u1EED Ph\u1EE7 c\xF3 Kh\xF4ng Ki\u1EBFp (ph\xE1 qu\xFD kh\xED c\u1EE7a T\u1EED Ph\u1EE7)",
+  "\u7D2B\u5E9C\u5BAB\u89C1\u53CC\u715E\u540C\u5750": "cung T\u1EED Ph\u1EE7 c\xF3 hai s\xE1t tinh \u0111\u1ED3ng t\u1ECDa",
+  "\u7D2B\u5FAE\u5316\u6743": "T\u1EED Vi H\xF3a Quy\u1EC1n",
+  "\u7D2B\u5FAE\u5929\u5E9C\u540C\u5165\u547D\u5BAB": "T\u1EED Vi, Thi\xEAn Ph\u1EE7 c\xF9ng v\xE0o cung M\u1EC7nh",
+  "\u7D2B\u5FAE\u5929\u5E9C\u540C\u5BAB\uFF08\u4E0D\u5728\u547D\u5BAB\uFF0C\u4F1A\u7167\u51CF\u529B\uFF09": "T\u1EED Vi, Thi\xEAn Ph\u1EE7 \u0111\u1ED3ng cung (kh\xF4ng \u1EDF cung M\u1EC7nh, h\u1ED9i chi\u1EBFu gi\u1EA3m l\u1EF1c)",
+  "\u7D2B\u5FAE\u72EC\u5750\u547D\u5BAB\uFF08\u65E0\u5929\u5E9C\u540C\u5750\uFF09": "T\u1EED Vi \u0111\u1ED9c t\u1ECDa cung M\u1EC7nh (kh\xF4ng c\xF3 Thi\xEAn Ph\u1EE7 \u0111\u1ED3ng t\u1ECDa)",
+  "\u7D2B\u5FAE\u9047\u7A7A\u52AB\uFF08\u53E4\u4E66\u6700\u5FCC\uFF09": "T\u1EED Vi g\u1EB7p Kh\xF4ng Ki\u1EBFp (s\xE1ch x\u01B0a k\u1EF5 nh\u1EA5t)",
+  "\u89C1\u7984\u5B58\u6216\u5EC9\u8D1E\u5316\u7984": "g\u1EB7p L\u1ED9c T\u1ED3n ho\u1EB7c Li\xEAm Trinh H\xF3a L\u1ED9c",
+  "\u8D2A\u72FC\u4F1A\u7167\u547D\u5BAB\u4E09\u65B9": "Tham Lang h\u1ED9i chi\u1EBFu tam ph\u01B0\u01A1ng c\u1EE7a M\u1EC7nh",
+  "\u8D2A\u72FC\u5316\u7984/\u5316\u6743": "Tham Lang H\xF3a L\u1ED9c/H\xF3a Quy\u1EC1n",
+  "\u8D2A\u72FC\u5316\u7984\u5C5E\u4EBA\u8109\u8D22\u3001\u6843\u82B1\u8D22\u3002": "Tham Lang H\xF3a L\u1ED9c l\xE0 ti\u1EC1n nh\u1EDD quan h\u1EC7, ti\u1EC1n \u0111\xE0o hoa.",
+  "\u8D2A\u72FC\u5BAB\u53C8\u89C1\u7F8A\u9640\uFF08\u7834\u6A2A\u53D1\u4E4B\u529B\uFF09": "cung Tham Lang l\u1EA1i c\xF3 K\xECnh \u0110\xE0 (ph\xE1 s\u1EE9c ph\xE1t b\u1EA5t ng\u1EDD)",
+  "\u8D2A\u72FC\u5E99\u65FA": "Tham Lang mi\u1EBFu v\u01B0\u1EE3ng",
+  "\u8D2A\u72FC\u9047\u7A7A\u52AB\uFF08\u8D22\u6765\u8D22\u53BB\uFF09": "Tham Lang g\u1EB7p Kh\xF4ng Ki\u1EBFp (ti\u1EC1n \u0111\u1EBFn r\u1ED3i \u0111i)",
+  "\u8F85\u5F3C\u540C\u4F1A\uFF08\u53D8\u52A8\u4E2D\u5F97\u8D35\u4EBA\uFF09": "Ph\xF9 B\u1EADt c\xF9ng h\u1ED9i (trong bi\u1EBFn \u0111\u1ED9ng c\xF3 qu\xFD nh\xE2n)",
+  "\u8F85\u5F3C\u76F8\u52A9": "Ph\xF9 B\u1EADt tr\u1EE3 gi\xFAp",
+  "\u94C3\u661F\u3001\u6587\u660C\u3001\u9640\u7F57\u3001\u6B66\u66F2\u56DB\u661F\u4F1A\u7167\u4E09\u65B9\u56DB\u6B63": "Linh Tinh, V\u0103n X\u01B0\u01A1ng, \u0110\xE0 La, V\u0169 Kh\xFAc h\u1ED9i chi\u1EBFu tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh",
+  "\u9B41\u94BA\u52A0\u7167": "Kh\xF4i Vi\u1EC7t chi\u1EBFu th\xEAm",
+  "\u9B41\u94BA\u8D35\u4EBA\u52A0\u7167": "Kh\xF4i Vi\u1EC7t qu\xFD nh\xE2n chi\u1EBFu th\xEAm",
+  "\u592A\u9634\u5316\u7984\u5C5E\u9634\u8D22\u3001\u4E0D\u52A8\u4EA7\u3002": "Th\xE1i \xC2m H\xF3a L\u1ED9c l\xE0 \xE2m t\xE0i, b\u1EA5t \u0111\u1ED9ng s\u1EA3n."
+};
+var RULES = [
+  [/^(.+?)化禄入命$/, (_, s) => `${st(s)} H\xF3a L\u1ED9c nh\u1EADp M\u1EC7nh`],
+  [/^(.+?)化禄坐命宫$/, (_, s) => `${st(s)} H\xF3a L\u1ED9c t\u1ECDa cung M\u1EC7nh`],
+  [/^(.+?)化禄坐命，主生财顺利、人缘佳、机缘多。(.*)$/, (_, s, rest) => `${st(s)} H\xF3a L\u1ED9c t\u1ECDa M\u1EC7nh, ch\u1EE7 ki\u1EBFm ti\u1EC1n thu\u1EADn l\u1EE3i, nh\xE2n duy\xEAn t\u1ED1t, nhi\u1EC1u c\u01A1 h\u1ED9i.${rest ? " " + tr(rest) : ""}`],
+  [/^(.+?)化忌入(命|迁)$/, (_, s, w) => `${st(s)} H\xF3a K\u1EF5 nh\u1EADp ${w === "\u547D" ? "M\u1EC7nh" : "Thi\xEAn Di"}`],
+  [/^(.+?)化忌坐(命|迁)宫$/, (_, s, w) => `${st(s)} H\xF3a K\u1EF5 t\u1ECDa cung ${w === "\u547D" ? "M\u1EC7nh" : "Thi\xEAn Di"}`],
+  [/^(.+?)化忌坐命宫，需留意/, (_, s) => `${st(s)} H\xF3a K\u1EF5 t\u1ECDa cung M\u1EC7nh: c\u1EA7n \u0111\u1EC3 \xFD s\u1EF1 c\u1ED1 ch\u1EA5p c\u1EE7a b\u1EA3n th\xE2n, tr\u1EDF ng\u1EA1i t\xE2m l\xFD ho\u1EB7c m\u1EA7m b\u1EC7nh, m\u1ECDi vi\u1EC7c l\xF9i m\u1ED9t b\u01B0\u1EDBc m\xE0 ngh\u0129. H\xF3a K\u1EF5 kh\xF4ng h\u1EB3n l\xE0 x\u1EA5u, n\xF3 cho bi\u1EBFt n\u0103ng l\u01B0\u1EE3ng c\u1EE7a sao n\xE0y c\u1EA7n \u0111\u01B0\u1EE3c \u0111\u1EB7c bi\u1EC7t ch\xFA \xFD.`],
+  [/^(.+?)化忌坐迁移宫，/, (_, s) => `${st(s)} H\xF3a K\u1EF5 t\u1ECDa cung Thi\xEAn Di: ra ngo\xE0i, \u0111i xa, quan h\u1EC7 v\u1EDBi ng\u01B0\u1EDDi d\u1EC5 c\xF3 tr\u1EAFc tr\u1EDF; n\xEAn gi\u1EEF h\u01A1n l\xE0 \u0111\u1ED9ng.`],
+  [/^(.+?)化科入(命|身)宫$/, (_, s, w) => `${st(s)} H\xF3a Khoa nh\u1EADp cung ${w === "\u547D" ? "M\u1EC7nh" : "Th\xE2n"}`],
+  [/^(.+?)化科入(命|身)宫，主名声/, (_, s, w) => `${st(s)} H\xF3a Khoa nh\u1EADp cung ${w === "\u547D" ? "M\u1EC7nh" : "Th\xE2n"}, ch\u1EE7 v\u1EADn danh ti\u1EBFng, gi\u1EA5y t\u1EDD, h\u1ECDc thu\u1EADt. Th\u1EA7y Ngh\xEA g\u1ECDi H\xF3a Khoa l\xE0 "sao qu\xFD nh\xE2n" (ch\u01B0a ki\u1EC3m ch\u1EE9ng) \u2014 ${st(s)} H\xF3a Khoa mang l\u1EA1i ph\u1EA9m ch\u1EA5t \u0111\u01B0\u1EE3c ng\u01B0\u1EDDi coi tr\u1ECDng; h\u1EE3p gi\u1EA5y t\u1EDD, gi\xE1o d\u1EE5c, nghi\xEAn c\u1EE9u, t\u01B0 v\u1EA5n, s\xE1ng t\u1EA1o v\u0103n h\xF3a \u2014 h\u01B0\u1EDBng "nh\u1EDD danh m\xE0 \u0111\u01B0\u1EE3c l\u1EE3i".`],
+  [/^(.+?)化禄入财帛宫$/, (_, s) => `${st(s)} H\xF3a L\u1ED9c nh\u1EADp cung T\xE0i B\u1EA1ch`],
+  [/^(.+?)化禄入财帛宫，主财源/, (_, s) => `${st(s)} H\xF3a L\u1ED9c nh\u1EADp cung T\xE0i B\u1EA1ch, ch\u1EE7 ngu\u1ED3n ti\u1EC1n th\xF4ng su\u1ED1t, thu nh\u1EADp \u1ED5n \u0111\u1ECBnh. Th\u1EA7y Ngh\xEA g\u1ECDi H\xF3a L\u1ED9c l\xE0 bi\u1EC3u t\u01B0\u1EE3ng "ch\xEDnh t\xE0i" (ch\u01B0a ki\u1EC3m ch\u1EE9ng) \u2014 n\u0103ng l\u1EF1c m\xE0 sao H\xF3a L\u1ED9c n\xE0y \u0111\u1EA1i di\u1EC7n (\u0111\u1EB7c t\xEDnh c\u1ED1t l\xF5i c\u1EE7a ${st(s)}) l\xE0 tr\u1EE5c ki\u1EBFm ti\u1EC1n c\u1EE7a b\u1EA1n. \u0110i v\u1EDBi L\u1ED9c T\u1ED3n ho\u1EB7c Thi\xEAn M\xE3 th\xEC ngu\u1ED3n ti\u1EC1n r\u1ED9ng h\u01A1n.`],
+  [/^(.+?)化权入官禄宫$/, (_, s) => `${st(s)} H\xF3a Quy\u1EC1n nh\u1EADp cung Quan L\u1ED9c`],
+  [/^(.+?)化权入官禄宫，主事业/, (_, s) => `${st(s)} H\xF3a Quy\u1EC1n nh\u1EADp cung Quan L\u1ED9c, ch\u1EE7 n\u1EAFm quy\u1EC1n ch\u1EE7 \u0111\u1ED9ng trong s\u1EF1 nghi\u1EC7p, g\xE1nh \u0111\u01B0\u1EE3c v\u1ECB tr\xED t\u1EF1 lo m\u1ED9t m\u1EA3ng. H\xF3a Quy\u1EC1n \u0111\u1EA1i di\u1EC7n quy\u1EC1n l\u1EF1c v\xE0 s\u1EE9c th\u1EF1c thi \u2014 ${st(s)} H\xF3a Quy\u1EC1n cho th\u1EA5y trong s\u1EF1 nghi\u1EC7p b\u1EA1n c\xF3 th\u1EC3 l\xE0 ng\u01B0\u1EDDi ra quy\u1EBFt \u0111\u1ECBnh ho\u1EB7c ng\u01B0\u1EDDi th\u1EF1c thi n\xF2ng c\u1ED1t; h\u1EE3p \u0111i \u0111\u01B0\u1EDDng qu\u1EA3n l\xFD ho\u1EB7c chuy\xEAn gia k\u1EF9 thu\u1EADt c\xF3 uy t\xEDn.`],
+  [/^三方四正会(.+?)（机月同梁缺(.+)）$/, (_, h, m) => `tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh h\u1ED9i ${list(h)} (C\u01A1 Nguy\u1EC7t \u0110\u1ED3ng L\u01B0\u01A1ng thi\u1EBFu ${list(m)})`],
+  [/^机月同梁需天机、太阴、天同、天梁四星齐会三方四正方为完整真格；本盘只会齐其中 3 颗（(.+?)），缺(.+?)未会/, (_, h, m) => `C\u01A1 Nguy\u1EC7t \u0110\u1ED3ng L\u01B0\u01A1ng c\u1EA7n \u0111\u1EE7 b\u1ED1n sao Thi\xEAn C\u01A1, Th\xE1i \xC2m, Thi\xEAn \u0110\u1ED3ng, Thi\xEAn L\u01B0\u01A1ng h\u1ED9i tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh m\u1EDBi l\xE0 ch\xE2n c\xE1ch tr\u1ECDn v\u1EB9n; l\xE1 s\u1ED1 n\xE0y ch\u1EC9 h\u1ED9i \u0111\u1EE7 3 sao (${list(h)}), thi\u1EBFu ${list(m)}, n\xEAn kh\xF4ng ph\u1EA3i ch\xE2n c\xE1ch, l\u1EF1c gi\u1EA3m m\u1ED9t b\u1EADc. V\u0103n nh\xE3 c\xF3 m\u01B0u, h\u1EE3p c\xF4ng ch\u1EE9c, gi\u1EA3ng d\u1EA1y nghi\xEAn c\u1EE9u, y t\u1EBF, d\u1ECBch v\u1EE5 \u2014 nh\u1EEFng ng\xE0nh d\u1EF1a v\xE0o t\xEDch l\u0169y v\xE0 \u1ED5n \u0111\u1ECBnh; m\u1EA5u ch\u1ED1t l\xE0 xem sao c\xF2n thi\u1EBFu v\xE0 s\u1EF1 ph\u1ED1i h\u1EE3p c\u1EE7a T\u1EE9 H\xF3a.`],
+  [/^太阳太阴于(.)宫同宫，阴阳平衡，文武兼备。主异性缘佳、事业顺遂、名声远播。(.*)$/, (_, b, rest) => `Th\xE1i D\u01B0\u01A1ng, Th\xE1i \xC2m \u0111\u1ED3ng cung \u1EDF ${BR[b] ?? b}, \xE2m d\u01B0\u01A1ng c\xE2n b\u1EB1ng, v\u0103n v\xF5 ki\xEAm to\xE0n. Ch\u1EE7 duy\xEAn v\u1EDBi ng\u01B0\u1EDDi kh\xE1c gi\u1EDBi t\u1ED1t, s\u1EF1 nghi\u1EC7p thu\u1EADn l\u1EE3i, danh ti\u1EBFng vang xa.${rest ? " " + tr(rest) : ""}`],
+  [/^太阳太阴同入(.)宫$/, (_, b) => `Th\xE1i D\u01B0\u01A1ng, Th\xE1i \xC2m c\xF9ng v\xE0o cung ${BR[b] ?? b}`],
+  [/^巨门入命于(.)宫$/, (_, b) => `C\u1EF1 M\xF4n nh\u1EADp M\u1EC7nh \u1EDF cung ${BR[b] ?? b}`],
+  [/^巨门太阳同(.)宫，/, (_, b) => `C\u1EF1 M\xF4n, Th\xE1i D\u01B0\u01A1ng \u0111\u1ED3ng cung \u1EDF ${BR[b] ?? b}; Th\xE1i D\u01B0\u01A1ng h\xF3a gi\u1EA3i c\xE1i "\xE1m" c\u1EE7a C\u1EF1 M\xF4n, ch\u1EE7 l\u1EADp nghi\u1EC7p b\u1EB1ng \u0103n n\xF3i, truy\u1EC1n th\xF4ng, ngo\u1EA1i ng\u1EEF, chuy\xEAn m\xF4n. \u1EDE D\u1EA7n l\xE0 t\u1ED1t, \u1EDF Th\xE2n l\u1EF1c gi\u1EA3m. S\u1EE3 C\u1EF1 M\xF4n H\xF3a K\u1EF5 th\xEC ki\u1EC7n t\u1EE5ng.`],
+  [/^巨门太阳同入(.)宫$/, (_, b) => `C\u1EF1 M\xF4n, Th\xE1i D\u01B0\u01A1ng c\xF9ng v\xE0o cung ${BR[b] ?? b}`],
+  [/^贪狼(同宫|会照)(.+)$/, (_, w, s) => `Tham Lang ${w === "\u540C\u5BAB" ? "\u0111\u1ED3ng cung" : "h\u1ED9i chi\u1EBFu"} ${list(s)}`],
+  [/^贪狼遇(.+?)(同宫|三方会照)，主突发横财、突如其来的机遇。古书云“贪狼遇火铃，必发横财”，但来得快去得也快，宜见好就收。(.*)$/, (_, s, w, rest) => `Tham Lang g\u1EB7p ${list(s)} ${w === "\u540C\u5BAB" ? "\u0111\u1ED3ng cung" : "h\u1ED9i chi\u1EBFu \u1EDF tam ph\u01B0\u01A1ng"}, ch\u1EE7 ho\u1EA1nh t\xE0i b\u1EA5t ng\u1EDD, c\u01A1 h\u1ED9i \u0111\u1EBFn \u0111\u1ED9t ng\u1ED9t. S\xE1ch x\u01B0a n\xF3i "Tham Lang g\u1EB7p H\u1ECFa Linh \u1EAFt ph\xE1t ho\u1EA1nh t\xE0i", nh\u01B0ng \u0111\u1EBFn nhanh \u0111i c\u0169ng nhanh, n\xEAn th\u1EA5y t\u1ED1t th\xEC d\u1EEBng.${rest ? " " + tr(rest) : ""}`]
+];
+function tr(zh) {
+  if (!zh) return zh;
+  const exact = EXACT[zh];
+  if (exact) return exact;
+  for (const [re, fn] of RULES) {
+    const m = re.exec(zh);
+    if (m) return fn(...m);
+  }
+  return zh;
+}
+var STAR_VI = {
+  \u7D2B\u5FAE: { keywords: "\u0111\u1EBF v\u01B0\u01A1ng \xB7 t\xF4n qu\xFD \xB7 \u0111\u1ED9c l\u1EADp", nature: "trung t\xEDnh thi\xEAn c\xE1t", element: "Th\u1ED5" },
+  \u5929\u673A: { keywords: "tr\xED tu\u1EC7 \xB7 c\u01A1 bi\u1EBFn \xB7 m\u01B0u l\u01B0\u1EE3c", nature: "c\xE1t tinh", element: "M\u1ED9c" },
+  \u592A\u9633: { keywords: "d\u01B0\u01A1ng c\u01B0\u01A1ng \xB7 quan qu\xFD \xB7 h\xE0o ph\xF3ng", nature: "c\xE1t tinh", element: "H\u1ECFa" },
+  \u6B66\u66F2: { keywords: "ti\u1EC1n c\u1EE7a \xB7 c\u01B0\u01A1ng ngh\u1ECB \xB7 qu\u1EA3 quy\u1EBFt", nature: "trung t\xEDnh", element: "Kim" },
+  \u5929\u540C: { keywords: "\xF4n h\xF2a \xB7 h\u01B0\u1EDFng ph\xFAc \xB7 t\xF9y duy\xEAn", nature: "c\xE1t tinh", element: "Th\u1EE7y" },
+  \u5EC9\u8D1E: { keywords: "t\xE0i ngh\u1EC7 \xB7 h\xECnh t\xF9 \xB7 \u0111\xE0o hoa", nature: "trong hung c\xF3 c\xE1t", element: "H\u1ECFa" },
+  \u5929\u5E9C: { keywords: "kho ti\u1EC1n \xB7 \u0111i\u1EC1m \u0111\u1EA1m \xB7 b\u1EA3o th\u1EE7", nature: "c\xE1t tinh", element: "Th\u1ED5" },
+  \u592A\u9634: { keywords: "nhu m\u1EF9 \xB7 ti\u1EC1n c\u1EE7a \xB7 \xE2m nhu", nature: "c\xE1t tinh", element: "Th\u1EE7y" },
+  \u8D2A\u72FC: { keywords: "d\u1EE5c v\u1ECDng \xB7 \u0111\xE0o hoa \xB7 \u0111a t\xE0i", nature: "trung t\xEDnh", element: "M\u1ED9c" },
+  \u5DE8\u95E8: { keywords: "kh\u1EA9u thi\u1EC7t \xB7 th\u1ECB phi \xB7 gi\u1ECFi bi\u1EC7n lu\u1EADn", nature: "trong hung c\xF3 c\xE1t", element: "Th\u1EE7y" },
+  \u5929\u76F8: { keywords: "ph\xF2 t\xE1 \xB7 h\xE0nh ch\xEDnh \xB7 \u1EA5n th\u1EE5", nature: "c\xE1t tinh", element: "Th\u1EE7y" },
+  \u5929\u6881: { keywords: "che ch\u1EDF \xB7 y d\u01B0\u1EE3c \xB7 b\u1EADc tr\xEAn", nature: "c\xE1t tinh", element: "Th\u1ED5" },
+  \u4E03\u6740: { keywords: "t\u01B0\u1EDBng tinh \xB7 qu\u1EA3 quy\u1EBFt \xB7 c\xF4 kh\u1EAFc", nature: "hung tinh", element: "Kim" },
+  \u7834\u519B: { keywords: "khai s\xE1ng \xB7 bi\u1EBFn \u0111\u1ED9ng \xB7 ph\xE1 c\u0169", nature: "hung tinh", element: "Th\u1EE7y" }
+};
+
 // src/chart.ts
 var SHICHEN_RANGE = [
   "23:00\u201300:59",
@@ -34878,10 +35100,10 @@ var T = {
   empty: ["Empty", "V\xF4 ch\xEDnh di\u1EC7u"],
   borrow: ["borrows from opposite", "m\u01B0\u1EE3n cung \u0111\u1ED1i"],
   sanfang: ["Life palace triad (\u4E09\u65B9\u56DB\u6B63)", "Tam ph\u01B0\u01A1ng t\u1EE9 ch\xEDnh c\u1EE7a M\u1EC7nh"],
-  starMeaning: ["Life-palace main stars (Chinese keywords)", "Ch\xEDnh tinh cung M\u1EC7nh (t\u1EEB kh\xF3a g\u1ED1c ti\u1EBFng Trung)"],
+  starMeaning: ["Life-palace main stars (Chinese keywords)", "Ch\xEDnh tinh cung M\u1EC7nh"],
   patterns: ["Patterns detected", "C\xE1ch c\u1EE5c nh\u1EADn di\u1EC7n \u0111\u01B0\u1EE3c"],
   none: ["No notable pattern", "Kh\xF4ng c\xF3 c\xE1ch c\u1EE5c n\u1ED5i b\u1EADt"],
-  srcText: ["Source text (Chinese)", "Nguy\xEAn v\u0103n (ti\u1EBFng Trung)"],
+  srcText: ["Source text (Chinese)", "L\u1EDDi lu\u1EADn"],
   req: ["Required", "\u0110i\u1EC1u ki\u1EC7n"],
   bonus: ["Strengthened by", "T\u0103ng l\u1EF1c"],
   broken: ["Weakened by", "Ph\xE1 c\xE1ch"],
@@ -34969,7 +35191,7 @@ function palaceRow(p, chart) {
   return `| ${palaceName(p.name)} (${p.name})${tags ? ` **[${tags}]**` : ""} | ${stem(p.stem, LANG)} ${branch(p.branch, LANG)} | ${major} | ${lucky} | ${sha} | ${minor} | ${age} |`;
 }
 function renderChart(args) {
-  LANG = args.lang === "vi" ? "vi" : "en";
+  LANG = args.lang === "en" ? "en" : "vi";
   if (args["find-city"]) {
     const res = [];
     const w = findWorldCity(args["find-city"]);
@@ -35060,7 +35282,7 @@ function renderChart(args) {
   const L = chart.lunarInfo;
   const ming = chart.palaces.find((p) => p.branch === chart.mingGongBranch);
   const shen = chart.palaces.find((p) => p.branch === chart.shenGongBranch);
-  const sh4 = (tr) => ["\u7984", "\u6743", "\u79D1", "\u5FCC"].map((k) => `${term(tr[k], LANG)} ${sihuaShort(k, LANG)}`).join(" \xB7 ");
+  const sh4 = (tr2) => ["\u7984", "\u6743", "\u79D1", "\u5FCC"].map((k) => `${term(tr2[k], LANG)} ${sihuaShort(k, LANG)}`).join(" \xB7 ");
   const out = [];
   out.push(`# ${t("title")}`, "");
   out.push(`- ${t("solar")}: ${date} \xB7 ${t("gender")}: ${t(gender)} (${term(chart.yinYangGender ?? "", LANG)})${place ? ` \xB7 ${t("place")}: ${place}` : ""}${longitude !== void 0 ? ` (${t("east")} ${longitude}${utcOffset !== void 0 ? `, UTC${utcOffset >= 0 ? "+" : ""}${utcOffset / 60}` : ""})` : ""}`);
@@ -35085,19 +35307,23 @@ function renderChart(args) {
     out.push(`- ${palaceName(p.name)}: ${majorsOf(p).map(starLabel).join(", ") || t("empty")}`);
   }
   out.push("", `## ${t("starMeaning")}`);
-  const list = majorsOf(ming).length ? majorsOf(ming).map((s) => s.name) : ming.borrowedStars ?? [];
-  for (const s of list) {
+  const list2 = majorsOf(ming).length ? majorsOf(ming).map((s) => s.name) : ming.borrowedStars ?? [];
+  for (const s of list2) {
     const d = STAR_DESCRIPTIONS[s];
-    if (d) out.push(`- ${label(s, LANG)}: ${d.keywords}; ${d.nature}; ${d.element}`);
+    const dv = LANG === "vi" ? STAR_VI[s] : void 0;
+    if (dv) out.push(`- ${label(s, LANG)}: ${dv.keywords}; ${dv.nature}; h\xE0nh ${dv.element}`);
+    else if (d) out.push(`- ${label(s, LANG)}: ${d.keywords}; ${d.nature}; ${d.element}`);
   }
   out.push("", `## ${t("patterns")} (${patterns.length})`);
   if (!patterns.length) out.push(`- ${t("none")}`);
   for (const p of patterns) {
     out.push(`- **${label(p.name, LANG)}** \u2014 ${LEVEL[p.level][LANG === "vi" ? 0 : 1]}`);
-    out.push(`  - ${t("srcText")}: ${p.description}`);
-    if (p.conditions?.required?.length) out.push(`  - ${t("req")}: ${p.conditions.required.join("\uFF1B")}`);
-    if (p.conditions?.bonus?.length) out.push(`  - ${t("bonus")}: ${p.conditions.bonus.join("\uFF1B")}`);
-    if (p.conditions?.breaking?.length) out.push(`  - ${t("broken")}: ${p.conditions.breaking.join("\uFF1B")}`);
+    const X = (z) => LANG === "vi" ? tr(z) : z;
+    const J = LANG === "vi" ? "; " : "\uFF1B";
+    out.push(`  - ${t("srcText")}: ${X(p.description)}`);
+    if (p.conditions?.required?.length) out.push(`  - ${t("req")}: ${p.conditions.required.map(X).join(J)}`);
+    if (p.conditions?.bonus?.length) out.push(`  - ${t("bonus")}: ${p.conditions.bonus.map(X).join(J)}`);
+    if (p.conditions?.breaking?.length) out.push(`  - ${t("broken")}: ${p.conditions.breaking.map(X).join(J)}`);
     if (p.source) out.push(`  - ${t("source")}: ${p.source}`);
   }
   out.push("", `## ${t("decades")}`);

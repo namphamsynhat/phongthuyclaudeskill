@@ -123,7 +123,7 @@ def main():
     ap.add_argument("--key", help="YYYY-MM-DD-H-male|female")
     ap.add_argument("--download-all", action="store_true", help="download and verify all 77 year files into ../data/")
     ap.add_argument("--topic", default="overview", help="comma list, or 'all'")
-    ap.add_argument("--lang", default="en", choices=["en", "vi"])
+    ap.add_argument("--lang", default="vi", choices=["en", "vi"])
     a = ap.parse_args()
     if a.download_all:
         download_all()

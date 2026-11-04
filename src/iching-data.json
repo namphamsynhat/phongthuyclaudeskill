@@ -1,0 +1,702 @@
+{
+ "trigrams": [
+  {
+   "key": "qian",
+   "zh": "乾",
+   "vi": "Càn",
+   "symbol": "☰",
+   "lines": "111",
+   "nature_zh": "天",
+   "nature_vi": "Trời",
+   "element": "Kim",
+   "direction": "Tây Bắc",
+   "role": "Cha / chồng (người chủ nhà nam)",
+   "en": "Heaven",
+   "direction_en": "North-west",
+   "role_en": "father / husband"
+  },
+  {
+   "key": "dui",
+   "zh": "兑",
+   "vi": "Đoài",
+   "symbol": "☱",
+   "lines": "110",
+   "nature_zh": "泽",
+   "nature_vi": "Đầm",
+   "element": "Kim",
+   "direction": "Tây",
+   "role": "Con gái út",
+   "en": "Lake",
+   "direction_en": "West",
+   "role_en": "youngest daughter"
+  },
+  {
+   "key": "li",
+   "zh": "离",
+   "vi": "Ly",
+   "symbol": "☲",
+   "lines": "101",
+   "nature_zh": "火",
+   "nature_vi": "Lửa",
+   "element": "Hỏa",
+   "direction": "Nam",
+   "role": "Con gái giữa",
+   "en": "Fire",
+   "direction_en": "South",
+   "role_en": "middle daughter"
+  },
+  {
+   "key": "zhen",
+   "zh": "震",
+   "vi": "Chấn",
+   "symbol": "☳",
+   "lines": "100",
+   "nature_zh": "雷",
+   "nature_vi": "Sấm",
+   "element": "Mộc",
+   "direction": "Đông",
+   "role": "Con trai cả",
+   "en": "Thunder",
+   "direction_en": "East",
+   "role_en": "eldest son"
+  },
+  {
+   "key": "xun",
+   "zh": "巽",
+   "vi": "Tốn",
+   "symbol": "☴",
+   "lines": "011",
+   "nature_zh": "风",
+   "nature_vi": "Gió",
+   "element": "Mộc",
+   "direction": "Đông Nam",
+   "role": "Con gái cả",
+   "en": "Wind",
+   "direction_en": "South-east",
+   "role_en": "eldest daughter"
+  },
+  {
+   "key": "kan",
+   "zh": "坎",
+   "vi": "Khảm",
+   "symbol": "☵",
+   "lines": "010",
+   "nature_zh": "水",
+   "nature_vi": "Nước",
+   "element": "Thủy",
+   "direction": "Bắc",
+   "role": "Con trai giữa",
+   "en": "Water",
+   "direction_en": "North",
+   "role_en": "middle son"
+  },
+  {
+   "key": "gen",
+   "zh": "艮",
+   "vi": "Cấn",
+   "symbol": "☶",
+   "lines": "001",
+   "nature_zh": "山",
+   "nature_vi": "Núi",
+   "element": "Thổ",
+   "direction": "Đông Bắc",
+   "role": "Con trai út",
+   "en": "Mountain",
+   "direction_en": "North-east",
+   "role_en": "youngest son"
+  },
+  {
+   "key": "kun",
+   "zh": "坤",
+   "vi": "Khôn",
+   "symbol": "☷",
+   "lines": "000",
+   "nature_zh": "地",
+   "nature_vi": "Đất",
+   "element": "Thổ",
+   "direction": "Tây Nam",
+   "role": "Mẹ / vợ (người chủ nhà nữ)",
+   "en": "Earth",
+   "direction_en": "South-west",
+   "role_en": "mother / wife"
+  }
+ ],
+ "hexagrams": [
+  {
+   "n": 1,
+   "zh": "乾为天",
+   "vi": "Thuần Càn",
+   "en": "The Creative",
+   "upper": "qian",
+   "lower": "qian",
+   "meaning": "Trời; cương kiện, tự cường không ngừng, làm chủ"
+  },
+  {
+   "n": 2,
+   "zh": "坤为地",
+   "vi": "Thuần Khôn",
+   "en": "The Receptive",
+   "upper": "kun",
+   "lower": "kun",
+   "meaning": "Đất; nhu thuận, bao dung, nâng đỡ vạn vật"
+  },
+  {
+   "n": 3,
+   "zh": "水雷屯",
+   "vi": "Thủy Lôi Truân",
+   "en": "Difficulty at the Beginning",
+   "upper": "kan",
+   "lower": "zhen",
+   "meaning": "Gian nan lúc khởi đầu; gieo mầm giữa khó khăn"
+  },
+  {
+   "n": 4,
+   "zh": "山水蒙",
+   "vi": "Sơn Thủy Mông",
+   "en": "Youthful Folly",
+   "upper": "gen",
+   "lower": "kan",
+   "meaning": "Non nớt, mờ tối; cần học hỏi và khai sáng"
+  },
+  {
+   "n": 5,
+   "zh": "水天需",
+   "vi": "Thủy Thiên Nhu",
+   "en": "Waiting",
+   "upper": "kan",
+   "lower": "qian",
+   "meaning": "Chờ đợi đúng thời; nuôi sức trước khi tiến"
+  },
+  {
+   "n": 6,
+   "zh": "天水讼",
+   "vi": "Thiên Thủy Tụng",
+   "en": "Conflict",
+   "upper": "qian",
+   "lower": "kan",
+   "meaning": "Tranh chấp, kiện tụng; nên hòa giải, dừng giữa chừng"
+  },
+  {
+   "n": 7,
+   "zh": "地水师",
+   "vi": "Địa Thủy Sư",
+   "en": "The Army",
+   "upper": "kun",
+   "lower": "kan",
+   "meaning": "Quân đội, kỷ luật; dẫn dắt đám đông bằng chính nghĩa"
+  },
+  {
+   "n": 8,
+   "zh": "水地比",
+   "vi": "Thủy Địa Tỷ",
+   "en": "Holding Together",
+   "upper": "kan",
+   "lower": "kun",
+   "meaning": "Gần gũi, liên kết; chọn đúng người để theo"
+  },
+  {
+   "n": 9,
+   "zh": "风天小畜",
+   "vi": "Phong Thiên Tiểu Súc",
+   "en": "Small Taming",
+   "upper": "xun",
+   "lower": "qian",
+   "meaning": "Tích nhỏ; bị kiềm hãm tạm thời, tích lũy dần"
+  },
+  {
+   "n": 10,
+   "zh": "天泽履",
+   "vi": "Thiên Trạch Lý",
+   "en": "Treading",
+   "upper": "qian",
+   "lower": "dui",
+   "meaning": "Bước đi, lễ nghĩa; thận trọng như giẫm đuôi hổ"
+  },
+  {
+   "n": 11,
+   "zh": "地天泰",
+   "vi": "Địa Thiên Thái",
+   "en": "Peace",
+   "upper": "kun",
+   "lower": "qian",
+   "meaning": "Thông suốt, trên dưới giao hòa; hanh thông"
+  },
+  {
+   "n": 12,
+   "zh": "天地否",
+   "vi": "Thiên Địa Bĩ",
+   "en": "Standstill",
+   "upper": "qian",
+   "lower": "kun",
+   "meaning": "Bế tắc, trên dưới không giao; giữ mình chờ thời"
+  },
+  {
+   "n": 13,
+   "zh": "天火同人",
+   "vi": "Thiên Hỏa Đồng Nhân",
+   "en": "Fellowship",
+   "upper": "qian",
+   "lower": "li",
+   "meaning": "Hòa đồng, cùng chí hướng với người"
+  },
+  {
+   "n": 14,
+   "zh": "火天大有",
+   "vi": "Hỏa Thiên Đại Hữu",
+   "en": "Great Possession",
+   "upper": "li",
+   "lower": "qian",
+   "meaning": "Có lớn, sung túc; giữ đức để giữ của"
+  },
+  {
+   "n": 15,
+   "zh": "地山谦",
+   "vi": "Địa Sơn Khiêm",
+   "en": "Modesty",
+   "upper": "kun",
+   "lower": "gen",
+   "meaning": "Khiêm tốn; quẻ duy nhất sáu hào đều tốt"
+  },
+  {
+   "n": 16,
+   "zh": "雷地豫",
+   "vi": "Lôi Địa Dự",
+   "en": "Enthusiasm",
+   "upper": "zhen",
+   "lower": "kun",
+   "meaning": "Vui vẻ, an lạc; chuẩn bị trước, đừng ham vui"
+  },
+  {
+   "n": 17,
+   "zh": "泽雷随",
+   "vi": "Trạch Lôi Tùy",
+   "en": "Following",
+   "upper": "dui",
+   "lower": "zhen",
+   "meaning": "Theo, thuận theo thời và người"
+  },
+  {
+   "n": 18,
+   "zh": "山风蛊",
+   "vi": "Sơn Phong Cổ",
+   "en": "Work on the Decayed",
+   "upper": "gen",
+   "lower": "xun",
+   "meaning": "Hư hỏng tích tụ; sửa sai do đời trước để lại"
+  },
+  {
+   "n": 19,
+   "zh": "地泽临",
+   "vi": "Địa Trạch Lâm",
+   "en": "Approach",
+   "upper": "kun",
+   "lower": "dui",
+   "meaning": "Đến gần, giám sát; thời thịnh nhưng phải lo xa"
+  },
+  {
+   "n": 20,
+   "zh": "风地观",
+   "vi": "Phong Địa Quan",
+   "en": "Contemplation",
+   "upper": "xun",
+   "lower": "kun",
+   "meaning": "Quan sát, làm gương cho người nhìn vào"
+  },
+  {
+   "n": 21,
+   "zh": "火雷噬嗑",
+   "vi": "Hỏa Lôi Phệ Hạp",
+   "en": "Biting Through",
+   "upper": "li",
+   "lower": "zhen",
+   "meaning": "Cắn hợp; trừ vật cản, hình phạt nghiêm minh"
+  },
+  {
+   "n": 22,
+   "zh": "山火贲",
+   "vi": "Sơn Hỏa Bí",
+   "en": "Grace",
+   "upper": "gen",
+   "lower": "li",
+   "meaning": "Trang sức, vẻ ngoài; đẹp nhưng đừng quá hình thức"
+  },
+  {
+   "n": 23,
+   "zh": "山地剥",
+   "vi": "Sơn Địa Bác",
+   "en": "Splitting Apart",
+   "upper": "gen",
+   "lower": "kun",
+   "meaning": "Bóc mòn, suy sụp; nên yên lặng giữ gốc"
+  },
+  {
+   "n": 24,
+   "zh": "地雷复",
+   "vi": "Địa Lôi Phục",
+   "en": "Return",
+   "upper": "kun",
+   "lower": "zhen",
+   "meaning": "Trở lại, phục hồi; dương khí bắt đầu quay về"
+  },
+  {
+   "n": 25,
+   "zh": "天雷无妄",
+   "vi": "Thiên Lôi Vô Vọng",
+   "en": "Innocence",
+   "upper": "qian",
+   "lower": "zhen",
+   "meaning": "Không càn bậy; chân thật, tai họa bất ngờ"
+  },
+  {
+   "n": 26,
+   "zh": "山天大畜",
+   "vi": "Sơn Thiên Đại Súc",
+   "en": "Great Taming",
+   "upper": "gen",
+   "lower": "qian",
+   "meaning": "Tích lớn; nuôi dưỡng tài đức, chờ thời ra giúp đời"
+  },
+  {
+   "n": 27,
+   "zh": "山雷颐",
+   "vi": "Sơn Lôi Di",
+   "en": "Nourishment",
+   "upper": "gen",
+   "lower": "zhen",
+   "meaning": "Nuôi dưỡng; cẩn trọng lời nói và ăn uống"
+  },
+  {
+   "n": 28,
+   "zh": "泽风大过",
+   "vi": "Trạch Phong Đại Quá",
+   "en": "Great Exceeding",
+   "upper": "dui",
+   "lower": "xun",
+   "meaning": "Quá lớn; gánh nặng quá sức, cột kèo cong"
+  },
+  {
+   "n": 29,
+   "zh": "坎为水",
+   "vi": "Thuần Khảm",
+   "en": "The Abysmal (Water)",
+   "upper": "kan",
+   "lower": "kan",
+   "meaning": "Hiểm nguy chồng chất; giữ lòng tin để vượt hiểm"
+  },
+  {
+   "n": 30,
+   "zh": "离为火",
+   "vi": "Thuần Ly",
+   "en": "The Clinging (Fire)",
+   "upper": "li",
+   "lower": "li",
+   "meaning": "Sáng, nương tựa; văn minh, bám vào chỗ đúng"
+  },
+  {
+   "n": 31,
+   "zh": "泽山咸",
+   "vi": "Trạch Sơn Hàm",
+   "en": "Influence",
+   "upper": "dui",
+   "lower": "gen",
+   "meaning": "Cảm ứng, tình cảm nam nữ"
+  },
+  {
+   "n": 32,
+   "zh": "雷风恒",
+   "vi": "Lôi Phong Hằng",
+   "en": "Duration",
+   "upper": "zhen",
+   "lower": "xun",
+   "meaning": "Bền lâu; đạo vợ chồng lâu dài"
+  },
+  {
+   "n": 33,
+   "zh": "天山遯",
+   "vi": "Thiên Sơn Độn",
+   "en": "Retreat",
+   "upper": "qian",
+   "lower": "gen",
+   "meaning": "Lui ẩn đúng lúc để giữ mình"
+  },
+  {
+   "n": 34,
+   "zh": "雷天大壮",
+   "vi": "Lôi Thiên Đại Tráng",
+   "en": "Great Power",
+   "upper": "zhen",
+   "lower": "qian",
+   "meaning": "Mạnh lớn; mạnh nhưng phải giữ chính đạo"
+  },
+  {
+   "n": 35,
+   "zh": "火地晋",
+   "vi": "Hỏa Địa Tấn",
+   "en": "Progress",
+   "upper": "li",
+   "lower": "kun",
+   "meaning": "Tiến lên như mặt trời mọc"
+  },
+  {
+   "n": 36,
+   "zh": "地火明夷",
+   "vi": "Địa Hỏa Minh Di",
+   "en": "Darkening of the Light",
+   "upper": "kun",
+   "lower": "li",
+   "meaning": "Ánh sáng bị che, bị tổn thương; giấu tài giữ mình"
+  },
+  {
+   "n": 37,
+   "zh": "风火家人",
+   "vi": "Phong Hỏa Gia Nhân",
+   "en": "The Family",
+   "upper": "xun",
+   "lower": "li",
+   "meaning": "Người nhà; đạo gia đình, mỗi người đúng vị trí"
+  },
+  {
+   "n": 38,
+   "zh": "火泽睽",
+   "vi": "Hỏa Trạch Khuê",
+   "en": "Opposition",
+   "upper": "li",
+   "lower": "dui",
+   "meaning": "Chia lìa, trái ý; tìm điểm chung trong khác biệt"
+  },
+  {
+   "n": 39,
+   "zh": "水山蹇",
+   "vi": "Thủy Sơn Kiển",
+   "en": "Obstruction",
+   "upper": "kan",
+   "lower": "gen",
+   "meaning": "Gian nan, đi khó; quay lại tu thân"
+  },
+  {
+   "n": 40,
+   "zh": "雷水解",
+   "vi": "Lôi Thủy Giải",
+   "en": "Deliverance",
+   "upper": "zhen",
+   "lower": "kan",
+   "meaning": "Giải tỏa, tháo gỡ khó khăn"
+  },
+  {
+   "n": 41,
+   "zh": "山泽损",
+   "vi": "Sơn Trạch Tổn",
+   "en": "Decrease",
+   "upper": "gen",
+   "lower": "dui",
+   "meaning": "Bớt; bớt dưới thêm trên, bớt dục vọng"
+  },
+  {
+   "n": 42,
+   "zh": "风雷益",
+   "vi": "Phong Lôi Ích",
+   "en": "Increase",
+   "upper": "xun",
+   "lower": "zhen",
+   "meaning": "Thêm; bớt trên thêm dưới, làm lợi cho người"
+  },
+  {
+   "n": 43,
+   "zh": "泽天夬",
+   "vi": "Trạch Thiên Quải",
+   "en": "Breakthrough",
+   "upper": "dui",
+   "lower": "qian",
+   "meaning": "Quyết đoán; trừ bỏ kẻ tiểu nhân"
+  },
+  {
+   "n": 44,
+   "zh": "天风姤",
+   "vi": "Thiên Phong Cấu",
+   "en": "Coming to Meet",
+   "upper": "qian",
+   "lower": "xun",
+   "meaning": "Gặp gỡ bất ngờ; một âm gặp năm dương"
+  },
+  {
+   "n": 45,
+   "zh": "泽地萃",
+   "vi": "Trạch Địa Tụy",
+   "en": "Gathering Together",
+   "upper": "dui",
+   "lower": "kun",
+   "meaning": "Tụ họp; người và của tụ về"
+  },
+  {
+   "n": 46,
+   "zh": "地风升",
+   "vi": "Địa Phong Thăng",
+   "en": "Pushing Upward",
+   "upper": "kun",
+   "lower": "xun",
+   "meaning": "Đi lên dần, như cây mọc từ đất"
+  },
+  {
+   "n": 47,
+   "zh": "泽水困",
+   "vi": "Trạch Thủy Khốn",
+   "en": "Oppression",
+   "upper": "dui",
+   "lower": "kan",
+   "meaning": "Khốn cùng; giữ chí trong cảnh khó"
+  },
+  {
+   "n": 48,
+   "zh": "水风井",
+   "vi": "Thủy Phong Tỉnh",
+   "en": "The Well",
+   "upper": "kan",
+   "lower": "xun",
+   "meaning": "Cái giếng; nuôi người không cạn"
+  },
+  {
+   "n": 49,
+   "zh": "泽火革",
+   "vi": "Trạch Hỏa Cách",
+   "en": "Revolution",
+   "upper": "dui",
+   "lower": "li",
+   "meaning": "Thay đổi, cách mạng; đổi đúng thời"
+  },
+  {
+   "n": 50,
+   "zh": "火风鼎",
+   "vi": "Hỏa Phong Đỉnh",
+   "en": "The Cauldron",
+   "upper": "li",
+   "lower": "xun",
+   "meaning": "Cái vạc; lập cái mới, ổn định"
+  },
+  {
+   "n": 51,
+   "zh": "震为雷",
+   "vi": "Thuần Chấn",
+   "en": "The Arousing (Thunder)",
+   "upper": "zhen",
+   "lower": "zhen",
+   "meaning": "Sấm động; kinh sợ rồi tỉnh ngộ"
+  },
+  {
+   "n": 52,
+   "zh": "艮为山",
+   "vi": "Thuần Cấn",
+   "en": "Keeping Still (Mountain)",
+   "upper": "gen",
+   "lower": "gen",
+   "meaning": "Núi; dừng lại đúng chỗ"
+  },
+  {
+   "n": 53,
+   "zh": "风山渐",
+   "vi": "Phong Sơn Tiệm",
+   "en": "Development",
+   "upper": "xun",
+   "lower": "gen",
+   "meaning": "Tiến dần theo thứ tự; con gái về nhà chồng đúng lễ"
+  },
+  {
+   "n": 54,
+   "zh": "雷泽归妹",
+   "vi": "Lôi Trạch Quy Muội",
+   "en": "The Marrying Maiden",
+   "upper": "zhen",
+   "lower": "dui",
+   "meaning": "Em gái về nhà chồng; vội vàng, sai vị trí"
+  },
+  {
+   "n": 55,
+   "zh": "雷火丰",
+   "vi": "Lôi Hỏa Phong",
+   "en": "Abundance",
+   "upper": "zhen",
+   "lower": "li",
+   "meaning": "Thịnh lớn; thịnh rồi sẽ suy, giữ sáng suốt"
+  },
+  {
+   "n": 56,
+   "zh": "火山旅",
+   "vi": "Hỏa Sơn Lữ",
+   "en": "The Wanderer",
+   "upper": "li",
+   "lower": "gen",
+   "meaning": "Lữ khách, đi xa, không ổn định"
+  },
+  {
+   "n": 57,
+   "zh": "巽为风",
+   "vi": "Thuần Tốn",
+   "en": "The Gentle (Wind)",
+   "upper": "xun",
+   "lower": "xun",
+   "meaning": "Gió; nhu thuận, thâm nhập"
+  },
+  {
+   "n": 58,
+   "zh": "兑为泽",
+   "vi": "Thuần Đoài",
+   "en": "The Joyous (Lake)",
+   "upper": "dui",
+   "lower": "dui",
+   "meaning": "Đầm; vui vẻ, nói năng, giao tiếp"
+  },
+  {
+   "n": 59,
+   "zh": "风水涣",
+   "vi": "Phong Thủy Hoán",
+   "en": "Dispersion",
+   "upper": "xun",
+   "lower": "kan",
+   "meaning": "Tan tác, phân tán; gom lòng người lại"
+  },
+  {
+   "n": 60,
+   "zh": "水泽节",
+   "vi": "Thủy Trạch Tiết",
+   "en": "Limitation",
+   "upper": "kan",
+   "lower": "dui",
+   "meaning": "Tiết chế, có chừng mực"
+  },
+  {
+   "n": 61,
+   "zh": "风泽中孚",
+   "vi": "Phong Trạch Trung Phu",
+   "en": "Inner Truth",
+   "upper": "xun",
+   "lower": "dui",
+   "meaning": "Lòng thành tín bên trong"
+  },
+  {
+   "n": 62,
+   "zh": "雷山小过",
+   "vi": "Lôi Sơn Tiểu Quá",
+   "en": "Small Exceeding",
+   "upper": "zhen",
+   "lower": "gen",
+   "meaning": "Quá nhỏ; việc nhỏ được, việc lớn không"
+  },
+  {
+   "n": 63,
+   "zh": "水火既济",
+   "vi": "Thủy Hỏa Ký Tế",
+   "en": "After Completion",
+   "upper": "kan",
+   "lower": "li",
+   "meaning": "Đã xong; thành rồi phải đề phòng loạn"
+  },
+  {
+   "n": 64,
+   "zh": "火水未济",
+   "vi": "Hỏa Thủy Vị Tế",
+   "en": "Before Completion",
+   "upper": "li",
+   "lower": "kan",
+   "meaning": "Chưa xong; còn cơ hội, thận trọng đi tiếp"
+  }
+ ]
+}

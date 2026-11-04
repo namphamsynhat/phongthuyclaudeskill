@@ -137,7 +137,7 @@ function openDecompressed(file) {
     child.kill();
   } };
 }
-async function readingMarkdown(dataDir2, key, topics2 = ["overview"], lang = "en") {
+async function readingMarkdown(dataDir2, key, topics2 = ["overview"], lang = "vi") {
   const list = topics2 === "all" ? [...TOPICS] : topics2;
   for (const t of list) if (!TOPICS.includes(t)) throw new Error(`Unknown topic "${t}". Choose from: ${TOPICS.join(", ")}`);
   const rec = await findRecord(dataDir2, key);
@@ -171,7 +171,7 @@ if (!args.key) {
 var here = dirname(fileURLToPath(import.meta.url));
 var dataDir = args.data ?? process.env.ZIWEI_DATA_DIR ?? join2(here, "..", "data");
 var topics = args.topic === "all" ? "all" : (args.topic ?? "overview").split(",").map((s) => s.trim());
-readingMarkdown(dataDir, args.key, topics, args.lang === "vi" ? "vi" : "en").then((md) => console.log(md)).catch((e) => {
+readingMarkdown(dataDir, args.key, topics, args.lang === "en" ? "en" : "vi").then((md) => console.log(md)).catch((e) => {
   console.error(`Error: ${e.message}`);
   process.exit(1);
 });

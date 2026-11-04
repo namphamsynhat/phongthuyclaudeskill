@@ -20,6 +20,6 @@ if (!args.key) {
 const here = dirname(fileURLToPath(import.meta.url));
 const dataDir = args.data ?? process.env.ZIWEI_DATA_DIR ?? join(here, '..', 'data');
 const topics = args.topic === 'all' ? 'all' : (args.topic ?? 'overview').split(',').map(s => s.trim());
-readingMarkdown(dataDir, args.key, topics, args.lang === 'vi' ? 'vi' : 'en')
+readingMarkdown(dataDir, args.key, topics, args.lang === 'en' ? 'en' : 'vi')
   .then(md => console.log(md))
   .catch(e => { console.error(`Error: ${e.message}`); process.exit(1); });

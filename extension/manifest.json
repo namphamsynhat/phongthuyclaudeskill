@@ -1,34 +1,82 @@
 {
   "manifest_version": "0.2",
   "name": "ziwei-doushu",
-  "display_name": "Tử Vi Đẩu Số · Zi Wei Dou Shu",
-  "version": "1.0.0",
-  "description": "Offline Zi Wei Dou Shu (Tử Vi) charts and readings in the Ni Haixia tradition, in English or Vietnamese.",
-  "long_description": "Gives Claude tools to draw a Zi Wei Dou Shu chart with true solar time, fetch the pre-written 13-topic natal reading for any birth from 1950 to 2026 (open dataset v4.0, bundled, no internet needed), search 1,848 timestamped Ni Haixia (Nghê Hải Hạ) quotes in Vietnamese or Chinese, and read the pattern, classics and compatibility notes. Built on the open-source engine of Renhuai123/ziwei-doushu (MIT). The Ni Haixia quotes are CC BY-NC-SA 4.0: non-commercial use only. Readings are for culture and entertainment, not medical, legal or financial advice.",
-  "author": { "name": "namphamsynhat", "url": "https://github.com/namphamsynhat" },
-  "repository": { "type": "git", "url": "https://github.com/namphamsynhat/phongthuyclaudeskill" },
+  "display_name": "Tử Vi Đẩu Số & Kinh Dịch",
+  "version": "1.1.0",
+  "description": "Lá số Tử Vi và Kinh Dịch (quẻ, dương trạch) theo thầy Nghê Hải Hạ, offline, tiếng Việt và tiếng Anh.",
+  "long_description": "Cho Claude các công cụ offline: lập lá số Tử Vi Đẩu Số theo giờ mặt trời thật; lấy bài luận soạn sẵn 13 chủ đề cho người sinh 1950–2026 (bộ dữ liệu mở v4.0, kèm sẵn, không cần mạng); Kinh Dịch: tra 64 quẻ, gieo quẻ, Tiểu Lục Nhâm, ghép quẻ dương trạch cho từng người trong nhà theo phương pháp thầy Nghê Hải Hạ; tìm 4.796 câu giảng có mốc thời gian bằng tiếng Việt hoặc tiếng Trung; đọc cách cục, cổ thư, xem hợp tuổi, Bát Quái, phương pháp dương trạch. Engine mã nguồn mở của Renhuai123/ziwei-doushu (MIT). Lời giảng của thầy Nghê theo CC BY-NC-SA 4.0: chỉ dùng phi thương mại. Lời luận mang tính văn hóa, giải trí, không phải lời khuyên y khoa, pháp lý hay tài chính.\n\nOffline Zi Wei Dou Shu charts and I Ching tools (hexagrams, casting, Xiao Liu Ren, house placement) in the Ni Haixia tradition, Vietnamese first, also English.",
+  "author": {
+    "name": "namphamsynhat",
+    "url": "https://github.com/namphamsynhat"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/namphamsynhat/phongthuyclaudeskill"
+  },
   "homepage": "https://github.com/namphamsynhat/phongthuyclaudeskill",
   "license": "MIT",
-  "keywords": ["ziwei", "zi wei dou shu", "tu vi", "tử vi", "purple star astrology", "紫微斗数", "astrology", "vietnamese"],
+  "keywords": [
+    "ziwei",
+    "zi wei dou shu",
+    "tu vi",
+    "tử vi",
+    "kinh dịch",
+    "i ching",
+    "phong thủy",
+    "dương trạch",
+    "紫微斗数",
+    "易经",
+    "vietnamese"
+  ],
   "server": {
     "type": "node",
     "entry_point": "server/mcp-server.mjs",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/server/mcp-server.mjs"],
+      "args": [
+        "${__dirname}/server/mcp-server.mjs"
+      ],
       "env": {}
     }
   },
   "tools": [
-    { "name": "ziwei_chart", "description": "Draw a natal Zi Wei Dou Shu chart in English or Vietnamese, with a dataset key for the reading." },
-    { "name": "ziwei_find_city", "description": "Find longitude and UTC offset of a birthplace." },
-    { "name": "ziwei_reading", "description": "Get the pre-written 13-topic natal reading for births 1950–2026 (offline)." },
-    { "name": "ziwei_search_quotes", "description": "Search 1,848 timestamped Ni Haixia quotes in Vietnamese or Chinese." },
-    { "name": "ziwei_reference", "description": "Read the pattern rules, classics excerpts or compatibility notes." },
-    { "name": "ziwei_guide", "description": "Full reading method and rules." }
+    {
+      "name": "ziwei_chart",
+      "description": "Draw a natal Zi Wei Dou Shu chart in English or Vietnamese, with a dataset key for the reading."
+    },
+    {
+      "name": "ziwei_find_city",
+      "description": "Find longitude and UTC offset of a birthplace."
+    },
+    {
+      "name": "ziwei_reading",
+      "description": "Get the pre-written 13-topic natal reading for births 1950–2026 (offline)."
+    },
+    {
+      "name": "ziwei_search_quotes",
+      "description": "Search 4,796 timestamped Ni Haixia quotes (Zi Wei and I Ching) in Vietnamese or Chinese."
+    },
+    {
+      "name": "ziwei_reference",
+      "description": "Read pattern rules, classics, compatibility notes, the 8 trigrams, the 64 hexagrams, the house-placement method or one hexagram's quotes."
+    },
+    {
+      "name": "kinh_dich",
+      "description": "I Ching: look up or cast a hexagram, Xiao Liu Ren, and Ni Haixia's house placement (family role × room direction)."
+    },
+    {
+      "name": "ziwei_guide",
+      "description": "Full reading method and rules."
+    }
   ],
   "compatibility": {
-    "platforms": ["darwin", "win32", "linux"],
-    "runtimes": { "node": ">=22.15.0" }
+    "platforms": [
+      "darwin",
+      "win32",
+      "linux"
+    ],
+    "runtimes": {
+      "node": ">=22.15.0"
+    }
   }
 }

@@ -101,7 +101,7 @@ function openDecompressed(file: string): { stream: Readable; stop: () => void } 
 }
 
 /** Look up a reading and format the chosen topics as Markdown. */
-export async function readingMarkdown(dataDir: string, key: string, topics: string[] | 'all' = ['overview'], lang: 'en' | 'vi' = 'en'): Promise<string> {
+export async function readingMarkdown(dataDir: string, key: string, topics: string[] | 'all' = ['overview'], lang: 'en' | 'vi' = 'vi'): Promise<string> {
   const list = topics === 'all' ? [...TOPICS] : topics;
   for (const t of list) if (!(TOPICS as readonly string[]).includes(t)) throw new Error(`Unknown topic "${t}". Choose from: ${TOPICS.join(', ')}`);
   const rec = await findRecord(dataDir, key);

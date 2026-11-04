@@ -18,6 +18,7 @@ import { isChinaDST } from './ziwei/dst-cn';
 import { lunarToSolar } from './ziwei/lunar-solar';
 import { STAR_DESCRIPTIONS } from './ziwei/constants';
 import type { Palace, Star, ZiweiChart } from './ziwei/types';
+import { tr, STAR_VI } from './patterns-vi';
 import { type Lang, term, label, brightness, sihua, sihuaShort, stem, branch, ganzhi, LEVEL, findWorldCity, WORLD_CITIES } from './i18n';
 
 const SHICHEN_RANGE = ['23:00–00:59', '01:00–02:59', '03:00–04:59', '05:00–06:59', '07:00–08:59', '09:00–10:59',
@@ -46,10 +47,10 @@ const T = {
   thLucky: ['Auspicious', 'Cát tinh'], thSha: ['Malefic', 'Sát tinh'], thMinor: ['Minor stars', 'Phụ tinh khác'], thDx: ['Decade (age)', 'Đại hạn (tuổi)'],
   empty: ['Empty', 'Vô chính diệu'], borrow: ['borrows from opposite', 'mượn cung đối'],
   sanfang: ['Life palace triad (三方四正)', 'Tam phương tứ chính của Mệnh'],
-  starMeaning: ['Life-palace main stars (Chinese keywords)', 'Chính tinh cung Mệnh (từ khóa gốc tiếng Trung)'],
+  starMeaning: ['Life-palace main stars (Chinese keywords)', 'Chính tinh cung Mệnh'],
   patterns: ['Patterns detected', 'Cách cục nhận diện được'],
   none: ['No notable pattern', 'Không có cách cục nổi bật'],
-  srcText: ['Source text (Chinese)', 'Nguyên văn (tiếng Trung)'],
+  srcText: ['Source text (Chinese)', 'Lời luận'],
   req: ['Required', 'Điều kiện'], bonus: ['Strengthened by', 'Tăng lực'], broken: ['Weakened by', 'Phá cách'], source: ['Source', 'Xuất xứ'],
   decades: ['Decade luck (大限)', 'Đại hạn'],
   thAge: ['Age (East Asian)', 'Tuổi (tuổi mụ)'], thStem: ['Stem', 'Can'], thDxSh: ['Decade transformations (Lu/Quan/Ke/Ji)', 'Tứ Hóa đại hạn (Lộc/Quyền/Khoa/Kỵ)'],
@@ -128,7 +129,7 @@ function palaceRow(p: Palace, chart: ZiweiChart): string {
 
 /** Render a chart from CLI-style options (date, time, gender, city, …). Returns Markdown or JSON text; throws on bad input. */
 export function renderChart(args: Record<string, string>): string {
-  LANG = args.lang === 'vi' ? 'vi' : 'en';
+  LANG = args.lang === 'en' ? 'en' : 'vi';  // Vietnamese is the default
 
   if (args['find-city']) {
     const res: string[] = [];
@@ -250,16 +251,20 @@ export function renderChart(args: Record<string, string>): string {
   const list = majorsOf(ming).length ? majorsOf(ming).map(s => s.name) : (ming.borrowedStars ?? []);
   for (const s of list) {
     const d = STAR_DESCRIPTIONS[s];
-    if (d) out.push(`- ${label(s, LANG)}: ${d.keywords}; ${d.nature}; ${d.element}`);
+    const dv = LANG === 'vi' ? STAR_VI[s] : undefined;
+    if (dv) out.push(`- ${label(s, LANG)}: ${dv.keywords}; ${dv.nature}; hành ${dv.element}`);
+    else if (d) out.push(`- ${label(s, LANG)}: ${d.keywords}; ${d.nature}; ${d.element}`);
   }
   out.push('', `## ${t('patterns')} (${patterns.length})`);
   if (!patterns.length) out.push(`- ${t('none')}`);
   for (const p of patterns) {
     out.push(`- **${label(p.name, LANG)}** — ${LEVEL[p.level][LANG === 'vi' ? 0 : 1]}`);
-    out.push(`  - ${t('srcText')}: ${p.description}`);
-    if (p.conditions?.required?.length) out.push(`  - ${t('req')}: ${p.conditions.required.join('；')}`);
-    if (p.conditions?.bonus?.length) out.push(`  - ${t('bonus')}: ${p.conditions.bonus.join('；')}`);
-    if (p.conditions?.breaking?.length) out.push(`  - ${t('broken')}: ${p.conditions.breaking.join('；')}`);
+    const X = (z: string) => (LANG === 'vi' ? tr(z) : z);
+    const J = LANG === 'vi' ? '; ' : '；';
+    out.push(`  - ${t('srcText')}: ${X(p.description)}`);
+    if (p.conditions?.required?.length) out.push(`  - ${t('req')}: ${p.conditions.required.map(X).join(J)}`);
+    if (p.conditions?.bonus?.length) out.push(`  - ${t('bonus')}: ${p.conditions.bonus.map(X).join(J)}`);
+    if (p.conditions?.breaking?.length) out.push(`  - ${t('broken')}: ${p.conditions.breaking.map(X).join(J)}`);
     if (p.source) out.push(`  - ${t('source')}: ${p.source}`);
   }
   out.push('', `## ${t('decades')}`);

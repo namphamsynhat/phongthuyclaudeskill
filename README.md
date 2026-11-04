@@ -1,45 +1,52 @@
-# Zi Wei Dou Shu skill for Claude · Kỹ năng Tử Vi cho Claude
+# Tử Vi Đẩu Số và Kinh Dịch cho Claude
 
-A [Claude Skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) that turns Claude into a Zi Wei Dou Shu (Purple Star Astrology, Tử Vi Đẩu Số) reader in the Ni Haixia (倪海厦《天纪》) tradition. **Readings are written in English or Vietnamese.**
+Bộ [kỹ năng (Skill)](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) và tiện ích mở rộng (extension) giúp Claude luận **Tử Vi Đẩu Số** và **Kinh Dịch** (quẻ, bói, Tiểu Lục Nhâm, phong thủy dương trạch) theo truyền thống thầy **Nghê Hải Hạ** (倪海厦《天纪》). **Tiếng Việt là ngôn ngữ chính**; người dùng viết tiếng Anh thì Claude trả lời tiếng Anh.
 
-Built on the open-source engine, knowledge base and reading dataset of [Renhuai123/ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu).
+Xây dựng trên engine, kho kiến thức và bộ lời luận mã nguồn mở của [Renhuai123/ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) và kho ngữ liệu lời giảng [Renhuai123/nihai-tianji-corpus](https://github.com/Renhuai123/nihai-tianji-corpus).
 
-## How it works
+*English summary at the end.*
 
-1. Claude asks for the birth date, time, gender and birthplace.
-2. `scripts/ziwei-chart.mjs` computes the chart deterministically: true solar time, lunar conversion, star placement and brightness, the Four Transformations, patterns, decade and yearly luck. It prints the chart in English or Vietnamese and never asks Claude to work out the astrology itself.
-3. For births from 1950 to 2026, `scripts/lookup-reading.mjs` fetches that exact chart's pre-written 13-topic reading from the open dataset v4.0. These readings are source-checked and cite Ni Haixia with episode and timestamp.
-4. Claude translates and condenses the parts that answer the question, adds the yearly forecast, and checks quotes against the bundled knowledge base.
+## Cách hoạt động
 
-## Install (offline)
+**Tử Vi**
+1. Claude hỏi ngày, giờ, giới tính và nơi sinh.
+2. `scripts/ziwei-chart.mjs` lập lá số bằng code cố định: giờ mặt trời thật, đổi âm lịch, an sao và độ sáng, Tứ Hóa, cách cục, đại hạn, lưu niên. Kết quả in bằng tiếng Việt (hoặc tiếng Anh). Claude không bao giờ tự tính lá số.
+3. Với người sinh 1950–2026, `scripts/lookup-reading.mjs` lấy đúng bài luận soạn sẵn 13 chủ đề của lá số đó từ bộ dữ liệu mở v4.0. Các bài luận đã kiểm nguồn, có trích dẫn thầy Nghê kèm bài giảng và mốc thời gian.
+4. Claude dịch, rút gọn phần trả lời câu hỏi, thêm phần vận năm, và đối chiếu trích dẫn với kho kiến thức.
 
-Download from [Releases](https://github.com/namphamsynhat/phongthuyclaudeskill/releases/latest). Both offline packages contain all 77 dataset years (1950–2026), so readings work without internet.
+**Kinh Dịch**
+- `scripts/kinh-dich.mjs` tra 64 quẻ, đọc 6 hào (có hào động), gieo quẻ, tính Tiểu Lục Nhâm, và ghép **quẻ dương trạch** cho từng người trong nhà theo cách thầy Nghê: thượng quái là vai của người (cha, mẹ, con trưởng…), hạ quái là phương của phòng tính từ tâm nhà.
+- Claude đối chiếu với `references/vi/kinh-dich/`: Bát Quái, bảng 64 quẻ, phương pháp dương trạch (bếp, phòng khách, nhà vệ sinh, phòng ngủ vợ chồng, con cái), cùng 2.948 câu giảng của thầy Nghê có liên kết đến đúng giây trên Bilibili.
 
-| File | For | Size |
+## Cài đặt (dùng offline)
+
+Tải từ [Releases](https://github.com/namphamsynhat/phongthuyclaudeskill/releases/latest). Hai gói offline có đủ 77 năm dữ liệu (1950–2026), dùng được không cần internet.
+
+| Tệp | Dùng cho | Dung lượng |
 |---|---|---|
-| `ziwei-doushu.mcpb` | **Claude Desktop** extension (one-click install) | 155 MB |
-| `ziwei-doushu-skill-offline.zip` | **Claude Code** skill with all data | 155 MB |
-| `ziwei-doushu-skill.zip` | claude.ai skill upload (small; downloads data when needed) | 1 MB |
+| `ziwei-doushu.mcpb` | Tiện ích **Claude Desktop** (cài một lần bấm) | ~155 MB |
+| `ziwei-doushu-skill-offline.zip` | Kỹ năng **Claude Code**, đủ dữ liệu | ~155 MB |
+| `ziwei-doushu-skill.zip` | Tải lên kỹ năng trên claude.ai (gói nhỏ; tải dữ liệu khi cần) | ~2 MB |
 
-### Claude Desktop (extension)
+### Claude Desktop (tiện ích)
 
-1. Download `ziwei-doushu.mcpb`.
-2. Double-click it, or open Claude Desktop → Settings → Extensions and drag the file in. Click **Install**.
-3. Start a chat: "Lập lá số tử vi cho tôi: nam, sinh 17/05/1990 lúc 14:30 tại Hà Nội."
+1. Tải `ziwei-doushu.mcpb`.
+2. Bấm đúp vào tệp, hoặc mở Claude Desktop → Settings → Extensions rồi kéo tệp vào. Bấm **Install**.
+3. Bắt đầu trò chuyện: "Lập lá số tử vi cho tôi: nam, sinh 17/05/1990 lúc 14:30 tại Hà Nội."
 
-The extension gives Claude six tools: `ziwei_chart`, `ziwei_find_city`, `ziwei_reading`, `ziwei_search_quotes`, `ziwei_reference`, `ziwei_guide`. It needs Node 22.15 or newer, which recent Claude Desktop builds include.
+Tiện ích cho Claude bảy công cụ: `ziwei_chart`, `ziwei_find_city`, `ziwei_reading`, `ziwei_search_quotes`, `ziwei_reference`, `kinh_dich`, `ziwei_guide`. Cần Node 22.15 trở lên (các bản Claude Desktop gần đây đã có).
 
-### Claude Code (skill)
+### Claude Code (kỹ năng)
 
 ```bash
 unzip ziwei-doushu-skill-offline.zip -d ~/.claude/skills/
 ```
 
-Then ask Claude Code for a reading; it loads the skill automatically. Requires Node 22.15+ on your machine (`node --version`); on older Node, install the `zstd` command instead.
+Sau đó hỏi Claude Code; kỹ năng tự được nạp. Cần Node 22.15+ trên máy (`node --version`); Node cũ hơn thì cài lệnh `zstd`.
 
-### Claude Code (same tools as the extension)
+### Claude Code (cùng bộ công cụ với tiện ích)
 
-You can also add the extension's MCP server to Claude Code. Unzip the `.mcpb` (it is a zip file) and register it:
+Có thể thêm máy chủ MCP của tiện ích vào Claude Code. Giải nén tệp `.mcpb` (thực chất là tệp zip) rồi đăng ký:
 
 ```bash
 mkdir -p ~/ziwei-doushu-mcp && unzip ziwei-doushu.mcpb -d ~/ziwei-doushu-mcp
@@ -51,9 +58,28 @@ claude mcp add ziwei-doushu -- node ~/ziwei-doushu-mcp/server/mcp-server.mjs
 
 ### claude.ai
 
-Settings → Capabilities → turn on code execution → upload `ziwei-doushu-skill.zip` under Skills. This small package downloads each year (~2 MB) when first needed, so it needs network access; claude.ai skill uploads are too small for the full data.
+Settings → Capabilities → bật chạy code (code execution) → tải `ziwei-doushu-skill.zip` lên mục Skills. Gói nhỏ này tải từng năm (~2 MB) khi cần lần đầu, nên cần mạng; gói tải lên claude.ai giới hạn dung lượng nên không chứa đủ dữ liệu.
 
-### Build from source
+### Ví dụ câu hỏi
+
+- "Lập lá số tử vi cho tôi: nam, sinh 17/05/1990 lúc 14:30 tại Hà Nội. Năm 2026 sự nghiệp thế nào?"
+- "Nhà tôi: vợ chồng ngủ phòng Tây Nam, con trai cả phòng Bắc, bếp ở Tây Bắc. Theo dương trạch của thầy Nghê nên sắp xếp lại thế nào?"
+- "Tôi gieo 6 đồng xu được (từ dưới lên) sấp, ngửa, ngửa, sấp, sấp, ngửa. Hỏi chuyện đổi việc."
+- "Read my Zi Wei chart: female, born 1988-11-02 at 07:15 in Ho Chi Minh City. What does it say about marriage?"
+
+## Tình trạng tiếng Việt
+
+| Phần | Tiếng Việt |
+|---|---|
+| Kết quả lá số (sao, cung, Tứ Hóa, cách cục, điều kiện, lời luận sao) | Đủ (mặc định tiếng Việt) |
+| Kho kiến thức Tử Vi: cổ thư, 34 cách cục, xem hợp tuổi, 1.848 câu của thầy Nghê | Dịch đủ, mỗi câu kèm nguyên văn |
+| Kinh Dịch: Bát Quái, 64 quẻ, phương pháp dương trạch | Viết bằng tiếng Việt |
+| Kinh Dịch: lời giảng về dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99) | Dịch đủ, mỗi câu kèm nguyên văn |
+| Kinh Dịch: Dịch lý (396) và lời giảng từng quẻ (2.100) | Tiêu đề tiếng Việt; lời giảng còn nguyên văn, Claude dịch khi trích |
+| Bộ lời luận soạn sẵn v4.0 (≈20 tỉ chữ Hán, 56,6 GB giải nén) | Giữ nguyên tiếng Trung; Claude dịch khi đọc |
+| SKILL.md, README, công cụ | Tiếng Việt (có tiếng Anh) |
+
+## Tự build từ mã nguồn
 
 ```bash
 npm ci --ignore-scripts
@@ -63,44 +89,64 @@ npm ci --ignore-scripts
 npm run release
 ```
 
-`npm run release` builds the scripts and the MCP server, downloads and verifies the 77 dataset files into `build/data/` (first run only), and writes all three packages to `release/`.
+`npm run release` build các script và máy chủ MCP, tải và kiểm tra 77 tệp dữ liệu vào `build/data/` (chỉ lần đầu), rồi ghi cả ba gói vào `release/`.
 
-The dataset files are not stored in this repo. All 77 were checked on 2026-11-04: checksums and sizes match the release, 674,976 charts, every real date from 1950 to 2026 exactly once for each of the 12 hours and both genders, all 13 topics present in every chart, and the stored character counts match the text.
+Tệp dữ liệu không lưu trong repo. Cả 77 tệp đã được kiểm tra ngày 04/11/2026: checksum và dung lượng khớp bản phát hành; 674.976 lá số; mọi ngày có thật từ 1950 đến 2026 xuất hiện đúng một lần cho mỗi 12 giờ và cả hai giới; đủ 13 chủ đề ở mọi lá số; số ký tự lưu khớp với văn bản.
 
-Example prompts:
-- "Lập lá số tử vi cho tôi: nam, sinh 17/05/1990 lúc 14:30 tại Hà Nội. Năm 2026 sự nghiệp thế nào?"
-- "Read my Zi Wei chart: female, born 1988-11-02 at 07:15 in Ho Chi Minh City. What does it say about marriage?"
+Dựng lại kho Kinh Dịch từ bản clone của `nihai-tianji-corpus`:
 
-## Repository layout
+```bash
+python3 -I tools/iching_data.py
+```
 
-| Path | What |
+```bash
+python3 -I tools/kinh_dich.py gen <corpus>/data/entries.jsonl skill/ziwei-doushu/references
+```
+
+```bash
+python3 -I tools/kinh_dich.py build <corpus>/data/entries.jsonl skill/ziwei-doushu/references tools/kinh-dich-vi
+```
+
+```bash
+python3 -I tools/kinh_dich_core.py skill/ziwei-doushu/references
+```
+
+## Cấu trúc repo
+
+| Đường dẫn | Nội dung |
 |---|---|
-| `skill/ziwei-doushu/` | The skill itself (SKILL.md, scripts, references) |
-| `skill/ziwei-doushu/references/vi/` | Full Vietnamese translation of the knowledge base: classics, patterns, marriage notes, and all 1,848 Ni Haixia quotes (each line keeps the original Chinese and timestamp) |
-| `src/chart.ts`, `src/chart-cli.ts`, `src/i18n.ts` | Chart renderer, its CLI, and English/Vietnamese term tables (Hán-Việt and pinyin) |
-| `src/lookup.ts`, `src/lookup-cli.ts` | Offline reading lookup (Node's built-in zstd) |
-| `src/mcp-server.ts`, `extension/manifest.json` | MCP server and manifest for the Claude Desktop extension |
-| `src/ziwei/` | Chart engine copied unchanged from Renhuai123/ziwei-doushu `lib/ziwei/` (MIT) |
-| `tools/extract_kb.py` | Rebuilds `references/` from a clone of the upstream repo |
-| `tools/tianji_vi.py`, `tools/tianji-vi/` | Splits the quote files into lines and rebuilds `references/vi/tianji-ziwei/` from the translation tables (`*.vi.tsv`, `tags.map.tsv`) |
+| `skill/ziwei-doushu/` | Bản thân kỹ năng (SKILL.md, scripts, references) |
+| `skill/ziwei-doushu/references/vi/` | Kho kiến thức tiếng Việt: cổ thư, cách cục, xem hợp, 1.848 câu Tử Vi, và `kinh-dich/` |
+| `skill/ziwei-doushu/references/kinh-dich/` | Lời giảng Kinh Dịch nguyên văn tiếng Trung, theo chủ đề và theo từng quẻ |
+| `src/chart.ts`, `src/chart-cli.ts`, `src/i18n.ts`, `src/patterns-vi.ts` | Bộ in lá số, CLI, bảng thuật ngữ Việt/Anh, bản dịch mô tả cách cục |
+| `src/iching.ts`, `src/iching-data.json`, `src/kinh-dich-cli.ts` | Engine Kinh Dịch: 64 quẻ, dương trạch, gieo quẻ, Tiểu Lục Nhâm |
+| `src/lookup.ts`, `src/lookup-cli.ts` | Tra bài luận offline (zstd có sẵn của Node) |
+| `src/mcp-server.ts`, `extension/manifest.json` | Máy chủ MCP và manifest cho tiện ích Claude Desktop |
+| `src/ziwei/` | Engine lá số chép nguyên từ Renhuai123/ziwei-doushu `lib/ziwei/` (MIT) |
+| `tools/extract_kb.py` | Dựng lại `references/` từ bản clone repo gốc |
+| `tools/tianji_vi.py`, `tools/tianji-vi/` | Dựng lại `references/vi/tianji-ziwei/` từ bảng dịch |
+| `tools/iching_data.py`, `tools/kinh_dich.py`, `tools/kinh_dich_core.py`, `tools/kinh-dich-vi/` | Dữ liệu 64 quẻ, bộ sinh tệp Kinh Dịch, bảng dịch |
 
+## Lưu ý
 
-## Status
+- Engine lá số chưa được chạy thử trọn vẹn trong môi trường build này. Hãy so vài lá số với [ouranic.cn](https://ouranic.cn) trước khi tin dùng.
+- Phần dương trạch là quan điểm của một trường phái. Các câu về tai họa trong lời giảng là xu hướng theo cổ thư, không phải lời phán.
+- Lời luận mang tính văn hóa, giải trí; không phải lời khuyên y khoa, pháp lý hay tài chính.
 
-- The reading lookup has been tested on the 1990 data file.
-- **The chart script hasn't been run end-to-end yet.** Please compare a few charts with [ouranic.cn](https://ouranic.cn) before relying on it.
-- The knowledge base is fully translated into Vietnamese (`references/vi/`). Pattern descriptions printed by the chart script and the pre-written readings stay in Chinese; Claude translates them when it writes the reading.
+## Giấy phép
 
-## Licenses
-
-| Part | License |
+| Phần | Giấy phép |
 |---|---|
-| This repo's own code (`src/cli.ts`, `src/i18n.ts`, scripts, tools) | MIT |
-| Engine (`src/ziwei/`, bundled in `ziwei-chart.mjs`) | MIT, © Renhuai123/ziwei-doushu (see `skill/ziwei-doushu/LICENSE-code-MIT.txt`); built on [iztro](https://github.com/SylarLong/iztro) (MIT) |
-| Classics excerpts (`references/classic-*.md`) | Public domain |
-| Ni Haixia quotes (`references/tianji-ziwei/`) and their Vietnamese translation (`references/vi/tianji-ziwei/`) | **CC BY-NC-SA 4.0, non-commercial only** |
-| Reading dataset v4.0 (downloaded at run time, not stored here) | CC BY 4.0 (the Ni Haixia quotes inside it are CC BY-NC-SA 4.0) |
+| Code riêng của repo (`src/*.ts` trừ `src/ziwei/`, scripts, tools) | MIT |
+| Engine (`src/ziwei/`, đóng gói trong `ziwei-chart.mjs`) | MIT, © Renhuai123/ziwei-doushu (xem `skill/ziwei-doushu/LICENSE-code-MIT.txt`); dựa trên [iztro](https://github.com/SylarLong/iztro) (MIT) |
+| Trích đoạn cổ thư (`references/classic-*.md`) | Phạm vi công cộng |
+| Lời giảng thầy Nghê (`references/tianji-ziwei/`, `references/kinh-dich/`) và bản dịch tiếng Việt | **CC BY-NC-SA 4.0, chỉ phi thương mại** |
+| Bộ lời luận v4.0 (tải về khi chạy, không lưu ở repo) | CC BY 4.0 (các câu của thầy Nghê bên trong là CC BY-NC-SA 4.0) |
 
-Because of the Ni Haixia quotes, **this skill as a whole is for non-commercial use**. For commercial use, remove `references/tianji-ziwei/` and get permission for the quotes inside the dataset.
+Vì có lời giảng của thầy Nghê, **toàn bộ kỹ năng chỉ dùng phi thương mại**. Muốn dùng thương mại, hãy bỏ `references/tianji-ziwei/` và `references/kinh-dich/`, và xin phép cho các câu trích trong bộ dữ liệu.
 
-Readings are for culture and entertainment. They are not medical, legal or financial advice.
+---
+
+## English summary
+
+A Claude Skill and Claude Desktop extension for **Zi Wei Dou Shu** (Purple Star Astrology) and the **I Ching** (hexagrams, coin casting, Xiao Liu Ren, house feng shui) in Ni Haixia's tradition. Vietnamese is the main language; Claude answers in English when the user writes English. The chart and the I Ching calculations are done by bundled scripts (`ziwei-chart.mjs`, `lookup-reading.mjs`, `kinh-dich.mjs`), and Claude interprets them using the bundled knowledge base and 4,796 timestamped Ni Haixia quotes. Install the `.mcpb` in Claude Desktop, unzip the offline skill into `~/.claude/skills/` for Claude Code, or upload the small zip to claude.ai. Non-commercial use only, because of the CC BY-NC-SA quotes.

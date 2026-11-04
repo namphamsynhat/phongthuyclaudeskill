@@ -8,6 +8,7 @@ ESB="npx esbuild --bundle --platform=node --format=esm --alias:server-only=./src
 # 1. scripts and server
 $ESB src/chart-cli.ts --target=node18 --outfile=skill/ziwei-doushu/scripts/ziwei-chart.mjs
 $ESB src/lookup-cli.ts --target=node18 --outfile=skill/ziwei-doushu/scripts/lookup-reading.mjs
+$ESB src/kinh-dich-cli.ts --target=node18 --outfile=skill/ziwei-doushu/scripts/kinh-dich.mjs
 rm -rf build/ext build/skill-offline dist && mkdir -p build/data release
 $ESB src/mcp-server.ts --splitting --target=node20 --outdir=dist/server --out-extension:.js=.mjs
 
