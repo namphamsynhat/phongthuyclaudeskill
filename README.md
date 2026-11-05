@@ -1,6 +1,6 @@
 # Tử Vi Đẩu Số và Kinh Dịch cho Claude
 
-Bộ [kỹ năng (Skill)](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) và tiện ích mở rộng (extension) giúp Claude luận **Tử Vi Đẩu Số** và **Kinh Dịch** (quẻ, bói, Tiểu Lục Nhâm, phong thủy dương trạch) theo truyền thống thầy **Nghê Hải Hạ** (倪海厦《天纪》). **Tiếng Việt là ngôn ngữ chính**; người dùng viết tiếng Anh thì Claude trả lời tiếng Anh.
+Bộ [kỹ năng (Skill)](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) và tiện ích mở rộng (extension) giúp Claude luận **Tử Vi Đẩu Số** và **Kinh Dịch** (quẻ, bói, Tiểu Lục Nhâm, phong thủy dương trạch) và **âm trạch** (phong thủy mộ phần, theo cổ thư) theo truyền thống thầy **Nghê Hải Hạ** (倪海厦《天纪》). **Tiếng Việt là ngôn ngữ chính**; người dùng viết tiếng Anh thì Claude trả lời tiếng Anh.
 
 Xây dựng trên engine, kho kiến thức và bộ lời luận mã nguồn mở của [Renhuai123/ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) và kho ngữ liệu lời giảng [Renhuai123/nihai-tianji-corpus](https://github.com/Renhuai123/nihai-tianji-corpus).
 
@@ -17,6 +17,9 @@ Xây dựng trên engine, kho kiến thức và bộ lời luận mã nguồn m�
 **Kinh Dịch**
 - `scripts/kinh-dich.mjs` tra 64 quẻ, đọc 6 hào (có hào động), gieo quẻ, tính Tiểu Lục Nhâm, và ghép **quẻ dương trạch** cho từng người trong nhà theo cách thầy Nghê: thượng quái là vai của người (cha, mẹ, con trưởng…), hạ quái là phương của phòng tính từ tâm nhà.
 - Claude đối chiếu với `references/vi/kinh-dich/`: Bát Quái, bảng 64 quẻ, phương pháp dương trạch (bếp, phòng khách, nhà vệ sinh, phòng ngủ vợ chồng, con cái), cùng 2.948 câu giảng của thầy Nghê có liên kết đến đúng giây trên Bilibili.
+
+**Âm trạch**
+- `references/vi/am-trach/`: 11 cổ thư phong thủy mộ phần thuộc phạm vi công cộng (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Nang Áo Ngữ, Thanh Ô Kinh, luận văn của Trình Di, Trương Cư Chính, Trịnh Dụng Tích, phần đầu Nhân Tử Tu Tri), dịch đủ tiếng Việt kèm nguyên văn, cùng bản tổng hợp `am-trach.md` (long, huyệt, sa, thủy, lý khí, mười điều răn, quan điểm phê phán).
 
 ## Cài đặt (dùng offline)
 
@@ -75,6 +78,7 @@ Settings → Capabilities → bật chạy code (code execution) → tải `ziwe
 | Kho kiến thức Tử Vi: cổ thư, 34 cách cục, xem hợp tuổi, 1.848 câu của thầy Nghê | Dịch đủ, mỗi câu kèm nguyên văn |
 | Kinh Dịch: Bát Quái, 64 quẻ, phương pháp dương trạch | Viết bằng tiếng Việt |
 | Kinh Dịch: toàn bộ 2.948 câu giảng — dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99), Dịch lý (396), từng quẻ (2.100) | Dịch đủ, mỗi câu kèm nguyên văn |
+| Âm trạch: 11 cổ thư phong thủy mộ phần (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Ô Kinh, Trình Di, Trương Cư Chính, Nhân Tử Tu Tri…) và bản tổng hợp phương pháp | Dịch đủ, mỗi đoạn kèm nguyên văn |
 | Bộ lời luận soạn sẵn v4.0 (≈20 tỉ chữ Hán, 56,6 GB giải nén) | Giữ nguyên tiếng Trung; Claude dịch khi đọc |
 | SKILL.md, README, công cụ | Tiếng Việt (có tiếng Anh) |
 
@@ -116,6 +120,8 @@ python3 -I tools/kinh_dich_core.py skill/ziwei-doushu/references
 |---|---|
 | `skill/ziwei-doushu/` | Bản thân kỹ năng (SKILL.md, scripts, references) |
 | `skill/ziwei-doushu/references/vi/` | Kho kiến thức tiếng Việt: cổ thư, cách cục, xem hợp, 1.848 câu Tử Vi, và `kinh-dich/` |
+| `skill/ziwei-doushu/references/am-trach/` | Cổ thư âm trạch nguyên văn (phạm vi công cộng, Wikisource); bản dịch và tổng hợp ở `references/vi/am-trach/` |
+| `tools/am_trach.py`, `tools/am-trach-vi/` | Dựng bản dịch âm trạch từ tệp dịch `.vi.tsv` |
 | `skill/ziwei-doushu/references/kinh-dich/` | Lời giảng Kinh Dịch nguyên văn tiếng Trung, theo chủ đề và theo từng quẻ (bản tiếng Việt ở `references/vi/kinh-dich/`) |
 | `src/chart.ts`, `src/chart-cli.ts`, `src/i18n.ts`, `src/patterns-vi.ts` | Bộ in lá số, CLI, bảng thuật ngữ Việt/Anh, bản dịch mô tả cách cục |
 | `src/iching.ts`, `src/iching-data.json`, `src/kinh-dich-cli.ts` | Engine Kinh Dịch: 64 quẻ, dương trạch, gieo quẻ, Tiểu Lục Nhâm |

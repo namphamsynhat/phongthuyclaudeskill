@@ -1,6 +1,6 @@
 ---
 name: ziwei-doushu
-description: Tử Vi Đẩu Số (Zi Wei Dou Shu, Purple Star Astrology, 紫微斗数) và Kinh Dịch (I Ching, 易经) theo truyền thống thầy Nghê Hải Hạ (倪海厦《天纪》); trả lời bằng tiếng Việt (ngôn ngữ chính) hoặc tiếng Anh. Dùng khi người dùng hỏi lá số tử vi, lấy lá số, 排盘, xem theo ngày giờ sinh, đại hạn, lưu niên, xem tuổi hợp (合盘); hoặc hỏi Kinh Dịch: quẻ, gieo quẻ, bói quẻ đồng tiền, Tiểu Lục Nhâm, chiết tự, Lục Thần; hoặc hỏi phong thủy, dương trạch: phòng ngủ, bếp, phòng khách, nhà vệ sinh nên đặt ở phương nào, ai trong nhà nên ở phòng nào. Lá số được tính bằng engine cố định; diễn giải dựa trên bộ lời luận soạn sẵn, cổ thư, quy tắc cách cục và lời giảng có mốc thời gian của thầy Nghê.
+description: Tử Vi Đẩu Số (Zi Wei Dou Shu, Purple Star Astrology, 紫微斗数) và Kinh Dịch (I Ching, 易经) theo truyền thống thầy Nghê Hải Hạ (倪海厦《天纪》); trả lời bằng tiếng Việt (ngôn ngữ chính) hoặc tiếng Anh. Dùng khi người dùng hỏi lá số tử vi, lấy lá số, 排盘, xem theo ngày giờ sinh, đại hạn, lưu niên, xem tuổi hợp (合盘); hoặc hỏi Kinh Dịch: quẻ, gieo quẻ, bói quẻ đồng tiền, Tiểu Lục Nhâm, chiết tự, Lục Thần; hoặc hỏi phong thủy, dương trạch: phòng ngủ, bếp, phòng khách, nhà vệ sinh nên đặt ở phương nào, ai trong nhà nên ở phòng nào; hoặc hỏi âm trạch (phong thủy mộ phần): chọn đất táng, long huyệt sa thủy, điểm huyệt, cải táng. Lá số được tính bằng engine cố định; diễn giải dựa trên bộ lời luận soạn sẵn, cổ thư, quy tắc cách cục và lời giảng có mốc thời gian của thầy Nghê.
 ---
 
 # Tử Vi Đẩu Số và Kinh Dịch (tiếng Việt / English)
@@ -105,6 +105,8 @@ Quy trình:
 
 **Tiểu Lục Nhâm:** dùng tháng, ngày **âm lịch** và giờ lúc người dùng bỗng có linh cảm về một việc cụ thể. Không biết ngày âm lịch thì chạy `ziwei-chart.mjs` với ngày hôm nay để xem âm lịch, hoặc hỏi người dùng.
 
+**Âm trạch (phong thủy mộ phần):** đọc `references/vi/am-trach/am-trach.md` trước (tổng hợp long, huyệt, sa, thủy, lý khí, công vị, mười điều răn, quan điểm phê phán), rồi tra cổ thư đã dịch trong `references/vi/am-trach/NN-*.md` (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Ô Kinh…; mỗi đoạn «bản dịch» kèm 「nguyên văn」) và lời giảng kham dư của thầy Nghê trong `references/vi/kinh-dich/11-kham-du.md`. Hỏi mô tả thực địa (thế núi phía sau, hai bên, phía trước; nước chảy từ đâu đi đâu; đất khô hay ẩm; hướng mộ) rồi đối chiếu. Nói rõ đây là học thuyết truyền thống; không khẳng định chắc hoạ phúc; không khuyên cải táng khi không có lý do thực tế (sụt, ngập nước, mối kiến).
+
 ## 4. Kho kiến thức (chỉ mở cái cần)
 
 Mỗi tệp Tử Vi có bản tiếng Trung (`references/`) và bản dịch tiếng Việt đầy đủ (`references/vi/`). Trả lời tiếng Việt thì dùng tệp tiếng Việt; trả lời tiếng Anh cũng có thể bắt đầu từ đó. Dùng tệp tiếng Trung để kiểm tra nguyên văn.
@@ -121,6 +123,8 @@ Mỗi tệp Tử Vi có bản tiếng Trung (`references/`) và bản dịch ti�
 | `references/vi/kinh-dich/duong-trach.md` | (chỉ tiếng Việt) | Phương pháp dương trạch của thầy Nghê, bảng 8×8 người × phương |
 | `references/vi/kinh-dich/07-duong-trach.md`, `11-kham-du.md`, `10-chiem-doan.md` | `references/kinh-dich/…` | Lời giảng đã dịch: dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99) |
 | `references/vi/kinh-dich/08-dich-ly.md`, `que/01.md`…`que/64.md` | `references/kinh-dich/…` | Dịch lý (396) và lời giảng từng quẻ (2.100): dịch đủ tiếng Việt, kèm nguyên văn |
+| `references/vi/am-trach/am-trach.md` | (chỉ tiếng Việt) | Tổng hợp phương pháp âm trạch theo cổ thư, có ghi nguồn từng mục |
+| `references/vi/am-trach/01-…11-*.md` | `references/am-trach/…` | 11 cổ thư âm trạch (phạm vi công cộng, Wikisource) dịch đủ tiếng Việt, mỗi đoạn kèm nguyên văn |
 
 Tìm trong các câu trích bằng tiếng Việt hoặc tiếng Trung:
 
@@ -149,6 +153,6 @@ Chạy script một lần cho mỗi người. So cung Mệnh, Phu Thê và Phúc
 ## Giấy phép
 
 - Code engine: MIT (Renhuai123/ziwei-doushu, dựa trên iztro): `LICENSE-code-MIT.txt`
-- Cổ thư: phạm vi công cộng
+- Cổ thư (gồm `references/am-trach/`, lấy từ zh.wikisource.org): phạm vi công cộng; bản dịch tiếng Việt cùng phát hành tự do
 - `references/tianji-ziwei/` và `references/kinh-dich/` (lời giảng của thầy Nghê, từ Renhuai123/nihai-tianji-corpus): **CC BY-NC-SA 4.0, chỉ dùng phi thương mại**; bản quyền bài giảng thuộc chủ sở hữu. Bản dịch tiếng Việt là tác phẩm phái sinh, cùng giấy phép. Khi trích, giữ ghi công và liên kết.
 - Bộ lời luận v4.0: CC BY 4.0. Khi dùng, ghi công "Zi Wei Dou Shu open interpretation dataset v4.0 (Renhuai123/ziwei-doushu)". Các câu của thầy Nghê bên trong vẫn là CC BY-NC-SA 4.0.

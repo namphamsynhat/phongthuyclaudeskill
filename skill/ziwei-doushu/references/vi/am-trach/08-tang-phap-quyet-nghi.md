@@ -2,18 +2,26 @@
 
 > Bản dịch tiếng Việt cổ thư âm trạch (phong thủy mộ phần), nguyên văn thuộc phạm vi công cộng, lấy từ Wikisource tiếng Trung; nguyên văn đầy đủ ở `../../am-trach/08-tang-phap-quyet-nghi.md`. Mỗi đoạn: bản dịch, rồi nguyên văn trong ngoặc 「」. Đoạn bắt đầu bằng **Chú:** là lời chú giải đời sau (trong bản gốc đặt trong 〈 〉). Đây là học thuyết phong thủy cổ, mang tính văn hóa và tham khảo, không phải khoa học.
 
-- 「葬法決疑」
+- Táng Pháp Quyết Nghi (Giải nghi về phép táng)
+  「葬法決疑」
 
-- 「作者：程頤　北宋」
+- Tác giả: Trình Di — Bắc Tống
+  「作者：程頤　北宋」
 
-- 「古者聖人製卜葬之禮，蓋以市朝遷變，莫得預測，水泉交浸一作「侵」，不可先知，所以定吉凶，決善惡也。後代陰陽家流，競為詭誕之說，葬書一術，遂至百二十家。為害之大，妄謬之甚，在分五姓。」
+- Thánh nhân xưa đặt lễ bói đất táng, vì chợ triều đổi dời không thể đoán trước, nước suối thấm ngập không thể biết trước, nên để định cát hung, quyết thiện ác. Đời sau dòng phái âm dương gia đua nhau đặt thuyết quái đản; một thuật sách táng đến một trăm hai mươi nhà. Cái hại lớn nhất, sai lầm nặng nhất là thuyết "chia năm họ" (ngũ tính).
+  「古者聖人製卜葬之禮，蓋以市朝遷變，莫得預測，水泉交浸一作「侵」，不可先知，所以定吉凶，決善惡也。後代陰陽家流，競為詭誕之說，葬書一術，遂至百二十家。為害之大，妄謬之甚，在分五姓。」
 
-- 「五姓之說，驗諸經典，本無證據，古陰陽書亦無此說，直是野俗相傳，竟無所出之處。惟《堪輿經》黃帝對天老，乃有五姓之言。且黃帝之時，只有姬、姜二三姓，其諸姓氏盡出後代，何得當時已有此語？固妄謬無稽之言。其所謂五姓者，宮商角徵羽是也。天下萬物，悉配屬之，行事吉凶，依此為法。至如以張、王等為商，武、庾等為羽，是則同韻相求。及其以柳姓為宮，以趙姓為角，又非四聲相管。其間亦有同是一姓，分屬宮商，復姓數字，徵角不辨，都無憑據，只信其臆說爾。」
+- Thuyết ngũ tính, xét trong kinh điển vốn không có chứng cứ, sách âm dương cổ cũng không có thuyết này, chỉ là tục quê truyền nhau, không biết xuất xứ. Chỉ có Kham Dư Kinh chép Hoàng Đế đáp Thiên Lão mới có lời ngũ tính; mà thời Hoàng Đế chỉ có hai ba họ Cơ, Khương, các họ khác đều ra đời sau, sao lúc ấy đã có lời này? Rõ là lời sai lầm vô căn cứ. Cái gọi là ngũ tính là Cung, Thương, Giốc, Chuỷ, Vũ; muôn vật thiên hạ đều gán vào, việc làm cát hung theo đó làm phép. Như lấy họ Trương, Vương làm Thương, họ Vũ, Dữu làm Vũ, ấy là cùng vần mà tìm; đến lấy họ Liễu làm Cung, họ Triệu làm Giốc thì lại không theo bốn thanh. Trong đó cũng có cùng một họ mà chia thuộc Cung Thương, họ kép mấy chữ thì Chuỷ Giốc không phân — đều không căn cứ, chỉ tin thuyết bịa.
+  「五姓之說，驗諸經典，本無證據，古陰陽書亦無此說，直是野俗相傳，竟無所出之處。惟《堪輿經》黃帝對天老，乃有五姓之言。且黃帝之時，只有姬、姜二三姓，其諸姓氏盡出後代，何得當時已有此語？固妄謬無稽之言。其所謂五姓者，宮商角徵羽是也。天下萬物，悉配屬之，行事吉凶，依此為法。至如以張、王等為商，武、庾等為羽，是則同韻相求。及其以柳姓為宮，以趙姓為角，又非四聲相管。其間亦有同是一姓，分屬宮商，復姓數字，徵角不辨，都無憑據，只信其臆說爾。」
 
-- 「夫姓之於人也，其始也亦如萬物之同形者，呼某白黑小大以為別爾。後世聖人乃為之制，因生賜姓，胙土命氏，其後子孫因邑因官，分枝布葉，而庶姓益廣。如管、蔡、郕、霍、魯、衛、毛、簹、郜、雍、曹、滕、畢、原、豐、郇，本皆姬姓；華、向、蕭、亳、皇甫，本皆子姓。其餘皆爾，不可勝舉。今者用其祖姓，則往往數經更易，難盡尋究。況復葬書不載古姓，若用今姓，則皆後代所受，乃是吉凶隨時變改也。人之分宗，譬如木之異枝。木之姓，有所宜之地也。取其枝而散植之，其性所宜，寧有異乎？若一祖之裔，姓音不同，同葬一地，遂言彼凶而此吉，決無是理。設有人父本宮姓，子以功勳更賜商姓，則將如何用之？今二人同言，則必擇其賢者信之。葬禮聖人所製，五姓俗人所說。何乃舍聖製而從俗說，不亦愚乎？」
+- Họ của người, lúc đầu cũng như muôn vật cùng hình, gọi trắng đen lớn nhỏ để phân biệt mà thôi. Thánh nhân đời sau mới đặt chế độ: nhân chỗ sinh mà ban họ, phong đất mà đặt thị; sau con cháu nhân ấp, nhân quan mà chia cành bày lá, họ càng nhiều. Như Quản, Sái, Thành, Hoắc, Lỗ, Vệ, Mao, Đam, Cáo, Ung, Tào, Đằng, Tất, Nguyên, Phong, Tuân vốn đều họ Cơ; Hoa, Hướng, Tiêu, Bạc, Hoàng Phủ vốn đều họ Tử; còn lại đều vậy, kể không xiết. Nay nếu dùng họ tổ thì thường đã mấy lần đổi, khó tìm hết; huống chi sách táng không chép họ xưa; nếu dùng họ nay thì đều do đời sau nhận, vậy cát hung theo thời mà đổi sao? Người chia tông như cây khác cành; tính của cây có đất thích hợp; lấy cành nó trồng rải rác, tính thích hợp há có khác? Nếu con cháu cùng một tổ mà âm họ khác nhau, cùng táng một đất, bèn nói bên kia hung bên này lành, quyết không có lý đó. Giả như người cha vốn họ Cung, con vì công huân được ban đổi họ Thương, thì dùng thế nào? Nay hai người cùng nói thì ắt chọn người hiền mà tin; lễ táng do thánh nhân đặt, ngũ tính do người tục nói — sao lại bỏ chế độ thánh nhân mà theo thuyết tục, chẳng phải ngu sao?
+  「夫姓之於人也，其始也亦如萬物之同形者，呼某白黑小大以為別爾。後世聖人乃為之制，因生賜姓，胙土命氏，其後子孫因邑因官，分枝布葉，而庶姓益廣。如管、蔡、郕、霍、魯、衛、毛、簹、郜、雍、曹、滕、畢、原、豐、郇，本皆姬姓；華、向、蕭、亳、皇甫，本皆子姓。其餘皆爾，不可勝舉。今者用其祖姓，則往往數經更易，難盡尋究。況復葬書不載古姓，若用今姓，則皆後代所受，乃是吉凶隨時變改也。人之分宗，譬如木之異枝。木之姓，有所宜之地也。取其枝而散植之，其性所宜，寧有異乎？若一祖之裔，姓音不同，同葬一地，遂言彼凶而此吉，決無是理。設有人父本宮姓，子以功勳更賜商姓，則將如何用之？今二人同言，則必擇其賢者信之。葬禮聖人所製，五姓俗人所說。何乃舍聖製而從俗說，不亦愚乎？」
 
-- 「昔三代之時，天下諸侯之國，卿大夫之家，久者千餘歲，其下至數百歲不絕。此時葬者未有五姓也。古之時，庶人之年不可得而見矣。君卿大夫，史籍所可見者，往往八九十歲，有百歲者不少矣。自唐而來，五姓葬法行於世矣，數世百歲之家鮮矣，人壽七八十歲者希矣。苟吉凶長短，不由於葬邪？則安用違聖人之制而從愚俗所尚？吉凶長短，果由於葬邪？是乃今之法，徒使人家不久長，壽命短促，大凶之道也。進退無取，何足言哉？」
+- Xưa thời Tam Đại, nước của chư hầu, nhà của khanh đại phu, lâu thì hơn nghìn năm, kém cũng mấy trăm năm không dứt; lúc ấy người táng chưa có ngũ tính. Tuổi thọ thứ dân xưa không thể thấy được; vua, khanh, đại phu mà sử sách còn thấy thì thường tám chín mươi tuổi, trăm tuổi cũng không ít. Từ đời Đường đến nay, phép táng ngũ tính thịnh hành, nhà mấy đời trăm năm thì hiếm, người thọ bảy tám mươi cũng ít. Nếu cát hung dài ngắn không do táng, thì cần gì trái chế độ thánh nhân mà theo cái tục ngu chuộng? Nếu cát hung dài ngắn quả do táng, thì phép ngày nay chỉ khiến nhà người không lâu dài, thọ mệnh ngắn ngủi — là đạo đại hung. Tiến lui đều không lấy được, đáng nói gì!
+  「昔三代之時，天下諸侯之國，卿大夫之家，久者千餘歲，其下至數百歲不絕。此時葬者未有五姓也。古之時，庶人之年不可得而見矣。君卿大夫，史籍所可見者，往往八九十歲，有百歲者不少矣。自唐而來，五姓葬法行於世矣，數世百歲之家鮮矣，人壽七八十歲者希矣。苟吉凶長短，不由於葬邪？則安用違聖人之制而從愚俗所尚？吉凶長短，果由於葬邪？是乃今之法，徒使人家不久長，壽命短促，大凶之道也。進退無取，何足言哉？」
 
-- 「夫葬者藏也，一藏之後，不可復改，必求其永安。故孝子慈孫，尤所慎重。欲地之安者，在乎水之利。水既利，則終無虞矣。不止水一事，此大概也。而今之葬者，謂風水隨姓而異，此尤大害也。愚者執信，將求其吉，反獲其凶矣。」
+- Táng là tàng (cất giấu); một lần cất rồi không thể sửa lại, phải cầu cho yên mãi; nên con hiếu cháu hiền càng thận trọng. Muốn đất yên thì ở chỗ lợi về nước; nước đã lợi thì rốt cuộc không lo. Không chỉ một việc nước, đây là đại khái. Mà người táng ngày nay bảo phong thuỷ theo họ mà khác, đó càng là cái hại lớn; kẻ ngu cố tin, mong cầu lành lại chuốc lấy hung.
+  「夫葬者藏也，一藏之後，不可復改，必求其永安。故孝子慈孫，尤所慎重。欲地之安者，在乎水之利。水既利，則終無虞矣。不止水一事，此大概也。而今之葬者，謂風水隨姓而異，此尤大害也。愚者執信，將求其吉，反獲其凶矣。」
 
-- 「至於卜選時日，亦多乖謬。按葬者逢日食則舍於道左，待明而行。是必須晴明，不可用昏黑也。而葬書用乾艮二時為吉，此二時皆是夜半，如何用之？又曰己亥日葬大凶。今按《春秋》之中，此日葬者二十餘人，皆無其應。宜忌者不忌，而不宜忌者反忌之，顛倒虛妄之甚也。下穴之位，不分昭穆，易亂尊卑。死者如有知，居之其安乎？如此背謬者多矣，不欲盡斥，但當棄而勿用，自從正法耳。」
+- Đến việc bói chọn ngày giờ cũng nhiều sai trái. Xét lễ: người đưa táng gặp nhật thực thì dừng bên trái đường, đợi sáng mới đi — vậy ắt phải trời quang sáng, không thể dùng lúc tối tăm. Mà sách táng lấy hai giờ Càn, Cấn làm lành — hai giờ ấy đều là nửa đêm, dùng sao được? Lại nói ngày Kỷ Hợi táng đại hung; nay xét trong Xuân Thu, người táng ngày ấy hơn hai mươi người, đều không ứng nghiệm. Điều nên kỵ thì không kỵ, điều không nên kỵ lại kỵ — đảo lộn hư vọng quá lắm. Vị trí hạ huyệt không phân chiêu mục (thứ bậc trái phải theo đời), dễ loạn tôn ti; người chết nếu biết, ở đó có yên chăng? Những điều trái lẽ như vậy nhiều lắm, không muốn bài bác hết, chỉ nên bỏ đi không dùng, tự theo phép chính mà thôi.
+  「至於卜選時日，亦多乖謬。按葬者逢日食則舍於道左，待明而行。是必須晴明，不可用昏黑也。而葬書用乾艮二時為吉，此二時皆是夜半，如何用之？又曰己亥日葬大凶。今按《春秋》之中，此日葬者二十餘人，皆無其應。宜忌者不忌，而不宜忌者反忌之，顛倒虛妄之甚也。下穴之位，不分昭穆，易亂尊卑。死者如有知，居之其安乎？如此背謬者多矣，不欲盡斥，但當棄而勿用，自從正法耳。」
