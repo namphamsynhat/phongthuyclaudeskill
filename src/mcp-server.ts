@@ -3,6 +3,7 @@
  * Layout (relative to this file): ../data/year-*.jsonl.zst, ../references/, ../SKILL.md
  * Override the root with $ZIWEI_HOME.
  */
+import { graveMarkdown } from './grave';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -157,9 +158,14 @@ server.registerTool('ziwei_reference', {
 
 server.registerTool('kinh_dich', {
   title: 'Kinh Dịch (I Ching) tools',
-  description: 'Offline I Ching helper in the Ni Haixia method. action: hexagram (look up by number 1–64, Vietnamese/Chinese/English name, or six lines bottom→top as 0/1 or 6/7/8/9), cast (random coin cast; method ni = six coins, classic = three coins with moving lines; only when the user asks you to cast for them), house (Ni yang-zhai: each family member\'s role + the direction of their room from the centre of the home → hexagram), liuren (Tiểu Lục Nhâm from lunar month, lunar day and clock time or hour branch), trigrams (the 8 trigrams). Then read ziwei_reference duong-trach / que for Ni\'s rules and quotes.',
+  description: 'Offline I Ching helper in the Ni Haixia method. action: hexagram (look up by number 1–64, Vietnamese/Chinese/English name, or six lines bottom→top as 0/1 or 6/7/8/9), cast (random coin cast; method ni = six coins, classic = three coins with moving lines; only when the user asks you to cast for them), house (Ni yang-zhai: each family member\'s role + the direction of their room from the centre of the home → hexagram), liuren (Tiểu Lục Nhâm from lunar month, lunar day and clock time or hour branch), trigrams (the 8 trigrams), grave (âm trạch compass check for a grave or house facing: Tứ lộ / Bát lộ Hoàng Tuyền and Long thượng Bát sát, optionally checking water and road directions). Then read ziwei_reference duong-trach / que for Ni\'s rules and quotes.',
   inputSchema: {
-    action: z.enum(['hexagram', 'cast', 'house', 'liuren', 'trigrams']),
+    action: z.enum(['hexagram', 'cast', 'house', 'liuren', 'trigrams', 'grave']),
+    facing: z.string().optional().describe('grave: facing mountain (one of the 24, e.g. "Canh", "庚") or compass degrees, e.g. "255"'),
+    sitting: z.string().optional().describe('grave: sitting mountain instead of facing'),
+    water_in: z.array(z.string()).optional().describe('grave: directions water arrives from (mountain, degrees, or 8-direction like "Tây Bắc")'),
+    water_out: z.array(z.string()).optional().describe('grave: directions water leaves through'),
+    roads: z.array(z.string()).optional().describe('grave: directions of roads, gates or drains pointing at the grave'),
     query: z.string().optional().describe('hexagram: number, name (e.g. "Địa Thiên Thái", "地天泰", "Peace") or lines like 100010 / 789687'),
     method: z.enum(['ni', 'classic']).optional().describe('cast: ni (default) or classic'),
     members: z.array(z.object({
@@ -192,6 +198,7 @@ server.registerTool('kinh_dich', {
         return text(liuRenMarkdown(a.lunar_month, a.lunar_day, hb, lang));
       }
       case 'trigrams': return text(trigramsMarkdown(lang));
+      case 'grave': return text(graveMarkdown({ facing: a.facing, sitting: a.sitting, waterIn: a.water_in, waterOut: a.water_out, roads: a.roads }, lang));
     }
   } catch (e) { return fail(e); }
 });

@@ -7,8 +7,10 @@
  *   node kinh-dich.mjs --house "chồng:Tây Bắc,vợ:Tây Bắc,con trai cả:Đông"
  *   node kinh-dich.mjs --liuren 4/5 --time 20:00      # lunar month/day + clock time (or --hour-branch 10)
  *   node kinh-dich.mjs --trigrams
+ *   node kinh-dich.mjs --grave Canh --water-in Khôn --water-out "Tây Bắc"   # âm trạch: Hoàng Tuyền, Bát sát (or --sit Giáp, or degrees: --grave 255)
  *   add --lang en for English (default vi)
  */
+import { graveMarkdown } from './grave';
 import { cast, findHexagram, fromLines, hexagramMarkdown, hourBranchOf, houseMarkdown, liuRenMarkdown, trigramsMarkdown } from './iching';
 
 const a: Record<string, string> = {};
@@ -28,6 +30,9 @@ try {
     const [m, d] = a.liuren.split(/[\/-]/).map(Number);
     const hb = a['hour-branch'] !== undefined ? Number(a['hour-branch']) : hourBranchOf(a.time ?? '');
     console.log(liuRenMarkdown(m, d, hb, lang));
+  } else if (a.grave || a.sit) {
+    const list = (k: string) => (a[k] && a[k] !== 'true' ? a[k].split(',').map(x => x.trim()) : undefined);
+    console.log(graveMarkdown({ facing: a.grave && a.grave !== 'true' ? a.grave : undefined, sitting: a.sit, waterIn: list('water-in'), waterOut: list('water-out'), roads: list('road') }, lang));
   } else if (a.trigrams) console.log(trigramsMarkdown(lang));
-  else { console.error('Usage: node kinh-dich.mjs --que N|name | --lines 100010 | --cast | --house "role:direction,..." | --liuren M/D --time HH:MM | --trigrams [--lang en|vi]'); process.exit(1); }
+  else { console.error('Usage: node kinh-dich.mjs --que N|name | --lines 100010 | --cast | --house "role:direction,..." | --liuren M/D --time HH:MM | --grave <hướng>|--sit <toạ> [--water-in X,Y] [--water-out X] [--road X] | --trigrams [--lang en|vi]'); process.exit(1); }
 } catch (e) { console.error(`Error: ${(e as Error).message}`); process.exit(1); }

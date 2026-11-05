@@ -91,6 +91,7 @@ node scripts/kinh-dich.mjs --cast [--method ni|classic]  # gieo hộ khi ngườ
 node scripts/kinh-dich.mjs --house "chồng:Tây Bắc,vợ:Tây Bắc,con trai cả:Đông"
 node scripts/kinh-dich.mjs --liuren 4/5 --time 20:00     # Tiểu Lục Nhâm: tháng/ngày âm lịch + giờ
 node scripts/kinh-dich.mjs --trigrams
+node scripts/kinh-dich.mjs --grave Canh --water-in Khôn --water-out "Tây Bắc" --road Tỵ   # âm trạch: Hoàng Tuyền, Bát sát (hoặc --sit <toạ>, hoặc số độ: --grave 255)
 ```
 
 **Dương trạch (cách của thầy Nghê):** lấy tâm nhà, chia tám phương Hậu Thiên; **thượng quái là người** (vai trong nhà: Càn cha/chồng, Khôn mẹ/vợ, Chấn trưởng nam, Khảm trung nam, Cấn thiếu nam, Tốn trưởng nữ, Ly trung nữ, Đoài thiếu nữ), **hạ quái là phương của phòng**. Không xét hướng cửa. Danh = vị (ai ở đúng phương của vai mình) thì gia hòa; vị = danh thì vạn sự hưng.
@@ -105,7 +106,7 @@ Quy trình:
 
 **Tiểu Lục Nhâm:** dùng tháng, ngày **âm lịch** và giờ lúc người dùng bỗng có linh cảm về một việc cụ thể. Không biết ngày âm lịch thì chạy `ziwei-chart.mjs` với ngày hôm nay để xem âm lịch, hoặc hỏi người dùng.
 
-**Âm trạch (phong thủy mộ phần):** đọc `references/vi/am-trach/am-trach.md` trước (tổng hợp long, huyệt, sa, thủy, lý khí, công vị, mười điều răn, quan điểm phê phán), rồi tra cổ thư đã dịch trong `references/vi/am-trach/NN-*.md` (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Ô Kinh…; mỗi đoạn «bản dịch» kèm 「nguyên văn」) và lời giảng kham dư của thầy Nghê trong `references/vi/kinh-dich/11-kham-du.md`. Hỏi mô tả thực địa (thế núi phía sau, hai bên, phía trước; nước chảy từ đâu đi đâu; đất khô hay ẩm; hướng mộ) rồi đối chiếu. Nói rõ đây là học thuyết truyền thống; không khẳng định chắc hoạ phúc; không khuyên cải táng khi không có lý do thực tế (sụt, ngập nước, mối kiến).
+**Âm trạch (phong thủy mộ phần):** đọc `references/vi/am-trach/am-trach.md` trước (tổng hợp long, huyệt, sa, thủy, lý khí, công vị, mười điều răn, quan điểm phê phán), rồi tra cổ thư đã dịch trong `references/vi/am-trach/NN-*.md` (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Ô Kinh…; mỗi đoạn «bản dịch» kèm 「nguyên văn」) và lời giảng kham dư của thầy Nghê trong `references/vi/kinh-dich/11-kham-du.md`. Hỏi mô tả thực địa (thế núi phía sau, hai bên, phía trước; nước chảy từ đâu đi đâu; đất khô hay ẩm; hướng mộ) rồi đối chiếu. Có hướng mộ (sơn hoặc số độ la bàn) thì chạy `--grave` để ra Tứ lộ / Bát lộ Hoàng Tuyền và Long thượng Bát sát, kèm `--water-in`, `--water-out`, `--road` nếu biết phương nước đến, nước đi, đường hoặc cổng; không tự tính trong đầu. Nói rõ các phái khác nhau về nước đi qua Hoàng Tuyền (phái Dương Công gọi là cứu bần, không kỵ). Nói rõ đây là học thuyết truyền thống; không khẳng định chắc hoạ phúc; không khuyên cải táng khi không có lý do thực tế (sụt, ngập nước, mối kiến).
 
 ## 4. Kho kiến thức (chỉ mở cái cần)
 

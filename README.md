@@ -20,6 +20,7 @@ Xây dựng trên engine, kho kiến thức và bộ lời luận mã nguồn m�
 
 **Âm trạch**
 - `references/vi/am-trach/`: 11 cổ thư phong thủy mộ phần thuộc phạm vi công cộng (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Nang Áo Ngữ, Thanh Ô Kinh, luận văn của Trình Di, Trương Cư Chính, Trịnh Dụng Tích, phần đầu Nhân Tử Tu Tri), dịch đủ tiếng Việt kèm nguyên văn, cùng bản tổng hợp `am-trach.md` (long, huyệt, sa, thủy, lý khí, mười điều răn, quan điểm phê phán).
+- `scripts/kinh-dich.mjs --grave <hướng>` (hoặc số độ la bàn, hoặc `--sit <toạ>`): tính Tứ lộ / Bát lộ Hoàng Tuyền và Long thượng Bát sát cho hướng mộ, kiểm tra phương nước đến, nước đi, đường, cổng (`--water-in`, `--water-out`, `--road`).
 
 ## Cài đặt (dùng offline)
 

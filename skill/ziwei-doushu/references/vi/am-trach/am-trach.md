@@ -165,6 +165,47 @@ Lời giảng của thầy Nghê có liên quan (loan đầu, lý khí, long m�
   - Ba lành: ngày giờ hợp; âm dương xung hoà, đất ngũ sắc; người khéo tác dụng.
   - Sáu hung: âm dương sai; năm tháng trái; sức nhỏ mưu lớn; cậy phúc ỷ thế; tiếm trên bức dưới (xa hoa hoặc keo kiệt quá lễ); để lâu không táng.
 
+### Hoàng Tuyền và Bát sát (công cụ `--grave`)
+
+- **Tứ lộ Hoàng Tuyền:** "Canh Đinh Khôn thượng thị hoàng tuyền, Ất Bính tu phòng Tốn thuỷ tiên, Giáp Quý hướng trung ưu kiến Cấn, Tân Nhâm thuỷ lộ phạ đương Càn."
+
+  | Hướng | Phương Hoàng Tuyền |
+  |---|---|
+  | Canh, Đinh | Khôn |
+  | Ất, Bính | Tốn |
+  | Giáp, Quý | Cấn |
+  | Tân, Nhâm | Càn |
+
+- **Bát lộ Hoàng Tuyền** (chiều ngược lại):
+
+  | Hướng | Phương Hoàng Tuyền |
+  |---|---|
+  | Khôn | Canh, Đinh |
+  | Tốn | Ất, Bính |
+  | Cấn | Giáp, Quý |
+  | Càn | Tân, Nhâm |
+
+- **Hướng địa chi:** khẩu quyết gốc không xét. Phái Tam Hợp tính theo song sơn, ví dụ hướng Tý tính như Nhâm.
+- **Nước, đường, cổng đâm tới:**
+  - Nước đến từ phương Hoàng Tuyền, hoặc đường, cổng, rãnh đâm tới từ phương đó: hung.
+  - Nước đi ra phương đó: phái Dương Công gọi là "cứu bần hoàng tuyền", không kỵ.
+- **Long thượng Bát sát:** "Khảm long Khôn thố Chấn sơn hầu, Tốn kê Càn mã Đoài xà đầu, Cấn hổ Ly trư vi bát sát."
+
+  | Toạ cung | Địa chi kỵ |
+  |---|---|
+  | Khảm | Thìn |
+  | Khôn | Mão |
+  | Chấn | Thân |
+  | Tốn | Dậu |
+  | Càn | Ngọ |
+  | Đoài | Tỵ |
+  | Cấn | Dần |
+  | Ly | Hợi |
+
+  Kỵ lập hướng về địa chi đó, kỵ nước đến, đường đâm, cửa mở từ phương đó, và kỵ ngày, năm táng mang địa chi đó.
+- **Chạy công cụ:** `node scripts/kinh-dich.mjs --grave <hướng hoặc số độ> [--water-in …] [--water-out …] [--road …]`.
+- **Hướng sát ranh hai sơn:** nếu hướng chỉ cách ranh dưới 1,5°, công cụ sẽ cảnh báo không vong.
+
 ## 7. Công vị (phúc chia theo phòng con)
 
 - Thuyết "trái trưởng, trước giữa, phải út" theo Hậu Thiên bát quái: Chấn là trưởng, Khảm là trung, Cấn là út (`03` câu 2, câu 3).

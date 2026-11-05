@@ -1,3 +1,179 @@
+// src/grave.ts
+var MOUNTAINS = [
+  { vi: "Nh\xE2m", zh: "\u58EC", py: "ren", kind: "can" },
+  { vi: "T\xFD", zh: "\u5B50", py: "zi", kind: "chi" },
+  { vi: "Qu\xFD", zh: "\u7678", py: "gui", kind: "can" },
+  { vi: "S\u1EEDu", zh: "\u4E11", py: "chou", kind: "chi" },
+  { vi: "C\u1EA5n", zh: "\u826E", py: "gen", kind: "quai" },
+  { vi: "D\u1EA7n", zh: "\u5BC5", py: "yin", kind: "chi" },
+  { vi: "Gi\xE1p", zh: "\u7532", py: "jia", kind: "can" },
+  { vi: "M\xE3o", zh: "\u536F", py: "mao", kind: "chi" },
+  { vi: "\u1EA4t", zh: "\u4E59", py: "yi", kind: "can" },
+  { vi: "Th\xECn", zh: "\u8FB0", py: "chen", kind: "chi" },
+  { vi: "T\u1ED1n", zh: "\u5DFD", py: "xun", kind: "quai" },
+  { vi: "T\u1EF5", zh: "\u5DF3", py: "si", kind: "chi" },
+  { vi: "B\xEDnh", zh: "\u4E19", py: "bing", kind: "can" },
+  { vi: "Ng\u1ECD", zh: "\u5348", py: "wu", kind: "chi" },
+  { vi: "\u0110inh", zh: "\u4E01", py: "ding", kind: "can" },
+  { vi: "M\xF9i", zh: "\u672A", py: "wei", kind: "chi" },
+  { vi: "Kh\xF4n", zh: "\u5764", py: "kun", kind: "quai" },
+  { vi: "Th\xE2n", zh: "\u7533", py: "shen", kind: "chi" },
+  { vi: "Canh", zh: "\u5E9A", py: "geng", kind: "can" },
+  { vi: "D\u1EADu", zh: "\u9149", py: "you", kind: "chi" },
+  { vi: "T\xE2n", zh: "\u8F9B", py: "xin", kind: "can" },
+  { vi: "Tu\u1EA5t", zh: "\u620C", py: "xu", kind: "chi" },
+  { vi: "C\xE0n", zh: "\u4E7E", py: "qian", kind: "quai" },
+  { vi: "H\u1EE3i", zh: "\u4EA5", py: "hai", kind: "chi" }
+];
+var PALACES = [
+  { vi: "Kh\u1EA3m", zh: "\u574E", dir: "B\u1EAFc", en: "North", start: 0 },
+  { vi: "C\u1EA5n", zh: "\u826E", dir: "\u0110\xF4ng B\u1EAFc", en: "North-east", start: 3 },
+  { vi: "Ch\u1EA5n", zh: "\u9707", dir: "\u0110\xF4ng", en: "East", start: 6 },
+  { vi: "T\u1ED1n", zh: "\u5DFD", dir: "\u0110\xF4ng Nam", en: "South-east", start: 9 },
+  { vi: "Ly", zh: "\u96E2", dir: "Nam", en: "South", start: 12 },
+  { vi: "Kh\xF4n", zh: "\u5764", dir: "T\xE2y Nam", en: "South-west", start: 15 },
+  { vi: "\u0110o\xE0i", zh: "\u514C", dir: "T\xE2y", en: "West", start: 18 },
+  { vi: "C\xE0n", zh: "\u4E7E", dir: "T\xE2y B\u1EAFc", en: "North-west", start: 21 }
+];
+var palaceOf = (i) => PALACES[Math.floor(i / 3)];
+var HT = {
+  Canh: ["Kh\xF4n"],
+  \u0110inh: ["Kh\xF4n"],
+  \u1EA4t: ["T\u1ED1n"],
+  B\u00EDnh: ["T\u1ED1n"],
+  Gi\u00E1p: ["C\u1EA5n"],
+  Qu\u00FD: ["C\u1EA5n"],
+  T\u00E2n: ["C\xE0n"],
+  Nh\u00E2m: ["C\xE0n"],
+  Kh\u00F4n: ["Canh", "\u0110inh"],
+  T\u1ED1n: ["\u1EA4t", "B\xEDnh"],
+  C\u1EA5n: ["Gi\xE1p", "Qu\xFD"],
+  C\u00E0n: ["T\xE2n", "Nh\xE2m"]
+};
+var SONG_SON = { T\u00FD: "Nh\xE2m", S\u1EEDu: "Qu\xFD", D\u1EA7n: "C\u1EA5n", M\u00E3o: "Gi\xE1p", Th\u00ECn: "\u1EA4t", T\u1EF5: "T\u1ED1n", Ng\u1ECD: "B\xEDnh", M\u00F9i: "\u0110inh", Th\u00E2n: "Kh\xF4n", D\u1EADu: "Canh", Tu\u1EA5t: "T\xE2n", H\u1EE3i: "C\xE0n" };
+var BAT_SAT = {
+  Kh\u1EA3m: { chi: "Th\xECn", animal: "R\u1ED3ng", en: "Dragon" },
+  Kh\u00F4n: { chi: "M\xE3o", animal: "M\xE8o/Th\u1ECF", en: "Rabbit" },
+  Ch\u1EA5n: { chi: "Th\xE2n", animal: "Kh\u1EC9", en: "Monkey" },
+  T\u1ED1n: { chi: "D\u1EADu", animal: "G\xE0", en: "Rooster" },
+  C\u00E0n: { chi: "Ng\u1ECD", animal: "Ng\u1EF1a", en: "Horse" },
+  \u0110o\u00E0i: { chi: "T\u1EF5", animal: "R\u1EAFn", en: "Snake" },
+  C\u1EA5n: { chi: "D\u1EA7n", animal: "H\u1ED5", en: "Tiger" },
+  Ly: { chi: "H\u1EE3i", animal: "L\u1EE3n", en: "Pig" }
+};
+var norm = (s) => s.normalize("NFC").toLowerCase().trim();
+var strip = (s) => norm(s).normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d");
+var DIR8 = {};
+PALACES.forEach((p, i) => {
+  for (const k of [p.dir, p.en, p.vi, p.zh]) {
+    DIR8[norm(k)] = i;
+    DIR8[strip(k).replace(/[\s-]/g, "")] = i;
+  }
+});
+Object.assign(DIR8, { n: 0, ne: 1, e: 2, se: 3, s: 4, sw: 5, w: 6, nw: 7, "\u5317": 0, "\u6771\u5317": 1, "\u4E1C\u5317": 1, "\u6771": 2, "\u4E1C": 2, "\u6771\u5357": 3, "\u4E1C\u5357": 3, "\u5357": 4, "\u897F\u5357": 5, "\u897F": 6, "\u897F\u5317": 7 });
+var fmt = (d) => `${Number.isInteger(d) ? d : d.toFixed(1)}\xB0`;
+var range = (i) => {
+  const c = (345 + 15 * i) % 360;
+  return `${fmt((c - 7.5 + 360) % 360)}\u2013${fmt((c + 7.5) % 360)}`;
+};
+var mountainIndexOfDegree = (deg) => Math.floor((deg % 360 + 360 + 22.5) % 360 / 15);
+function parseMountain(q) {
+  const s = norm(q).replace(/°$/, "");
+  if (/^-?\d+(\.\d+)?$/.test(s)) return mountainIndexOfDegree(Number(s));
+  const byVi = MOUNTAINS.findIndex((m) => norm(m.vi) === s);
+  if (byVi >= 0) return byVi;
+  const byZh = MOUNTAINS.findIndex((m) => m.zh === s);
+  if (byZh >= 0) return byZh;
+  const a2 = strip(s);
+  if (a2 === "ty") throw new Error('"Ty" l\xE0 T\xFD (\u5B50, B\u1EAFc) hay T\u1EF5 (\u5DF3, \u0110\xF4ng Nam)? Vi\u1EBFt c\xF3 d\u1EA5u, ch\u1EEF H\xE1n, ho\u1EB7c s\u1ED1 \u0111\u1ED9.');
+  const byAscii = MOUNTAINS.findIndex((m) => strip(m.vi) === a2 || m.py === a2);
+  if (byAscii >= 0) return byAscii;
+  if (DIR8[s] !== void 0 || DIR8[a2.replace(/[\s-]/g, "")] !== void 0) {
+    const p = PALACES[DIR8[s] ?? DIR8[a2.replace(/[\s-]/g, "")]];
+    const three = [0, 1, 2].map((k) => MOUNTAINS[p.start + k].vi).join(", ");
+    throw new Error(`"${q}" l\xE0 c\u1EA3 cung ${p.vi} (${p.dir}) g\u1ED3m ba s\u01A1n ${three}; c\u1EA7n s\u01A1n c\u1EE5 th\u1EC3 ho\u1EB7c s\u1ED1 \u0111\u1ED9 la b\xE0n.`);
+  }
+  throw new Error(`Kh\xF4ng nh\u1EADn ra s\u01A1n "${q}". D\xF9ng m\u1ED9t trong 24 s\u01A1n (Nh\xE2m, T\xFD, Qu\xFD, S\u1EEDu, C\u1EA5n, D\u1EA7n, Gi\xE1p, M\xE3o, \u1EA4t, Th\xECn, T\u1ED1n, T\u1EF5, B\xEDnh, Ng\u1ECD, \u0110inh, M\xF9i, Kh\xF4n, Th\xE2n, Canh, D\u1EADu, T\xE2n, Tu\u1EA5t, C\xE0n, H\u1EE3i), ch\u1EEF H\xE1n, ho\u1EB7c s\u1ED1 \u0111\u1ED9.`);
+}
+function parseSector(q) {
+  const s = norm(q), a2 = strip(q).replace(/[\s-]/g, "");
+  const p = DIR8[s] ?? DIR8[a2];
+  if (p !== void 0 && !MOUNTAINS.some((m) => norm(m.vi) === s || m.zh === s)) return [0, 1, 2].map((k) => PALACES[p].start + k);
+  return [parseMountain(q)];
+}
+function graveCheck(inp) {
+  if (!inp.facing && !inp.sitting) throw new Error("C\u1EA7n h\u01B0\u1EDBng (--grave) ho\u1EB7c to\u1EA1 (--sit).");
+  const f = inp.facing ? parseMountain(inp.facing) : (parseMountain(inp.sitting) + 12) % 24;
+  const t = (f + 12) % 24;
+  const fm = MOUNTAINS[f], tm = MOUNTAINS[t], tp = palaceOf(t);
+  let ht = HT[fm.vi] ?? [], viaSongSon;
+  if (!ht.length && SONG_SON[fm.vi]) {
+    viaSongSon = SONG_SON[fm.vi];
+    ht = HT[viaSongSon] ?? [];
+  }
+  const htIdx = ht.map((n) => MOUNTAINS.findIndex((m) => m.vi === n));
+  const bs = BAT_SAT[tp.vi], bsIdx = MOUNTAINS.findIndex((m) => m.vi === bs.chi);
+  const check = (list, kind) => (list ?? []).filter(Boolean).map((q) => {
+    const idx = parseSector(q);
+    return { query: q, mountains: idx.map((i) => MOUNTAINS[i].vi), hoangTuyen: idx.some((i) => htIdx.includes(i)), batSat: idx.includes(bsIdx), kind };
+  });
+  const deg = inp.facing && /^-?\d+(\.\d+)?°?$/.test(inp.facing.trim()) ? Number(inp.facing.trim().replace("\xB0", "")) : void 0;
+  const nearBoundary = deg !== void 0 && (() => {
+    const x = (deg % 360 + 360 + 22.5) % 15;
+    return Math.min(x, 15 - x) <= 1.5;
+  })();
+  return {
+    deg,
+    nearBoundary,
+    facing: { idx: f, ...fm, range: range(f), palace: palaceOf(f) },
+    sitting: { idx: t, ...tm, range: range(t), palace: tp },
+    hoangTuyen: { rule: ht.length === 2 ? "B\xE1t l\u1ED9" : ht.length ? "T\u1EE9 l\u1ED9" : "", mountains: htIdx.map((i) => ({ ...MOUNTAINS[i], range: range(i) })), viaSongSon },
+    batSat: { ...bs, range: range(bsIdx), sittingPalace: tp.vi },
+    checks: [...check(inp.waterIn, "in"), ...check(inp.waterOut, "out"), ...check(inp.roads, "road")]
+  };
+}
+function graveMarkdown(inp, lang2 = "vi") {
+  const r = graveCheck(inp), vi = lang2 === "vi";
+  const mt = (m) => `**${m.vi}** (${m.zh}, ${m.range})`;
+  const out = [vi ? "## \xC2m tr\u1EA1ch: Ho\xE0ng Tuy\u1EC1n v\xE0 B\xE1t s\xE1t" : "## Grave compass check: Huang Quan and Eight Killings", ""];
+  out.push(vi ? `- H\u01B0\u1EDBng: ${mt(r.facing)} \u2014 cung ${r.facing.palace.vi} (${r.facing.palace.dir})
+- To\u1EA1: ${mt(r.sitting)} \u2014 cung ${r.sitting.palace.vi} (${r.sitting.palace.dir})` : `- Facing: ${mt(r.facing)} \u2014 ${r.facing.palace.zh} palace (${r.facing.palace.en})
+- Sitting: ${mt(r.sitting)} \u2014 ${r.sitting.palace.zh} palace (${r.sitting.palace.en})`);
+  if (r.nearBoundary) out.push(vi ? `- \u26A0 ${fmt(r.deg)} n\u1EB1m s\xE1t ranh gi\u1EDBi hai s\u01A1n (trong 1,5\xB0): ph\u1EA1m "kh\xF4ng vong / xu\u1EA5t qu\xE1i", n\xEAn \u0111o l\u1EA1i ho\u1EB7c ch\u1EC9nh h\u01B0\u1EDBng v\xE0o gi\u1EEFa s\u01A1n.` : `- \u26A0 ${fmt(r.deg)} is within 1.5\xB0 of a mountain boundary (void line); re-measure or adjust.`);
+  out.push("", vi ? "### Ho\xE0ng Tuy\u1EC1n (\u9EC3\u6CC9)" : "### Huang Quan (\u9EC3\u6CC9)");
+  if (r.hoangTuyen.mountains.length) {
+    const list = r.hoangTuyen.mountains.map(mt).join(vi ? " v\xE0 " : " and ");
+    out.push(vi ? `${r.hoangTuyen.viaSongSon ? `H\u01B0\u1EDBng ${r.facing.vi} l\xE0 \u0111\u1ECBa chi, kh\u1EA9u quy\u1EBFt g\u1ED1c kh\xF4ng x\xE9t; theo song s\u01A1n (ph\xE1i Tam H\u1EE3p) t\xEDnh nh\u01B0 h\u01B0\u1EDBng **${r.hoangTuyen.viaSongSon}**. ` : ""}${r.hoangTuyen.rule} Ho\xE0ng Tuy\u1EC1n: ph\u01B0\u01A1ng k\u1EF5 l\xE0 ${list}.
+
+- N\u01B0\u1EDBc **ch\u1EA3y \u0111\u1EBFn** (lai th\u1EE7y) t\u1EEB ph\u01B0\u01A1ng n\xE0y, ho\u1EB7c \u0111\u01B0\u1EDDng \u0111i, c\u1ED5ng, r\xE3nh \u0111\xE2m v\xE0o t\u1EEB ph\u01B0\u01A1ng n\xE0y: hung ("s\xE1t nh\xE2n ho\xE0ng tuy\u1EC1n").
+- N\u01B0\u1EDBc **ch\u1EA3y \u0111i** (kh\u1EE9 th\u1EE7y) ra ph\u01B0\u01A1ng n\xE0y: ph\xE1i D\u01B0\u01A1ng C\xF4ng g\u1ECDi l\xE0 "c\u1EE9u b\u1EA7n ho\xE0ng tuy\u1EC1n", kh\xF4ng k\u1EF5, c\xF3 s\xE1ch cho l\xE0 t\u1ED1t ("ho\xE0ng tuy\u1EC1n b\u1EA3n th\u1ECB c\u1EE9u b\u1EA7n ph\u01B0\u01A1ng, lai gi\u1EA3 hung h\u1EC1 kh\u1EE9 gi\u1EA3 c\xE1t"). C\xE1c ph\xE1i kh\xE1c nhau \u1EDF \u0111i\u1EC3m n\xE0y.` : `${r.hoangTuyen.viaSongSon ? `${r.facing.vi} is a branch; the original rhyme does not cover it, so the Tam He double-mountain pairing treats it as ${r.hoangTuyen.viaSongSon}. ` : ""}${r.hoangTuyen.rule === "B\xE1t l\u1ED9" ? "Eight-road" : "Four-road"} Huang Quan sector: ${list}.
+
+- Water (or a road, gate or drain) ARRIVING from this sector is harmful.
+- Water LEAVING through it is called "poverty-relieving Huang Quan" by the Yang Gong school and is not avoided; schools differ here.`);
+  } else out.push(vi ? "H\u01B0\u1EDBng n\xE0y kh\xF4ng c\xF3 Ho\xE0ng Tuy\u1EC1n theo kh\u1EA9u quy\u1EBFt t\u1EE9 l\u1ED9 / b\xE1t l\u1ED9." : "No Huang Quan sector for this facing under the four/eight-road rhyme.");
+  out.push("", vi ? "### Long th\u01B0\u1EE3ng B\xE1t s\xE1t (\u9F8D\u4E0A\u516B\u715E)" : "### Eight Killings on the dragon (\u9F8D\u4E0A\u516B\u715E)");
+  out.push(vi ? `To\u1EA1 cung ${r.sitting.palace.vi} k\u1EF5 **${r.batSat.chi}** (con ${r.batSat.animal}, ${r.batSat.range}): kh\xF4ng l\u1EADp h\u01B0\u1EDBng ${r.batSat.chi}, tr\xE1nh n\u01B0\u1EDBc \u0111\u1EBFn, \u0111\u01B0\u1EDDng \u0111\xE2m, c\u1EEDa m\u1EDF v\u1EC1 ph\u01B0\u01A1ng ${r.batSat.chi}; ch\u1ECDn ng\xE0y t\xE1ng c\u0169ng tr\xE1nh ng\xE0y, n\u0103m ${r.batSat.chi} (kh\u1EA9u quy\u1EBFt: "Kh\u1EA3m long Kh\xF4n th\u1ED1 Ch\u1EA5n s\u01A1n h\u1EA7u, T\u1ED1n k\xEA C\xE0n m\xE3 \u0110o\xE0i x\xE0 \u0111\u1EA7u, C\u1EA5n h\u1ED5 Ly tr\u01B0 vi b\xE1t s\xE1t, m\u1ED9 tr\u1EA1ch ph\xF9ng chi nh\u1EA5t th\u1EDDi h\u01B0u").` : `A ${r.sitting.palace.zh} sitting avoids **${r.batSat.chi}** (${r.batSat.en}, ${r.batSat.range}): no facing, arriving water, road or door from that branch, and no burial on ${r.batSat.en} days or years.`);
+  if (r.checks.length) {
+    out.push(
+      "",
+      vi ? "### Ki\u1EC3m tra n\u01B0\u1EDBc, \u0111\u01B0\u1EDDng" : "### Water and road check",
+      "",
+      vi ? "| Lo\u1EA1i | Ph\u01B0\u01A1ng | S\u01A1n | Ho\xE0ng Tuy\u1EC1n | B\xE1t s\xE1t | Nh\u1EADn x\xE9t |\n|---|---|---|---|---|---|" : "| Kind | Given | Mountains | Huang Quan | Eight Killings | Note |\n|---|---|---|---|---|---|"
+    );
+    for (const c of r.checks) {
+      const kind = vi ? { in: "N\u01B0\u1EDBc \u0111\u1EBFn", out: "N\u01B0\u1EDBc \u0111i", road: "\u0110\u01B0\u1EDDng/c\u1ED5ng" }[c.kind] : { in: "Water in", out: "Water out", road: "Road/gate" }[c.kind];
+      let note = vi ? "Kh\xF4ng ph\u1EA1m" : "Clear";
+      if (c.hoangTuyen && c.kind === "out") note = vi ? "Kh\u1EE9 th\u1EE7y qua Ho\xE0ng Tuy\u1EC1n: ph\xE1i D\u01B0\u01A1ng C\xF4ng cho l\xE0 c\u1EE9u b\u1EA7n, kh\xF4ng k\u1EF5" : "Leaving through Huang Quan: accepted by the Yang Gong school";
+      else if (c.hoangTuyen) note = vi ? "**Ph\u1EA1m Ho\xE0ng Tuy\u1EC1n**" : "**Hits Huang Quan**";
+      if (c.batSat && c.kind !== "out") note += vi ? "; **ph\u1EA1m B\xE1t s\xE1t**" : "; **hits Eight Killings**";
+      else if (c.batSat) note += vi ? "; n\u01B0\u1EDBc \u0111i qua ph\u01B0\u01A1ng B\xE1t s\xE1t (\xEDt s\xE1ch k\u1EF5)" : "; leaves through the Eight Killings branch (rarely avoided)";
+      out.push(`| ${kind} | ${c.query} | ${c.mountains.join(", ")} | ${c.hoangTuyen ? "\u2717" : "\u2013"} | ${c.batSat ? "\u2717" : "\u2013"} | ${note} |`);
+    }
+  }
+  out.push("", vi ? "> \u0110\xE2y l\xE0 kh\u1EA9u quy\u1EBFt l\xFD kh\xED truy\u1EC1n th\u1ED1ng, c\xE1c ph\xE1i gi\u1EA3i kh\xE1c nhau; c\u1ED5 th\u01B0 (T\xE1ng Th\u01B0) \u0111\u1EB7t h\xECnh th\u1EBF tr\xEAn ph\u01B0\u01A1ng v\u1ECB. \u0110o b\u1EB1ng la b\xE0n \u0111\u1EB7t \u1EDF gi\u1EEFa m\u1ED9, tr\xE1nh v\u1EADt kim lo\u1EA1i; n\u1EBFu h\u01B0\u1EDBng n\u1EB1m s\xE1t ranh hai s\u01A1n (\xB11,5\xB0) th\xEC c\u1EA7n \u0111o l\u1EA1i. Xem th\xEAm `references/vi/am-trach/am-trach.md` m\u1EE5c 6." : "> Traditional compass rhymes; schools differ, and the classics rank landform above direction. Measure from the centre of the grave away from metal; re-measure if within \xB11.5\xB0 of a mountain boundary.");
+  return out.join("\n");
+}
+
 // src/iching.ts
 import { randomInt } from "node:crypto";
 
@@ -710,7 +886,7 @@ var TRI = Object.fromEntries(iching_data_default.trigrams.map((t) => [t.key, t])
 var HEX = iching_data_default.hexagrams;
 var BY_PAIR = new Map(HEX.map((h) => [`${h.upper}|${h.lower}`, h]));
 var BY_LINES = new Map(iching_data_default.trigrams.map((t) => [t.lines, t]));
-var norm = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/[^a-z0-9一-鿿]+/g, " ").trim();
+var norm2 = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/[^a-z0-9一-鿿]+/g, " ").trim();
 var ROLE_ALIASES = {
   qian: ["cha", "b\u1ED1", "ch\u1ED3ng", "father", "husband", "dad", "c\xE0n", "qian", "\u7236", "\u592B", "\u4E7E", "chu nha nam"],
   kun: ["m\u1EB9", "m\xE1", "v\u1EE3", "mother", "wife", "mom", "kh\xF4n", "kun", "\u6BCD", "\u59BB", "\u5764", "chu nha nu"],
@@ -734,12 +910,12 @@ var DIR_ALIASES = {
 function lookup(aliases, q, what) {
   const raw = q.trim().toLowerCase();
   for (const [k, list] of Object.entries(aliases)) if (list.includes(raw)) return k;
-  const n = norm(q);
-  for (const [k, list] of Object.entries(aliases)) if (list.some((a2) => norm(a2) === n)) return k;
+  const n = norm2(q);
+  for (const [k, list] of Object.entries(aliases)) if (list.some((a2) => norm2(a2) === n)) return k;
   let best = "", key = "";
   const padded = ` ${n} `;
   for (const [k, list] of Object.entries(aliases)) for (const a2 of list) {
-    const na = norm(a2);
+    const na = norm2(a2);
     if (na.length > best.length && (/[\u4e00-\u9fff]/.test(na) ? n.includes(na) : padded.includes(` ${na} `))) {
       best = na;
       key = k;
@@ -760,8 +936,8 @@ function findHexagram(q) {
   const s = String(q).trim();
   if (/^[01]{6}$/.test(s)) return fromLines(s).primary;
   if (/^[6-9]{6}$/.test(s)) return fromLines(s).primary;
-  const n = norm(s);
-  const hit = HEX.find((h) => h.zh === s || norm(h.vi) === n || norm(h.en) === n) ?? HEX.find((h) => norm(h.vi).includes(n) || h.zh.includes(s) || norm(h.en).includes(n));
+  const n = norm2(s);
+  const hit = HEX.find((h) => h.zh === s || norm2(h.vi) === n || norm2(h.en) === n) ?? HEX.find((h) => norm2(h.vi).includes(n) || h.zh.includes(s) || norm2(h.en).includes(n));
   if (!hit) throw new Error(`Unknown hexagram: "${q}"`);
   return hit;
 }
@@ -897,9 +1073,12 @@ try {
     const [m, d] = a.liuren.split(/[\/-]/).map(Number);
     const hb = a["hour-branch"] !== void 0 ? Number(a["hour-branch"]) : hourBranchOf(a.time ?? "");
     console.log(liuRenMarkdown(m, d, hb, lang));
+  } else if (a.grave || a.sit) {
+    const list = (k) => a[k] && a[k] !== "true" ? a[k].split(",").map((x) => x.trim()) : void 0;
+    console.log(graveMarkdown({ facing: a.grave && a.grave !== "true" ? a.grave : void 0, sitting: a.sit, waterIn: list("water-in"), waterOut: list("water-out"), roads: list("road") }, lang));
   } else if (a.trigrams) console.log(trigramsMarkdown(lang));
   else {
-    console.error('Usage: node kinh-dich.mjs --que N|name | --lines 100010 | --cast | --house "role:direction,..." | --liuren M/D --time HH:MM | --trigrams [--lang en|vi]');
+    console.error('Usage: node kinh-dich.mjs --que N|name | --lines 100010 | --cast | --house "role:direction,..." | --liuren M/D --time HH:MM | --grave <h\u01B0\u1EDBng>|--sit <to\u1EA1> [--water-in X,Y] [--water-out X] [--road X] | --trigrams [--lang en|vi]');
     process.exit(1);
   }
 } catch (e) {
