@@ -9,4 +9,5 @@ Bản dịch tiếng Việt đầy đủ của `references/`. Mỗi tệp ghi r�
 | `marriage-compatibility.md` | Phương pháp xem hợp lá số, 14 chính tinh ở cung Phu Thê, Tứ Hóa ở Phu Thê — MIT |
 | `tianji-ziwei/` | 1.848 câu nói của Nghê Hải Hạ, mỗi câu có bản dịch, nguyên văn và mốc thời gian — CC BY-NC-SA 4.0 |
 | `kinh-dich/` | Kinh Dịch: Bát Quái, 64 quẻ, dương trạch theo thầy Nghê (viết bằng tiếng Việt), cùng 2.948 câu giảng về Dịch lý, 64 quẻ, chiêm bốc, kham dư, dương trạch. Toàn bộ 2.948 câu đã dịch tiếng Việt, kèm nguyên văn. Xem `kinh-dich/README.md`. CC BY-NC-SA 4.0 |
+| `duong-trach/` | Dương trạch: Hoàng Đế Trạch Kinh, Dương Trạch Chỉ Nam (dịch đủ), Dương Trạch Thập Thư (dịch một phần), bản tóm lược Bát Trạch & Tam Yếu, và bản tổng hợp `duong-trach.md`. Xem `duong-trach/README.md`. Công cộng / tự do |
 | `am-trach/` | Âm trạch: 11 cổ thư phong thủy mộ phần (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Nang Áo Ngữ, Thanh Ô Kinh, Trình Di, Trương Cư Chính, Trịnh Dụng Tích, Nhân Tử Tu Tri) dịch đủ tiếng Việt kèm nguyên văn, và bản tổng hợp `am-trach.md`. Xem `am-trach/README.md`. Công cộng / tự do |

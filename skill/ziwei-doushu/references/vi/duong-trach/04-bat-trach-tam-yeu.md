@@ -1,6 +1,8 @@
-# Bát Trạch Minh Kính & Dương Trạch Tam Yếu 八宅明鏡與陽宅三要
+# Bát Trạch Minh Kính & Dương Trạch Tam Yếu 八宅明鏡與陽宅三要 (tóm lược hiện đại)
 
 > Bản dịch tiếng Việt cổ thư dương trạch (phong thủy nhà ở), nguyên văn thuộc phạm vi công cộng; nguyên văn đầy đủ ở `../../duong-trach/04-bat-trach-tam-yeu.md`. Mỗi đoạn: bản dịch, rồi nguyên văn trong ngoặc 「」. Đây là học thuyết phong thủy truyền thống, mang tính văn hóa và tham khảo, không phải khoa học.
+
+> **Lưu ý:** tệp này không phải nguyên văn hai sách Bát Trạch Minh Kính và Dương Trạch Tam Yếu, mà là bản tóm lược viết lại theo ý hai sách (có cả từ ngữ hiện đại như «công tắc gas»). Bảng Đại Du Niên bát trạch trong đó đã được đối chiếu, đúng với phép truyền thống; khi trích dẫn, ghi là «theo phái Bát Trạch / Tam Yếu», không ghi là nguyên văn cổ thư.
 
 - Chỉnh lý cổ thư thuộc phạm vi công cộng. Phái Bát Trạch và phái Dương Trạch Tam Yếu là hai tông phái phong thủy nhà ở được lưu truyền rộng rãi và ảnh hưởng sâu đậm nhất từ đời Minh, Thanh tới nay.
   「公版古籍整理。八宅派与阳宅三要派乃明清以来流传最广之阳宅堪舆宗派。」

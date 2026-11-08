@@ -315,7 +315,7 @@ var iching_data_default = {
       xiang: "\u300A\u8C61\u300B\u66F0\uFF1A\u5929\u884C\u5065\uFF0C\u541B\u5B50\u4EE5\u81EA\u5F37\u4E0D\u606F\u3002",
       yaoci: [
         "\u521D\u4E5D\uFF1A\u6F5B\u9F8D\u52FF\u7528\u3002",
-        "\u4E5D\u4E8C\uFF1A\u898B\u9F8D\u518D\u7530\uFF0C\u5229\u898B\u5927\u4EBA\u3002",
+        "\u4E5D\u4E8C\uFF1A\u898B\u9F8D\u5728\u7530\uFF0C\u5229\u898B\u5927\u4EBA\u3002",
         "\u4E5D\u4E09\uFF1A\u541B\u5B50\u7D42\u65E5\u4E7E\u4E7E\uFF0C\u5915\u60D5\u82E5\uFF0C\u53B2\uFF0C\u7121\u548E\u3002",
         "\u4E5D\u56DB\uFF1A\u6216\u8E8D\u5728\u6DF5\uFF0C\u7121\u548E\u3002",
         "\u4E5D\u4E94\uFF1A\u98DB\u9F8D\u5728\u5929\uFF0C\u5229\u898B\u5927\u4EBA\u3002",
@@ -1898,14 +1898,16 @@ function hexagramMarkdown(h, lang2 = "vi", moving = [], changed) {
           `- **Ph\xE2n t\xEDch Th\u1EC3 D\u1EE5ng (Mai Hoa D\u1ECBch S\u1ED1)**:`,
           `  - Th\u1EC3 (b\u1EA3n th\xE2n / vi\u1EC7c ta c\u1EA7u): **${td.theTrigram.vi}** ${td.theTrigram.symbol} (h\xE0nh ${td.theTrigram.element}) [${td.thePosition === "upper" ? "Th\u01B0\u1EE3ng qu\xE1i" : "H\u1EA1 qu\xE1i"}]`,
           `  - D\u1EE5ng (ngo\u1EA1i c\u1EA3nh / \u0111\u1ED1i ph\u01B0\u01A1ng): **${td.dungTrigram.vi}** ${td.dungTrigram.symbol} (h\xE0nh ${td.dungTrigram.element}) [${td.thePosition === "upper" ? "H\u1EA1 qu\xE1i" : "Th\u01B0\u1EE3ng qu\xE1i"}]`,
-          `  - Quan h\u1EC7: **${td.relation}** (${td.level}) \u2014 ${td.description}`
+          `  - Quan h\u1EC7: **${td.relation}** (${td.level}) \u2014 ${td.description}`,
+          ...moving.some((m) => m <= 3) && moving.some((m) => m >= 4) ? ["  - L\u01B0u \xFD: Mai Hoa d\xF9ng m\u1ED9t h\xE0o \u0111\u1ED9ng; \u1EDF \u0111\xE2y c\xF3 h\xE0o \u0111\u1ED9ng c\u1EA3 hai qu\xE1i n\xEAn Th\u1EC3 D\u1EE5ng ch\u1EC9 \u0111\u1EC3 tham kh\u1EA3o."] : []
         );
       } else {
         out.push(
           `- **Body and Use (Th\u1EC3 D\u1EE5ng - Plum Blossom)**:`,
           `  - Body (Self): **${td.theTrigram.en}** ${td.theTrigram.symbol} (${td.theTrigram.element}) [${td.thePosition} trigram]`,
           `  - Use (Circumstances): **${td.dungTrigram.en}** ${td.dungTrigram.symbol} (${td.dungTrigram.element}) [${td.thePosition === "upper" ? "lower" : "upper"} trigram]`,
-          `  - Relationship: **${td.relation}** (${td.level}) \u2014 ${td.description}`
+          `  - Relationship: **${td.relation}** (${td.level}) \u2014 ${td.description}`,
+          ...moving.some((m) => m <= 3) && moving.some((m) => m >= 4) ? ["  - Note: Plum Blossom uses a single moving line; with moving lines in both trigrams this is only indicative."] : []
         );
       }
     }

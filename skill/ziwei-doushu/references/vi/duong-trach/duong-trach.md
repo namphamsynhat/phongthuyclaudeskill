@@ -17,10 +17,10 @@ Cổ thư *Hoàng Đế Trạch Kinh* khẳng định: **«Nhà ở là then ch�
     5. Đất nền quá rộng mà nhà ở quá ít, sân vườn hoang lạnh u ám.
   - **Ngũ Thực (5 điều vững chãi khiến nhà giàu sang hưng thịnh)**:
     1. Nhà nhỏ gọn mà người ở đông đúc ấm cúng (nhân khí vượng tụ).
-    2. Nhà quy củ, cửa nhỏ vừa vặn mà bên trong rộng rãi sáng sủa.
+    2. Nhà lớn mà cửa nhỏ.
     3. Tường rào kiên cố bao bọc tròn trịa.
-    4. Nhà ở hợp phương vị sinh vượng, lục súc tốt tươi.
-    5. Đường nước, cống rãnh tiêu thoát đúng phép (đặc biệt thoát về Đông Nam hoặc hướng suy).
+    4. Nhà nhỏ mà lục súc (gia súc) đông.
+    5. Rãnh nước trong nhà chảy về Đông Nam.
 
 ---
 

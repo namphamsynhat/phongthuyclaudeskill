@@ -15,7 +15,7 @@
 ## 第三要诀看生向，坎离震兑针尖上；得乘正卦合天心，若交杂乱生魔障。
 
 
-## 第四要诀辅粥星，他官左右审虚盈；辅若虚时地之煞，弼虚两卦受灾惊。
+## 第四要诀辅弼星，他官左右审虚盈；辅若虚时地之煞，弼虚两卦受灾惊。
 
 - Một tầng Phụ Bật là một tầng phúc lành; nếu được tầng tầng che chở thì phúc chẳng hề nhỏ; người nào thấu hiểu bí quyết Phụ Bật thì chọn nhà an thân muôn việc đều thái bình.
   「一重辅弼一重福，若是重重福不轻；有人识得辅弼诀，选宅安身事事宁。」

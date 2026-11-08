@@ -100,6 +100,8 @@ node scripts/kinh-dich.mjs --grave Canh --water-in Khôn --water-out "Tây Bắc
 - Khi có hào động (từ `--lines 789687` hoặc `--moving 1,3`): engine hiển thị **Hào từ** của các hào động, **Quẻ biến** (kết quả sau cùng), và tự động phân tích quan hệ **Thể - Dụng** theo Mai Hoa Dịch Số:
   - Thể quái (bản thân/chủ thể việc cầu) và Dụng quái (ngoại cảnh/đối phương/sự việc).
   - Ngũ hành sinh khắc giữa Thể và Dụng: Dụng sinh Thể (Đại Cát), Thể khắc Dụng (Tiểu Cát), Tỷ hòa (Cát), Thể sinh Dụng (Tiêu hao / Thứ Hung), Dụng khắc Thể (Đại Hung).
+  - Mai Hoa vốn dùng **một** hào động. Khi có hào động ở cả thượng lẫn hạ quái (thường gặp với cách gieo 6 đồng xu của thầy Nghê), phần Thể Dụng chỉ là tham khảo; ưu tiên cách giải của thầy Nghê.
+  - Quái từ, Thoán, Đại tượng, Hào từ in ra bằng nguyên văn chữ Hán: dịch sang tiếng Việt khi trả lời.
 
 **Dương trạch (Phong thủy nhà ở):**
 - **Phương pháp thầy Nghê:** lấy tâm nhà, chia tám phương Hậu Thiên; **thượng quái là người** (vai trong nhà: Càn cha/chồng, Khôn mẹ/vợ, Chấn trưởng nam, Khảm trung nam, Cấn thiếu nam, Tốn trưởng nữ, Ly trung nữ, Đoài thiếu nữ), **hạ quái là phương của phòng**. Không xét hướng cửa. Danh = vị (ai ở đúng phương của vai mình) thì gia hòa; vị = danh thì vạn sự hưng.
@@ -107,7 +109,7 @@ node scripts/kinh-dich.mjs --grave Canh --water-in Khôn --water-out "Tây Bắc
   1. *Hoàng Đế Trạch Kinh*: cổ xưa nhất, phép 24 lộ âm dương phối hợp, thuyết Ngũ Hư Ngũ Thực, thứ tự tu sửa Hình Họa - Phúc Đức.
   2. *Dương Trạch Thập Thư*: toàn diện đời Minh, xem ngoại hình thế (địa thế, nước, đường, cây cối, nhà xung quanh) và nội hình thế (cửa, phòng ngủ, bếp núc, giếng, chuồng nuôi, cầu thang), bảng họa đồ cát hung.
   3. *Dương Trạch Chỉ Nam*: nguyên lý hình thế và lý khí phối hợp, động tĩnh hư thực, khí khẩu nạp khí.
-  4. *Bát Trạch Minh Kính & Dương Trạch Tam Yếu*: phép phân Đông tứ trạch / Tây tứ trạch, tam yếu (Cửa - Chủ - Bếp), cửu tinh biến hóa (Sinh Khí, Diên Niên, Thiên Y, Phục Vị, Tuyệt Mạng, Họa Hại, Lục Sát, Ngũ Quỷ).
+  4. *Bát Trạch Minh Kính & Dương Trạch Tam Yếu* (tệp tóm lược hiện đại, không phải nguyên văn): phép phân Đông tứ trạch / Tây tứ trạch, tam yếu (Cửa - Chủ - Bếp), cửu tinh biến hóa (Sinh Khí, Diên Niên, Thiên Y, Phục Vị, Tuyệt Mạng, Họa Hại, Lục Sát, Ngũ Quỷ).
   - Bản tổng hợp lý thuyết: `references/vi/duong-trach/duong-trach.md`.
 
 Quy trình:
@@ -139,7 +141,7 @@ Mỗi tệp Tử Vi có bản tiếng Trung (`references/`) và bản dịch ti�
 | `references/vi/kinh-dich/07-duong-trach.md`, `11-kham-du.md`, `10-chiem-doan.md` | `references/kinh-dich/…` | Lời giảng đã dịch: dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99) |
 | `references/vi/kinh-dich/08-dich-ly.md`, `que/01.md`…`que/64.md` | `references/kinh-dich/…` | Dịch lý (396) và lời giảng từng quẻ (2.100): dịch đủ tiếng Việt, kèm nguyên văn |
 | `references/vi/duong-trach/duong-trach.md` | (chỉ tiếng Việt) | Tổng hợp cổ thư dương trạch: Bát Trạch, Dương Trạch Tam Yếu, Huyền Không, quy tắc bố cục |
-| `references/vi/duong-trach/01-…04-*.md` | `references/duong-trach/…` | 4 cổ thư dương trạch kinh điển (Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Tam Yếu) dịch đủ tiếng Việt, mỗi đoạn kèm nguyên văn |
+| `references/vi/duong-trach/01-…04-*.md` | `references/duong-trach/…` | Cổ thư dương trạch kèm nguyên văn: 01 Hoàng Đế Trạch Kinh và 03 Dương Trạch Chỉ Nam dịch đủ; 02 Dương Trạch Thập Thư mới dịch 31/2026 đoạn (đoạn chưa dịch chỉ có 「nguyên văn」, tự dịch và nói là bản dịch tạm); 04 là tóm lược hiện đại theo phái Bát Trạch / Tam Yếu, không trích như nguyên văn cổ thư |
 | `references/vi/am-trach/am-trach.md` | (chỉ tiếng Việt) | Tổng hợp phương pháp âm trạch theo cổ thư, có ghi nguồn từng mục |
 | `references/vi/am-trach/01-…11-*.md` | `references/am-trach/…` | 11 cổ thư âm trạch (phạm vi công cộng, Wikisource) dịch đủ tiếng Việt, mỗi đoạn kèm nguyên văn |
 

@@ -22,7 +22,7 @@ def _ssl_context():
         import certifi
         return ssl.create_default_context(cafile=certifi.where())
     except Exception:
-        return ssl._create_unverified_context()
+        return ssl.create_default_context()  # system trust store; never disable verification
 
 HERE = Path(__file__).resolve().parent
 RELEASE = "https://github.com/Renhuai123/ziwei-doushu/releases/download/v4.0-13d/"

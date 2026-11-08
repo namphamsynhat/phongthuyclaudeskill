@@ -17,7 +17,11 @@ TITLES = {
     "01-hoang-de-trach-kinh": "Hoàng Đế Trạch Kinh 黃帝宅經",
     "02-duong-trach-thap-thu": "Dương Trạch Thập Thư 陽宅十書",
     "03-duong-trach-chi-nam": "Dương Trạch Chỉ Nam 陽宅指南",
-    "04-bat-trach-tam-yeu": "Bát Trạch Minh Kính & Dương Trạch Tam Yếu 八宅明鏡與陽宅三要",
+    "04-bat-trach-tam-yeu": "Bát Trạch Minh Kính & Dương Trạch Tam Yếu 八宅明鏡與陽宅三要 (tóm lược hiện đại)",
+}
+
+NOTES = {
+    "04-bat-trach-tam-yeu": "> **Lưu ý:** tệp này không phải nguyên văn hai sách Bát Trạch Minh Kính và Dương Trạch Tam Yếu, mà là bản tóm lược viết lại theo ý hai sách (có cả từ ngữ hiện đại như «công tắc gas»). Bảng Đại Du Niên bát trạch trong đó đã được đối chiếu, đúng với phép truyền thống; khi trích dẫn, ghi là «theo phái Bát Trạch / Tam Yếu», không ghi là nguyên văn cổ thư.\n",
 }
 
 def paras(slug):
@@ -63,6 +67,9 @@ def main():
                   "> Bản dịch tiếng Việt cổ thư dương trạch (phong thủy nhà ở), nguyên văn thuộc phạm vi công cộng; nguyên văn đầy đủ ở `../../duong-trach/" + slug + ".md`. "
                   "Mỗi đoạn: bản dịch, rồi nguyên văn trong ngoặc 「」. "
                   "Đây là học thuyết phong thủy truyền thống, mang tính văn hóa và tham khảo, không phải khoa học.\n"]
+            if slug in NOTES: md.append(NOTES[slug])
+            n_p = sum(1 for k, i, _ in its if k == "p"); n_tr = sum(1 for k, i, _ in its if k == "p" and i in vi)
+            if n_tr < n_p: md.append(f"> **Chưa dịch hết:** {n_tr}/{n_p} đoạn có bản dịch; các đoạn còn lại chỉ có nguyên văn 「」, khi dùng hãy tự dịch và nói rõ là bản dịch tạm.\n")
             for k, i, t in its:
                 if k == "h": md.append(f"\n## {t}\n"); continue
                 v = vi.get(i)
@@ -72,7 +79,7 @@ def main():
             n = sum(1 for k, _, _ in its if k == "p"); rows.append((slug, n, n - miss)); miss_all += miss
         with open(os.path.join(OUT, "README.md"), "w", encoding="utf-8") as fo:
             fo.write("# Dương trạch — cổ thư phong thủy nhà ở (bản dịch tiếng Việt)\n\n"
-                     "Các kinh điển dương trạch thuộc phạm vi công cộng: Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Minh Kính & Dương Trạch Tam Yếu. "
+                     "Các kinh điển dương trạch thuộc phạm vi công cộng: Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam; tệp 04 là bản tóm lược hiện đại theo phái Bát Trạch và Tam Yếu, không phải nguyên văn. "
                      "Xem thêm `duong-trach.md` (tổng hợp phương pháp) và lời giảng dương trạch của thầy Nghê trong `../kinh-dich/07-duong-trach.md`.\n\n"
                      "| Tệp | Sách | Đoạn | Đã dịch |\n|---|---|---|---|\n")
             for s, n, d in rows: fo.write(f"| `{s}.md` | {TITLES.get(s, s)} | {n} | {d} |\n")

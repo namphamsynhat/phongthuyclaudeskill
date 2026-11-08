@@ -230,6 +230,7 @@ export function hexagramMarkdown(h: Hex, lang: Lang = 'vi', moving: number[] = [
           `  - Thể (bản thân / việc ta cầu): **${td.theTrigram.vi}** ${td.theTrigram.symbol} (hành ${td.theTrigram.element}) [${td.thePosition === 'upper' ? 'Thượng quái' : 'Hạ quái'}]`,
           `  - Dụng (ngoại cảnh / đối phương): **${td.dungTrigram.vi}** ${td.dungTrigram.symbol} (hành ${td.dungTrigram.element}) [${td.thePosition === 'upper' ? 'Hạ quái' : 'Thượng quái'}]`,
           `  - Quan hệ: **${td.relation}** (${td.level}) — ${td.description}`,
+          ...(moving.some(m => m <= 3) && moving.some(m => m >= 4) ? ['  - Lưu ý: Mai Hoa dùng một hào động; ở đây có hào động cả hai quái nên Thể Dụng chỉ để tham khảo.'] : []),
         );
       } else {
         out.push(
@@ -237,6 +238,7 @@ export function hexagramMarkdown(h: Hex, lang: Lang = 'vi', moving: number[] = [
           `  - Body (Self): **${td.theTrigram.en}** ${td.theTrigram.symbol} (${td.theTrigram.element}) [${td.thePosition} trigram]`,
           `  - Use (Circumstances): **${td.dungTrigram.en}** ${td.dungTrigram.symbol} (${td.dungTrigram.element}) [${td.thePosition === 'upper' ? 'lower' : 'upper'} trigram]`,
           `  - Relationship: **${td.relation}** (${td.level}) — ${td.description}`,
+          ...(moving.some(m => m <= 3) && moving.some(m => m >= 4) ? ['  - Note: Plum Blossom uses a single moving line; with moving lines in both trigrams this is only indicative.'] : []),
         );
       }
     }

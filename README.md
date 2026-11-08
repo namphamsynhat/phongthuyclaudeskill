@@ -19,7 +19,7 @@ Xây dựng trên engine, kho kiến thức và bộ lời luận mã nguồn m�
 - Claude đối chiếu với `references/vi/kinh-dich/`: Bát Quái, bảng 64 quẻ, phương pháp dương trạch (bếp, phòng khách, nhà vệ sinh, phòng ngủ vợ chồng, con cái), cùng 2.948 câu giảng của thầy Nghê có liên kết đến đúng giây trên Bilibili.
 
 **Dương trạch (Phong thủy nhà ở)**
-- `references/vi/duong-trach/`: 4 bộ cổ thư dương trạch kinh điển (Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Tam Yếu) dịch đủ tiếng Việt kèm nguyên văn chữ Hán, cùng bản tổng hợp lý thuyết `duong-trach.md` (khái lược Bát Trạch, Dương Trạch Tam Yếu, Huyền Không, quy tắc bố cục nhà ở truyền thống).
+- `references/vi/duong-trach/`: cổ thư dương trạch kèm nguyên văn chữ Hán: Hoàng Đế Trạch Kinh và Dương Trạch Chỉ Nam dịch đủ; Dương Trạch Thập Thư mới dịch 31/2026 đoạn (còn lại chỉ có nguyên văn); tệp Bát Trạch & Tam Yếu là bản tóm lược hiện đại theo hai phái, không phải nguyên văn; cùng bản tổng hợp lý thuyết `duong-trach.md` (khái lược Bát Trạch, Dương Trạch Tam Yếu, Huyền Không, quy tắc bố cục nhà ở truyền thống).
 - `scripts/kinh-dich.mjs --house`: phân tích vị trí từng thành viên trong gia đình theo Cung Bát Quái Hậu Thiên.
 - Công cụ tìm kiếm `ziwei_search_quotes` hỗ trợ `scope: duong-trach` tra cứu toàn bộ các thiên cổ thư nhà ở.
 
@@ -82,9 +82,12 @@ Settings → Capabilities → bật chạy code (code execution) → tải `ziwe
 |---|---|
 | Kết quả lá số (sao, cung, Tứ Hóa, cách cục, điều kiện, lời luận sao) | Đủ (mặc định tiếng Việt) |
 | Kho kiến thức Tử Vi: cổ thư, 34 cách cục, xem hợp tuổi, 1.848 câu của thầy Nghê | Dịch đủ, mỗi câu kèm nguyên văn |
-| Kinh Dịch: Bát Quái, 64 quẻ (Quái từ, Thoán từ, Đại tượng, Hỗ quái, Hào từ hào động, Thể Dụng Mai Hoa), phương pháp dương trạch | Viết và dịch đủ tiếng Việt |
+| Kinh Dịch: Bát Quái, 64 quẻ, Hỗ quái, Thể Dụng Mai Hoa, phương pháp dương trạch | Viết bằng tiếng Việt |
+| Kinh Dịch: Quái từ, Thoán, Đại tượng, Hào từ của 64 quẻ | Nguyên văn chữ Hán; Claude dịch khi đọc |
 | Kinh Dịch: toàn bộ 2.948 câu giảng — dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99), Dịch lý (396), từng quẻ (2.100) | Dịch đủ, mỗi câu kèm nguyên văn |
-| Dương trạch: 4 cổ thư phong thủy nhà ở kinh điển (Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Tam Yếu) và bản tổng hợp lý thuyết | Dịch đủ, mỗi đoạn kèm nguyên văn |
+| Dương trạch: Hoàng Đế Trạch Kinh, Dương Trạch Chỉ Nam, bản tổng hợp lý thuyết | Dịch đủ, mỗi đoạn kèm nguyên văn |
+| Dương trạch: Dương Trạch Thập Thư | Mới dịch 31/2026 đoạn; còn lại nguyên văn |
+| Dương trạch: Bát Trạch & Tam Yếu | Bản tóm lược hiện đại (không phải nguyên văn), có tiếng Việt |
 | Âm trạch: 11 cổ thư phong thủy mộ phần (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Ô Kinh, Trình Di, Trương Cư Chính, Nhân Tử Tu Tri…) và bản tổng hợp phương pháp | Dịch đủ, mỗi đoạn kèm nguyên văn |
 | Bộ lời luận soạn sẵn v4.0 (≈20 tỉ chữ Hán, 56,6 GB giải nén) | Giữ nguyên tiếng Trung; Claude dịch khi đọc |
 | SKILL.md, README, công cụ | Tiếng Việt (có tiếng Anh) |
