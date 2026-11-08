@@ -11,7 +11,7 @@
  *   add --lang en for English (default vi)
  */
 import { graveMarkdown } from './grave';
-import { cast, findHexagram, fromLines, hexagramMarkdown, hourBranchOf, houseMarkdown, liuRenMarkdown, trigramsMarkdown } from './iching';
+import { cast, changeHex, findHexagram, fromLines, hexagramMarkdown, hourBranchOf, houseMarkdown, liuRenMarkdown, trigramsMarkdown } from './iching';
 
 const a: Record<string, string> = {};
 const argv = process.argv.slice(2);
@@ -22,7 +22,12 @@ for (let i = 0; i < argv.length; i++) {
 }
 const lang = a.lang === 'en' ? 'en' : 'vi';
 try {
-  if (a.que) console.log(hexagramMarkdown(findHexagram(a.que), lang));
+  if (a.que) {
+    const h = findHexagram(a.que);
+    const moving = a.moving ? a.moving.split(',').map(Number).filter(n => n >= 1 && n <= 6) : [];
+    const changed = moving.length ? changeHex(h, moving) : undefined;
+    console.log(hexagramMarkdown(h, lang, moving, changed));
+  }
   else if (a.lines) { const r = fromLines(a.lines); console.log(hexagramMarkdown(r.primary, lang, r.moving, r.changed)); }
   else if (a.cast) { const r = cast(a.method === 'classic' ? 'classic' : 'ni'); console.log(hexagramMarkdown(r.primary, lang, r.moving, r.changed)); }
   else if (a.house) console.log(houseMarkdown(a.house.split(',').map(p => { const [role, direction] = p.split(':'); return { role: role.trim(), direction: (direction ?? '').trim() }; }), lang));
@@ -34,5 +39,5 @@ try {
     const list = (k: string) => (a[k] && a[k] !== 'true' ? a[k].split(',').map(x => x.trim()) : undefined);
     console.log(graveMarkdown({ facing: a.grave && a.grave !== 'true' ? a.grave : undefined, sitting: a.sit, waterIn: list('water-in'), waterOut: list('water-out'), roads: list('road') }, lang));
   } else if (a.trigrams) console.log(trigramsMarkdown(lang));
-  else { console.error('Usage: node kinh-dich.mjs --que N|name | --lines 100010 | --cast | --house "role:direction,..." | --liuren M/D --time HH:MM | --grave <hướng>|--sit <toạ> [--water-in X,Y] [--water-out X] [--road X] | --trigrams [--lang en|vi]'); process.exit(1); }
+  else { console.error('Usage: node kinh-dich.mjs --que N|name [--moving 1,3] | --lines 100010 | --cast | --house "role:direction,..." | --liuren M/D --time HH:MM | --grave <hướng>|--sit <toạ> [--water-in X,Y] [--water-out X] [--road X] | --trigrams [--lang en|vi]'); process.exit(1); }
 } catch (e) { console.error(`Error: ${(e as Error).message}`); process.exit(1); }

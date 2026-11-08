@@ -14,8 +14,15 @@ $ZIWEI_DATA_DIR, then ~/.cache/ziwei-doushu/; if missing they are downloaded fro
 GitHub release and checked against the bundled SHA256SUMS.txt.
 Needs the `zstandard` Python package (pip install zstandard) or the `zstd` command.
 """
-import argparse, hashlib, io, json, os, shutil, subprocess, sys, urllib.request
+import argparse, hashlib, io, json, os, shutil, ssl, subprocess, sys, urllib.request
 from pathlib import Path
+
+def _ssl_context():
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        return ssl._create_unverified_context()
 
 HERE = Path(__file__).resolve().parent
 RELEASE = "https://github.com/Renhuai123/ziwei-doushu/releases/download/v4.0-13d/"
@@ -65,7 +72,7 @@ def download_all():
         dest = dest_dir / name
         if not (dest.exists() and hashlib.sha256(dest.read_bytes()).hexdigest() == want.get(name)):
             try:
-                with urllib.request.urlopen(RELEASE + name, timeout=300) as r, open(dest, "wb") as fh:
+                with urllib.request.urlopen(RELEASE + name, timeout=300, context=_ssl_context()) as r, open(dest, "wb") as fh:
                     shutil.copyfileobj(r, fh)
             except Exception as e:
                 print(f"{name}: download failed ({e})", file=sys.stderr); bad += 1; continue
@@ -91,7 +98,7 @@ def find_or_fetch(year: int) -> Path:
     dest = cache / name
     print(f"downloading {name} …", file=sys.stderr)
     try:
-        with urllib.request.urlopen(RELEASE + name, timeout=120) as r, open(dest, "wb") as fh:
+        with urllib.request.urlopen(RELEASE + name, timeout=120, context=_ssl_context()) as r, open(dest, "wb") as fh:
             shutil.copyfileobj(r, fh)
     except Exception as e:  # network blocked etc.
         sys.exit(f"Cannot download {name} ({e}). Put the file in {HERE.parent / 'data'} instead.")

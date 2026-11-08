@@ -11,7 +11,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 import { readingMarkdown, TOPICS } from './lookup';
-import { cast, findHexagram, fromLines, hexagramMarkdown, hourBranchOf, houseMarkdown, liuRenMarkdown, trigramsMarkdown } from './iching';
+import { cast, changeHex, findHexagram, fromLines, hexagramMarkdown, hourBranchOf, houseMarkdown, liuRenMarkdown, trigramsMarkdown } from './iching';
 
 const ROOT = resolve(process.env.ZIWEI_HOME ?? join(dirname(fileURLToPath(import.meta.url)), '..'));
 const DATA = join(ROOT, 'data');
@@ -86,32 +86,38 @@ server.registerTool('ziwei_reading', {
 
 server.registerTool('ziwei_search_quotes', {
   title: 'Search Ni Haixia quotes',
-  description: 'Search timestamped Ni Haixia (Nghê Hải Hạ) quotes: 1,848 on Zi Wei Dou Shu (scope ziwei) and 2,948 on the I Ching, divination, feng shui and house placement (scope kinh-dich); scope am-trach searches the 11 translated classical grave feng shui texts (Táng Thư, Hám Long Kinh…). Vietnamese files carry the Vietnamese translation and the original Chinese on each line (some I Ching lines are Chinese only), so search in either language (e.g. "Hóa Kỵ", "Phu Thê", "化忌", "Tây Bắc", "地天泰", "厨房"). All words must appear in the line.',
+  description: 'Search timestamped Ni Haixia (Nghê Hải Hạ) quotes: 1,848 on Zi Wei Dou Shu (scope ziwei) and 2,948 on the I Ching, divination, feng shui and house placement (scope kinh-dich); scope am-trach searches the 11 translated classical grave feng shui texts (Táng Thư, Hám Long Kinh…); scope duong-trach searches the 4 translated classical house feng shui texts (Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Tam Yếu). Vietnamese files carry the Vietnamese translation and the original Chinese on each line, so search in either language (e.g. "Hóa Kỵ", "Phu Thê", "化忌", "Tây Bắc", "地天泰", "厨房", "Ngũ Hư", "五虚"). All words must appear in the line.',
   inputSchema: {
     query: z.string().describe('Words to find; all must appear (space separated)'),
-    scope: z.enum(['all', 'ziwei', 'kinh-dich', 'am-trach']).optional().describe('Which quote set (default all; am-trach = classical grave feng shui texts, searched only when asked)'),
+    scope: z.enum(['all', 'ziwei', 'kinh-dich', 'am-trach', 'duong-trach']).optional().describe('Which quote set (default all; am-trach = classical grave feng shui; duong-trach = classical house feng shui)'),
     lang: z.enum(['vi', 'zh']).optional().describe('vi = Vietnamese + Chinese lines (default), zh = Chinese original only'),
     limit: z.number().int().min(1).max(100).optional(),
   },
 }, async ({ query, scope, lang, limit }) => {
   try {
     const base = lang === 'zh' ? REFS : join(REFS, 'vi');
-    const dirs = scope === 'am-trach' ? [join(base, 'am-trach')] : [
-      ...(scope === 'kinh-dich' ? [] : [join(base, 'tianji-ziwei')]),
-      ...(scope === 'ziwei' ? [] : [join(base, 'kinh-dich'), join(base, 'kinh-dich', 'que')]),
-    ];
+    const dirs = scope === 'am-trach' ? [join(base, 'am-trach')]
+      : scope === 'duong-trach' ? [join(base, 'duong-trach')]
+      : [
+        ...(scope === 'kinh-dich' ? [] : [join(base, 'tianji-ziwei')]),
+        ...(scope === 'ziwei' ? [] : [join(base, 'kinh-dich'), join(base, 'kinh-dich', 'que')]),
+      ];
     const SKIP = ['README.md', 'LICENSE.md', 'TOPICS.md', 'bat-quai.md', '64-que.md', 'duong-trach.md', 'am-trach.md'];
     const words = query.toLowerCase().split(/\s+/).filter(Boolean);
     const hits: string[] = [];
     for (const dir of dirs.filter(d => existsSync(d))) {
-      const label = dir.endsWith('que') ? 'kinh-dich/que/' : dir.endsWith('kinh-dich') ? 'kinh-dich/' : dir.endsWith('am-trach') ? 'am-trach/' : '';
-      const amTrach = label === 'am-trach/';
+      const label = dir.endsWith('que') ? 'kinh-dich/que/'
+        : dir.endsWith('kinh-dich') ? 'kinh-dich/'
+        : dir.endsWith('am-trach') ? 'am-trach/'
+        : dir.endsWith('duong-trach') ? 'duong-trach/'
+        : '';
+      const isClassic = label === 'am-trach/' || label === 'duong-trach/';
       for (const f of readdirSync(dir).filter(n => n.endsWith('.md') && !SKIP.includes(n)).sort()) {
         const lines = readFileSync(join(dir, f), 'utf8').split('\n');
         lines.forEach((line, i) => {
-          const zhPlain = amTrach && lang === 'zh';
-          if (zhPlain ? (!line.trim() || line.startsWith('#') || line.startsWith('>')) : !line.startsWith(amTrach ? '- ' : '- [')) return;
-          const full = amTrach && lines[i + 1]?.startsWith('  「') ? `${line} ${lines[i + 1].trim()}` : line;
+          const zhPlain = isClassic && lang === 'zh';
+          if (zhPlain ? (!line.trim() || line.startsWith('#') || line.startsWith('>')) : !line.startsWith(isClassic ? '- ' : '- [')) return;
+          const full = isClassic && lines[i + 1]?.startsWith('  「') ? `${line} ${lines[i + 1].trim()}` : line;
           const low = full.toLowerCase();
           if (words.every(w => low.includes(w))) hits.push(`[${label}${f.replace('.md', '')}] ${zhPlain ? full : full.slice(2)}`);
         });
@@ -123,20 +129,21 @@ server.registerTool('ziwei_search_quotes', {
 });
 
 const REF_FILES = ['patterns', 'marriage-compatibility', 'classic-gusuifu', 'classic-quanshu', 'classic-quanji',
-  'bat-quai', '64-que', 'duong-trach', 'kd-07-duong-trach', 'kd-08-dich-ly', 'kd-10-chiem-doan', 'kd-11-kham-du', 'que', 'am-trach', 'am-trach-book'] as const;
+  'bat-quai', '64-que', 'duong-trach', 'kd-07-duong-trach', 'kd-08-dich-ly', 'kd-10-chiem-doan', 'kd-11-kham-du', 'que',
+  'am-trach', 'am-trach-book', 'duong-trach-classic', 'duong-trach-book'] as const;
 const VI_ONLY = ['bat-quai', '64-que', 'duong-trach'];
 server.registerTool('ziwei_reference', {
   title: 'Read a knowledge-base file',
-  description: 'Read a knowledge-base file. Tử Vi: patterns (34 pattern rules), marriage-compatibility, classic-gusuifu / classic-quanshu / classic-quanji. Kinh Dịch: bat-quai (8 trigrams, Lục Thần, coin casting, Tiểu Lục Nhâm), 64-que (table of the 64 hexagrams), duong-trach (Ni Haixia house-placement method, 8×8 table, kitchen/toilet/living-room rules), kd-07-duong-trach / kd-11-kham-du / kd-10-chiem-doan (translated Ni quotes on house placement, feng shui, divination), kd-08-dich-ly (I Ching principles, Chinese quotes), que + hexagram number (Ni quotes on one hexagram). Âm trạch (grave feng shui): am-trach (Vietnamese synthesis of the method with sources), am-trach-book + book 1–11 (1 Táng Thư, 2 Hám Long Kinh, 3 Nghi Long Kinh, 4 Táng Pháp Đảo Trượng, 5 Thanh Nang Kinh, 6 Thanh Nang Áo Ngữ, 7 Thanh Ô Kinh, 8 Trình Di, 9 Trương Cư Chính, 10 Trịnh Dụng Tích, 11 Nhân Tử Tu Tri; large files: prefer ziwei_search_quotes scope am-trach). vi = Vietnamese (default), zh = Chinese original.',
+  description: 'Read a knowledge-base file. Tử Vi: patterns (34 pattern rules), marriage-compatibility, classic-gusuifu / classic-quanshu / classic-quanji. Kinh Dịch: bat-quai (8 trigrams, Lục Thần, coin casting, Tiểu Lục Nhâm), 64-que (table of the 64 hexagrams), duong-trach (Ni Haixia house-placement method, 8×8 table, kitchen/toilet/living-room rules), kd-07-duong-trach / kd-11-kham-du / kd-10-chiem-doan / kd-08-dich-ly (translated Ni quotes on house placement, feng shui, divination, I Ching principles), que + hexagram number (Ni quotes on one hexagram). Âm trạch (grave feng shui): am-trach (Vietnamese synthesis of the method with sources), am-trach-book + book 1–11 (1 Táng Thư, 2 Hám Long Kinh, 3 Nghi Long Kinh, 4 Táng Pháp Đảo Trượng, 5 Thanh Nang Kinh, 6 Thanh Nang Áo Ngữ, 7 Thanh Ô Kinh, 8 Trình Di, 9 Trương Cư Chính, 10 Trịnh Dụng Tích, 11 Nhân Tử Tu Tri; large files: prefer ziwei_search_quotes scope am-trach). Dương trạch (house feng shui classics): duong-trach-classic (Vietnamese master synthesis of the 4 classics), duong-trach-book + book 1–4 (1 Hoàng Đế Trạch Kinh, 2 Dương Trạch Thập Thư, 3 Dương Trạch Chỉ Nam, 4 Bát Trạch Tam Yếu; large files: prefer ziwei_search_quotes scope duong-trach). vi = Vietnamese (default), zh = Chinese original.',
   inputSchema: {
     name: z.enum(REF_FILES),
     hexagram: z.number().int().min(1).max(64).optional().describe('For name = que: hexagram number 1–64'),
-    book: z.number().int().min(1).max(11).optional().describe('For name = am-trach-book: book number 1–11'),
+    book: z.number().int().min(1).max(11).optional().describe('For name = am-trach-book: book 1–11; for name = duong-trach-book: book 1–4'),
     lang: z.enum(['vi', 'zh']).optional(),
   },
 }, async ({ name, hexagram, book, lang }) => {
   try {
-    const zh = lang === 'zh' && !VI_ONLY.includes(name) && name !== 'am-trach';
+    const zh = lang === 'zh' && !VI_ONLY.includes(name) && name !== 'am-trach' && name !== 'duong-trach-classic';
     const root = zh ? REFS : join(REFS, 'vi');
     let p: string;
     if (name === 'que') {
@@ -146,6 +153,13 @@ server.registerTool('ziwei_reference', {
     else if (name === 'am-trach-book') {
       if (!book) throw new Error('Give book (1–11) with name = am-trach-book');
       const dir = join(root, 'am-trach');
+      const f = readdirSync(dir).find(n => n.startsWith(`${String(book).padStart(2, '0')}-`));
+      if (!f) throw new Error(`No book ${book}`);
+      p = join(dir, f);
+    } else if (name === 'duong-trach-classic') p = join(REFS, 'vi', 'duong-trach', 'duong-trach.md');
+    else if (name === 'duong-trach-book') {
+      if (!book) throw new Error('Give book (1–4) with name = duong-trach-book');
+      const dir = join(root, 'duong-trach');
       const f = readdirSync(dir).find(n => n.startsWith(`${String(book).padStart(2, '0')}-`));
       if (!f) throw new Error(`No book ${book}`);
       p = join(dir, f);
@@ -167,6 +181,7 @@ server.registerTool('kinh_dich', {
     water_out: z.array(z.string()).optional().describe('grave: directions water leaves through'),
     roads: z.array(z.string()).optional().describe('grave: directions of roads, gates or drains pointing at the grave'),
     query: z.string().optional().describe('hexagram: number, name (e.g. "Địa Thiên Thái", "地天泰", "Peace") or lines like 100010 / 789687'),
+    moving: z.array(z.number().int().min(1).max(6)).optional().describe('hexagram: optional moving line numbers (1–6) to display hào từ, transformed hexagram, and Thể Dụng analysis'),
     method: z.enum(['ni', 'classic']).optional().describe('cast: ni (default) or classic'),
     members: z.array(z.object({
       role: z.string().describe('e.g. "chồng", "vợ", "con trai cả", "con gái út", "father", "eldest son"'),
@@ -187,7 +202,10 @@ server.registerTool('kinh_dich', {
         if (!a.query) throw new Error('query is required');
         const q = a.query.trim();
         if (/^[0-9]{6}$/.test(q)) { const r = fromLines(q); return text(hexagramMarkdown(r.primary, lang, r.moving, r.changed)); }
-        return text(hexagramMarkdown(findHexagram(q), lang));
+        const primary = findHexagram(q);
+        const moving = a.moving ?? [];
+        const changed = moving.length ? changeHex(primary, moving) : undefined;
+        return text(hexagramMarkdown(primary, lang, moving, changed));
       }
       case 'cast': { const r = cast(a.method ?? 'ni'); return text(hexagramMarkdown(r.primary, lang, r.moving, r.changed)); }
       case 'house': if (!a.members?.length) throw new Error('members is required'); return text(houseMarkdown(a.members, lang));

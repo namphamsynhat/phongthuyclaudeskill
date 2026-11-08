@@ -1,0 +1,90 @@
+# Hoàng Đế Trạch Kinh 黃帝宅經
+
+> Bản dịch tiếng Việt cổ thư dương trạch (phong thủy nhà ở), nguyên văn thuộc phạm vi công cộng; nguyên văn đầy đủ ở `../../duong-trach/01-hoang-de-trach-kinh.md`. Mỗi đoạn: bản dịch, rồi nguyên văn trong ngoặc 「」. Đây là học thuyết phong thủy truyền thống, mang tính văn hóa và tham khảo, không phải khoa học.
+
+
+## 提要
+
+- (Đề yếu của Tứ Khố Toàn Thư, tóm lược:) Bản cũ đề Hoàng Đế soạn. Án Hán Thư Nghệ Văn Chí có sách "Cung trạch địa hình" 20 quyển, thì sách xem nhà cửa (tướng trạch) cổ xưa hơn sách xem mộ (tướng mộ). Tùy Chí có "Trạch cát hung luận" 3 quyển, "Tướng trạch đồ" 8 quyển; Cựu Đường Chí có "Ngũ tính trạch kinh" 2 quyển, đều không nói của Hoàng Đế, nên sách này là thác danh. Sách dẫn 29 loại Trạch Kinh đời trước, người thuật sĩ sau này mượn danh Hoàng Đế để tăng phần thần bí. Phép chia 24 lộ tìm cát hung, lấy Bát quái phương vị Càn Khảm Cấn Chấn và Thìn làm Dương, Tốn Ly Khôn Đoài và Tuất làm Âm; Dương lấy Hợi làm đầu, Tỵ làm đuôi; Âm lấy Tỵ làm đầu, Hợi làm đuôi; chủ về Âm Dương tương đắc, rất có nghĩa lý, văn từ nhã nhặn. Tống Sử Nghệ Văn Chí có sách "Tướng trạch kinh" 1 quyển, ngờ chính là sách này; trong các sách thuật số thì sách này gần với thời cổ nhất.
+  「旧本题曰《黄帝宅经》。案《汉志·形法家》有《宫宅地形》二十卷，则相宅之书较相墓为古。然《隋志》有《宅吉凶论》三卷，《相宅图》八卷，《旧唐志》有《五姓宅经》二卷，皆不云出黄帝。是书盖依讬也。考书中称《黄帝二宅经》及《淮南子》、李淳风、吕才等宅经二十有九种，则作书之时本不伪称黄帝，特方技之流欲神其说，诡题黄帝作耳。其法分二十四路考寻休咎，以八卦之位向乾坎艮震及辰为阳，巽离坤兑及戌为阴。阳以亥为首，巳为尾，阴以巳为首，亥为尾。而主於阴阳相得，颇有义理。文辞亦皆雅驯。《宋史·艺文志·五行类》有《相宅经》一卷，疑即此书。在术数之中犹最为近古者矣。」
+
+
+## 卷上
+
+- Nhà ở là then chốt của âm dương, khuôn phép của luân thường đạo lý, không phải bậc bác học minh hiền thì không thể hiểu thấu đạo này. Trong năm điều thuật số thì trọng yếu nhất chính là phép xem nhà. Con người cư ngụ không nơi nào không có khách trọ, tuy chỗ ở lớn nhỏ không đều, âm dương khác biệt, dẫu ở trọ trong một căn phòng cũng có điều thiện ác. Việc lớn có đại huấn, việc nhỏ có tiểu luận; phạm phải thì gặp tai ương, biết trấn giữ thì tai họa dứt, cũng như thuốc chữa đúng bệnh vậy. Cho nên nhà ở là gốc của con người. Người lấy nhà làm nơi cư ngụ, nhà an thì đời đời hưng thịnh vinh hoa, nhà không an thì gia tộc suy vi. Phần mộ sông núi cũng cùng một lý ấy. Trên từ kinh đô quân quốc, kế đến châu quận huyện ấp, dưới đến thôn làng trại lán cho tới nơi núi rừng ẩn cư, hễ là chỗ con người cư ngụ thì đều theo lệ này.
+  「夫宅者，乃是陰陽之樞紐，人倫之軌模，非夫博物明賢而能悟斯道也。就此五種，其最要者，唯有宅法而真秘術。凡人所居，無不在客，雖只大小不等，陰陽有殊，縱然客居一室之中，亦有善惡。大者大訓，小者小論，犯者有災，鎮而禍止，猶藥病之效也。故宅者人之本。人以宅為家居，若安即家代昌吉，若不安即門族衰微。墳墓川岡，並同茲說。上之軍國，次及州郡縣邑，下之村坊署柵乃至山居，但人所處，皆其例焉。」
+
+- Điều thấy tai nghe xưa nay cổ chế không chỉ có một. Gồm có: Hoàng Đế Nhị Trạch Kinh, Địa Điển Trạch Kinh, Tam Nguyên Trạch Kinh, Văn Vương Trạch Kinh, Khổng Tử Trạch Kinh, Trạch Cẩm, Trạch Nạo, Trạch Thống, Trạch Kính, Thiên Lão Trạch Kinh, Lưu Căn Trạch Kinh, Huyền Nữ Trạch Kinh, Tư Mã Thiên Sư Trạch Kinh, Hoài Nam Tử Trạch Kinh, Vương Vi Trạch Kinh, Tư Tối Trạch Kinh, Lưu Tấn Bình Trạch Kinh, Trương Tử Hào Trạch Kinh, Bát Phân Trạch Kinh, Ngũ Triệu Trạch Kinh, Huyền Ngộ Trạch Kinh, Lục Thập Tứ Quái Trạch Kinh, Hữu Bàn Long Trạch Kinh, Lý Thuần Phong Trạch Kinh, Ngũ Tính Trạch Kinh, Lữ Tài Trạch Kinh, Phi Âm Loạn Phục Trạch Kinh, Tử Hạ Kim Môn Trạch Kinh, Điêu Huyện Trạch Kinh.
+  「目見耳聞，古制非一。《黃帝二宅經》、《地典宅經》、《三元宅經》、《文王宅經》、《孔子宅經》、《宅錦》、《宅撓》、《宅統》、《宅鏡》、《天老宅經》、《劉根宅經》、《玄女宅經》、《司馬天師宅經》、《淮南子宅經》、《王微宅經》、《司最宅經》、《劉晉平宅經》、《張子毫宅經》、《八分宅經》、《五兆宅經》、《玄悟宅經》、《六十四卦宅經》、《右盤龍宅經》、《李淳風宅經》、《五姓宅經》、《呂才宅經》、《飛陰亂伏宅經》、《子夏金門宅經》、《刁縣宅經》。」
+
+- Các kinh kể trên phần lớn đại đồng tiểu dị, sách nào cũng tự bảo là huyền vi bí diệu, khen chê lẫn nhau; nếu không tầm cầu khắp nơi để thấu triệt thì khi dùng ắt sẽ khiếm khuyết.
+  「已上諸經，其皆大同小異，亦皆自言秘妙，互推短長，若不遍求，即用之不足。」
+
+- Gần đây học giả thường ham chuộng thuyết Ngũ tính Bát trạch, Hoàng đạo Bạch phương, phần nhiều vi phạm đại kinh mà chuốc lấy tai họa; khi tu tạo sửa chữa cẩu thả khiến người xây xong chẳng dám ở, rồi lại quay sang phỉ báng đạo âm dương là vô bằng vô hiệu, há chẳng đáng tiếc sao! Huống chi tiền hiền để lại sách vở răn dạy rành rành, người đời mê muội hằng ngày dùng mà chẳng nhận ra hình tượng. Mặt trời mặt trăng, Càn Khôn, nóng lạnh giống đực giống cái, ngày đêm âm dương... bao la muôn tượng, vận chuyển không hình tướng mà hóa sinh vạn vật; lớn lao thay lẽ biến hóa của âm dương! Phần âm trong kinh là mẹ sinh hóa muôn vật; phần dương là cha dưỡng dục muôn loài. Thuận theo thì hanh thông cát lợi, trái ngược thì bế tắc tai ương. Nay thu thập các nghiệm chứng bí truyền, chia làm 24 lộ, phối hợp cửu cung bát quái, an định vị trí nam nữ và ranh giới âm dương nhà ở, khảo sát điều lành dữ; đây chính là thánh pháp dưỡng sinh chở che muôn loài.
+  「近來學者，多攻五姓八宅，黃道白方，便皆違犯．大經，未免災咎，所以我犯修動，致令造者不居，卻毀陰陽而無據效，豈不痛哉！況先賢垂籍，誡勖昭彰，人自冥蒙，日用而不識其象者。日月乾坤，寒暑雌雄，晝夜陰陽等，所以包羅萬象，舉一千人，運變無形而能化物，大矣哉，陰陽之理也。經之陰者，生化物情之母也；陽者，生化物情之父也。作天地之祖，為孕育之尊，順之則亨，逆之測否，何異公忠受爵，違命變殃者乎！今采諸秘驗，分為二十四路，八分九宮，配女男之位，宅陰陽之界，考尋休咎，並無出前二宅，此寶養生靈之聖法也。」
+
+- Hai mươi tư lộ: tùy theo nhà lớn hay nhỏ, từ sân giữa phân ra bốn phía thành 24 lộ gồm 10 thiên can, 12 địa chi cùng Càn, Cấn, Khôn, Tốn. Càn thống lĩnh ba người con trai là Chấn, Khảm, Cấn đều thuộc ngôi Dương; Khôn thống lĩnh ba người con gái là Tốn, Ly, Đoài đều thuộc ngôi Âm. Cho nên Dương không thể đơn độc làm vua mà phải nhờ Âm mới đắc thế, Âm không thể cô độc thịnh vượng mà phải nhờ Dương mới vẹn toàn. Ví như mùa đông lấy ấm áp làm ân đức, mùa hè lấy mát mẻ làm ân đức, nam lấy nữ làm phối ngẫu, nữ lấy nam làm nơi nương tựa. Dịch Quyết nói: Âm đắc Dương như mùa hè gặp mát rượi, trăm họ hòa thuận, trăm việc hưng thịnh. Cho nên phương vị có đức cao rộng ấm áp thì cát, trùng âm trùng dương thì hung. Dương trạch nên hướng về phương Đông và phương Bắc; Âm trạch nên hướng về phương Tây và phương Nam.
+  「二十四路者，隨宅大小，中院分四面作二十四路，十幹十二支乾艮坤巽，共為二十四路是也。乾將三男震坎艮悉屬於陽位，坤將三女箕離克悉屬陰之位。是以陽不獨王，以陰為得，陰不獨王，以陽為得。亦如冬以溫暖為德，夏以涼冷為德，男以女為德，女以男為德之義。《易訣》雲：陰得陽，如暑得涼，五姓鹹和，百事俱昌。所以德位高壯藹密即吉。重陰重陽則凶。陽宅更招東方北方，陰宅更招西方南方為重也。」
+
+- Phàm dương trạch thì có dương khí ôm lấy âm, âm trạch thì có âm khí nén lấy dương. Nhà cửa âm dương chính là Long mạch. Đầu rồng của dương trạch ở Hợi, đuôi rồng ở Tỵ; đầu rồng của âm trạch ở Tỵ, đuôi rồng ở Hợi. Chuyển dời từ Tốn sang Càn, từ Ngọ sang Tý, từ Khôn sang Cấn, từ Dậu sang Mão, từ Tuất sang Thìn... thì đều nhập vào âm. Cho nên phương Phúc Đức cần thuận theo Thiên đạo, Thiên đức, Nguyệt đức, sinh khí đáo vị thì tu sửa sạch sẽ, rộng rãi, chắc chắn, ắt cả nhà được bình an, vinh hoa phú quý. Nếu lặp lại vào âm vào dương hai lần là vô khí, ba lần là vô hồn, bốn lần là vô phách; đã mất hồn phách thì gia tài ly tán, con cháu tuyệt tự.
+  「凡這陽宅，即有陽氣抱陰，陰宅即有陰氣抑陽。陰陽之宅者，即龍也。陽宅龍頭在亥，尾在巳，陰宅龍頭在巳，尾在亥。凡從巽向乾，從午向子，從坤向艮，從酉向卵，從戌向辰移從乾向巽，從子向午，從奶粉向坤，從犯向酉，從辰向戌移，巳移轉及官上悉名入陰）}}故福德之方，勤依天道貌岸然天德月德，生氣到其位，即修，令清潔闊厚，即一家獲安，榮華富貴。再入陰入陽，是名無氣，三度重入陰陽，謂之無魂，四入謂之無魄。魂魄既無，即有破逃散，子孫絕後也。」
+
+- Âm dương qua lại hòa hợp thì thuận đạo trời, tự nhiên là điềm cát xương hưng vượng. Nếu cần trùng lặp dời đổi thì phải nương từng phương mà ở 45 ngày hoặc 75 ngày mới không có lỗi, vẫn phải lấy phương Sinh khí và Phúc đức khởi đầu mới cát. Tránh phạm Ngũ quỷ, Hình họa, tuyệt tự vì đó là nơi đại hung.
+  「若一陰陽往來，即合天道，自然吉昌之象也。設要重往，即須逐道住四十五日、七十五日，往之無咎，仍宜生氣福德之方始吉。更犯五鬼，絕命刑禍者，尤不利。訣雲：行不得度，不如複故。斯之謂也。」
+
+- Lại nói: Nhà mà nghèo túng khốn cùng thì gấp rút dỡ bỏ sửa sang cung cũ. Nên phá bỏ phương Hình Họa, sửa sang bồi đắp phương Phúc Đức. Lại nói: Dời nhà sửa tường có thể tiêu trừ tai ương. Phép định phương hướng nhà ở đều lấy phương vị dời đến làm gốc, chớ câu nệ cứng nhắc mặt phố hướng Bắc hay hướng Đông.
+  「又雲：其宅乃窮，急翻故宮。宜拆刑禍方，舍卻益福德方也。又雲：翻宅平牆，可為銷殃。夫辨宅者，皆取移來方位，不以街北街東為陽，街南街西為陰。凡移來不勒遠近，一裡百里千里十步與百步同。又此二宅悠揚造，唯看天道天德月德，生氣到即修之不避，將軍、太歲、豹尾、黃播、黑方及音姓宜忌，順陰陽二氣為正，此諸神殺及五姓六十甲子皆從二氣而生，列在方隅，直一年公事，故不為災）}}凡諸刑殺在刑禍方者，設天德月德到，亦須避之，若神殺在宅福德方，即待天德月德生氣到其位，便須修之，用功多即善，故不避也。若不明陰陽之氣，到其位便須修之，用功多即善，故不避也。若不明氣中小數，故不能制其大綱）}}」
+
+- Lại nói: Phương Hình Họa khuyết hãm hoang phế, phương Phúc Đức nối liền vững chãi dài lâu là đại cát. Phương Hình Họa thu hẹp lại, giảm thiểu đi để tai ương không theo đuổi; phương Phúc Đức mở rộng ra, bồi đắp thêm thì con con cháu cháu hưởng phúc lộc vẻ vang.
+  「又雲：刑禍之方缺複荒，福德之方連接長，吉也。又雲：刑禍之方縮複縮，猶恐災殃枉相逐；福德之方拓複拓，子子孫孫受榮樂。」
+
+- Lại nói: Nhà có "Ngũ Hư" (năm điều hư khuyết) khiến người nghèo hao túng quẫn; có "Ngũ Thực" (năm điều đầy đặn) khiến người giàu sang phú quý. Ngũ Hư: Một là nhà rộng mênh mông mà người ở quá ít; Hai là cửa nhà thênh thang mà gian phòng bên trong nhỏ hẹp; Ba là tường rào đổ nát không nguyên vẹn; Bốn là giếng nước bếp núc đặt sai phương vị; Năm là đất nhà quá rộng mà nhà cửa quá ít, sân vườn hoang lạnh. Ngũ Thực: Một là nhà cửa nhỏ gọn mà người ở đông đúc ấm cúng; Hai là nhà cửa quy củ, cửa nhỏ mà phòng ốc bên trong rộng rãi thoáng đãng; Ba là tường rào chắc chắn nguyên vẹn; Bốn là nhà ở hợp thời nghi và phương vị lục súc tốt tươi; Năm là rãnh nước thoát ra phía đông nam hợp phép. Gặp Ngũ Hư thì nghèo túng, gặp Ngũ Thực thì giàu sang.
+  「又雲：宅有五虛，令人貧耗；五實，令人富貴。宅大人少，一虛；宅門大內小，二虛；牆院不完，三虛；井灶不處，四虛；宅地多屋少庭院廣，五虛。宅小人多，一實；宅大門小，二實；牆院完全，三實；宅小六畜多，四實；宅水溝東南流，五實。雙雲：宅乃漸昌，勿棄宮堂，不衰莫移，故為受殃。舍居就廣，未必有歡，計口半造，必得壽考。又雲：其田雖艮，薅鋤乃芳，其它雖善，修移乃昌。」
+
+- Sách "Trạch Thống" nói: Mộ phần và nhà ở là nguồn cội của vinh hoa; kẻ đắc lợi thì làm việc toại ý, kẻ thất lợi thì sinh lòng trắc trở. Mộ hung mà nhà cát thì con cháu được hưởng quan lộc tước vị; Mộ cát mà nhà hung thì con cháu cơm áo thiếu thốn bần hàn; Mộ và nhà đều cát thì con cháu vinh hoa đời đời nối tiếp; Mộ và nhà đều hung thì dòng họ diệt vong tuyệt tự.
+  「《宅統》之宅墓，以象榮華之源，得利者所作遂心，失利者妄生反心。墓凶宅吉，子孫官祿，墓吉宅凶，子孫衣食不足，基宅俱吉，子孫榮華，墓俱凶，子孫移鄉絕種，先靈譴責，地禍常並，七世亡魂，悲憂受苦，子孫不立，零落他鄉，流轉如蓬，客死河岸。《青烏子》雲：其宅得墓二神，漸護子孫，祿位乃固。得地得墓，龍駭虎步，牧業滋川，財集倉庫，子孫忠孝，天神佑助。子夏雲：墓有四奇，商角二姓，丙壬乙辛，宮羽微三姓，甲庚丁癸。得地得宮，刺史王公，朱農紫緩，世貴名雄。得地失宮，有始無終，先人受苦，子孫當凶。失地得宮，子孫不窮，雖無基業，衣食過充。失地失宮，絕嗣無蹤，行求衣食，客死篙蓬。子夏雲：人因宅而立，宅固人得存，人宅相扶，感通天地，故不可獨信命也。」
+
+- Phép thứ tự tu tạo sửa sang nhà ở.
+  「凡修宅次第法」
+
+- Trước sửa phương Hình Họa, sau sửa phương Phúc Đức thì cát; trước sửa phương Phúc Đức, sau sửa phương Hình Họa thì hung. Âm trạch khởi công từ phương Tỵ xoay thuận; Dương trạch khởi công từ phương Hợi xoay thuận. Phương Hình Họa dùng một trăm công thợ, phương Phúc Đức dùng hai trăm công thợ bồi đắp trấn áp ắt được đại cát xương thịnh.
+  「先修刑禍，後修福德即吉；先修福德，後修刑禍即凶。陰宅從巳起功順轉，陽宅從亥起功順轉。刑禍方用一百工，福德方用二百工壓之即吉。陽宅多修于外，陰宅多修於內。或者取子午分陰陽之界，誤將甚也。此是二氣潛通，運回之數不同，八勢九宮，分形列象，配男女之位也。其有長才深智，憫物愛生，敬曉斯門，其利莫測，且大犯即家破逃散，小犯則失爵亡官，其餘雜犯，火光口舌，跋蹇偏枯，衰殃疾病等，萬般皆有，豈得輕之哉！犯處遠而慢，即半年一年二年三年始發，犯處近而緊，即七十五日四十五日或不出月即發。若見此圖者，自然悟會，不問愚智，福德自修。災殃不犯，官榮進達，財食豐盈，六畜獲安，又歸天壽，金玉之獻，未足為珍，利濟之徒，莫大於此，可以家藏一本，用誡子孫，秘而寶之，可名《宅鏡》。」
+
+- Sách Trạch Thư lại nói: Phá cũ dựng mới cần xét quẻ hào phù hợp; chuyển nam sang bắc cần phân định phụ mẫu âm dương. Khí hòa hợp âm dương ấy biến hóa theo từng người mà thành cát hung. Vạn sự hưng suy theo đó; trời đất vận chuyển không cùng, người và gia súc nhờ nơi nương tựa bình yên mà sinh sôi phát triển.
+  「又宅書雲：拆故營新，爻卜相伏，移南徒北，陰陽父分，是和陰陽者，氣也，逐人得變吉凶，化也。隨事能興，故天地j運轉無窮。人畜鬼神，變化何准。」
+
+- Sách "Sưu Thần Ký" nói: Tinh linh quỷ quái đều có thể biến hóa thành người; hoặc người tự cảm ứng mà biến thành kỳ dị. Cũng như loài cây khác giống ghép cành mà sống, tuy gốc rễ khác nhau mà hoa quả hòa trộn. Vạn vật hữu hình còn biến thông như thế, huống chi khí tức vô hình giữa trời đất và nhà ở của con người!
+  「《搜神記》雲：精靈鬼魁，皆化為人。或有人自相感變為妖怪，亦如異性之木，接續而生，根苗雖殊，異味相雜，形礙之物。尚隨變通，陰肉虛無，豈為黨定？是知宅非宅氣，由移來以變之。」
+
+- Lại nói: Nhà lấy hình thế làm thân thể, lấy nguồn nước làm huyết mạch, lấy đất đai làm da thịt, lấy cỏ cây làm râu tóc, lấy nhà cửa làm áo xống, lấy cổng ngõ làm mũ đai. Nếu được trọn vẹn hài hòa như thế thì phong nhã thanh cao, chính là bậc thượng cát tôn quý vậy.
+  「又雲：宅以形勢這身體，以泉水為血脈，以土地為皮肉，以草木為毛髮，以舍屋為衣服，以門戶為冠帶，若得如斯，是事伊雅，乃為上吉。」
+
+- Sách "Tam Nguyên Kinh" nói: Đất tốt thì mầm mạ tốt tươi, nhà cát thì con người vinh hiển. Lại nói: Phúc của con người như người có nhan sắc đẹp đẽ; sự cát lành của nhà ở như người xấu xí được khoác lên y phục gấm vóc lộng lẫy, thần thái tự nhiên tăng thêm phân nửa. Người mệnh bạc mà nhà ở đắc thế cát tường thì dẫu nghèo khó cũng giữ được bình an trường thọ.
+  「《三元經》雲：地善即苗茂，宅吉即人榮。又雲：人之福者，喻如美貌之人，宅之吉者，如醜陋之子得好衣裳，神彩尤添一半，若命薄宅惡，即如醜人更又衣弊，如何堪也。故人之居宅，大須慎擇。」
+
+- Lại nói: Sửa sang phương "Lai Lộ" (đường đi tới) thì không việc gì không cát; phạm phải "Địch Lộ" (đường đối xung ngăn trở) thì khó lòng yên ổn. Ví như gần đây từ phương Đông dời đến, vào ở nhà này rồi lại tu sửa mở rộng phương Tây gọi là Địch Lộ; nếu tu sửa bồi đắp phương Đông thì gọi là Lai Lộ. Các phương dời chuyển và đi lại nhậm chức quan trường đều xét theo lệ này.
+  「又雲：修來路即無不吉，犯抵路未當安。假如近從東來，入此宅住後更修拓西方，名抵路，卻修拓東方，名來路。余方移轉及上官往來，不計遠近，准此為例。凡人婚嫁，買莊田六畜，致營域上官求和等，悉宜向名福德方往東。久久吉慶；若為刑禍方往來，久久不利。又忌龜頭月’在午地向北沖堂，名曰凶亭，有稍高豎屋亦不利。決雲：龜頭午，必易主。亦雲妨主。諸院有之亦不吉。見宅午巳東巽巳來有高樓大樹，皆不利，宜去之吉。」
+
+- Lại nói: Phàm muốn khởi công tu tạo động thổ phải tránh thần Tứ Vương (còn gọi là Đế Xa, Đế Lược, Đế Xá). Ví như ba tháng mùa xuân thì phương Đông thuộc Thanh Đế (Mộc vượng): Dần là Xe (Xa), Mão là Lược, Thìn là Nhà (Xá) — tức tháng Giêng tránh Dần, tháng Hai tránh Mão, tháng Ba tránh Thìn. Mùa hạ, mùa thu, mùa đông phỏng theo đó mà suy ra.
+  「又雲：凡欲修造動治，須避四王神，亦名帝車帝略帝舍。假如春三月，東方為青帝，木王，寅為車，外為略，辰為舍，即是正月二月三月不得東。《戶經》曰：犯帝車殺父。犯帝略殺母。犯帝舍殺子孫。夏及秋冬三個月防此為忌。」
+
+- Lại nói: Mỗi năm có mười hai tháng, mỗi tháng đều có phương vị Sinh Khí và Tử Khí. Hễ tu sửa phương vị Sinh Khí của tháng thì phúc lộc hội tụ, Sinh Khí của tháng kết hợp với Thiên đạo, Nguyệt đức thì cát lợi vô cùng; nếu lầm phạm phương vị Tử Khí của tháng ắt chuốc lấy tai họa khôn lường.
+  「又天：每年有十二月，每月有生氣死氣之位。但修月生氣之位者福來集，月生氣與天道月德合其吉，路犯月死氣之位為有凶災。」
+
+- Tháng Giêng: Sinh khí ở Tý Quý, Tử khí ở Ngọ Đinh; Tháng Hai: Sinh khí ở Sửu Cấn, Tử khí ở Mùi Khôn; Tháng Ba: Sinh khí ở Dần Giáp, Tử khí ở Thân Canh; Tháng Tư: Sinh khí ở Mão Ất, Tử khí ở Dậu Tân; Tháng Năm: Sinh khí ở Thìn Tốn, Tử khí ở Tuất Càn; Tháng Sáu: Sinh khí ở Tỵ Bính, Tử khí ở Hợi Nhâm; Tháng Bảy: Sinh khí ở Ngọ Đinh, Tử khí ở Tý Quý; Tháng Tám: Sinh khí ở Mùi Khôn, Tử khí ở Sửu Cấn; Tháng Chín: Sinh khí ở Thân Canh, Tử khí ở Dần Giáp; Tháng Mười: Sinh khí ở Dậu Tân, Tử khí ở Mão Ất; Tháng Mười Một: Sinh khí ở Tuất Càn, Tử khí ở Thìn Tốn; Tháng Mười Hai: Sinh khí ở Hợi Nhâm, Tử khí ở Tỵ Bính.
+  「正月生氣在子癸，死氣在午丁；二月生氣在醜艮，死氣在未坤；三月生氣在寅甲，死氣在申庚；四月生氣在卯乙，死氣在酉辛；五月生氣在辰巽，死氣在戌乾；六月生氣在已丙，死氣在亥壬；七月生氣在午丁，死氣在子癸；八月生氣在未坤，死氣在醜艮；九月生氣在申庚，死氣在寅甲；十月生氣在酉辛，死氣在卯乙；十一月生氣在戌乾，死氣在辰巽；十二月生氣在亥壬，死氣在巳丙。」
+
+
+## 卷下
+
+- Phàm đắp tường xây luỹ, dựng lập nhà cửa, phương vị bị Thổ Khí xung phạm thì người nhà ắt gặp tai ương, nên y phép cầu an hóa giải. Tháng Giêng thổ khí xung phương Đinh Mùi; Tháng Hai xung Khôn; Tháng Ba xung Nhâm Hợi; Tháng Tư xung Tân Tuất; Tháng Năm xung Càn; Tháng Sáu xung Dần Giáp; Tháng Bảy xung Quý Sửu; Tháng Tám xung Cấn; Tháng Chín xung Bính Tỵ; Tháng Mười xung Thìn Ất; Tháng Mười Một xung Tốn; Tháng Mười Hai xung Thân Canh.
+  「凡修築垣牆，建造宅宇，土氣所沖之方，人家即有災殃，宜依法禳之。正月土氣沖丁未方，二月坤，三月壬亥，四月辛戌，五月乾，六月寅甲，七月癸丑，八月艮，九月丙巳，十月辰乙，十一月巽，十二月申庚。」
+
+- Dưới đây đồ hình khảo xét tinh tường, xem kỹ ắt rõ nguồn cơn lành dữ.
+  「已下圖無不精詳，但細看之必有災咎」
+
+- Càn là Thiên Môn, Dương thủ (đầu rồng dương), nên bằng phẳng, vững chãi, kiên cố; không nên quá cao chót vót cô độc, phạm phải ắt tổn hại người chủ gia đình, mắc bệnh đầu mặt cổ gáy. Hợi là Chu Tước, Đầu Rồng, bản mệnh của cha; phạm phải thì hại người chủ tọa. Nhâm là Đại Họa, bản mệnh của mẹ; phạm phải thì hại mẫu thân, sinh bệnh tật tai ương.
+  「天門陽首，宜平穩實，不宜絕高壯，犯之損家長，大病頭項等災。亥為朱雀、龍頭、父命座，犯之害命坐人。壬為大禍，母命，犯之害命坐人，有飛災口舌。子為死喪超級大國右手，長子婦命座，犯之害命坐人，失魂傷目、水災口舌。癸為罰獄、勾陳，次子婦命座，犯之害命坐人，口舌鬥訟等災。醜為官獄，少子婦命座，犯之鬼魁盜賊火光怪異等災。鬼門宅壅氣缺薄空荒吉，犯之偏枯淋腫等災。寅為天刑、龍背、玄武，庶養子婦長女命座，犯之傷胎第獄、被盜亡敗等災。甲為宅刑，次女孫男等命座，犯之害命座人、家長病頭項諸傷折等災。卯龍右脅、刑獄，少女孫命座，犯之害命坐人，火光氣滿、刑傷失魂。乙騰蛇訟獄，客命座，犯之害命坐人、妖怪、死喪口舌。辰為自虎龍右足，主訟獄，奴婢六畜命座，犯之驚傷跛蹇、盤急等災，亦主驚恐。風門宜平缺，名福首，背枯向榮二宅，五姓八宅，並不宜高壯壅塞，亦陽極陰首。巳天福、宅屋，亦名宅極。經曰：欲得職，治宅極，宜壯實，修改吉。丙明堂、宅福，安門牛倉等舍。經雲：治明堂，加官益祿大吉祥，闔家快活不可當。午吉昌之地，龍左足。經雲：治吉昌，奴婢成行六畜良。宜平實，忌高及龜頭廳丁天倉。經雲：財砂亡，治天倉，宜倉庫、六畜，壯厚高拓吉。未天府，高樓大舍，牛羊奴婢居之，大草息，倉而利。人門龍腸，宜置牛馬廄堂，置牛馬屋，其位欲開拓壅厚，亦名福囊，重而兼實，大吉。申廄堂，置牛馬屋，主寶貝金玉之事，壯實開拓，吉。經曰：治玉堂，財錢橫來，六畜肥強。庚宅德、安門，宜置車屋雞棲碓 ，吉。甚至開拓連接，壯兩淨潔吉。酉大德，龍左脅，客舍，吉。經曰：治大德，富貴資財成萬億，亦名宅德，宜宅主。辛金醫天井，宜置門及高樓大屋。經曰：治金醫，大富貴，宜財，百事吉。經曰：青龍壯高，富貴雄豪。外巽之位，宜作園池竹簞，設有舍屋，宜平而簿。外天德及玉堂之位，宜開打侵修，令壯實，大吉。經曰：福德之方拓複拓，子子孫孫受榮樂。唯不得高樓重舍。外天倉與天府之位，不厭高壯樓舍，安門倉庫牛舍及奴婢車屋，並大吉。外龍腹之位，與內院並同，安牛馬牢廠，亦名福囊，宜廣厚實，吉。外坤家置馬廄，吉。安重滯之物及高樓等，並大吉。外玉堂之院，宜作崇堂及郎君孫幼等院，吉。客廳即有公客來，若高壯侵拓及有大櫃重屋等，招金玉寶帛，主印綬，喜。外大德宅位，宜開拓勤修泥，令新淨，吉。及作音樂飲會之事，吉。宜子孫女婦女等院，出貴人，增財富，貴德望逼，振。外金匱、青龍兩位，宜作庫藏倉窖，吉。高樓大舍，宜財帛，又宜子孫出豪貴，婚連帝戚，常令清淨，連接叢林，花木藹密。」
+
+- Càn là Thiên Môn, cùng cực của âm mà đầu của dương, còn gọi là "lưng tựa chỗ khô, mặt hướng nơi tốt tươi". Phương ấy nhà cửa nên nối dài cao ráo, rộng rãi, dày dặn thì đại cát. Hợi là Thiên Phúc, Đuôi Rồng, còn gọi là Trạch Cực. Kinh nói: Muốn cầu chức tước hãy sửa sang Trạch Cực; phương ấy yên ổn thì gia đạo vinh hiển đời đời.
+  「乾天門，陰極陽首，亦名背枯向榮。其位舍屋連接長遠，高壯闊實，吉。亥為天福龍尾，宜置豬欄，亦名宅極。經雲：欲得職，治宅極。宜開拓，吉壬宅福、明堂，宜置高樓大舍，常令清淨及集學經史，亦名印授宮，宜財祿。子吉昌，龍左足，宜置牛屋。經雲：奴婢成行六畜良。平實，吉。癸天倉，立門戶客舍葷廁，吉。經雲：財砂亡，治天倉。安六畜，開拓高厚。醜天府，高樓大舍，牛羊奴婢居之，大孳息，倉廁並吉。艮鬼門龍腹、福囊，宜厚實重，吉，缺薄即貧窮。寅玉堂，宜置車牛舍，主寶貝金玉之事，宜開拓。經曰：治玉堂，錢財橫至，六畜肥強。大吉。甲宅德、安門，宜置碓 ，開拓連接壯觀，吉。清淨，災殃自消。卯大德，龍脅、客舍。經曰：治大德，富貴財成萬億。亦名宅主，主有德望。乙金匠、天井，宜置高樓大舍，常令清淨，勤修泥，尤增喜慶。辰地府，青龍左手、三元，宜子孫，當宜清淨。經曰：青龍壯高，富貴雄巽風宜平穩，不宜壅塞，亦名陽極陰前，背榮向枯，宜空缺通疏，大吉。巳朱雀、龍頭、父命座，不宜置井，犯害命坐人、口舌飛禍、吐血顛狂、蛇畜作怪。丙大禍，母命，不宜置門，犯之害命從人、飛禍口舌。午為死喪，龍右手，長子婦命座，犯之害命坐人、失魂傷目、心痛、火光口舌、盤急。丁罰獄、勾陳，次子婦命，犯之坐人、口舌鬥訟瘡病等災。未為官獄，少子婦命座，犯之害命坐人、鬼魅、火瘡、霹靂、盜賊、刀兵、流血、六畜傷死、家破逃散。坤人門，女命座，不宜置馬廄，犯之偏枯淋腫等。此地宜荒缺低薄，吉。申天刑、龍背、庶子婦長女命座，犯之失魂病脅，刑傷、牢訇、氣滿、火怪。庚宅刑，次婦長孫命座，不宜置門，犯之害命坐人、病右脅、口舌、傷殘損墜。酉刑獄、龍右脅，少婦孫命坐人，犯者害命坐人、失魂刑獄、氣滿火怪。辛為騰蛇訟獄，客命，犯之害命坐人、口舌妖怪、死喪災起。戌白虎、獄訟、龍右足，奴婢六畜命座，犯之足踞破塞、偏枯盤急。外乾院，與同院修造開拓，令壯實，高岡陵大樹，並吉。宜家長延壽，子孫榮祿不絕，光映門族。乾地廣闊，外亥天福與宅極之鄉，宜置大舍，位次重疊，深遠濃厚，吉。與宅福、明堂相連接壯實，子孫聰明昌盛，科名印綬大富貴。外天倉，宜高樓重合，倉稟庫藏，奴婢六畜等舍，大孳息，宜財帛五穀。其位高潔開拓，吉。外天府，宜闊壯，子孫婦女居之，大吉。亦名富貴飽溢之地，遷職喜，萬般悉有矣。絕上外龍腹、福囊之位，宜壅實如山，吉。遠近連接，大樹長岡，不厭開拓，吉。若低缺無屋舍，即貧薄不安。外玉堂，宜子婦，即富貴榮華，子孫興遠。其位雄壯，即官職升騰，位至台省，寶帛金玉不少。若陷缺荒殘，即受貧薄，流移他地。外宅德，宜作學習道藝，功巧立成，亦得名聞，千里四方來慕，亦為師統，子孫居之有信，懷抱義，壯勇無雙。外天德、金醫、青龍，此三神並宜濃厚實，大舍高樓，或有客廳。卿相遊宴，過往一家，富貴豪盛，須賴三神，尤宜開拓。若冷薄荒缺敗陷，即貧窮也。外青龍，不厭清潔，焚香設座，延遲賓朋，高道奇人，自然而至，安井及水讀，甚吉。」

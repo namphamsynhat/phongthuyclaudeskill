@@ -59,6 +59,7 @@ export const roleKey = (q: string) => lookup(ROLE_ALIASES, q, 'family role');
 export const dirKey = (q: string) => lookup(DIR_ALIASES, q, 'direction');
 
 export const hexOf = (upper: string, lower: string) => BY_PAIR.get(`${upper}|${lower}`)!;
+export const mutualHex = (h: Hex): Hex => HEX[h.mutual - 1];
 
 /** Find a hexagram by King Wen number, Chinese / Vietnamese / English name, or six lines bottom→top. */
 export function findHexagram(q: string | number): Hex {
@@ -107,25 +108,139 @@ const sym = (h: Hex) => String.fromCodePoint(0x4dc0 + h.n - 1);
 const draw = (bits: string, moving: number[] = []) =>
   [...bits].map((b, i) => ({ b, i })).reverse()
     .map(({ b, i }) => `    ${b === '1' ? '━━━━━━━' : '━━━ ━━━'}${moving.includes(i + 1) ? '  ○' : ''}`).join('\n');
-const bitsOf = (h: Hex) => TRI[h.lower].lines + TRI[h.upper].lines;
+export const bitsOf = (h: Hex) => TRI[h.lower].lines + TRI[h.upper].lines;
+
+export function changeHex(primary: Hex, moving: number[]): Hex {
+  if (!moving.length) return primary;
+  const bits = bitsOf(primary);
+  const cb = [...bits].map((b, i) => (moving.includes(i + 1) ? (b === '1' ? '0' : '1') : b)).join('');
+  return hexOf(BY_LINES.get(cb.slice(3))!.key, BY_LINES.get(cb.slice(0, 3))!.key);
+}
 const roleShort = (t: Tri, lang: Lang) => (lang === 'en' ? t.role_en : t.role.split(' (')[0].toLowerCase());
 const dirName = (t: Tri, lang: Lang) => (lang === 'en' ? t.direction_en : t.direction);
 const triName = (t: Tri, lang: Lang) => (lang === 'en' ? `${t.zh} ${t.en}` : `${t.vi} ${t.symbol} (${t.nature_vi})`);
 
+export interface TheDungAnalysis {
+  theTrigram: Tri;
+  dungTrigram: Tri;
+  thePosition: 'upper' | 'lower';
+  relation: string;
+  level: string;
+  description: string;
+}
+
+const ELEMENT_CYCLE: Record<string, { generates: string; overcomes: string }> = {
+  Kim: { generates: 'Thủy', overcomes: 'Mộc' },
+  Thủy: { generates: 'Mộc', overcomes: 'Hỏa' },
+  Mộc: { generates: 'Hỏa', overcomes: 'Thổ' },
+  Hỏa: { generates: 'Thổ', overcomes: 'Kim' },
+  Thổ: { generates: 'Kim', overcomes: 'Thủy' },
+};
+
+export function analyzeTheDung(primary: Hex, moving: number[]): TheDungAnalysis | null {
+  if (!moving.length) return null;
+  const lowerMoving = moving.some(m => m >= 1 && m <= 3);
+  const upperMoving = moving.some(m => m >= 4 && m <= 6);
+
+  let theKey: string;
+  let dungKey: string;
+  let thePosition: 'upper' | 'lower';
+
+  if (lowerMoving && !upperMoving) {
+    thePosition = 'upper';
+    theKey = primary.upper;
+    dungKey = primary.lower;
+  } else if (upperMoving && !lowerMoving) {
+    thePosition = 'lower';
+    theKey = primary.lower;
+    dungKey = primary.upper;
+  } else {
+    thePosition = 'lower';
+    theKey = primary.lower;
+    dungKey = primary.upper;
+  }
+
+  const the = TRI[theKey];
+  const dung = TRI[dungKey];
+  const theEl = the.element;
+  const dungEl = dung.element;
+
+  let relation = '';
+  let level = '';
+  let description = '';
+
+  if (ELEMENT_CYCLE[dungEl]?.generates === theEl) {
+    relation = 'Dụng sinh Thể';
+    level = 'Đại Cát';
+    description = `${dung.vi} (${dungEl}) sinh ${the.vi} (${theEl}) — ngoại cảnh phù trợ, việc cầu hanh thông, quý nhân giúp đỡ, tự nhiên mà thành`;
+  } else if (ELEMENT_CYCLE[theEl]?.overcomes === dungEl) {
+    relation = 'Thể khắc Dụng';
+    level = 'Tiểu Cát';
+    description = `${the.vi} (${theEl}) khắc ${dung.vi} (${dungEl}) — phải nỗ lực vượt khó, chế ngự ngoại cảnh mới thành công, có lợi nhưng hao tổn công sức`;
+  } else if (theEl === dungEl) {
+    relation = 'Tỷ hòa';
+    level = 'Cát';
+    description = `${the.vi} và ${dung.vi} cùng hành ${theEl} — bằng hữu tương trợ, đồng tâm hiệp lực, bình ổn như ý`;
+  } else if (ELEMENT_CYCLE[theEl]?.generates === dungEl) {
+    relation = 'Thể sinh Dụng';
+    level = 'Tiêu hao (Thứ Hung)';
+    description = `${the.vi} (${theEl}) sinh ${dung.vi} (${dungEl}) — tổn hao nguyên khí, tốn tài tốn sức vì người khác hoặc hoàn cảnh, vất vả mà thu hoạch ít`;
+  } else if (ELEMENT_CYCLE[dungEl]?.overcomes === theEl) {
+    relation = 'Dụng khắc Thể';
+    level = 'Đại Hung';
+    description = `${dung.vi} (${dungEl}) khắc ${the.vi} (${theEl}) — ngoại cảnh chèn ép, gặp trắc trở hiểm nguy, bị tổn thất hoặc cản trở lớn`;
+  }
+
+  return { theTrigram: the, dungTrigram: dung, thePosition, relation, level, description };
+}
+
 export function hexagramMarkdown(h: Hex, lang: Lang = 'vi', moving: number[] = [], changed?: Hex): string {
   const u = TRI[h.upper], l = TRI[h.lower];
   const vi = lang === 'vi';
+  const mut = mutualHex(h);
   const out = [
     `## ${sym(h)} ${vi ? 'Quẻ' : 'Hexagram'} ${h.n}: ${vi ? h.vi : h.en} (${h.zh}${vi ? '' : `, Vietnamese ${h.vi}`})`,
     '',
     '```', draw(bitsOf(h), moving), '```',
     `- ${vi ? 'Thượng quái (ngoại)' : 'Upper trigram'}: ${triName(u, lang)} · ${vi ? 'Hạ quái (nội)' : 'Lower trigram'}: ${triName(l, lang)}`,
-    `- ${vi ? 'Ý chính' : 'Gist (Vietnamese summary)'}: ${h.meaning}`,
+    `- ${vi ? 'Ý chính' : 'Gist'}: ${h.meaning}`,
+    `- ${vi ? 'Quái từ' : 'Guaci (judgement)'}: ${h.guaci}`,
+    `- ${vi ? 'Đại tượng' : 'Xiang (great image)'}: ${h.xiang}`,
+    `- ${vi ? 'Hỗ quái (nội hàm diễn biến)' : 'Nuclear hexagram (mutual)'}: ${sym(mut)} ${mut.n}. ${vi ? mut.vi : mut.en} (${mut.zh}) — ${mut.meaning}`,
     `- ${vi ? 'Dương trạch (thầy Nghê)' : 'Yang-zhai reading (Ni Haixia)'}: ${vi
       ? `người có vai **${roleShort(u, lang)}** (${u.vi}) ở phương **${l.direction}** (cung ${l.vi})`
       : `a person in the role of **${roleShort(u, lang)}** (${u.zh}) living in the **${l.direction_en}** room (${l.zh} sector)`}`,
   ];
-  if (moving.length) out.push(`- ${vi ? 'Hào động' : 'Moving lines'}: ${moving.join(', ')} → ${vi ? 'quẻ biến' : 'changes to'} ${sym(changed!)} ${changed!.n}. ${vi ? changed!.vi : changed!.en} (${changed!.zh})`);
+  if (moving.length) {
+    out.push(`- ${vi ? 'Hào động' : 'Moving lines'}: Hào ${moving.join(', ')} → ${vi ? 'quẻ biến' : 'changes to'} ${sym(changed!)} ${changed!.n}. ${vi ? changed!.vi : changed!.en} (${changed!.zh})`);
+    for (const m of moving) {
+      if (m >= 1 && m <= 6 && h.yaoci[m - 1]) {
+        out.push(`  - ${h.yaoci[m - 1]}`);
+      }
+    }
+    if (moving.length === 6 && (h.n === 1 || h.n === 2) && h.yaoci[6]) {
+      out.push(`  - ${h.yaoci[6]}`);
+    }
+
+    const td = analyzeTheDung(h, moving);
+    if (td) {
+      if (vi) {
+        out.push(
+          `- **Phân tích Thể Dụng (Mai Hoa Dịch Số)**:`,
+          `  - Thể (bản thân / việc ta cầu): **${td.theTrigram.vi}** ${td.theTrigram.symbol} (hành ${td.theTrigram.element}) [${td.thePosition === 'upper' ? 'Thượng quái' : 'Hạ quái'}]`,
+          `  - Dụng (ngoại cảnh / đối phương): **${td.dungTrigram.vi}** ${td.dungTrigram.symbol} (hành ${td.dungTrigram.element}) [${td.thePosition === 'upper' ? 'Hạ quái' : 'Thượng quái'}]`,
+          `  - Quan hệ: **${td.relation}** (${td.level}) — ${td.description}`,
+        );
+      } else {
+        out.push(
+          `- **Body and Use (Thể Dụng - Plum Blossom)**:`,
+          `  - Body (Self): **${td.theTrigram.en}** ${td.theTrigram.symbol} (${td.theTrigram.element}) [${td.thePosition} trigram]`,
+          `  - Use (Circumstances): **${td.dungTrigram.en}** ${td.dungTrigram.symbol} (${td.dungTrigram.element}) [${td.thePosition === 'upper' ? 'lower' : 'upper'} trigram]`,
+          `  - Relationship: **${td.relation}** (${td.level}) — ${td.description}`,
+        );
+      }
+    }
+  }
   out.push(`- ${vi ? 'Lời giảng của thầy Nghê về quẻ này' : "Ni Haixia's lecture quotes"}: \`references/vi/kinh-dich/que/${String(h.n).padStart(2, '0')}.md\`${vi ? ' (hoặc công cụ tìm trích dẫn với tên quẻ)' : ' (or search quotes by the Chinese name)'}`);
   return out.join('\n');
 }

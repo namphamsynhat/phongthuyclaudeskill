@@ -85,16 +85,30 @@ Theo đúng thứ tự; đừng kết luận chỉ từ một sao.
 Script `scripts/kinh-dich.mjs` (không cần mạng):
 
 ```bash
-node scripts/kinh-dich.mjs --que 11                      # tra quẻ theo số, tên Việt/Hán/Anh
+node scripts/kinh-dich.mjs --que 11                      # tra quẻ theo số, tên Việt/Hán/Anh (hiển thị Quái từ, Thoán, Tượng, Hỗ quái)
+node scripts/kinh-dich.mjs --que 11 --moving 1,3        # tra quẻ kèm hào động → Hào từ, quẻ biến, phân tích Thể Dụng (Mai Hoa)
 node scripts/kinh-dich.mjs --lines 789687                # 6 hào từ dưới lên: 0/1, hoặc 6/7/8/9 có hào động
-node scripts/kinh-dich.mjs --cast [--method ni|classic]  # gieo hộ khi người dùng nhờ gieo
+node scripts/kinh-dich.mjs --cast [--method ni|classic]  # gieo hộ khi người dùng nhờ gieo (classic có hào động và Thể Dụng)
 node scripts/kinh-dich.mjs --house "chồng:Tây Bắc,vợ:Tây Bắc,con trai cả:Đông"
 node scripts/kinh-dich.mjs --liuren 4/5 --time 20:00     # Tiểu Lục Nhâm: tháng/ngày âm lịch + giờ
 node scripts/kinh-dich.mjs --trigrams
 node scripts/kinh-dich.mjs --grave Canh --water-in Khôn --water-out "Tây Bắc" --road Tỵ   # âm trạch: Hoàng Tuyền, Bát sát (hoặc --sit <toạ>, hoặc số độ: --grave 255)
 ```
 
-**Dương trạch (cách của thầy Nghê):** lấy tâm nhà, chia tám phương Hậu Thiên; **thượng quái là người** (vai trong nhà: Càn cha/chồng, Khôn mẹ/vợ, Chấn trưởng nam, Khảm trung nam, Cấn thiếu nam, Tốn trưởng nữ, Ly trung nữ, Đoài thiếu nữ), **hạ quái là phương của phòng**. Không xét hướng cửa. Danh = vị (ai ở đúng phương của vai mình) thì gia hòa; vị = danh thì vạn sự hưng.
+**Kinh Dịch và Thể Dụng (Mai Hoa Dịch Số):**
+- Khi tra cứu quẻ, engine hiển thị đầy đủ: hình quẻ, quái tượng, ý chính, **Quái từ**, **Thoán truyện**, **Đại tượng truyện**, và **Hỗ quái** (quẻ hỗ phản ánh nội hàm diễn biến trung gian của sự việc).
+- Khi có hào động (từ `--lines 789687` hoặc `--moving 1,3`): engine hiển thị **Hào từ** của các hào động, **Quẻ biến** (kết quả sau cùng), và tự động phân tích quan hệ **Thể - Dụng** theo Mai Hoa Dịch Số:
+  - Thể quái (bản thân/chủ thể việc cầu) và Dụng quái (ngoại cảnh/đối phương/sự việc).
+  - Ngũ hành sinh khắc giữa Thể và Dụng: Dụng sinh Thể (Đại Cát), Thể khắc Dụng (Tiểu Cát), Tỷ hòa (Cát), Thể sinh Dụng (Tiêu hao / Thứ Hung), Dụng khắc Thể (Đại Hung).
+
+**Dương trạch (Phong thủy nhà ở):**
+- **Phương pháp thầy Nghê:** lấy tâm nhà, chia tám phương Hậu Thiên; **thượng quái là người** (vai trong nhà: Càn cha/chồng, Khôn mẹ/vợ, Chấn trưởng nam, Khảm trung nam, Cấn thiếu nam, Tốn trưởng nữ, Ly trung nữ, Đoài thiếu nữ), **hạ quái là phương của phòng**. Không xét hướng cửa. Danh = vị (ai ở đúng phương của vai mình) thì gia hòa; vị = danh thì vạn sự hưng.
+- **Cổ thư kinh điển:** tham khảo 4 bộ cổ thư trong `references/vi/duong-trach/`:
+  1. *Hoàng Đế Trạch Kinh*: cổ xưa nhất, phép 24 lộ âm dương phối hợp, thuyết Ngũ Hư Ngũ Thực, thứ tự tu sửa Hình Họa - Phúc Đức.
+  2. *Dương Trạch Thập Thư*: toàn diện đời Minh, xem ngoại hình thế (địa thế, nước, đường, cây cối, nhà xung quanh) và nội hình thế (cửa, phòng ngủ, bếp núc, giếng, chuồng nuôi, cầu thang), bảng họa đồ cát hung.
+  3. *Dương Trạch Chỉ Nam*: nguyên lý hình thế và lý khí phối hợp, động tĩnh hư thực, khí khẩu nạp khí.
+  4. *Bát Trạch Minh Kính & Dương Trạch Tam Yếu*: phép phân Đông tứ trạch / Tây tứ trạch, tam yếu (Cửa - Chủ - Bếp), cửu tinh biến hóa (Sinh Khí, Diên Niên, Thiên Y, Phục Vị, Tuyệt Mạng, Họa Hại, Lục Sát, Ngũ Quỷ).
+  - Bản tổng hợp lý thuyết: `references/vi/duong-trach/duong-trach.md`.
 
 Quy trình:
 1. Hỏi sơ đồ nhà: tâm nhà ở đâu, mỗi người ngủ phòng nào, bếp, phòng khách, nhà vệ sinh ở phương nào; mỗi tầng xét riêng. Hỏi vai từng người (đã cưới chưa, con thứ mấy, có con ở cùng không), vì vai đổi theo hôn nhân và tuổi.
@@ -124,6 +138,8 @@ Mỗi tệp Tử Vi có bản tiếng Trung (`references/`) và bản dịch ti�
 | `references/vi/kinh-dich/duong-trach.md` | (chỉ tiếng Việt) | Phương pháp dương trạch của thầy Nghê, bảng 8×8 người × phương |
 | `references/vi/kinh-dich/07-duong-trach.md`, `11-kham-du.md`, `10-chiem-doan.md` | `references/kinh-dich/…` | Lời giảng đã dịch: dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99) |
 | `references/vi/kinh-dich/08-dich-ly.md`, `que/01.md`…`que/64.md` | `references/kinh-dich/…` | Dịch lý (396) và lời giảng từng quẻ (2.100): dịch đủ tiếng Việt, kèm nguyên văn |
+| `references/vi/duong-trach/duong-trach.md` | (chỉ tiếng Việt) | Tổng hợp cổ thư dương trạch: Bát Trạch, Dương Trạch Tam Yếu, Huyền Không, quy tắc bố cục |
+| `references/vi/duong-trach/01-…04-*.md` | `references/duong-trach/…` | 4 cổ thư dương trạch kinh điển (Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Tam Yếu) dịch đủ tiếng Việt, mỗi đoạn kèm nguyên văn |
 | `references/vi/am-trach/am-trach.md` | (chỉ tiếng Việt) | Tổng hợp phương pháp âm trạch theo cổ thư, có ghi nguồn từng mục |
 | `references/vi/am-trach/01-…11-*.md` | `references/am-trach/…` | 11 cổ thư âm trạch (phạm vi công cộng, Wikisource) dịch đủ tiếng Việt, mỗi đoạn kèm nguyên văn |
 

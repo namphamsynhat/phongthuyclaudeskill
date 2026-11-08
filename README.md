@@ -1,6 +1,6 @@
 # Tử Vi Đẩu Số và Kinh Dịch cho Claude
 
-Bộ [kỹ năng (Skill)](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) và tiện ích mở rộng (extension) giúp Claude luận **Tử Vi Đẩu Số** và **Kinh Dịch** (quẻ, bói, Tiểu Lục Nhâm, phong thủy dương trạch) và **âm trạch** (phong thủy mộ phần, theo cổ thư) theo truyền thống thầy **Nghê Hải Hạ** (倪海厦《天纪》). **Tiếng Việt là ngôn ngữ chính**; người dùng viết tiếng Anh thì Claude trả lời tiếng Anh.
+Bộ [kỹ năng (Skill)](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) và tiện ích mở rộng (extension) giúp Claude luận **Tử Vi Đẩu Số**, **Kinh Dịch** (quẻ, thoán từ, hào từ, hỗ quái, thể dụng, bói toán, Tiểu Lục Nhâm), **dương trạch** (phong thủy nhà ở theo thầy Nghê và 4 cổ thư kinh điển), và **âm trạch** (phong thủy mộ phần, theo cổ thư) theo truyền thống thầy **Nghê Hải Hạ** (倪海厦《天纪》). **Tiếng Việt là ngôn ngữ chính**; người dùng viết tiếng Anh thì Claude trả lời tiếng Anh.
 
 Xây dựng trên engine, kho kiến thức và bộ lời luận mã nguồn mở của [Renhuai123/ziwei-doushu](https://github.com/Renhuai123/ziwei-doushu) và kho ngữ liệu lời giảng [Renhuai123/nihai-tianji-corpus](https://github.com/Renhuai123/nihai-tianji-corpus).
 
@@ -15,10 +15,15 @@ Xây dựng trên engine, kho kiến thức và bộ lời luận mã nguồn m�
 4. Claude dịch, rút gọn phần trả lời câu hỏi, thêm phần vận năm, và đối chiếu trích dẫn với kho kiến thức.
 
 **Kinh Dịch**
-- `scripts/kinh-dich.mjs` tra 64 quẻ, đọc 6 hào (có hào động), gieo quẻ, tính Tiểu Lục Nhâm, và ghép **quẻ dương trạch** cho từng người trong nhà theo cách thầy Nghê: thượng quái là vai của người (cha, mẹ, con trưởng…), hạ quái là phương của phòng tính từ tâm nhà.
+- `scripts/kinh-dich.mjs` tra cứu 64 quẻ (Quái từ, Thoán từ, Đại tượng truyện, Hỗ quái), đọc 6 hào (có hào động kèm Hào từ và phân tích Thể Dụng Mai Hoa Dịch Số ngũ hành sinh khắc), gieo quẻ, tính Tiểu Lục Nhâm, và ghép **quẻ dương trạch** cho từng người trong nhà theo cách thầy Nghê: thượng quái là vai của người (cha, mẹ, con trưởng…), hạ quái là phương của phòng tính từ tâm nhà.
 - Claude đối chiếu với `references/vi/kinh-dich/`: Bát Quái, bảng 64 quẻ, phương pháp dương trạch (bếp, phòng khách, nhà vệ sinh, phòng ngủ vợ chồng, con cái), cùng 2.948 câu giảng của thầy Nghê có liên kết đến đúng giây trên Bilibili.
 
-**Âm trạch**
+**Dương trạch (Phong thủy nhà ở)**
+- `references/vi/duong-trach/`: 4 bộ cổ thư dương trạch kinh điển (Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Tam Yếu) dịch đủ tiếng Việt kèm nguyên văn chữ Hán, cùng bản tổng hợp lý thuyết `duong-trach.md` (khái lược Bát Trạch, Dương Trạch Tam Yếu, Huyền Không, quy tắc bố cục nhà ở truyền thống).
+- `scripts/kinh-dich.mjs --house`: phân tích vị trí từng thành viên trong gia đình theo Cung Bát Quái Hậu Thiên.
+- Công cụ tìm kiếm `ziwei_search_quotes` hỗ trợ `scope: duong-trach` tra cứu toàn bộ các thiên cổ thư nhà ở.
+
+**Âm trạch (Phong thủy mộ phần)**
 - `references/vi/am-trach/`: 11 cổ thư phong thủy mộ phần thuộc phạm vi công cộng (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Nang Áo Ngữ, Thanh Ô Kinh, luận văn của Trình Di, Trương Cư Chính, Trịnh Dụng Tích, phần đầu Nhân Tử Tu Tri), dịch đủ tiếng Việt kèm nguyên văn, cùng bản tổng hợp `am-trach.md` (long, huyệt, sa, thủy, lý khí, mười điều răn, quan điểm phê phán).
 - `scripts/kinh-dich.mjs --grave <hướng>` (hoặc số độ la bàn, hoặc `--sit <toạ>`): tính Tứ lộ / Bát lộ Hoàng Tuyền và Long thượng Bát sát cho hướng mộ, kiểm tra phương nước đến, nước đi, đường, cổng (`--water-in`, `--water-out`, `--road`).
 
@@ -77,8 +82,9 @@ Settings → Capabilities → bật chạy code (code execution) → tải `ziwe
 |---|---|
 | Kết quả lá số (sao, cung, Tứ Hóa, cách cục, điều kiện, lời luận sao) | Đủ (mặc định tiếng Việt) |
 | Kho kiến thức Tử Vi: cổ thư, 34 cách cục, xem hợp tuổi, 1.848 câu của thầy Nghê | Dịch đủ, mỗi câu kèm nguyên văn |
-| Kinh Dịch: Bát Quái, 64 quẻ, phương pháp dương trạch | Viết bằng tiếng Việt |
+| Kinh Dịch: Bát Quái, 64 quẻ (Quái từ, Thoán từ, Đại tượng, Hỗ quái, Hào từ hào động, Thể Dụng Mai Hoa), phương pháp dương trạch | Viết và dịch đủ tiếng Việt |
 | Kinh Dịch: toàn bộ 2.948 câu giảng — dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99), Dịch lý (396), từng quẻ (2.100) | Dịch đủ, mỗi câu kèm nguyên văn |
+| Dương trạch: 4 cổ thư phong thủy nhà ở kinh điển (Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Tam Yếu) và bản tổng hợp lý thuyết | Dịch đủ, mỗi đoạn kèm nguyên văn |
 | Âm trạch: 11 cổ thư phong thủy mộ phần (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Ô Kinh, Trình Di, Trương Cư Chính, Nhân Tử Tu Tri…) và bản tổng hợp phương pháp | Dịch đủ, mỗi đoạn kèm nguyên văn |
 | Bộ lời luận soạn sẵn v4.0 (≈20 tỉ chữ Hán, 56,6 GB giải nén) | Giữ nguyên tiếng Trung; Claude dịch khi đọc |
 | SKILL.md, README, công cụ | Tiếng Việt (có tiếng Anh) |
