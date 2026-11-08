@@ -141,7 +141,7 @@ Mỗi tệp Tử Vi có bản tiếng Trung (`references/`) và bản dịch ti�
 | `references/vi/kinh-dich/07-duong-trach.md`, `11-kham-du.md`, `10-chiem-doan.md` | `references/kinh-dich/…` | Lời giảng đã dịch: dương trạch (96), kham dư/phong thủy (257), chiêm bốc/chiết tự/Lục Thần/Lục Nhâm (99) |
 | `references/vi/kinh-dich/08-dich-ly.md`, `que/01.md`…`que/64.md` | `references/kinh-dich/…` | Dịch lý (396) và lời giảng từng quẻ (2.100): dịch đủ tiếng Việt, kèm nguyên văn |
 | `references/vi/duong-trach/duong-trach.md` | (chỉ tiếng Việt) | Tổng hợp cổ thư dương trạch: Bát Trạch, Dương Trạch Tam Yếu, Huyền Không, quy tắc bố cục |
-| `references/vi/duong-trach/01-…04-*.md` | `references/duong-trach/…` | Cổ thư dương trạch kèm nguyên văn: 01 Hoàng Đế Trạch Kinh và 03 Dương Trạch Chỉ Nam dịch đủ; 02 Dương Trạch Thập Thư mới dịch 31/2026 đoạn (đoạn chưa dịch chỉ có 「nguyên văn」, tự dịch và nói là bản dịch tạm); 04 là tóm lược hiện đại theo phái Bát Trạch / Tam Yếu, không trích như nguyên văn cổ thư |
+| `references/vi/duong-trach/01-…04-*.md` | `references/duong-trach/…` | Cổ thư dương trạch kèm nguyên văn: 01 Hoàng Đế Trạch Kinh, 02 Dương Trạch Thập Thư (toàn bộ 10 quyển 2.026 đoạn) và 03 Dương Trạch Chỉ Nam đều dịch đủ 100%; 04 là tóm lược hiện đại theo phái Bát Trạch / Tam Yếu, không trích như nguyên văn cổ thư |
 | `references/vi/am-trach/am-trach.md` | (chỉ tiếng Việt) | Tổng hợp phương pháp âm trạch theo cổ thư, có ghi nguồn từng mục |
 | `references/vi/am-trach/01-…11-*.md` | `references/am-trach/…` | 11 cổ thư âm trạch (phạm vi công cộng, Wikisource) dịch đủ tiếng Việt, mỗi đoạn kèm nguyên văn |
 
