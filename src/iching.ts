@@ -16,8 +16,12 @@ const BY_PAIR = new Map(HEX.map(h => [`${h.upper}|${h.lower}`, h]));
 const BY_LINES = new Map(data.trigrams.map(t => [t.lines, t]));
 
 /** Strip Vietnamese diacritics and punctuation for loose matching. */
+// Simplified → traditional for the characters used in hexagram, trigram and direction names,
+// so "乾为天", "水火既济", "离" match the traditional data (and the other way round).
+const S2T: Record<string, string> = Object.fromEntries([...'为离济风恒讼师观贲剥复无颐过遁晋损渐归丰兑涣节泽谦随蛊临壮长东门'].map((c, i) => [c, '為離濟風恆訟師觀賁剝復無頤過遯晉損漸歸豐兌渙節澤謙隨蠱臨壯長東門'[i]]));
+const toTrad = (s: string) => s.replace(/[\u4e00-\u9fff]/g, c => S2T[c] ?? c);
 export const norm = (s: string) =>
-  s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/[^a-z0-9一-鿿]+/g, ' ').trim();
+  toTrad(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/[^a-z0-9一-鿿]+/g, ' ').trim();
 
 const ROLE_ALIASES: Record<string, string[]> = {
   qian: ['cha', 'bố', 'chồng', 'father', 'husband', 'dad', 'càn', 'qian', '父', '夫', '乾', 'chu nha nam'],
@@ -72,8 +76,9 @@ export function findHexagram(q: string | number): Hex {
   if (/^[01]{6}$/.test(s)) return fromLines(s).primary;
   if (/^[6-9]{6}$/.test(s)) return fromLines(s).primary;
   const n = norm(s);
-  const hit = HEX.find(h => h.zh === s || norm(h.vi) === n || norm(h.en) === n)
-    ?? HEX.find(h => norm(h.vi).includes(n) || h.zh.includes(s) || norm(h.en).includes(n));
+  const t = toTrad(s);
+  const hit = HEX.find(h => toTrad(h.zh) === t || norm(h.vi) === n || norm(h.en) === n)
+    ?? HEX.find(h => norm(h.vi).includes(n) || toTrad(h.zh).includes(t) || norm(h.en).includes(n));
   if (!hit) throw new Error(`Unknown hexagram: "${q}"`);
   return hit;
 }

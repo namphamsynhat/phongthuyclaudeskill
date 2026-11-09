@@ -796,7 +796,7 @@ var iching_data_default = {
       upper: "gen",
       lower: "kun",
       meaning: "B\xF3c m\xF2n, suy s\u1EE5p; n\xEAn y\xEAn l\u1EB7ng gi\u1EEF g\u1ED1c",
-      guaci: "\u4E0D\u5229\u3002\u6709\u6538\u5F80\u3002",
+      guaci: "\u4E0D\u5229\u6709\u6538\u5F80\u3002",
       tuan: "\u300A\u5F56\u300B\u66F0\uFF1A\u525D\uFF0C\u525D\u4E5F\uFF0C\u67D4\u8B8A\u525B\u4E5F\u3002\u4E0D\u5229\u6709\u6538\u5F80\uFF0C\u5C0F\u4EBA\u9577\u4E5F\u3002\u9806\u800C\u6B62\u4E4B\uFF0C\u89C0\u8C61\u4E5F\u3002\u541B\u5B50\u5C1A\u6D88\u606F\u76C8\u865B\uFF0C\u5929\u884C\u4E5F\u3002",
       xiang: "\u300A\u8C61\u300B\u66F0\uFF1A\u5C71\u9644\u5730\u4E0A\uFF0C\u525D\uFF1B\u4E0A\u4EE5\u539A\u4E0B\uFF0C\u5B89\u5B85\u3002",
       yaoci: [
@@ -840,7 +840,7 @@ var iching_data_default = {
       upper: "qian",
       lower: "zhen",
       meaning: "Kh\xF4ng c\xE0n b\u1EADy; ch\xE2n th\u1EADt, tai h\u1ECDa b\u1EA5t ng\u1EDD",
-      guaci: "\u3002",
+      guaci: "\u5143\u4EA8\uFF0C\u5229\u8C9E\u3002\u5176\u532A\u6B63\u6709\u771A\uFF0C\u4E0D\u5229\u6709\u6538\u5F80\u3002",
       tuan: "\u300A\u5F56\u300B\u66F0\uFF1A\u7121\u5984\uFF0C\u525B\u81EA\u5916\u4F86\u800C\u70BA\u4E3B\u65BC\u5167\u3002\u52D5\u800C\u5065\uFF0C\u525B\u4E2D\u800C\u61C9\uFF0C\u5927\u4EA8\u4EE5\u6B63\uFF0C\u5929\u4E4B\u547D\u4E5F\u3002\u300C\u5176\u532A\u6B63\u6709\u771A\uFF0C\u4E0D\u5229\u6709\u6538\u5F80\u300D\uFF0C\u7121\u5984\u4E4B\u5F80\uFF0C\u4F55\u4E4B\u77E3\uFF1F\u5929\u547D\u4E0D\u4F51\u884C\u77E3\u54C9\uFF1F",
       xiang: "\u300A\u8C61\u300B\u66F0\uFF1A\u5929\u4E0B\u96F7\u884C\uFF0C\u7269\u8207\u7121\u5984\u3002\u5148\u738B\u4EE5\u8302\u5C0D\u6642\uFF0C\u80B2\u842C\u7269\u3002",
       yaoci: [
@@ -994,7 +994,7 @@ var iching_data_default = {
       upper: "zhen",
       lower: "xun",
       meaning: "B\u1EC1n l\xE2u; \u0111\u1EA1o v\u1EE3 ch\u1ED3ng l\xE2u d\xE0i",
-      guaci: "\u3002",
+      guaci: "\u4EA8\uFF0C\u7121\u548E\uFF0C\u5229\u8C9E\uFF0C\u5229\u6709\u6538\u5F80\u3002",
       tuan: "\u300A\u5F56\u300B\u66F0\uFF1A\u6046\uFF0C\u4E45\u4E5F\u3002\u525B\u4E0A\u800C\u67D4\u4E0B\uFF0C\u96F7\u98A8\u76F8\u8207\uFF0C\u5DFD\u800C\u52D5\uFF0C\u525B\u67D4\u7686\u61C9\uFF0C\u6046\u3002\u300C\u6046\uFF0C\u4EA8\uFF0C\u7121\u548E\uFF0C\u5229\u8C9E\u300D\uFF0C\u4E45\u65BC\u5176\u9053\u4E5F\uFF0C\u5929\u5730\u4E4B\u9053\uFF0C\u6046\u4E45\u800C\u4E0D\u5DF2\u4E5F\u3002\u300C\u5229\u6709\u6538\u5F80\u300D\uFF0C\u7D42\u5247\u6709\u59CB\u4E5F\u3002\u65E5\u6708\u5F97\u5929\u800C\u80FD\u4E45\u7167\uFF0C\u56DB\u6642\u8B8A\u5316\u800C\u80FD\u4E45\u6210\uFF0C\u8056\u4EBA\u4E45\u65BC\u5176\u9053\u800C\u5929\u4E0B\u5316\u6210\u3002\u89C0\u5176\u6240\u6046\uFF0C\u800C\u5929\u5730\u842C\u7269\u4E4B\u60C5\u53EF\u898B\u77E3\uFF01",
       xiang: "\u300A\u8C61\u300B\u66F0\uFF1A\u96F7\u98A8\uFF0C\u6046\u3002\u541B\u5B50\u4EE5\u7ACB\u4E0D\u6613\u65B9\u3002",
       yaoci: [
@@ -1720,7 +1720,9 @@ var TRI = Object.fromEntries(iching_data_default.trigrams.map((t) => [t.key, t])
 var HEX = iching_data_default.hexagrams;
 var BY_PAIR = new Map(HEX.map((h) => [`${h.upper}|${h.lower}`, h]));
 var BY_LINES = new Map(iching_data_default.trigrams.map((t) => [t.lines, t]));
-var norm2 = (s) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/[^a-z0-9一-鿿]+/g, " ").trim();
+var S2T = Object.fromEntries([..."\u4E3A\u79BB\u6D4E\u98CE\u6052\u8BBC\u5E08\u89C2\u8D32\u5265\u590D\u65E0\u9890\u8FC7\u9041\u664B\u635F\u6E10\u5F52\u4E30\u5151\u6DA3\u8282\u6CFD\u8C26\u968F\u86CA\u4E34\u58EE\u957F\u4E1C\u95E8"].map((c, i) => [c, "\u70BA\u96E2\u6FDF\u98A8\u6046\u8A1F\u5E2B\u89C0\u8CC1\u525D\u5FA9\u7121\u9824\u904E\u906F\u6649\u640D\u6F38\u6B78\u8C50\u514C\u6E19\u7BC0\u6FA4\u8B19\u96A8\u8831\u81E8\u58EF\u9577\u6771\u9580"[i]]));
+var toTrad = (s) => s.replace(/[\u4e00-\u9fff]/g, (c) => S2T[c] ?? c);
+var norm2 = (s) => toTrad(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/[^a-z0-9一-鿿]+/g, " ").trim();
 var ROLE_ALIASES = {
   qian: ["cha", "b\u1ED1", "ch\u1ED3ng", "father", "husband", "dad", "c\xE0n", "qian", "\u7236", "\u592B", "\u4E7E", "chu nha nam"],
   kun: ["m\u1EB9", "m\xE1", "v\u1EE3", "mother", "wife", "mom", "kh\xF4n", "kun", "\u6BCD", "\u59BB", "\u5764", "chu nha nu"],
@@ -1772,7 +1774,8 @@ function findHexagram(q) {
   if (/^[01]{6}$/.test(s)) return fromLines(s).primary;
   if (/^[6-9]{6}$/.test(s)) return fromLines(s).primary;
   const n = norm2(s);
-  const hit = HEX.find((h) => h.zh === s || norm2(h.vi) === n || norm2(h.en) === n) ?? HEX.find((h) => norm2(h.vi).includes(n) || h.zh.includes(s) || norm2(h.en).includes(n));
+  const t = toTrad(s);
+  const hit = HEX.find((h) => toTrad(h.zh) === t || norm2(h.vi) === n || norm2(h.en) === n) ?? HEX.find((h) => norm2(h.vi).includes(n) || toTrad(h.zh).includes(t) || norm2(h.en).includes(n));
   if (!hit) throw new Error(`Unknown hexagram: "${q}"`);
   return hit;
 }
