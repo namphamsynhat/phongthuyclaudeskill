@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "phongthuy",
+  "owner": { "name": "namphamsynhat" },
+  "metadata": { "description": "Plugin Tử Vi, Kinh Dịch, phong thủy dương trạch và âm trạch cho Claude Code." },
+  "plugins": [
+    {
+      "name": "phong-thuy",
+      "source": "./skill/ziwei-doushu",
+      "description": "Tử Vi Đẩu Số, Kinh Dịch, dương trạch và âm trạch theo thầy Nghê Hải Hạ và cổ thư; tiếng Việt là chính.",
+      "version": "1.6.0"
+    }
+  ]
+}

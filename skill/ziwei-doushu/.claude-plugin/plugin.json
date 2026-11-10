@@ -1,0 +1,12 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "phong-thuy",
+  "version": "1.6.0",
+  "description": "Tử Vi Đẩu Số, Kinh Dịch, dương trạch và âm trạch theo thầy Nghê Hải Hạ và cổ thư; tiếng Việt là chính, có tiếng Anh.",
+  "author": { "name": "namphamsynhat" },
+  "homepage": "https://github.com/namphamsynhat/phongthuyclaudeskill",
+  "repository": "https://github.com/namphamsynhat/phongthuyclaudeskill",
+  "license": "MIT",
+  "keywords": ["tu-vi", "ziwei", "kinh-dich", "i-ching", "phong-thuy", "feng-shui", "vietnamese"],
+  "skills": ["./"]
+}

@@ -27,6 +27,23 @@ Xây dựng trên engine, kho kiến thức và bộ lời luận mã nguồn m�
 - `references/vi/am-trach/`: 11 cổ thư phong thủy mộ phần thuộc phạm vi công cộng (Táng Thư, Hám Long Kinh, Nghi Long Kinh, Táng Pháp Đảo Trượng, Thanh Nang Kinh, Thanh Nang Áo Ngữ, Thanh Ô Kinh, luận văn của Trình Di, Trương Cư Chính, Trịnh Dụng Tích, phần đầu Nhân Tử Tu Tri), dịch đủ tiếng Việt kèm nguyên văn, cùng bản tổng hợp `am-trach.md` (long, huyệt, sa, thủy, lý khí, mười điều răn, quan điểm phê phán).
 - `scripts/kinh-dich.mjs --grave <hướng>` (hoặc số độ la bàn, hoặc `--sit <toạ>`): tính Tứ lộ / Bát lộ Hoàng Tuyền và Long thượng Bát sát cho hướng mộ, kiểm tra phương nước đến, nước đi, đường, cổng (`--water-in`, `--water-out`, `--road`).
 
+## Cài vào Claude Code (plugin)
+
+Repo này là một marketplace plugin. Trong Claude Code, gõ:
+
+```
+/plugin install phong-thuy --marketplace namphamsynhat/phongthuyclaudeskill
+```
+
+Với Claude Code cũ hơn 2.1.275, gõ hai lệnh:
+
+```
+/plugin marketplace add namphamsynhat/phongthuyclaudeskill
+/plugin install phong-thuy@phongthuy
+```
+
+Plugin chứa skill `ziwei-doushu` (Tử Vi, Kinh Dịch, dương trạch, âm trạch). Dữ liệu bài luận soạn sẵn được tải về khi cần; muốn dùng hoàn toàn offline thì dùng các gói dưới đây.
+
 ## Cài đặt (dùng offline)
 
 Tải từ [Releases](https://github.com/namphamsynhat/phongthuyclaudeskill/releases/latest). Hai gói offline có đủ 77 năm dữ liệu (1950–2026), dùng được không cần internet.
