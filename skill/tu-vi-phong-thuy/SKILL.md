@@ -1,9 +1,20 @@
 ---
-name: ziwei-doushu
-description: Tử Vi Đẩu Số (Zi Wei Dou Shu, Purple Star Astrology, 紫微斗数) và Kinh Dịch (I Ching, 易经) theo truyền thống thầy Nghê Hải Hạ (倪海厦《天纪》); trả lời bằng tiếng Việt (ngôn ngữ chính) hoặc tiếng Anh. Dùng khi người dùng hỏi lá số tử vi, lấy lá số, 排盘, xem theo ngày giờ sinh, đại hạn, lưu niên, xem tuổi hợp (合盘); hoặc hỏi Kinh Dịch: quẻ, gieo quẻ, bói quẻ đồng tiền, Tiểu Lục Nhâm, chiết tự, Lục Thần; hoặc hỏi phong thủy, dương trạch: phòng ngủ, bếp, phòng khách, nhà vệ sinh nên đặt ở phương nào, ai trong nhà nên ở phòng nào; hoặc hỏi âm trạch (phong thủy mộ phần): chọn đất táng, long huyệt sa thủy, điểm huyệt, cải táng. Lá số được tính bằng engine cố định; diễn giải dựa trên bộ lời luận soạn sẵn, cổ thư, quy tắc cách cục và lời giảng có mốc thời gian của thầy Nghê.
+name: tu-vi-phong-thuy
+description: Huyền học phương Đông bằng tiếng Việt — Tử Vi Đẩu Số, Kinh Dịch, phong thủy dương trạch (nhà cửa) và âm trạch (mộ phần) — theo thầy Nghê Hải Hạ (倪海厦《天纪》) và cổ thư. LUÔN dùng skill này khi người dùng hỏi bất cứ điều gì về vận hạn, số mệnh, tử vi, lá số, xem tuổi, hợp tuổi, năm nay/tháng này vận thế nào, đại hạn, lưu niên, sự nghiệp, tình duyên, tài lộc theo ngày giờ sinh; Kinh Dịch, quẻ, gieo quẻ, bói, xin quẻ, Tiểu Lục Nhâm, Mai Hoa, chiết tự, Lục Thần; phong thủy nhà ở, hướng nhà, bố trí phòng ngủ, bếp, phòng khách, nhà vệ sinh, ai ở phòng nào, Bát Trạch, Ngũ Hư; âm trạch, mộ phần, chọn đất táng, hướng mộ, long huyệt sa thủy, Hoàng Tuyền, Bát sát, cải táng, bốc mộ; hoặc huyền học, tâm linh, phong thủy nói chung — kể cả khi không nhắc chữ "tử vi" (ví dụ "năm sau tôi có nên đổi việc không", "nhà tôi hướng Tây có sao không"). Cũng dùng cho Zi Wei Dou Shu, purple star, 紫微斗数, 排盘, I Ching, 易经, feng shui, 阳宅, 阴宅. Lá số và quẻ do script tính; luận theo bài luận soạn sẵn, cổ thư và lời giảng.
 ---
 
-# Tử Vi Đẩu Số và Kinh Dịch (tiếng Việt / English)
+# Tử Vi, Kinh Dịch và Phong Thủy (tiếng Việt / English)
+
+**Phạm vi:** skill này không chỉ xem lá số. Nó bao gồm bốn mảng huyền học, mỗi mảng có công cụ và kho tài liệu riêng:
+
+| Người dùng hỏi về | Dùng |
+|---|---|
+| Vận hạn, số mệnh, tính cách, sự nghiệp, tình duyên, tài lộc, sức khỏe theo ngày giờ sinh; năm nay / đại hạn thế nào; xem tuổi, hợp tuổi | Tử Vi: mục 1–3, 6 |
+| Quẻ, gieo quẻ, bói một việc, Tiểu Lục Nhâm, Mai Hoa / Thể Dụng, chiết tự, Lục Thần, ý nghĩa một quẻ | Kinh Dịch: mục 3b |
+| Nhà cửa: hướng nhà, phòng ngủ, bếp, phòng khách, nhà vệ sinh, ai ở phòng nào, Bát Trạch, cổ thư dương trạch | Dương trạch: mục 3b |
+| Mộ phần: chọn đất, hướng mộ, long huyệt sa thủy, Hoàng Tuyền, Bát sát, cải táng | Âm trạch: mục 3b |
+
+Đừng bao giờ trả lời rằng skill "chỉ xem lá số Tử Vi". Câu hỏi vận hạn mà chưa có ngày giờ sinh thì hỏi ngày giờ sinh; câu hỏi về một việc cụ thể (nên hay không nên) thì có thể đề nghị gieo quẻ; câu hỏi nhà cửa, mộ phần thì hỏi sơ đồ và hướng. Một câu hỏi có thể kết hợp nhiều mảng (ví dụ lá số cho biết thời điểm, dương trạch cho biết chỗ ở cộng hay trừ vào vận). Chủ đề huyền học khác không có công cụ riêng (xem ngày tốt, đặt tên, thần số học…) thì nói rõ skill không có công cụ cho việc đó, rồi giúp trong phạm vi Kinh Dịch, ngũ hành và cổ thư có sẵn.
 
 **Lá số do code tính, không phải bạn tính.** Bạn chỉ diễn giải. Đừng tự an sao hay tính Tứ Hóa trong đầu: luôn chạy script. Với Kinh Dịch cũng vậy: tra quẻ, ghép quẻ dương trạch, gieo quẻ, Tiểu Lục Nhâm đều dùng `scripts/kinh-dich.mjs`.
 

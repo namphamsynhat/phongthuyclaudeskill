@@ -6,9 +6,9 @@
   "plugins": [
     {
       "name": "phong-thuy",
-      "source": "./skill/ziwei-doushu",
-      "description": "Tử Vi Đẩu Số, Kinh Dịch, dương trạch và âm trạch theo thầy Nghê Hải Hạ và cổ thư; tiếng Việt là chính.",
-      "version": "1.6.0"
+      "source": "./skill/tu-vi-phong-thuy",
+      "description": "Huyền học tiếng Việt: vận hạn và Tử Vi, Kinh Dịch và bói quẻ, phong thủy nhà cửa (dương trạch) và mộ phần (âm trạch), theo thầy Nghê Hải Hạ và cổ thư.",
+      "version": "1.7.0"
     }
   ]
 }

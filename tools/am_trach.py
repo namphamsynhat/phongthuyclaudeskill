@@ -4,14 +4,14 @@
   python3 -I tools/am_trach.py list  <book-slug>          # print id<TAB>paragraph still untranslated
   python3 -I tools/am_trach.py build                      # write references/vi/am-trach/*.md
 
-Sources: skill/ziwei-doushu/references/am-trach/NN-*.md (public domain, zh.wikisource).
+Sources: skill/tu-vi-phong-thuy/references/am-trach/NN-*.md (public domain, zh.wikisource).
 Translations: tools/am-trach-vi/<slug>.vi.tsv, one "id<TAB>Vietnamese" per line.
 """
 import hashlib, os, re, sys, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, "skill/ziwei-doushu/references/am-trach")
+SRC = os.path.join(ROOT, "skill/tu-vi-phong-thuy/references/am-trach")
 VI = os.path.join(ROOT, "tools/am-trach-vi")
-OUT = os.path.join(ROOT, "skill/ziwei-doushu/references/vi/am-trach")
+OUT = os.path.join(ROOT, "skill/tu-vi-phong-thuy/references/vi/am-trach")
 TITLES = {"01-tang-thu": "Táng Thư 葬書", "02-ham-long-kinh": "Hám Long Kinh 撼龍經", "03-nghi-long-kinh": "Nghi Long Kinh 疑龍經",
   "04-tang-phap-dao-truong": "Táng Pháp Đảo Trượng 葬法倒杖", "05-thanh-nang-kinh": "Thanh Nang Kinh 青囊經", "06-thanh-nang-ao-ngu": "Thanh Nang Áo Ngữ 青囊奧語",
   "07-thanh-o-kinh": "Thanh Ô Kinh 青烏經", "08-tang-phap-quyet-nghi": "Táng Pháp Quyết Nghi 葬法決疑", "09-tang-dia-luan": "Táng Địa Luận 葬地論",

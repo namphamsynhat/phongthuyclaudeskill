@@ -4,14 +4,14 @@
   python3 -I tools/duong_trach.py list  <book-slug>          # print id<TAB>paragraph still untranslated
   python3 -I tools/duong_trach.py build                      # write references/vi/duong-trach/*.md
 
-Sources: skill/ziwei-doushu/references/duong-trach/NN-*.md (public domain).
+Sources: skill/tu-vi-phong-thuy/references/duong-trach/NN-*.md (public domain).
 Translations: tools/duong-trach-vi/<slug>.vi.tsv, one "id<TAB>Vietnamese" per line.
 """
 import hashlib, os, re, sys, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, "skill/ziwei-doushu/references/duong-trach")
+SRC = os.path.join(ROOT, "skill/tu-vi-phong-thuy/references/duong-trach")
 VI = os.path.join(ROOT, "tools/duong-trach-vi")
-OUT = os.path.join(ROOT, "skill/ziwei-doushu/references/vi/duong-trach")
+OUT = os.path.join(ROOT, "skill/tu-vi-phong-thuy/references/vi/duong-trach")
 
 TITLES = {
     "01-hoang-de-trach-kinh": "Hoàng Đế Trạch Kinh 黃帝宅經",

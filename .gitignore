@@ -1,6 +1,7 @@
 node_modules/
 ziwei-doushu-skill.zip
-skill/ziwei-doushu/data/*.zst
+tu-vi-phong-thuy-skill.zip
+skill/tu-vi-phong-thuy/data/*.zst
 __pycache__/
 build/
 dist/

@@ -17,13 +17,14 @@ const ROOT = resolve(process.env.ZIWEI_HOME ?? join(dirname(fileURLToPath(import
 const DATA = join(ROOT, 'data');
 const REFS = join(ROOT, 'references');
 
-const INSTRUCTIONS = `Zi Wei Dou Shu (Tử Vi Đẩu Số, Purple Star Astrology) and Kinh Dịch (I Ching, house feng shui) reader in the Ni Haixia (倪海厦《天纪》) tradition. Vietnamese is the main language.
-Workflow: 1) ask for birth date, clock time, gender and birthplace; 2) call ziwei_chart (never compute the chart yourself);
-3) if the chart shows a dataset key (births 1950–2026), call ziwei_reading for the topics asked; 4) check claims with
-ziwei_search_quotes / ziwei_reference; 5) answer in English or Vietnamese (Vietnamese if the user writes Vietnamese).
-For I Ching questions (a hexagram, a coin cast, Tiểu Lục Nhâm, which room each family member should sleep in) use kinh_dich and ziwei_reference (bat-quai, 64-que, duong-trach).
-For grave feng shui (âm trạch: choosing a burial site, long/huyệt/sa/thủy, reburial) read ziwei_reference am-trach, then search the translated classics with ziwei_search_quotes scope am-trach; present it as a traditional doctrine, not as certain fortune.
-Call ziwei_guide once for the full method and rules. Never invent Ni Haixia quotes; never predict death, divorce or illness as certain.`;
+const INSTRUCTIONS = `Huyền học phương Đông bằng tiếng Việt (Eastern metaphysics, Vietnamese first): Tử Vi Đẩu Số, Kinh Dịch, phong thủy dương trạch (nhà cửa) và âm trạch (mộ phần), theo thầy Nghê Hải Hạ (倪海厦《天纪》) và cổ thư.
+SCOPE — use these tools for ANY question about: vận hạn, số mệnh, tử vi, lá số, xem tuổi / hợp tuổi, năm nay hay đại hạn thế nào, sự nghiệp / tình duyên / tài lộc theo ngày giờ sinh; Kinh Dịch, quẻ, gieo quẻ, bói một việc, Tiểu Lục Nhâm, Mai Hoa, chiết tự; nhà cửa, hướng nhà, phòng ngủ, bếp, nhà vệ sinh, ai ở phòng nào (dương trạch); mộ phần, chọn đất táng, hướng mộ, Hoàng Tuyền, Bát sát, cải táng (âm trạch); and Eastern metaphysics / feng shui in general. Never tell the user this extension only reads Tử Vi charts.
+- Tử Vi / vận hạn: ask birth date, clock time, gender, birthplace → la_so_tu_vi (never compute the chart yourself) → if it prints a dataset key (births 1950–2026) bai_luan_tu_vi for the topics asked → check with tim_loi_giang / doc_tai_lieu.
+- Kinh Dịch / bói: kinh_dich (hexagram, cast, liuren, trigrams) + doc_tai_lieu (bat-quai, 64-que, que).
+- Dương trạch: ask the floor plan and who sleeps where → kinh_dich action house → doc_tai_lieu duong-trach / duong-trach-classic; tim_loi_giang scope duong-trach.
+- Âm trạch: doc_tai_lieu am-trach → kinh_dich action grave for a facing → tim_loi_giang scope am-trach. Present it as traditional doctrine, not certain fortune.
+- Topics without a dedicated tool (chọn ngày, đặt tên…): say so, then help with what the I Ching, five elements and the bundled classics offer.
+Answer in Vietnamese (English if the user writes English). Call huong_dan_huyen_hoc once for the full method and rules. Never invent Ni Haixia quotes; never predict death, divorce or illness as certain.`;
 
 const text = (t: string) => ({ content: [{ type: 'text' as const, text: t }] });
 const fail = (e: unknown) => ({ content: [{ type: 'text' as const, text: `Error: ${(e as Error).message ?? e}` }], isError: true });
@@ -32,11 +33,11 @@ const fail = (e: unknown) => ({ content: [{ type: 'text' as const, text: `Error:
 let chartMod: Promise<typeof import('./chart')> | null = null;
 const chart = () => (chartMod ??= import('./chart'));
 
-const server = new McpServer({ name: 'ziwei-doushu', version: '1.0.0' }, { instructions: INSTRUCTIONS });
+const server = new McpServer({ name: 'tu-vi-phong-thuy', version: '1.7.0' }, { instructions: INSTRUCTIONS });
 
-server.registerTool('ziwei_chart', {
-  title: 'Draw a Zi Wei Dou Shu chart',
-  description: 'Compute a natal Zi Wei Dou Shu chart (12 palaces, stars and brightness, Four Transformations, patterns, decade and yearly luck) with true solar time. Returns Markdown in English or Vietnamese, plus a dataset key for ziwei_reading. Give either date (Gregorian) or lunar date, and either time (clock HH:MM) or hour_branch.',
+server.registerTool('la_so_tu_vi', {
+  title: 'Lập lá số Tử Vi',
+  description: 'Lập lá số Tử Vi (vận hạn, số mệnh, xem tuổi). Compute a natal Zi Wei Dou Shu chart (12 palaces, stars and brightness, Four Transformations, patterns, decade and yearly luck) with true solar time. Returns Markdown in English or Vietnamese, plus a dataset key for bai_luan_tu_vi. Give either date (Gregorian) or lunar date, and either time (clock HH:MM) or hour_branch.',
   inputSchema: {
     date: z.string().optional().describe('Gregorian birth date YYYY-MM-DD'),
     lunar: z.string().optional().describe('Lunar birth date YYYY-MM-DD (instead of date)'),
@@ -64,19 +65,19 @@ server.registerTool('ziwei_chart', {
   } catch (e) { return fail(e); }
 });
 
-server.registerTool('ziwei_find_city', {
-  title: 'Look up a birthplace',
+server.registerTool('tim_noi_sinh', {
+  title: 'Tìm nơi sinh',
   description: 'Find the longitude and standard UTC offset of a city (Vietnamese and major world cities, Chinese cities and districts).',
   inputSchema: { query: z.string() },
 }, async ({ query }) => {
   try { return text((await chart()).renderChart({ 'find-city': query })); } catch (e) { return fail(e); }
 });
 
-server.registerTool('ziwei_reading', {
-  title: 'Get the pre-written reading for a chart',
-  description: `Fetch the source-checked natal reading (Chinese, ~30,000 characters over 13 topics) from the offline dataset v4.0 for births 1950–2026. Use the dataset key printed by ziwei_chart. Topics: ${TOPICS.join(', ')}. Translate and condense; do not paste.`,
+server.registerTool('bai_luan_tu_vi', {
+  title: 'Bài luận Tử Vi soạn sẵn',
+  description: `Fetch the source-checked natal reading (Chinese, ~30,000 characters over 13 topics) from the offline dataset v4.0 for births 1950–2026. Use the dataset key printed by la_so_tu_vi. Topics: ${TOPICS.join(', ')}. Translate and condense; do not paste.`,
   inputSchema: {
-    key: z.string().describe('Dataset key from ziwei_chart, e.g. 1990-05-17-7-male'),
+    key: z.string().describe('Dataset key from la_so_tu_vi, e.g. 1990-05-17-7-male'),
     topics: z.array(z.enum(TOPICS)).optional().describe('Topics to return (default overview). Ask only for what you need.'),
     lang: z.enum(['en', 'vi']).optional(),
   },
@@ -84,9 +85,9 @@ server.registerTool('ziwei_reading', {
   try { return text(await readingMarkdown(DATA, key, topics?.length ? topics : ['overview'], lang ?? 'vi')); } catch (e) { return fail(e); }
 });
 
-server.registerTool('ziwei_search_quotes', {
-  title: 'Search Ni Haixia quotes',
-  description: 'Search timestamped Ni Haixia (Nghê Hải Hạ) quotes: 1,848 on Zi Wei Dou Shu (scope ziwei) and 2,948 on the I Ching, divination, feng shui and house placement (scope kinh-dich); scope am-trach searches the 11 translated classical grave feng shui texts (Táng Thư, Hám Long Kinh…); scope duong-trach searches the 4 translated classical house feng shui texts (Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Tam Yếu). Vietnamese files carry the Vietnamese translation and the original Chinese on each line, so search in either language (e.g. "Hóa Kỵ", "Phu Thê", "化忌", "Tây Bắc", "地天泰", "厨房", "Ngũ Hư", "五虚"). All words must appear in the line.',
+server.registerTool('tim_loi_giang', {
+  title: 'Tìm lời giảng và cổ thư',
+  description: 'Search Tử Vi, Kinh Dịch, dương trạch and âm trạch sources: timestamped Ni Haixia (Nghê Hải Hạ) quotes: 1,848 on Zi Wei Dou Shu (scope ziwei) and 2,948 on the I Ching, divination, feng shui and house placement (scope kinh-dich); scope am-trach searches the 11 translated classical grave feng shui texts (Táng Thư, Hám Long Kinh…); scope duong-trach searches the 4 translated classical house feng shui texts (Hoàng Đế Trạch Kinh, Dương Trạch Thập Thư, Dương Trạch Chỉ Nam, Bát Trạch Tam Yếu). Vietnamese files carry the Vietnamese translation and the original Chinese on each line, so search in either language (e.g. "Hóa Kỵ", "Phu Thê", "化忌", "Tây Bắc", "地天泰", "厨房", "Ngũ Hư", "五虚"). All words must appear in the line.',
   inputSchema: {
     query: z.string().describe('Words to find; all must appear (space separated)'),
     scope: z.enum(['all', 'ziwei', 'kinh-dich', 'am-trach', 'duong-trach']).optional().describe('Which quote set (default all; am-trach = classical grave feng shui; duong-trach = classical house feng shui)'),
@@ -132,9 +133,9 @@ const REF_FILES = ['patterns', 'marriage-compatibility', 'classic-gusuifu', 'cla
   'bat-quai', '64-que', 'duong-trach', 'kd-07-duong-trach', 'kd-08-dich-ly', 'kd-10-chiem-doan', 'kd-11-kham-du', 'que',
   'am-trach', 'am-trach-book', 'duong-trach-classic', 'duong-trach-book'] as const;
 const VI_ONLY = ['bat-quai', '64-que', 'duong-trach'];
-server.registerTool('ziwei_reference', {
-  title: 'Read a knowledge-base file',
-  description: 'Read a knowledge-base file. Tử Vi: patterns (34 pattern rules), marriage-compatibility, classic-gusuifu / classic-quanshu / classic-quanji. Kinh Dịch: bat-quai (8 trigrams, Lục Thần, coin casting, Tiểu Lục Nhâm), 64-que (table of the 64 hexagrams), duong-trach (Ni Haixia house-placement method, 8×8 table, kitchen/toilet/living-room rules), kd-07-duong-trach / kd-11-kham-du / kd-10-chiem-doan / kd-08-dich-ly (translated Ni quotes on house placement, feng shui, divination, I Ching principles), que + hexagram number (Ni quotes on one hexagram). Âm trạch (grave feng shui): am-trach (Vietnamese synthesis of the method with sources), am-trach-book + book 1–11 (1 Táng Thư, 2 Hám Long Kinh, 3 Nghi Long Kinh, 4 Táng Pháp Đảo Trượng, 5 Thanh Nang Kinh, 6 Thanh Nang Áo Ngữ, 7 Thanh Ô Kinh, 8 Trình Di, 9 Trương Cư Chính, 10 Trịnh Dụng Tích, 11 Nhân Tử Tu Tri; large files: prefer ziwei_search_quotes scope am-trach). Dương trạch (house feng shui classics): duong-trach-classic (Vietnamese master synthesis of the 4 classics), duong-trach-book + book 1–4 (1 Hoàng Đế Trạch Kinh, 2 Dương Trạch Thập Thư, 3 Dương Trạch Chỉ Nam, 4 Bát Trạch Tam Yếu; large files: prefer ziwei_search_quotes scope duong-trach). vi = Vietnamese (default), zh = Chinese original.',
+server.registerTool('doc_tai_lieu', {
+  title: 'Đọc tài liệu huyền học',
+  description: 'Read a knowledge-base file (Tử Vi, Kinh Dịch, dương trạch, âm trạch). Tử Vi: patterns (34 pattern rules), marriage-compatibility, classic-gusuifu / classic-quanshu / classic-quanji. Kinh Dịch: bat-quai (8 trigrams, Lục Thần, coin casting, Tiểu Lục Nhâm), 64-que (table of the 64 hexagrams), duong-trach (Ni Haixia house-placement method, 8×8 table, kitchen/toilet/living-room rules), kd-07-duong-trach / kd-11-kham-du / kd-10-chiem-doan / kd-08-dich-ly (translated Ni quotes on house placement, feng shui, divination, I Ching principles), que + hexagram number (Ni quotes on one hexagram). Âm trạch (grave feng shui): am-trach (Vietnamese synthesis of the method with sources), am-trach-book + book 1–11 (1 Táng Thư, 2 Hám Long Kinh, 3 Nghi Long Kinh, 4 Táng Pháp Đảo Trượng, 5 Thanh Nang Kinh, 6 Thanh Nang Áo Ngữ, 7 Thanh Ô Kinh, 8 Trình Di, 9 Trương Cư Chính, 10 Trịnh Dụng Tích, 11 Nhân Tử Tu Tri; large files: prefer tim_loi_giang scope am-trach). Dương trạch (house feng shui classics): duong-trach-classic (Vietnamese master synthesis of the 4 classics), duong-trach-book + book 1–4 (1 Hoàng Đế Trạch Kinh, 2 Dương Trạch Thập Thư, 3 Dương Trạch Chỉ Nam, 4 Bát Trạch Tam Yếu; large files: prefer tim_loi_giang scope duong-trach). vi = Vietnamese (default), zh = Chinese original.',
   inputSchema: {
     name: z.enum(REF_FILES),
     hexagram: z.number().int().min(1).max(64).optional().describe('For name = que: hexagram number 1–64'),
@@ -171,8 +172,8 @@ server.registerTool('ziwei_reference', {
 });
 
 server.registerTool('kinh_dich', {
-  title: 'Kinh Dịch (I Ching) tools',
-  description: 'Offline I Ching helper in the Ni Haixia method. action: hexagram (look up by number 1–64, Vietnamese/Chinese/English name, or six lines bottom→top as 0/1 or 6/7/8/9), cast (random coin cast; method ni = six coins, classic = three coins with moving lines; only when the user asks you to cast for them), house (Ni yang-zhai: each family member\'s role + the direction of their room from the centre of the home → hexagram), liuren (Tiểu Lục Nhâm from lunar month, lunar day and clock time or hour branch), trigrams (the 8 trigrams), grave (âm trạch compass check for a grave or house facing: Tứ lộ / Bát lộ Hoàng Tuyền and Long thượng Bát sát, optionally checking water and road directions). Then read ziwei_reference duong-trach / que for Ni\'s rules and quotes.',
+  title: 'Kinh Dịch, bói quẻ, dương trạch, âm trạch',
+  description: 'Kinh Dịch, bói quẻ, phong thủy nhà (dương trạch) và hướng mộ (âm trạch). Offline I Ching helper in the Ni Haixia method. action: hexagram (look up by number 1–64, Vietnamese/Chinese/English name, or six lines bottom→top as 0/1 or 6/7/8/9), cast (random coin cast; method ni = six coins, classic = three coins with moving lines; only when the user asks you to cast for them), house (Ni yang-zhai: each family member\'s role + the direction of their room from the centre of the home → hexagram), liuren (Tiểu Lục Nhâm from lunar month, lunar day and clock time or hour branch), trigrams (the 8 trigrams), grave (âm trạch compass check for a grave or house facing: Tứ lộ / Bát lộ Hoàng Tuyền and Long thượng Bát sát, optionally checking water and road directions). Then read doc_tai_lieu duong-trach / que for Ni\'s rules and quotes.',
   inputSchema: {
     action: z.enum(['hexagram', 'cast', 'house', 'liuren', 'trigrams', 'grave']),
     facing: z.string().optional().describe('grave: facing mountain (one of the 24, e.g. "Canh", "庚") or compass degrees, e.g. "255"'),
@@ -221,15 +222,15 @@ server.registerTool('kinh_dich', {
   } catch (e) { return fail(e); }
 });
 
-server.registerTool('ziwei_guide', {
-  title: 'How to give a reading',
-  description: 'The full method and rules for a Zi Wei Dou Shu reading (data to collect, reading order, quoting rules, safety rules, licenses). Call once before the first reading.',
+server.registerTool('huong_dan_huyen_hoc', {
+  title: 'Hướng dẫn luận giải',
+  description: 'The full method and rules for every reading: Tử Vi / vận hạn, Kinh Dịch / bói quẻ, dương trạch (house feng shui) and âm trạch (grave feng shui) — data to collect, reading order, quoting rules, safety rules, licenses. Call once before the first answer.',
   inputSchema: {},
 }, async () => {
   try {
     const p = join(ROOT, 'SKILL.md');
     const md = existsSync(p) ? readFileSync(p, 'utf8').replace(/^---[\s\S]*?---\s*/, '') : INSTRUCTIONS;
-    return text(`${md}\n\n(In this extension, use the tools instead of the shell commands above: ziwei_chart = scripts/ziwei-chart.mjs, ziwei_reading = scripts/lookup-reading.mjs, ziwei_search_quotes = grep over references/vi/tianji-ziwei and references/vi/kinh-dich, ziwei_reference = references/*.md, kinh_dich = scripts/kinh-dich.mjs.)`);
+    return text(`${md}\n\n(In this extension, use the tools instead of the shell commands above: la_so_tu_vi = scripts/ziwei-chart.mjs, bai_luan_tu_vi = scripts/lookup-reading.mjs, tim_loi_giang = grep over references/vi/tianji-ziwei and references/vi/kinh-dich, doc_tai_lieu = references/*.md, kinh_dich = scripts/kinh-dich.mjs.)`);
   } catch (e) { return fail(e); }
 });
 

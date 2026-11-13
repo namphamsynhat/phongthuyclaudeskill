@@ -1,10 +1,10 @@
 {
   "manifest_version": "0.2",
-  "name": "ziwei-doushu",
-  "display_name": "Tử Vi Đẩu Số & Kinh Dịch",
-  "version": "1.6.0",
-  "description": "Lá số Tử Vi, Kinh Dịch (quẻ, dương trạch) theo thầy Nghê Hải Hạ và cổ thư âm trạch, offline, tiếng Việt và tiếng Anh.",
-  "long_description": "Cho Claude các công cụ offline: lập lá số Tử Vi Đẩu Số theo giờ mặt trời thật; lấy bài luận soạn sẵn 13 chủ đề cho người sinh 1950–2026 (bộ dữ liệu mở v4.0, kèm sẵn, không cần mạng); Kinh Dịch: tra 64 quẻ, gieo quẻ, Tiểu Lục Nhâm, ghép quẻ dương trạch cho từng người trong nhà theo phương pháp thầy Nghê Hải Hạ; tìm 4.796 câu giảng có mốc thời gian bằng tiếng Việt hoặc tiếng Trung; đọc cách cục, cổ thư, xem hợp tuổi, Bát Quái, phương pháp dương trạch; 11 cổ thư âm trạch (phong thủy mộ phần, phạm vi công cộng) dịch tiếng Việt kèm bản tổng hợp, và công cụ Bát Lộ Hoàng Tuyền / Bát sát cho hướng mộ. Engine mã nguồn mở của Renhuai123/ziwei-doushu (MIT). Lời giảng của thầy Nghê theo CC BY-NC-SA 4.0: chỉ dùng phi thương mại. Lời luận mang tính văn hóa, giải trí, không phải lời khuyên y khoa, pháp lý hay tài chính.\n\nOffline Zi Wei Dou Shu charts and I Ching tools (hexagrams, casting, Xiao Liu Ren, house placement) in the Ni Haixia tradition, Vietnamese first, also English.",
+  "name": "tu-vi-phong-thuy",
+  "display_name": "Tử Vi, Kinh Dịch & Phong Thủy",
+  "version": "1.7.0",
+  "description": "Huyền học tiếng Việt: vận hạn và lá số Tử Vi, Kinh Dịch và bói quẻ, phong thủy nhà cửa (dương trạch), phong thủy mộ phần (âm trạch); theo thầy Nghê Hải Hạ và cổ thư, offline.",
+  "long_description": "Cho Claude các công cụ huyền học offline, dùng cho mọi câu hỏi về vận hạn, tử vi, xem tuổi, Kinh Dịch, bói quẻ, phong thủy nhà cửa và mộ phần: lập lá số Tử Vi Đẩu Số theo giờ mặt trời thật; lấy bài luận soạn sẵn 13 chủ đề cho người sinh 1950–2026 (bộ dữ liệu mở v4.0, kèm sẵn, không cần mạng); Kinh Dịch: tra 64 quẻ, gieo quẻ, Tiểu Lục Nhâm, ghép quẻ dương trạch cho từng người trong nhà theo phương pháp thầy Nghê Hải Hạ; tìm 4.796 câu giảng có mốc thời gian bằng tiếng Việt hoặc tiếng Trung; đọc cách cục, cổ thư, xem hợp tuổi, Bát Quái, phương pháp dương trạch; 11 cổ thư âm trạch (phong thủy mộ phần, phạm vi công cộng) dịch tiếng Việt kèm bản tổng hợp, và công cụ Bát Lộ Hoàng Tuyền / Bát sát cho hướng mộ. Engine mã nguồn mở của Renhuai123/ziwei-doushu (MIT). Lời giảng của thầy Nghê theo CC BY-NC-SA 4.0: chỉ dùng phi thương mại. Lời luận mang tính văn hóa, giải trí, không phải lời khuyên y khoa, pháp lý hay tài chính.\n\nOffline Zi Wei Dou Shu charts and I Ching tools (hexagrams, casting, Xiao Liu Ren, house placement) in the Ni Haixia tradition, Vietnamese first, also English.",
   "author": {
     "name": "namphamsynhat",
     "url": "https://github.com/namphamsynhat"
@@ -16,16 +16,21 @@
   "homepage": "https://github.com/namphamsynhat/phongthuyclaudeskill",
   "license": "MIT",
   "keywords": [
-    "ziwei",
-    "zi wei dou shu",
     "tu vi",
     "tử vi",
+    "vận hạn",
     "kinh dịch",
-    "i ching",
+    "bói quẻ",
     "phong thủy",
     "dương trạch",
+    "âm trạch",
+    "huyền học",
+    "ziwei",
+    "i ching",
+    "feng shui",
     "紫微斗数",
     "易经",
+    "风水",
     "vietnamese"
   ],
   "server": {
@@ -41,32 +46,32 @@
   },
   "tools": [
     {
-      "name": "ziwei_chart",
-      "description": "Draw a natal Zi Wei Dou Shu chart in English or Vietnamese, with a dataset key for the reading."
+      "name": "la_so_tu_vi",
+      "description": "Lập lá số Tử Vi theo giờ mặt trời thật: vận hạn, đại hạn, lưu niên, cách cục (tiếng Việt / English)."
     },
     {
-      "name": "ziwei_find_city",
-      "description": "Find longitude and UTC offset of a birthplace."
+      "name": "tim_noi_sinh",
+      "description": "Tìm kinh độ và múi giờ của nơi sinh."
     },
     {
-      "name": "ziwei_reading",
-      "description": "Get the pre-written 13-topic natal reading for births 1950–2026 (offline)."
+      "name": "bai_luan_tu_vi",
+      "description": "Bài luận Tử Vi soạn sẵn 13 chủ đề cho người sinh 1950–2026 (offline)."
     },
     {
-      "name": "ziwei_search_quotes",
-      "description": "Search 4,796 timestamped Ni Haixia quotes (Zi Wei and I Ching) in Vietnamese or Chinese."
+      "name": "tim_loi_giang",
+      "description": "Tìm 4.796 câu giảng của thầy Nghê (Tử Vi, Kinh Dịch, phong thủy) và cổ thư dương trạch, âm trạch đã dịch."
     },
     {
-      "name": "ziwei_reference",
-      "description": "Read pattern rules, classics, compatibility notes, the 8 trigrams, the 64 hexagrams, the house-placement method or one hexagram's quotes."
+      "name": "doc_tai_lieu",
+      "description": "Đọc tài liệu: cách cục, cổ thư Tử Vi, xem hợp tuổi, Bát Quái, 64 quẻ, phương pháp dương trạch, tổng hợp và cổ thư âm trạch."
     },
     {
       "name": "kinh_dich",
-      "description": "I Ching: look up or cast a hexagram, Xiao Liu Ren, Ni Haixia's house placement (family role × room direction), and the grave compass check (Hoàng Tuyền, Bát sát)."
+      "description": "Kinh Dịch: tra quẻ, gieo quẻ, Tiểu Lục Nhâm, xếp phòng dương trạch theo thầy Nghê, kiểm tra hướng mộ (Hoàng Tuyền, Bát sát)."
     },
     {
-      "name": "ziwei_guide",
-      "description": "Full reading method and rules."
+      "name": "huong_dan_huyen_hoc",
+      "description": "Phương pháp và quy tắc luận giải cho Tử Vi, Kinh Dịch, dương trạch, âm trạch."
     }
   ],
   "compatibility": {
